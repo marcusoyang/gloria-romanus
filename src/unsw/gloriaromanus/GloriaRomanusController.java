@@ -109,7 +109,7 @@ public class GloriaRomanusController{
       String enemyProvinceName = (String)currentlySelectedEnemyProvince.getAttributes().get("name");
       if (confirmIfProvincesConnected(humanProvinceName, enemyProvinceName)){
 
-        
+        Province humanProvince = deserializeProvince(humanProvinceName);
 
         Random r = new Random();
         int choice = r.nextInt(2);
@@ -135,6 +135,16 @@ public class GloriaRomanusController{
       }
 
     }
+  }
+
+  private Province deserializeProvince(String provinceName) {
+    for (Faction f : factionsMap.values()) {
+      Province p = f.deserialize(provinceName);
+      if (p != null) {
+        return p;
+      }
+    }
+    return null;
   }
 
   /**
