@@ -110,10 +110,17 @@ public class GloriaRomanusController{
       if (confirmIfProvincesConnected(humanProvinceName, enemyProvinceName)){
 
         Province humanProvince = deserializeProvince(humanProvinceName);
+        Province enemyProvince = deserializeProvince(enemyProvinceName);
 
+        if (humanProvince == null || enemyProvince == null) {
+          // throw some kind of exception
+        }
+        
+        // Each army has a uniformly random chance of winning calculated as: army strength/(army strength + enemy army strength)
+        double humanWinningChance = humanProvince.getArmyStrength() / (humanProvince.getArmyStrength() + enemyProvince.getArmyStrength());
         Random r = new Random();
-        int choice = r.nextInt(2);
-        if (choice == 0){
+        double choice = r.nextDouble();
+        if (choice <= humanWinningChance){
           // human won. Transfer 40% of troops of human over. No casualties by human, but enemy loses all troops
           int numTroopsToTransfer = provinceToNumberTroopsMap.get(humanProvinceName)*2/5;
           provinceToNumberTroopsMap.put(enemyProvinceName, numTroopsToTransfer);
@@ -133,7 +140,6 @@ public class GloriaRomanusController{
       else{
         printMessageToTerminal("Provinces not adjacent, cannot invade!");
       }
-
     }
   }
 
