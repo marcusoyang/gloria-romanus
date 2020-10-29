@@ -25,4 +25,8 @@ public class Province {
         
         return (noOfSoldiers * totalAttack * totalDefense);
     }
+
+    public String getName() {
+        return name;
+    }
 }
