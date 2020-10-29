@@ -77,6 +77,8 @@ public class GloriaRomanusController{
 
   private FeatureLayer featureLayer_provinces;
 
+  private Map<String,Faction> factionsMap;
+
   @FXML
   private void initialize() throws JsonParseException, JsonMappingException, IOException {
     // TODO = you should rely on an object oriented design to determine ownership
@@ -96,29 +98,33 @@ public class GloriaRomanusController{
     currentlySelectedEnemyProvince = null;
 
     initializeProvinceLayers();
+    initializeFactionInstances();
+    initializeProvinceInstances();
   }
 
   @FXML
   public void clickedInvadeButton(ActionEvent e) throws IOException {
     if (currentlySelectedHumanProvince != null && currentlySelectedEnemyProvince != null){
-      String humanProvince = (String)currentlySelectedHumanProvince.getAttributes().get("name");
-      String enemyProvince = (String)currentlySelectedEnemyProvince.getAttributes().get("name");
-      if (confirmIfProvincesConnected(humanProvince, enemyProvince)){
-        // TODO = have better battle resolution than 50% chance of winning
+      String humanProvinceName = (String)currentlySelectedHumanProvince.getAttributes().get("name");
+      String enemyProvinceName = (String)currentlySelectedEnemyProvince.getAttributes().get("name");
+      if (confirmIfProvincesConnected(humanProvinceName, enemyProvinceName)){
+
+        
+
         Random r = new Random();
         int choice = r.nextInt(2);
         if (choice == 0){
           // human won. Transfer 40% of troops of human over. No casualties by human, but enemy loses all troops
-          int numTroopsToTransfer = provinceToNumberTroopsMap.get(humanProvince)*2/5;
-          provinceToNumberTroopsMap.put(enemyProvince, numTroopsToTransfer);
-          provinceToNumberTroopsMap.put(humanProvince, provinceToNumberTroopsMap.get(humanProvince)-numTroopsToTransfer);
-          provinceToOwningFactionMap.put(enemyProvince, humanFaction);
+          int numTroopsToTransfer = provinceToNumberTroopsMap.get(humanProvinceName)*2/5;
+          provinceToNumberTroopsMap.put(enemyProvinceName, numTroopsToTransfer);
+          provinceToNumberTroopsMap.put(humanProvinceName, provinceToNumberTroopsMap.get(humanProvinceName)-numTroopsToTransfer);
+          provinceToOwningFactionMap.put(enemyProvinceName, humanFaction);
           printMessageToTerminal("Won battle!");
         }
         else{
           // enemy won. Human loses 60% of soldiers in the province
-          int numTroopsLost = provinceToNumberTroopsMap.get(humanProvince)*3/5;
-          provinceToNumberTroopsMap.put(humanProvince, provinceToNumberTroopsMap.get(humanProvince)-numTroopsLost);
+          int numTroopsLost = provinceToNumberTroopsMap.get(humanProvinceName)*3/5;
+          provinceToNumberTroopsMap.put(humanProvinceName, provinceToNumberTroopsMap.get(humanProvinceName)-numTroopsLost);
           printMessageToTerminal("Lost battle!");
         }
         resetSelections();  // reset selections in UI
@@ -162,6 +168,25 @@ public class GloriaRomanusController{
     });
 
     addAllPointGraphics();
+  }
+
+  private void initializeFactionInstances() throws IOException {
+    String content = Files.readString(Paths.get("src/unsw/gloriaromanus/initial_province_ownership.json"));
+    JSONObject ownership = new JSONObject(content);
+    
+    for (String faction : ownership.keySet()) {
+      Faction newFaction = new Faction(faction);
+      factionsMap.put(faction, newFaction);
+    }
+  }
+
+  private void initializeProvinceInstances() {
+    for (Map.Entry<String, String> entry : provinceToOwningFactionMap.entrySet()) {
+      // The key is the province name, the value is the faction name
+      Faction curr = factionsMap.get(entry.getValue());
+      Province newProvince = new Province(entry.getKey(), curr);
+      curr.addProvince(newProvince);
+    }
   }
 
   private void addAllPointGraphics() throws JsonParseException, JsonMappingException, IOException {
