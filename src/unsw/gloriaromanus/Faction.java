@@ -14,4 +14,12 @@ public class Faction {
     public void addProvince(Province province) {
         provinces.add(province);
     }
+
+    public Province deserialize(String provinceName) {
+        for (Province p : provinces) {
+            if (p.getName().equals(provinceName)) {
+                return p;
+            }
+        }
+    }
 }
