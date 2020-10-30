@@ -20,6 +20,8 @@ public class Unit {
 
     public Unit(){
         // TODO = obtain these values from the file for the unit
+        // TODO = shield charge ability
+        // TODO = heroic charge ability
         numTroops = 50;
         range = 1;
         armour = 5;
