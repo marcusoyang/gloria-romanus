@@ -16,7 +16,7 @@ public class UnitTest{
     
     @Test
     public void blahTest2(){
-        Unit u = new Unit();
+        Unit u = new Unit("legionary", 50);
         assertEquals(u.getNumTroops(), 50);
     }
 }
