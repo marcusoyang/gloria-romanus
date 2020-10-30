@@ -118,20 +118,28 @@ public class GloriaRomanusController{
         
         // Each army has a uniformly random chance of winning calculated as: army strength/(army strength + enemy army strength)
         double humanWinningChance = humanProvince.getArmyStrength() / (humanProvince.getArmyStrength() + enemyProvince.getArmyStrength());
+        double enemyWinningChance = enemyProvince.getArmyStrength() / (humanProvince.getArmyStrength() + enemyProvince.getArmyStrength());
+        
         Random r = new Random();
         double choice = r.nextDouble();
+
         if (choice <= humanWinningChance){
-          // human won. Transfer 40% of troops of human over. No casualties by human, but enemy loses all troops
+          // human won. The casulties are randomly generated according to their winning chances.
+          winningArmyCasulties(humanProvinceName, enemyWinningChance, humanProvince.getArmySize());
+          losingArmyCasulties(enemyProvinceName, humanWinningChance, enemyProvince.getArmySize());
+
+          // Transfer 40% of the remaining troops of human over to the new province.
           int numTroopsToTransfer = provinceToNumberTroopsMap.get(humanProvinceName)*2/5;
-          provinceToNumberTroopsMap.put(enemyProvinceName, numTroopsToTransfer);
-          provinceToNumberTroopsMap.put(humanProvinceName, provinceToNumberTroopsMap.get(humanProvinceName)-numTroopsToTransfer);
+          // Assumption: the remaining troops of the enemy province gets converted to armies of the invading faction.
+          provinceToNumberTroopsMap.put(enemyProvinceName, provinceToNumberTroopsMap.get(enemyProvinceName) + numTroopsToTransfer);
+          provinceToNumberTroopsMap.put(humanProvinceName, provinceToNumberTroopsMap.get(humanProvinceName) - numTroopsToTransfer);
           provinceToOwningFactionMap.put(enemyProvinceName, humanFaction);
           printMessageToTerminal("Won battle!");
         }
         else{
-          // enemy won. Human loses 60% of soldiers in the province
-          int numTroopsLost = provinceToNumberTroopsMap.get(humanProvinceName)*3/5;
-          provinceToNumberTroopsMap.put(humanProvinceName, provinceToNumberTroopsMap.get(humanProvinceName)-numTroopsLost);
+          // enemy won.
+          winningArmyCasulties(enemyProvinceName, humanWinningChance, enemyProvince.getArmySize());
+          losingArmyCasulties(humanProvinceName, enemyWinningChance, humanProvince.getArmySize());
           printMessageToTerminal("Lost battle!");
         }
         resetSelections();  // reset selections in UI
@@ -141,6 +149,20 @@ public class GloriaRomanusController{
         printMessageToTerminal("Provinces not adjacent, cannot invade!");
       }
     }
+  }
+
+  private void losingArmyCasulties(String province, double enemyWinningChance, int armySize) {
+    Random r = new Random();
+    double casultyPercentage = enemyWinningChance + (1 - enemyWinningChance) * r.nextDouble();
+    int casultySize = armySize * (int)casultyPercentage;
+    provinceToNumberTroopsMap.put(province, provinceToNumberTroopsMap.get(province)-casultySize);
+  }
+
+  private void winningArmyCasulties(String province, double enemyWinningChance, int armySize) {
+    Random r = new Random();
+    double casultyPercentage = enemyWinningChance * r.nextDouble();
+    int casultySize = armySize * (int)casultyPercentage;
+    provinceToNumberTroopsMap.put(province, provinceToNumberTroopsMap.get(province)-casultySize);
   }
 
   private Province deserializeProvince(String provinceName) {
