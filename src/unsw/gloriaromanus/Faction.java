@@ -3,8 +3,8 @@ package unsw.gloriaromanus;
 import java.util.ArrayList;
 
 public class Faction {
-    String name;
-    ArrayList<Province> provinces;
+    private String name;
+    private ArrayList<Province> provinces;
 
     public Faction(String name) {
         this.name = name;
@@ -22,5 +22,9 @@ public class Faction {
             }
         }
         return null;
+    }
+
+    public String getName() {
+        return name;
     }
 }
