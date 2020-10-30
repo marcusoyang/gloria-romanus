@@ -29,4 +29,8 @@ public class Province {
     public String getName() {
         return name;
     }
+
+    public int getArmySize() {
+        return units.size();
+    }
 }
