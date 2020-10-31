@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import org.json.JSONObject;
 import org.json.JSONArray;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 public class Province {
     private static final int MAX_FAC = 2;
 
@@ -71,9 +74,13 @@ public class Province {
         this.faction = faction;
     }
 
-    public JSONObject getJSONObject() {
-        JSONObject j = new JSONObject();
-        j.put("name", name);
+    public JSONObject getJSONObject() throws JsonProcessingException {
+        ObjectMapper mapper = new ObjectMapper();
+
+        String jsonString = mapper.writeValueAsString(this);
+        
+        JSONObject j = new JSONObject(jsonString);
+        /*j.put("name", name);
         j.put("faction", faction);
         JSONArray ja = new JSONArray();
         for (Unit u : units) {
@@ -83,9 +90,14 @@ public class Province {
         j.put("units", ja);
         j.put("armySize", armySize);
         j.put("wealth", wealth);
-        j.put("factories", new JSONArray(factories));
+        j.put("factories", new JSONArray(factories));*/
         return j;
     }
 
-    
+    public void setDetails(JSONObject joProvince) {
+        JSONArray ja = joProvince.getJSONArray("units");
+        for (int i = 0; i < ja.length(); i++) {
+            JSONObject joUnit = ja.getJSONObject(i);
+        }
+    }
 }
