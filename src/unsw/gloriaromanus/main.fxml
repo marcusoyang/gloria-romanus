@@ -44,6 +44,7 @@
             </VBox>
         </HBox>
         <Button text="Invade" onAction="#clickedInvadeButton"/>
+        <Button text="End Turn" onAction="#clickedEndTurnButton"/>
         <VBox>
             <Label text="Output from interactions"/>
             <TextArea fx:id="output_terminal" text="" editable="false"/>
