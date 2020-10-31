@@ -70,9 +70,9 @@ public class GloriaRomanusController{
 
   private Map<String, Integer> provinceToNumberTroopsMap;
 
-  private Map<String, String> playerToFactionMap;
+  private ArrayList<String> playerIDToFaction;
 
-  private String currentPlayer;
+  private int currentPlayerID;
 
   private Feature currentlySelectedHumanProvince;
   private Feature currentlySelectedEnemyProvince;
@@ -90,8 +90,8 @@ public class GloriaRomanusController{
       provinceToNumberTroopsMap.put(provinceName, r.nextInt(500));
     }
 
-    playerToFactionMap = initializePlayerToFaction();
-    currentPlayer = "player1";
+    initializePlayerToFaction();
+    currentPlayerID = 0;
 
     currentlySelectedHumanProvince = null;
     currentlySelectedEnemyProvince = null;
@@ -113,7 +113,7 @@ public class GloriaRomanusController{
           int numTroopsToTransfer = provinceToNumberTroopsMap.get(humanProvince)*2/5;
           provinceToNumberTroopsMap.put(enemyProvince, numTroopsToTransfer);
           provinceToNumberTroopsMap.put(humanProvince, provinceToNumberTroopsMap.get(humanProvince)-numTroopsToTransfer);
-          provinceToOwningFactionMap.put(enemyProvince, playerToFactionMap.get(currentPlayer));
+          provinceToOwningFactionMap.put(enemyProvince, playerIDToFaction.get(currentPlayerID));
           printMessageToTerminal("Won battle!");
         }
         else{
@@ -134,17 +134,23 @@ public class GloriaRomanusController{
 
   @FXML
   public void clickedEndTurnButton(ActionEvent e) throws IOException {
-    
+    // the below should be changed when we want more than two faction.
+    printMessageToTerminal("player" + currentPlayerID + " ended their turn.");
+    currentPlayerID++;
+    if (currentPlayerID == playerIDToFaction.size()) {
+      currentPlayerID = 0;
+    }
+    printMessageToTerminal("It is player" + currentPlayerID + "'s turn.");
+
   }
 
-  private Map<String, String> initializePlayerToFaction() throws IOException{
-    String content = Files.readString(Paths.get("src/unsw/gloriaromanus/player_to_faction.json"));
+  private void initializePlayerToFaction() throws IOException{
+    String content = Files.readString(Paths.get("src/unsw/gloriaromanus/initial_province_ownership.json"));
     JSONObject ownership = new JSONObject(content);
-    Map<String, String> m = new HashMap<String, String>();
-    for (String player : ownership.keySet()) {
-      m.put(player, ownership.getString(player));
+    playerIDToFaction = new ArrayList<String>();
+    for (String faction : ownership.keySet()) {
+      playerIDToFaction.add(faction);
     }
-    return m;
   }
 
   /**
@@ -282,7 +288,7 @@ public class GloriaRomanusController{
                 Feature f = features.get(0);
                 String province = (String)f.getAttributes().get("name");
 
-                if (provinceToOwningFactionMap.get(province).equals(playerToFactionMap.get(currentPlayer))){
+                if (provinceToOwningFactionMap.get(province).equals(playerIDToFaction.get(currentPlayerID))){
                   // province owned by human
                   if (currentlySelectedHumanProvince != null){
                     featureLayer.unselectFeature(currentlySelectedHumanProvince);
@@ -335,7 +341,7 @@ public class GloriaRomanusController{
 
     String content = Files.readString(Paths.get("src/unsw/gloriaromanus/initial_province_ownership.json"));
     JSONObject ownership = new JSONObject(content);
-    return ArrayUtil.convert(ownership.getJSONArray(playerToFactionMap.get(currentPlayer)));
+    return ArrayUtil.convert(ownership.getJSONArray(playerIDToFaction.get(currentPlayerID)));
   }
 
   /**
