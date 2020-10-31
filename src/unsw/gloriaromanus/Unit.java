@@ -1,10 +1,5 @@
 package unsw.gloriaromanus;
 
-import org.json.JSONObject;
-
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 /**
  * Represents a basic unit of soldiers
  * 
@@ -188,26 +183,5 @@ public class Unit {
 
     public int getTotalDefense() {
         return defenseSkill + shieldDefense;
-    }
-
-    public JSONObject getJSONObject() throws JsonProcessingException {
-        ObjectMapper mapper = new ObjectMapper();
-
-        String jsonString = mapper.writeValueAsString(this);
-        
-        JSONObject j = new JSONObject(jsonString);
-        /*j.put("numTroops", numTroops);
-        j.put("meleeAttack", meleeAttack);
-        j.put("rangedAttack", rangedAttack);
-        j.put("defenseSkill", defenseSkill);
-        j.put("armour", armour);
-        j.put("shieldDefense", shieldDefense);
-        j.put("morale", morale);
-        j.put("speed", speed);
-        j.put("range", range);
-        j.put("type", type);
-        j.put("ability", ability);
-        j.put("turnsToProduce", turnsToProduce);*/
-        return j;
     }
 }
