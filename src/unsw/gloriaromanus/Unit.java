@@ -1,9 +1,5 @@
 package unsw.gloriaromanus;
 
-import java.io.IOException;
-
-import org.json.JSONObject;
-
 /**
  * Represents a basic unit of soldiers
  * 
@@ -51,10 +47,6 @@ public class Unit {
         // TODO = heroic charge ability
 
     }*/
-
-    public Unit(){
-        
-    }
 
     public int getNumTroops() {
         return numTroops;
@@ -166,4 +158,8 @@ public class Unit {
      * FileWriter file = new FileWriter("src/unsw/gloriaromanus/testFile.json");
      * file.write(unitStats.toString()); file.close(); }
      */
+
+    public int getTotalDefense() {
+        return defenseSkill + shieldDefense;
+    }
 }

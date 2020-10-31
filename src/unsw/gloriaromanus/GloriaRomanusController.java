@@ -66,77 +66,169 @@ public class GloriaRomanusController{
 
   private ArcGISMap map;
 
-  private Map<String, String> provinceToOwningFactionMap;
+  private ArrayList<String> playerIDToFaction;
 
-  private Map<String, Integer> provinceToNumberTroopsMap;
+  private int currentPlayerID;
 
-  private String humanFaction;
+  private int currentYear;
 
   private Feature currentlySelectedHumanProvince;
   private Feature currentlySelectedEnemyProvince;
 
   private FeatureLayer featureLayer_provinces;
 
-  private UnitFactory unitFactory;
+  private String unitConfig;
+  private ArrayList<Province> provinces;
 
   @FXML
   private void initialize() throws JsonParseException, JsonMappingException, IOException {
-    // TODO = you should rely on an object oriented design to determine ownership
-    provinceToOwningFactionMap = getProvinceToOwningFactionMap();
-
-    provinceToNumberTroopsMap = new HashMap<String, Integer>();
+    linkProvincesToFactions();
     Random r = new Random();
-    for (String provinceName : provinceToOwningFactionMap.keySet()) {
-      provinceToNumberTroopsMap.put(provinceName, r.nextInt(500));
+    for (Province p: provinces) {
+      p.setArmySize(r.nextInt(500));
     }
 
-    // TODO = load this from a configuration file you create (user should be able to
-    // select in loading screen)
-    humanFaction = "Rome";
+    initializePlayerToFaction();
+    currentPlayerID = 0;
+    currentYear = 0;
+
+    provinces = new ArrayList<Province>();
 
     currentlySelectedHumanProvince = null;
     currentlySelectedEnemyProvince = null;
 
-    initializeProvinceLayers();
+    readConfigFiles();
 
-    initializeFactories();
+    initializeProvinceLayers();    
   }
 
-  private void initializeFactories() throws IOException {
-    String unitConfig = (Files.readString(Paths.get("src/unsw/gloriaromanus/unit_config.json")));
-    unitFactory = new UnitFactory(unitConfig);
+  private void readConfigFiles() throws IOException {
+    unitConfig = (Files.readString(Paths.get("src/unsw/gloriaromanus/unit_config.json")));
   }
 
   @FXML
   public void clickedInvadeButton(ActionEvent e) throws IOException {
     if (currentlySelectedHumanProvince != null && currentlySelectedEnemyProvince != null){
-      String humanProvince = (String)currentlySelectedHumanProvince.getAttributes().get("name");
-      String enemyProvince = (String)currentlySelectedEnemyProvince.getAttributes().get("name");
-      if (confirmIfProvincesConnected(humanProvince, enemyProvince)){
-        // TODO = have better battle resolution than 50% chance of winning
-        Random r = new Random();
-        int choice = r.nextInt(2);
-        if (choice == 0){
-          // human won. Transfer 40% of troops of human over. No casualties by human, but enemy loses all troops
-          int numTroopsToTransfer = provinceToNumberTroopsMap.get(humanProvince)*2/5;
-          provinceToNumberTroopsMap.put(enemyProvince, numTroopsToTransfer);
-          provinceToNumberTroopsMap.put(humanProvince, provinceToNumberTroopsMap.get(humanProvince)-numTroopsToTransfer);
-          provinceToOwningFactionMap.put(enemyProvince, humanFaction);
-          printMessageToTerminal("Won battle!");
-        }
-        else{
-          // enemy won. Human loses 60% of soldiers in the province
-          int numTroopsLost = provinceToNumberTroopsMap.get(humanProvince)*3/5;
-          provinceToNumberTroopsMap.put(humanProvince, provinceToNumberTroopsMap.get(humanProvince)-numTroopsLost);
-          printMessageToTerminal("Lost battle!");
-        }
-        resetSelections();  // reset selections in UI
-        addAllPointGraphics(); // reset graphics
-      }
-      else{
-        printMessageToTerminal("Provinces not adjacent, cannot invade!");
+      Province humanProvince = deserializeProvince((String)currentlySelectedHumanProvince.getAttributes().get("name"));
+      Province enemyProvince = deserializeProvince((String)currentlySelectedEnemyProvince.getAttributes().get("name"));
+
+      if (humanProvince == null || enemyProvince == null) {
+        // throw some kind of exception
       }
 
+      if (humanProvince.getArmySize() > 0) {
+        if (confirmIfProvincesConnected(humanProvince.getName(), enemyProvince.getName())){
+          // Each army has a uniformly random chance of winning calculated as: army strength/(army strength + enemy army strength)
+          double humanWinningChance = humanProvince.getArmyStrength() / (double)(humanProvince.getArmyStrength() + enemyProvince.getArmyStrength());
+          double enemyWinningChance = enemyProvince.getArmyStrength() / (double)(humanProvince.getArmyStrength() + enemyProvince.getArmyStrength());
+  
+          Random r = new Random();
+          double choice = r.nextDouble();
+  
+          if (choice <= humanWinningChance){
+            // human won. The casulties are randomly generated according to their winning chances.
+            winningArmyCasulties(humanProvince, enemyWinningChance);
+            losingArmyCasulties(enemyProvince, humanWinningChance);
+  
+            // Transfer 40% of the remaining troops of human over to the new province.
+            int numTroopsToTransfer = humanProvince.getArmySize()*2/5;
+            // Assumption: the remaining troops of the enemy province gets converted to armies of the invading faction.
+            changeArmySize(enemyProvince, numTroopsToTransfer);
+            changeArmySize(humanProvince, -numTroopsToTransfer);
+            enemyProvince.setFaction(playerIDToFaction.get(currentPlayerID));
+            printMessageToTerminal("Won battle!");
+          }
+          else{
+            // enemy won.
+            winningArmyCasulties(enemyProvince, humanWinningChance);
+            losingArmyCasulties(humanProvince, enemyWinningChance);
+            printMessageToTerminal("Lost battle!");
+          }
+          resetSelections();  // reset selections in UI
+          addAllPointGraphics(); // reset graphics
+        }
+        else{
+          printMessageToTerminal("Provinces not adjacent, cannot invade!");
+        }
+      } else {
+        printMessageToTerminal("Provinces has no soldiers, cannot invade!");
+      }
+      
+    }
+  }
+
+  @FXML
+  public void clickedEndTurnButton(ActionEvent e) throws IOException {
+    printMessageToTerminal("player" + currentPlayerID + " ended their turn.");
+    currentPlayerID++;
+    if (currentPlayerID == playerIDToFaction.size()) {
+      currentPlayerID = 0;
+      currentYear++;
+    }
+    printMessageToTerminal("It is player" + currentPlayerID + "'s turn.");
+
+  }
+
+  @FXML
+  public void clickedSaveButton(ActionEvent e) throws IOException {
+    /*JSONObject jsonProvinceToOwningFactionMap = new JSONObject(provinceToOwningFactionMap);
+    String content = jsonProvinceToOwningFactionMap.toString();
+    Path filename = Path.of("src/unsw/gloriaromanus/saves/provinceToOwningFactionMap.json");
+    Files.writeString(filename, content);
+
+    JSONObject jsonProvinceToNumberTroopsMap = new JSONObject(provinceToNumberTroopsMap);
+    content = jsonProvinceToNumberTroopsMap.toString();
+    filename = Path.of("src/unsw/gloriaromanus/saves/provinceToNumberTroopsMap.json");
+    Files.writeString(filename, content); 
+
+    JSONObject saveData = new JSONObject();
+    JSONArray jsonPlayerIDToFaction = new JSONArray(playerIDToFaction);
+    saveData.put("playerIDToFaction", jsonPlayerIDToFaction);
+    saveData.put("currentPlayerID", currentPlayerID);
+    saveData.put("currentYear", currentYear);
+    saveData.put("status", "saved");
+    content = saveData.toString();
+    filename = Path.of("src/unsw/gloriaromanus/saves/saveData.json");
+    Files.writeString(filename, content);*/
+
+    printMessageToTerminal("Game is saved!");
+  }
+
+  private void losingArmyCasulties(Province province, double enemyWinningChance) {
+    Random r = new Random();
+    double casultyPercentage = enemyWinningChance + (1 - enemyWinningChance) * r.nextDouble();
+    Double casultySize = province.getArmySize() * casultyPercentage;
+    changeArmySize(province, -(casultySize.intValue()));
+  }
+
+  private void winningArmyCasulties(Province province, double enemyWinningChance) {
+    Random r = new Random();
+    double casultyPercentage = enemyWinningChance * r.nextDouble();
+    Double casultySize = province.getArmySize() * casultyPercentage;
+    changeArmySize(province, -(casultySize.intValue()));
+  }
+
+  private void changeArmySize(Province province, int changeSize) {
+    int remainingArmySize = province.getArmySize() + changeSize;
+    if (remainingArmySize < 0) { remainingArmySize = 0; }
+    province.setArmySize(remainingArmySize);
+  } 
+
+  private Province deserializeProvince(String provinceName) {
+    for (Province p : provinces) {
+      if (p.getName().equals(provinceName)) {
+        return p;
+      }
+    }
+    return null;
+  }
+
+  private void initializePlayerToFaction() throws IOException{
+    String content = Files.readString(Paths.get("src/unsw/gloriaromanus/initial_province_ownership.json"));
+    JSONObject ownership = new JSONObject(content);
+    playerIDToFaction = new ArrayList<String>();
+    for (String faction : ownership.keySet()) {
+      playerIDToFaction.add(faction);
     }
   }
 
@@ -171,7 +263,7 @@ public class GloriaRomanusController{
     });
 
     addAllPointGraphics();
-  }
+  } 
 
   private void addAllPointGraphics() throws JsonParseException, JsonMappingException, IOException {
     mapView.getGraphicsOverlays().clear();
@@ -187,11 +279,12 @@ public class GloriaRomanusController{
         LngLatAlt coor = p.getCoordinates();
         Point curPoint = new Point(coor.getLongitude(), coor.getLatitude(), SpatialReferences.getWgs84());
         PictureMarkerSymbol s = null;
-        String province = (String) f.getProperty("name");
-        String faction = provinceToOwningFactionMap.get(province);
+        String provinceName = (String) f.getProperty("name");
+        Province province = deserializeProvince(provinceName);
+        String faction = province.getFaction();
 
         TextSymbol t = new TextSymbol(10,
-            faction + "\n" + province + "\n" + provinceToNumberTroopsMap.get(province), 0xFFFF0000,
+            faction + "\n" + province + "\n" + province.getArmySize() + "\n" + province.getWealth(), 0xFFFF0000,
             HorizontalAlignment.CENTER, VerticalAlignment.BOTTOM);
 
         switch (faction) {
@@ -273,22 +366,23 @@ public class GloriaRomanusController{
               else if (features.size() == 1){
                 // note maybe best to track whether selected...
                 Feature f = features.get(0);
-                String province = (String)f.getAttributes().get("name");
+                String provinceName = (String)f.getAttributes().get("name");
+                Province province = deserializeProvince(provinceName);
 
-                if (provinceToOwningFactionMap.get(province).equals(humanFaction)){
+                if (province.getFaction().equals(playerIDToFaction.get(currentPlayerID))){
                   // province owned by human
                   if (currentlySelectedHumanProvince != null){
                     featureLayer.unselectFeature(currentlySelectedHumanProvince);
                   }
                   currentlySelectedHumanProvince = f;
-                  invading_province.setText(province);
+                  invading_province.setText(provinceName);
                 }
                 else{
                   if (currentlySelectedEnemyProvince != null){
                     featureLayer.unselectFeature(currentlySelectedEnemyProvince);
                   }
                   currentlySelectedEnemyProvince = f;
-                  opponent_province.setText(province);
+                  opponent_province.setText(provinceName);
                 }
 
                 featureLayer.selectFeature(f);                
@@ -307,20 +401,16 @@ public class GloriaRomanusController{
     return flp;
   }
 
-  private Map<String, String> getProvinceToOwningFactionMap() throws IOException {
+  private void linkProvincesToFactions() throws IOException {
     String content = Files.readString(Paths.get("src/unsw/gloriaromanus/initial_province_ownership.json"));
     JSONObject ownership = new JSONObject(content);
-    Map<String, String> m = new HashMap<String, String>();
-    for (String key : ownership.keySet()) {
-      // key will be the faction name
-      JSONArray ja = ownership.getJSONArray(key);
-      // value is province name
+    for (String faction : ownership.keySet()) {
+      JSONArray ja = ownership.getJSONArray(faction);
       for (int i = 0; i < ja.length(); i++) {
-        String value = ja.getString(i);
-        m.put(value, key);
+        String province = ja.getString(i);
+        provinces.add(new Province(province, faction, unitConfig));
       }
     }
-    return m;
   }
 
   private ArrayList<String> getHumanProvincesList() throws IOException {
@@ -328,7 +418,7 @@ public class GloriaRomanusController{
 
     String content = Files.readString(Paths.get("src/unsw/gloriaromanus/initial_province_ownership.json"));
     JSONObject ownership = new JSONObject(content);
-    return ArrayUtil.convert(ownership.getJSONArray(humanFaction));
+    return ArrayUtil.convert(ownership.getJSONArray(playerIDToFaction.get(currentPlayerID)));
   }
 
   /**
