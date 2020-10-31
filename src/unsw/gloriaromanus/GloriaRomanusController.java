@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -161,6 +162,40 @@ public class GloriaRomanusController{
     }
   }
 
+  @FXML
+  public void clickedEndTurnButton(ActionEvent e) throws IOException {
+    printMessageToTerminal("player" + currentPlayerID + " ended their turn.");
+    currentPlayerID++;
+    if (currentPlayerID == playerIDToFaction.size()) {
+      currentPlayerID = 0;
+      currentYear++;
+    }
+    printMessageToTerminal("It is player" + currentPlayerID + "'s turn.");
+
+  }
+
+  @FXML
+  public void clickedSaveButton(ActionEvent e) throws IOException {
+    JSONObject jsonProvinceToOwningFactionMap = new JSONObject(provinceToOwningFactionMap);
+    String content = jsonProvinceToOwningFactionMap.toString();
+    Path filename = Path.of("src/unsw/gloriaromanus/saves/provinceToOwningFactionMap.json");
+    Files.writeString(filename, content);
+
+    JSONObject jsonProvinceToNumberTroopsMap = new JSONObject(provinceToNumberTroopsMap);
+    content = jsonProvinceToNumberTroopsMap.toString();
+    filename = Path.of("src/unsw/gloriaromanus/saves/provinceToNumberTroopsMap.json");
+    Files.writeString(filename, content); 
+
+    JSONArray jsonPlayerIDToFaction = new JSONArray(playerIDToFaction);
+    content = jsonPlayerIDToFaction.toString();
+    filename = Path.of("src/unsw/gloriaromanus/saves/playerIDToFaction.json");
+    Files.writeString(filename, content);
+
+    filename = Path.of("src/unsw/gloriaromanus/saves/currentTurn.txt");
+    Files.writeString(filename, String.valueOf(currentPlayerID) + "\n" + String.valueOf(currentYear));
+    printMessageToTerminal("Game is saved!");
+  }
+
   private void losingArmyCasulties(String province, double enemyWinningChance, int armySize) {
     Random r = new Random();
     double casultyPercentage = enemyWinningChance + (1 - enemyWinningChance) * r.nextDouble();
@@ -189,19 +224,6 @@ public class GloriaRomanusController{
       }
     }
     return null;
-  }
-
-  @FXML
-  public void clickedEndTurnButton(ActionEvent e) throws IOException {
-    // the below should be changed when we want more than two faction.
-    printMessageToTerminal("player" + currentPlayerID + " ended their turn.");
-    currentPlayerID++;
-    if (currentPlayerID == playerIDToFaction.size()) {
-      currentPlayerID = 0;
-      currentYear++;
-    }
-    printMessageToTerminal("It is player" + currentPlayerID + "'s turn.");
-
   }
 
   private void initializePlayerToFaction() throws IOException{
