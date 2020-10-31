@@ -83,7 +83,7 @@ public class GloriaRomanusController{
   @FXML
   private void initialize() throws JsonParseException, JsonMappingException, IOException {
     
-    readConfigFiles();
+    readConfig();
     provinces = new ArrayList<Province>();
     
     linkProvincesToFactions();
@@ -102,7 +102,7 @@ public class GloriaRomanusController{
     initializeProvinceLayers();    
   }
 
-  private void readConfigFiles() throws IOException {
+  private void readConfig() throws IOException {
     unitConfig = (Files.readString(Paths.get("src/unsw/gloriaromanus/unit_config.json")));
   }
 
