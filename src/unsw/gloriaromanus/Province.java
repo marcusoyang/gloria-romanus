@@ -48,4 +48,12 @@ public class Province {
     public int getWealth() {
         return wealth;
     }
+
+    public String getFaction() {
+        return faction;
+    }
+
+    public void setFaction(String faction) {
+        this.faction = faction;
+    }
 }
