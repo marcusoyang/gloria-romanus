@@ -6,11 +6,13 @@ public class Province {
     private String name;
     private Faction faction;
     private ArrayList<Unit> units;
+    private int armySize;
 
     public Province(String name, Faction faction) {
         this.name = name;
         this.faction = faction;
-        units = new ArrayList<Unit>();
+        this.units = new ArrayList<Unit>();
+        this.armySize = 0;
     }
 
     public float getArmyStrength() {
@@ -31,6 +33,10 @@ public class Province {
     }
 
     public int getArmySize() {
-        return units.size();
+        return armySize;
+    }
+
+    public void setArmySize(int size) {
+        this.armySize = size;
     }
 }
