@@ -49,5 +49,6 @@
             <Label text="Output from interactions"/>
             <TextArea fx:id="output_terminal" text="" editable="false"/>
         </VBox>
+        <Button text="Save" onAction="#clickedSaveButton"/>
     </VBox>
 </StackPane>
