@@ -130,6 +130,11 @@ public class Province {
         JSONArray ja = joProvince.getJSONArray("units");
         for (int i = 0; i < ja.length(); i++) {
             JSONObject joUnit = ja.getJSONObject(i);
+            Unit u = new Unit();
+            u.setDetails(joUnit);
+            units.add(u);
         }
+        armySize = Integer.parseInt(joProvince.getString("armySize"));
+        wealth = Integer.parseInt(joProvince.getString("wealth"));
     }
 }
