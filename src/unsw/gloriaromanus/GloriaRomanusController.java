@@ -179,6 +179,9 @@ public class GloriaRomanusController{
           }
           resetSelections();  // reset selections in UI
           addAllPointGraphics(); // reset graphics
+          // TODO: For a pass mark, Player must be able to move troops between adjacent regions 1 turn at a time. This condition may change but 
+          // we implement it for now.
+          clickedEndTurnButton();
         }
         else{
           printMessageToTerminal("Provinces not adjacent, cannot invade!");
@@ -191,7 +194,7 @@ public class GloriaRomanusController{
   }
 
   @FXML
-  public void clickedEndTurnButton(ActionEvent e) throws IOException {
+  public void clickedEndTurnButton() throws IOException {
     printMessageToTerminal("player" + currentPlayerID + " ended their turn.");
     currentPlayerID++;
     if (currentPlayerID == playerIDToFaction.size()) {
