@@ -100,4 +100,8 @@ public class Province {
     public void setFaction(String faction) {
         this.faction = faction;
     }
+
+    public ArrayList<Unit> getUnits() {
+        return units;
+    }
 }

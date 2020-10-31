@@ -106,6 +106,38 @@ public class GloriaRomanusController{
     unitConfig = (Files.readString(Paths.get("src/unsw/gloriaromanus/unit_config.json")));
   }
 
+  public void moveUnits(List<Integer> ids, Province from, Province dest) throws IOException {
+    int fewestMovementPoints = findFewestMovementPoints(ids, from);
+    distBetweenProvinces(from, dest);
+  }
+
+  private void distBetweenProvinces(Province from, Province dest) throws IOException {
+    String content = Files.readString(Paths.get("src/unsw/gloriaromanus/province_adjacency_matrix_fully_connected.json"));
+    JSONArray fromObj = new JSONObject(content).getJSONArray(from.getName());
+    for (int i = 0; i < fromObj.length(); i++) {
+      if (fromObj.getBoolean(i)) {
+        
+      }
+    }
+    
+  }
+
+  /*private boolean confirmIfProvincesConnected(String province1, String province2) throws IOException {
+    String content = Files.readString(Paths.get("src/unsw/gloriaromanus/province_adjacency_matrix_fully_connected.json"));
+    JSONObject provinceAdjacencyMatrix = new JSONObject(content);
+    return provinceAdjacencyMatrix.getJSONObject(province1).getBoolean(province2);
+  }*/
+
+  private int findFewestMovementPoints(List<Integer> ids, Province p) {
+    int low = 9999;
+    for (Unit u : p.getUnits()) {
+      if (u.getMovementPoints() < low) {
+        low = u.getMovementPoints();
+      }
+    }
+    return low;
+  }
+
   @FXML
   public void clickedInvadeButton(ActionEvent e) throws IOException {
     if (currentlySelectedHumanProvince != null && currentlySelectedEnemyProvince != null){
