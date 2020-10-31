@@ -21,6 +21,7 @@ public class UnitFactory {
         JSONObject unitStats = config.getJSONObject(unitType);
 
         Unit u = new Unit();
+        u.setID();
         u.setNumTroops(numTroops);
         u.setMeleeAttack(unitStats.getInt("meleeAttack"));
         u.setRangedAttack(unitStats.optInt("rangedAttack"));

@@ -15,7 +15,6 @@ public class Province {
 
     public Province(String name, String faction, String unitConfig) {
         generateFactories(unitConfig);
-
         this.name = name;
         this.faction = faction;
         this.units = new ArrayList<Unit>();
@@ -23,11 +22,25 @@ public class Province {
         this.wealth = 0;
     }
 
+    public void moveUnit(Province p, int id) {
+        for (Unit u : units) {
+            if (u.getID() == id) {
+                p.insertUnit(u);
+                units.remove(u);
+            }
+        }
+        
+    }
+
+    public void insertUnit(Unit u) {
+        units.add(u);
+    }
+
     public void nextTurn() {
         for (UnitFactory fac : factories) {
             Unit u = fac.nextTrainingTurn();
             if (u != null) {
-                units.add(u);
+                insertUnit(u);
             }
         }
     }
