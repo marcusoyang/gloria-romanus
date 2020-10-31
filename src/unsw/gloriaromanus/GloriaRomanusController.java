@@ -98,6 +98,8 @@ public class GloriaRomanusController{
     currentPlayerID = 0;
     currentYear = 0;
 
+    provinces = new ArrayList<Province>();
+
     currentlySelectedHumanProvince = null;
     currentlySelectedEnemyProvince = null;
 
@@ -245,8 +247,6 @@ public class GloriaRomanusController{
   }
 
   private void initializeProvinceInstances() {
-    provinces = new ArrayList<Province>();
-    
     for (Map.Entry<String, String> entry : provinceToOwningFactionMap.entrySet()) {
       // The key is the province name, the value is the faction name
       Province newProvince = new Province(entry.getKey(), entry.getValue());
@@ -277,7 +277,7 @@ public class GloriaRomanusController{
         String faction = provinceToOwningFactionMap.get(province);
 
         TextSymbol t = new TextSymbol(10,
-            faction + "\n" + province + "\n" + provinceToNumberTroopsMap.get(province), 0xFFFF0000,
+            faction + "\n" + province + "\n" + provinceToNumberTroopsMap.get(province) + "\n" + getProvinceWealth(province), 0xFFFF0000,
             HorizontalAlignment.CENTER, VerticalAlignment.BOTTOM);
 
         switch (faction) {
@@ -310,6 +310,15 @@ public class GloriaRomanusController{
 
     inputStream.close();
     mapView.getGraphicsOverlays().add(graphicsOverlay);
+  }
+
+  private int getProvinceWealth(String provinceName) {
+    Province province = deserializeProvince(provinceName);
+    if (province == null) {
+      return 0;
+    } else {
+      return province.getWealth();
+    }
   }
 
   private FeatureLayer createFeatureLayer(GeoPackage gpkg_provinces) {
