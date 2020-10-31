@@ -9,6 +9,7 @@ public class UnitFactory {
 
     public UnitFactory(String configString) {
         config = new JSONObject(configString);
+        isTraining = false;
     }
 
     public void addToTraining(String unitType, int numTroops) {
