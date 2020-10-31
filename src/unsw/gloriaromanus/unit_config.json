@@ -7,7 +7,7 @@
         "morale": 10,
         "speed": 10,
         "range": "melee",
-        "type": "infantry",
+        "type": "heavy infantry",
         "ability": "Legionary Eagle",
         "turnsToProduce": 1
     },
@@ -19,7 +19,7 @@
         "morale": 10,
         "speed": 10,
         "range": "melee",
-        "type": "infantry",
+        "type": "heavy infantry",
         "ability": "Berserker Rage",
         "turnsToProduce": 1
     },
@@ -31,7 +31,7 @@
         "morale": 10,
         "speed": 10,
         "range": "melee",
-        "type": "infantry",
+        "type": "spearmen",
         "ability": "Phalanx",
         "turnsToProduce": 1
     },
@@ -44,7 +44,7 @@
         "morale": 10,
         "speed": 10,
         "range": "ranged",
-        "type": "ranged infantry",
+        "type": "heavy infantry",
         "ability": "Phalanx",
         "turnsToProduce": 1
     },
@@ -57,7 +57,7 @@
         "morale": 10,
         "speed": 10,
         "range": "ranged",
-        "type": "ranged infantry",
+        "type": "missile infantry",
         "ability": "Skirmisher Anti-Armour",
         "turnsToProduce": 1
     },
@@ -69,7 +69,7 @@
         "morale": 10,
         "speed": 12,
         "range": "melee",
-        "type": "infantry",
+        "type": "cavalry",
         "ability": "Elephant Amok",
         "turnsToProduce": 2
     },
@@ -82,7 +82,7 @@
         "morale": 10,
         "speed": 14,
         "range": "ranged",
-        "type": "cavalry",
+        "type": "horse archer",
         "ability": "Cantabrian Circle",
         "turnsToProduce": 1
     },
@@ -96,6 +96,19 @@
         "range": "melee",
         "type": "infantry",
         "ability": "Druidic Fervour",
+        "turnsToProduce": 1
+    },
+    "catapult": {
+        "meleeAttack": 0,
+        "rangedAttack": 24,
+        "defense": 19,
+        "armour": 10,
+        "shield": 0,
+        "morale": 10,
+        "speed": 4,
+        "range": "ranged",
+        "type": "artillery",
+        "ability": "",
         "turnsToProduce": 1
     }
 }
