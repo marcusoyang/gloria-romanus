@@ -98,6 +98,11 @@ public class GloriaRomanusController{
     initializeProvinceLayers();
   }
 
+  /*private void initializeFactories() {
+    String content = Files.readString(Paths.get("src/unsw/gloriaromanus/unit_config.json"));
+    JSONObject config = new JSONObject(content);
+  }*/
+
   @FXML
   public void clickedInvadeButton(ActionEvent e) throws IOException {
     if (currentlySelectedHumanProvince != null && currentlySelectedEnemyProvince != null){
