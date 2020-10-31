@@ -191,6 +191,13 @@ public class Unit {
      */
 
     public int getTotalDefense() {
-        return defenseSkill + shieldDefense;
+        // TODO: Marcus, can you work on these two? I'm not sure what to include for total defense and total attack alongside with some soldier
+        // abilities having buffs to these values. Thanks :--)
+        return 42;
+    }
+
+    public int getTotalAttack() {
+        // TODO: see above
+        return 42;
     }
 }
