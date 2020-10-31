@@ -1,5 +1,7 @@
 package unsw.gloriaromanus;
 
+import static org.junit.Assume.assumeNoException;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -186,13 +188,16 @@ public class GloriaRomanusController{
     filename = Path.of("src/unsw/gloriaromanus/saves/provinceToNumberTroopsMap.json");
     Files.writeString(filename, content); 
 
+    JSONObject saveData = new JSONObject();
     JSONArray jsonPlayerIDToFaction = new JSONArray(playerIDToFaction);
-    content = jsonPlayerIDToFaction.toString();
-    filename = Path.of("src/unsw/gloriaromanus/saves/playerIDToFaction.json");
+    saveData.put("playerIDToFaction", jsonPlayerIDToFaction);
+    saveData.put("currentPlayerID", currentPlayerID);
+    saveData.put("currentYear", currentYear);
+    saveData.put("status", "saved");
+    content = saveData.toString();
+    filename = Path.of("src/unsw/gloriaromanus/saves/saveData.json");
     Files.writeString(filename, content);
 
-    filename = Path.of("src/unsw/gloriaromanus/saves/currentTurn.txt");
-    Files.writeString(filename, String.valueOf(currentPlayerID) + "\n" + String.valueOf(currentYear));
     printMessageToTerminal("Game is saved!");
   }
 
@@ -425,9 +430,9 @@ public class GloriaRomanusController{
   }
 
   private Map<String, String> getProvinceToOwningFactionMap() throws IOException {
+    Map<String, String> m = new HashMap<String, String>();
     String content = Files.readString(Paths.get("src/unsw/gloriaromanus/initial_province_ownership.json"));
     JSONObject ownership = new JSONObject(content);
-    Map<String, String> m = new HashMap<String, String>();
     for (String key : ownership.keySet()) {
       // key will be the faction name
       JSONArray ja = ownership.getJSONArray(key);
