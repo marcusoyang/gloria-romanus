@@ -8,12 +8,14 @@ public class Province {
     private ArrayList<Unit> units;
     // the below armySize variable will be deleted when units list is implemented
     private int armySize;
+    private int wealth;
 
     public Province(String name, String faction) {
         this.name = name;
         this.faction = faction;
         this.units = new ArrayList<Unit>();
         this.armySize = 0;
+        this.wealth = 0;
     }
 
     public int getArmyStrength() {
@@ -41,5 +43,9 @@ public class Province {
 
     public void setArmySize(int size) {
         this.armySize = size;
+    }
+
+    public int getWealth() {
+        return wealth;
     }
 }
