@@ -144,6 +144,10 @@ public class Unit {
         this.turnsToProduce = turnsToProduce;
     }
 
+    public void minusTurnsToProduce(int i) {
+        this.turnsToProduce -= i;
+    }
+
     /*
      * public static void main(String[] args) throws JsonGenerationException,
      * JsonMappingException, IOException { String content =

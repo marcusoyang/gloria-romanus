@@ -4,12 +4,19 @@ import org.json.JSONObject;
 
 public class UnitFactory {
     JSONObject config;
+    Boolean isTraining;
+    Unit training;
 
     public UnitFactory(String configString) {
         config = new JSONObject(configString);
     }
 
-    public Unit newUnit(String unitType, int numTroops) {
+    public void addToTraining(String unitType, int numTroops) {
+        isTraining = true;
+        training = newUnit(unitType, numTroops);
+    }
+
+    private Unit newUnit(String unitType, int numTroops) {
 
         JSONObject unitStats = config.getJSONObject(unitType);
 
@@ -29,4 +36,21 @@ public class UnitFactory {
 
         return u;
     }
+
+    public Unit nextTrainingTurn() {
+        if (isTraining && training.getTurnsToProduce() > 0) {
+            training.minusTurnsToProduce(1);
+            if (training.getTurnsToProduce() == 0) {
+                Unit u = training;
+                removeTraining();
+                return u;
+            }
+        }
+        return null;
+    }
+
+	public void removeTraining() {
+        isTraining = false;
+        training = null;
+	}
 }

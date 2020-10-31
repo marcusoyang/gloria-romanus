@@ -23,6 +23,25 @@ public class Province {
         this.wealth = 0;
     }
 
+    public void nextTurn() {
+        for (UnitFactory fac : factories) {
+            Unit u = fac.nextTrainingTurn();
+            if (u != null) {
+                units.add(u);
+            }
+        }
+    }
+
+    public boolean trainUnit(String unitType, int numTroops) {
+        for (UnitFactory fac : factories) {
+            if (!fac.isTraining) {
+                fac.addToTraining(unitType, numTroops);
+                return true;
+            }
+        }
+        return false;
+    }
+
     public int getArmyStrength() {
         // the sum of number of soldiers in unit x attack x defense for all units in the army
 
