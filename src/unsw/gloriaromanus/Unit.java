@@ -34,5 +34,11 @@ public class Unit {
         return numTroops;
     }
 
-    
+    public int getAttack() {
+        return attack;
+    }
+
+    public int getDefense() {
+        return defenseSkill + shieldDefense;
+    }
 }

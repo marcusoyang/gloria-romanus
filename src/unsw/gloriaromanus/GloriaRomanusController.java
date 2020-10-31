@@ -19,7 +19,6 @@ import java.util.stream.Collectors;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Point2D;
-import javafx.scene.text.Text;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -82,6 +81,8 @@ public class GloriaRomanusController{
 
   private FeatureLayer featureLayer_provinces;
 
+  private ArrayList<Province> provinces;
+
   @FXML
   private void initialize() throws JsonParseException, JsonMappingException, IOException {
     // TODO = you should rely on an object oriented design to determine ownership
@@ -101,39 +102,91 @@ public class GloriaRomanusController{
     currentlySelectedEnemyProvince = null;
 
     initializeProvinceLayers();
+    initializeProvinceInstances();
   }
 
   @FXML
   public void clickedInvadeButton(ActionEvent e) throws IOException {
     if (currentlySelectedHumanProvince != null && currentlySelectedEnemyProvince != null){
-      String humanProvince = (String)currentlySelectedHumanProvince.getAttributes().get("name");
-      String enemyProvince = (String)currentlySelectedEnemyProvince.getAttributes().get("name");
-      if (confirmIfProvincesConnected(humanProvince, enemyProvince)){
-        // TODO = have better battle resolution than 50% chance of winning
-        Random r = new Random();
-        int choice = r.nextInt(2);
-        if (choice == 0){
-          // human won. Transfer 40% of troops of human over. No casualties by human, but enemy loses all troops
-          int numTroopsToTransfer = provinceToNumberTroopsMap.get(humanProvince)*2/5;
-          provinceToNumberTroopsMap.put(enemyProvince, numTroopsToTransfer);
-          provinceToNumberTroopsMap.put(humanProvince, provinceToNumberTroopsMap.get(humanProvince)-numTroopsToTransfer);
-          provinceToOwningFactionMap.put(enemyProvince, playerIDToFaction.get(currentPlayerID));
-          printMessageToTerminal("Won battle!");
+      String humanProvinceName = (String)currentlySelectedHumanProvince.getAttributes().get("name");
+      String enemyProvinceName = (String)currentlySelectedEnemyProvince.getAttributes().get("name");
+      if (provinceToNumberTroopsMap.get(humanProvinceName) > 0) {
+        if (confirmIfProvincesConnected(humanProvinceName, enemyProvinceName)){
+
+          Province humanProvince = deserializeProvince(humanProvinceName);
+          Province enemyProvince = deserializeProvince(enemyProvinceName);
+  
+          if (humanProvince == null || enemyProvince == null) {
+            // throw some kind of exception
+          }
+          
+          // Each army has a uniformly random chance of winning calculated as: army strength/(army strength + enemy army strength)
+          double humanWinningChance = humanProvince.getArmyStrength() / (double)(humanProvince.getArmyStrength() + enemyProvince.getArmyStrength());
+          double enemyWinningChance = enemyProvince.getArmyStrength() / (double)(humanProvince.getArmyStrength() + enemyProvince.getArmyStrength());
+  
+          Random r = new Random();
+          double choice = r.nextDouble();
+  
+          if (choice <= humanWinningChance){
+            // human won. The casulties are randomly generated according to their winning chances.
+            winningArmyCasulties(humanProvinceName, enemyWinningChance, humanProvince.getArmySize());
+            losingArmyCasulties(enemyProvinceName, humanWinningChance, enemyProvince.getArmySize());
+  
+            // Transfer 40% of the remaining troops of human over to the new province.
+            int numTroopsToTransfer = provinceToNumberTroopsMap.get(humanProvinceName)*2/5;
+            // Assumption: the remaining troops of the enemy province gets converted to armies of the invading faction.
+            changeArmySize(enemyProvinceName, numTroopsToTransfer);
+            changeArmySize(humanProvinceName, -numTroopsToTransfer);
+            provinceToOwningFactionMap.put(enemyProvinceName, playerIDToFaction.get(currentPlayerID));
+            printMessageToTerminal("Won battle!");
+          }
+          else{
+            // enemy won.
+            winningArmyCasulties(enemyProvinceName, humanWinningChance, enemyProvince.getArmySize());
+            losingArmyCasulties(humanProvinceName, enemyWinningChance, humanProvince.getArmySize());
+            printMessageToTerminal("Lost battle!");
+          }
+          resetSelections();  // reset selections in UI
+          addAllPointGraphics(); // reset graphics
         }
         else{
-          // enemy won. Human loses 60% of soldiers in the province
-          int numTroopsLost = provinceToNumberTroopsMap.get(humanProvince)*3/5;
-          provinceToNumberTroopsMap.put(humanProvince, provinceToNumberTroopsMap.get(humanProvince)-numTroopsLost);
-          printMessageToTerminal("Lost battle!");
+          printMessageToTerminal("Provinces not adjacent, cannot invade!");
         }
-        resetSelections();  // reset selections in UI
-        addAllPointGraphics(); // reset graphics
+      } else {
+        printMessageToTerminal("Provinces has no soldiers, cannot invade!");
       }
-      else{
-        printMessageToTerminal("Provinces not adjacent, cannot invade!");
-      }
-
+      
     }
+  }
+
+  private void losingArmyCasulties(String province, double enemyWinningChance, int armySize) {
+    Random r = new Random();
+    double casultyPercentage = enemyWinningChance + (1 - enemyWinningChance) * r.nextDouble();
+    Double casultySize = armySize * casultyPercentage;
+    changeArmySize(province, -(casultySize.intValue()));
+  }
+
+  private void winningArmyCasulties(String province, double enemyWinningChance, int armySize) {
+    Random r = new Random();
+    double casultyPercentage = enemyWinningChance * r.nextDouble();
+    Double casultySize = armySize * casultyPercentage;
+    changeArmySize(province, -(casultySize.intValue()));
+  }
+
+  private void changeArmySize(String province, int changeSize) {
+    int remainingArmySize = provinceToNumberTroopsMap.get(province) + changeSize;
+    if (remainingArmySize < 0) { remainingArmySize = 0; }
+    provinceToNumberTroopsMap.put(province, remainingArmySize);
+    deserializeProvince(province).setArmySize(remainingArmySize);
+  } 
+
+  private Province deserializeProvince(String provinceName) {
+    for (Province p : provinces) {
+      if (p.getName().equals(provinceName)) {
+        return p;
+      }
+    }
+    return null;
   }
 
   @FXML
@@ -190,6 +243,21 @@ public class GloriaRomanusController{
 
     addAllPointGraphics();
   }
+
+  private void initializeProvinceInstances() {
+    provinces = new ArrayList<Province>();
+    
+    for (Map.Entry<String, String> entry : provinceToOwningFactionMap.entrySet()) {
+      // The key is the province name, the value is the faction name
+      Province newProvince = new Province(entry.getKey(), entry.getValue());
+      provinces.add(newProvince);
+    }
+
+    for (Map.Entry<String, Integer> entry : provinceToNumberTroopsMap.entrySet()) {
+      Province curr = deserializeProvince(entry.getKey());
+      curr.setArmySize(entry.getValue());
+    }
+  } 
 
   private void addAllPointGraphics() throws JsonParseException, JsonMappingException, IOException {
     mapView.getGraphicsOverlays().clear();
