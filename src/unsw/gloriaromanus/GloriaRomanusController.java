@@ -172,10 +172,25 @@ public class GloriaRomanusController{
   @FXML
   public void clickedSaveButton(ActionEvent e) throws IOException {
     // Things to save: data in the province class
-    
+    JSONArray provinceList = new JSONArray();
+    for (Province p : provinces) {
+      JSONObject joProvince = p.getJSONObject();
+      provinceList.put(joProvince);
+    }
+    String content = provinceList.toString();
+    Files.writeString(Paths.get("src/unsw/gloriaromanus/saves/provinceData.json"), content);
+
+    JSONObject campaignData = new JSONObject();
+    campaignData.put("status", "saved");
     // which player has which faction
+    campaignData.put("playerIDToFaction", playerIDToFaction);
     // Who's turn it is
+    campaignData.put("currentPlayerID", currentPlayerID);
     // What year it is (How many turns have passed)
+    campaignData.put("currentYear", currentYear);
+    
+    content = campaignData.toString();
+    Files.writeString(Paths.get("src/unsw/gloriaromanus/saves/campaignData.json"), content);
 
     printMessageToTerminal("Game is saved!");
   }
