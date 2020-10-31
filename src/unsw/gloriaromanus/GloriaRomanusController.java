@@ -81,6 +81,9 @@ public class GloriaRomanusController{
 
   @FXML
   private void initialize() throws JsonParseException, JsonMappingException, IOException {
+    
+    provinces = new ArrayList<Province>();
+    
     linkProvincesToFactions();
     Random r = new Random();
     for (Province p: provinces) {
@@ -90,8 +93,6 @@ public class GloriaRomanusController{
     initializePlayerToFaction();
     currentPlayerID = 0;
     currentYear = 0;
-
-    provinces = new ArrayList<Province>();
 
     currentlySelectedHumanProvince = null;
     currentlySelectedEnemyProvince = null;
@@ -164,25 +165,11 @@ public class GloriaRomanusController{
 
   @FXML
   public void clickedSaveButton(ActionEvent e) throws IOException {
-    /*JSONObject jsonProvinceToOwningFactionMap = new JSONObject(provinceToOwningFactionMap);
-    String content = jsonProvinceToOwningFactionMap.toString();
-    Path filename = Path.of("src/unsw/gloriaromanus/saves/provinceToOwningFactionMap.json");
-    Files.writeString(filename, content);
+    // Things to save: data in the province class
 
-    JSONObject jsonProvinceToNumberTroopsMap = new JSONObject(provinceToNumberTroopsMap);
-    content = jsonProvinceToNumberTroopsMap.toString();
-    filename = Path.of("src/unsw/gloriaromanus/saves/provinceToNumberTroopsMap.json");
-    Files.writeString(filename, content); 
-
-    JSONObject saveData = new JSONObject();
-    JSONArray jsonPlayerIDToFaction = new JSONArray(playerIDToFaction);
-    saveData.put("playerIDToFaction", jsonPlayerIDToFaction);
-    saveData.put("currentPlayerID", currentPlayerID);
-    saveData.put("currentYear", currentYear);
-    saveData.put("status", "saved");
-    content = saveData.toString();
-    filename = Path.of("src/unsw/gloriaromanus/saves/saveData.json");
-    Files.writeString(filename, content);*/
+    // which player has which faction
+    // Who's turn it is
+    // What year it is (How many turns have passed)
 
     printMessageToTerminal("Game is saved!");
   }
@@ -277,7 +264,7 @@ public class GloriaRomanusController{
         String faction = province.getFaction();
 
         TextSymbol t = new TextSymbol(10,
-            faction + "\n" + province + "\n" + province.getArmySize() + "\n" + province.getWealth(), 0xFFFF0000,
+            faction + "\n" + provinceName + "\n" + province.getArmySize() + "\n" + province.getWealth(), 0xFFFF0000,
             HorizontalAlignment.CENTER, VerticalAlignment.BOTTOM);
 
         switch (faction) {
