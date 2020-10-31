@@ -75,10 +75,17 @@ public class Province {
         JSONObject j = new JSONObject();
         j.put("name", name);
         j.put("faction", faction);
-        j.put("units", new JSONArray(units));
+        JSONArray ja = new JSONArray();
+        for (Unit u : units) {
+            JSONObject jo = u.getJSONObject();
+            ja.put(jo);
+        }
+        j.put("units", ja);
         j.put("armySize", armySize);
         j.put("wealth", wealth);
         j.put("factories", new JSONArray(factories));
         return j;
     }
+
+    
 }
