@@ -77,6 +77,8 @@ public class GloriaRomanusController{
 
   private FeatureLayer featureLayer_provinces;
 
+  private UnitFactory unitFactory;
+
   @FXML
   private void initialize() throws JsonParseException, JsonMappingException, IOException {
     // TODO = you should rely on an object oriented design to determine ownership
@@ -96,12 +98,14 @@ public class GloriaRomanusController{
     currentlySelectedEnemyProvince = null;
 
     initializeProvinceLayers();
+
+    initializeFactories();
   }
 
-  /*private void initializeFactories() {
-    String content = Files.readString(Paths.get("src/unsw/gloriaromanus/unit_config.json"));
-    JSONObject config = new JSONObject(content);
-  }*/
+  private void initializeFactories() throws IOException {
+    String unitConfig = (Files.readString(Paths.get("src/unsw/gloriaromanus/unit_config.json")));
+    unitFactory = new UnitFactory(unitConfig);
+  }
 
   @FXML
   public void clickedInvadeButton(ActionEvent e) throws IOException {

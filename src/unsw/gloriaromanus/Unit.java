@@ -29,7 +29,7 @@ public class Unit {
     private String ability;
     private int turnsToProduce;
 
-    public Unit(String unitType, int numTroops2, String config) throws IOException {
+    /*public Unit(String unitType, int numTroops2, String config) throws IOException {
 
         JSONObject unitStats = new JSONObject(config).getJSONObject(unitType);
 
@@ -50,18 +50,106 @@ public class Unit {
         // TODO = shield charge ability
         // TODO = heroic charge ability
 
+    }*/
+
+    public Unit(){
+        
     }
 
     public int getNumTroops() {
-        return this.numTroops;
+        return numTroops;
+    }
+
+    public void setNumTroops(int numTroops) {
+        this.numTroops = numTroops;
+    }
+
+    public int getMeleeAttack() {
+        return meleeAttack;
+    }
+
+    public void setMeleeAttack(int meleeAttack) {
+        this.meleeAttack = meleeAttack;
+    }
+
+    public int getRangedAttack() {
+        return rangedAttack;
+    }
+
+    public void setRangedAttack(int rangedAttack) {
+        this.rangedAttack = rangedAttack;
+    }
+
+    public int getDefenseSkill() {
+        return defenseSkill;
+    }
+
+    public void setDefenseSkill(int defenseSkill) {
+        this.defenseSkill = defenseSkill;
+    }
+
+    public int getArmour() {
+        return armour;
+    }
+
+    public void setArmour(int armour) {
+        this.armour = armour;
+    }
+
+    public int getShieldDefense() {
+        return shieldDefense;
+    }
+
+    public void setShieldDefense(int shieldDefense) {
+        this.shieldDefense = shieldDefense;
+    }
+
+    public int getMorale() {
+        return morale;
+    }
+
+    public void setMorale(int morale) {
+        this.morale = morale;
+    }
+
+    public int getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
+
+    public String getRange() {
+        return range;
+    }
+
+    public void setRange(String range) {
+        this.range = range;
     }
 
     public String getType() {
-        return this.type;
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getAbility() {
-        return this.ability;
+        return ability;
+    }
+
+    public void setAbility(String ability) {
+        this.ability = ability;
+    }
+
+    public int getTurnsToProduce() {
+        return turnsToProduce;
+    }
+
+    public void setTurnsToProduce(int turnsToProduce) {
+        this.turnsToProduce = turnsToProduce;
     }
 
     /*
