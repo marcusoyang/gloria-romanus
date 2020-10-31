@@ -9,7 +9,7 @@ public class Province {
     private String faction;
     private ArrayList<Unit> units;
     // the below armySize variable will be deleted when units list is implemented
-    private int armySize;
+    private int initialArmySize;
     private int wealth;
     private UnitFactory[] factories;
 
@@ -18,7 +18,7 @@ public class Province {
         this.name = name;
         this.faction = faction;
         this.units = new ArrayList<Unit>();
-        this.armySize = 0;
+        this.initialArmySize = 0;
         this.wealth = 0;
     }
 
@@ -57,17 +57,15 @@ public class Province {
 
     public int getArmyStrength() {
         // the sum of number of soldiers in unit x attack x defense for all units in the army
-
-        // the below code will be used when units list is implemented
-        /*int totalAttack = 0;
-        int totalDefense = 0;
+        // We initially assume that a unit that has been initially recruited on the province has 1 attack and 1 defense
+        int totalAttack = initialArmySize;
+        int totalDefense = initialArmySize;
         for (Unit u : units) {
-            totalAttack += u.getAttack();
-            totalDefense += u.getDefense();
-        }*/
+            totalAttack += u.getTotalAttack();
+            totalDefense += u.getTotalDefense();
+        }
         
-        // We initially assume that a unit has 1 attack and 1 defense
-        return (armySize * armySize * armySize);
+        return (this.getArmySize() * totalAttack * totalDefense);
     }
 
     private void generateFactories(String unitConfig) {
@@ -82,11 +80,20 @@ public class Province {
     }
 
     public int getArmySize() {
-        return armySize;
+        return initialArmySize + getUnitsTroopSize();
+    }
+
+    public int getUnitsTroopSize() {
+        int size = 0;
+        for (Unit u : units) {
+            size += u.getNumTroops();
+        }
+        return size;
     }
 
     public void setArmySize(int size) {
-        this.armySize = size;
+        // We assume initial armies are killed off first for the basic battle resolver
+        this.initialArmySize = size - getUnitsTroopSize();
     }
 
     public int getWealth() {
