@@ -19,6 +19,7 @@ import java.util.stream.Collectors;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Point2D;
+import javafx.scene.text.Text;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -74,6 +75,8 @@ public class GloriaRomanusController{
 
   private int currentPlayerID;
 
+  private int currentYear;
+
   private Feature currentlySelectedHumanProvince;
   private Feature currentlySelectedEnemyProvince;
 
@@ -92,6 +95,7 @@ public class GloriaRomanusController{
 
     initializePlayerToFaction();
     currentPlayerID = 0;
+    currentYear = 0;
 
     currentlySelectedHumanProvince = null;
     currentlySelectedEnemyProvince = null;
@@ -139,6 +143,7 @@ public class GloriaRomanusController{
     currentPlayerID++;
     if (currentPlayerID == playerIDToFaction.size()) {
       currentPlayerID = 0;
+      currentYear++;
     }
     printMessageToTerminal("It is player" + currentPlayerID + "'s turn.");
 
