@@ -44,7 +44,6 @@ import com.esri.arcgisruntime.symbology.TextSymbol.VerticalAlignment;
 import com.esri.arcgisruntime.data.Feature;
 
 import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -87,6 +86,7 @@ public class GloriaRomanusController{
     
     readConfig();
     provinces = new ArrayList<Province>();
+    playerIDToFaction = new ArrayList<String>();
     
     String content = Files.readString(Paths.get("src/unsw/gloriaromanus/saves/campaignData.json"));
     JSONObject j = new JSONObject(content);
@@ -185,7 +185,10 @@ public class GloriaRomanusController{
     // Things to save: data in the province class
     JSONArray provinceList = new JSONArray();
     for (Province p : provinces) {
-      JSONObject joProvince = p.getJSONObject();
+      ObjectMapper mapper = new ObjectMapper();
+      String jsonString = mapper.writeValueAsString(p);
+      JSONObject joProvince = new JSONObject(jsonString);
+      joProvince.remove("armyStrength");
       provinceList.put(joProvince);
     }
     String content = provinceList.toString();
@@ -239,7 +242,9 @@ public class GloriaRomanusController{
     String content = Files.readString(Paths.get("src/unsw/gloriaromanus/saves/provinceData.json"));
     JSONArray ja = new JSONArray(content);
     for (int i = 0; i < ja.length(); i++) {
-      Province newProvince = getProvinceInstance(ja.getJSONObject(i));
+      ObjectMapper objectMapper = new ObjectMapper();
+      String jsonString = ja.getJSONObject(i).toString();
+      Province newProvince =  objectMapper.readValue(jsonString, Province.class);
       provinces.add(newProvince);
     }
 
@@ -249,22 +254,15 @@ public class GloriaRomanusController{
     for (int i = 0; i < ja.length(); i++) {
       playerIDToFaction.add(ja.get(i).toString());
     }
-    currentPlayerID = Integer.parseInt(jo.getString("currentPlayerID"));
-    currentYear = Integer.parseInt(jo.getString("currentYear"));
+    currentPlayerID = jo.getInt("currentPlayerID");
+    currentYear = jo.getInt("currentYear");
   }
   private void initializePlayerToFaction() throws IOException{
     String content = Files.readString(Paths.get("src/unsw/gloriaromanus/initial_province_ownership.json"));
     JSONObject ownership = new JSONObject(content);
-    playerIDToFaction = new ArrayList<String>();
     for (String faction : ownership.keySet()) {
       playerIDToFaction.add(faction);
     }
-  }
-
-  private Province getProvinceInstance(JSONObject j) {
-    Province p = new Province(j.getString("name"), j.getString("faction"), unitConfig);
-    p.setDetails(j);
-    return p;
   }
 
   /**
