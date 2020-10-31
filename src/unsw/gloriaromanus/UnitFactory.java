@@ -16,7 +16,7 @@ public class UnitFactory {
         training = newUnit(unitType, numTroops);
     }
 
-    private Unit newUnit(String unitType, int numTroops) {
+    public Unit newUnit(String unitType, int numTroops) {
 
         JSONObject unitStats = config.getJSONObject(unitType);
 
