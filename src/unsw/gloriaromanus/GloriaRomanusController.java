@@ -77,11 +77,13 @@ public class GloriaRomanusController{
 
   private FeatureLayer featureLayer_provinces;
 
+  private String unitConfig;
   private ArrayList<Province> provinces;
 
   @FXML
   private void initialize() throws JsonParseException, JsonMappingException, IOException {
     
+    readConfig();
     provinces = new ArrayList<Province>();
     
     linkProvincesToFactions();
@@ -97,7 +99,11 @@ public class GloriaRomanusController{
     currentlySelectedHumanProvince = null;
     currentlySelectedEnemyProvince = null;
 
-    initializeProvinceLayers();
+    initializeProvinceLayers();    
+  }
+
+  private void readConfig() throws IOException {
+    unitConfig = (Files.readString(Paths.get("src/unsw/gloriaromanus/unit_config.json")));
   }
 
   @FXML
@@ -388,7 +394,7 @@ public class GloriaRomanusController{
       JSONArray ja = ownership.getJSONArray(faction);
       for (int i = 0; i < ja.length(); i++) {
         String province = ja.getString(i);
-        provinces.add(new Province(province, faction));
+        provinces.add(new Province(province, faction, unitConfig));
       }
     }
   }

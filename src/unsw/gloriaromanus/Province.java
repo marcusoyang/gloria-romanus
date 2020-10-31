@@ -3,14 +3,19 @@ package unsw.gloriaromanus;
 import java.util.ArrayList;
 
 public class Province {
+    private static final int MAX_FAC = 2;
+
     private String name;
     private String faction;
     private ArrayList<Unit> units;
     // the below armySize variable will be deleted when units list is implemented
     private int armySize;
     private int wealth;
+    private UnitFactory[] factories;
 
-    public Province(String name, String faction) {
+    public Province(String name, String faction, String unitConfig) {
+        generateFactories(unitConfig);
+
         this.name = name;
         this.faction = faction;
         this.units = new ArrayList<Unit>();
@@ -31,6 +36,13 @@ public class Province {
         
         // We initially assume that a unit has 1 attack and 1 defense
         return (armySize * armySize * armySize);
+    }
+
+    private void generateFactories(String unitConfig) {
+        factories = new UnitFactory[MAX_FAC];
+        for (int i = 0; i < MAX_FAC; i++) {
+            factories[i] = new UnitFactory(unitConfig);
+        }
     }
 
     public String getName() {
