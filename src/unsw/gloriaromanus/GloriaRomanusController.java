@@ -77,7 +77,7 @@ public class GloriaRomanusController{
 
   private FeatureLayer featureLayer_provinces;
 
-  private ArrayList<Faction> factions;
+  private ArrayList<Province> provinces;
 
   @FXML
   private void initialize() throws JsonParseException, JsonMappingException, IOException {
@@ -98,7 +98,6 @@ public class GloriaRomanusController{
     currentlySelectedEnemyProvince = null;
 
     initializeProvinceLayers();
-    initializeFactionInstances();
     initializeProvinceInstances();
   }
 
@@ -178,9 +177,8 @@ public class GloriaRomanusController{
   } 
 
   private Province deserializeProvince(String provinceName) {
-    for (Faction f : factions) {
-      Province p = f.deserialize(provinceName);
-      if (p != null) {
+    for (Province p : provinces) {
+      if (p.getName().equals(provinceName)) {
         return p;
       }
     }
@@ -220,24 +218,13 @@ public class GloriaRomanusController{
     addAllPointGraphics();
   }
 
-  private void initializeFactionInstances() throws IOException {
-    factions = new ArrayList<Faction>();
-    
-    String content = Files.readString(Paths.get("src/unsw/gloriaromanus/initial_province_ownership.json"));
-    JSONObject ownership = new JSONObject(content);
-    
-    for (String faction : ownership.keySet()) {
-      Faction newFaction = new Faction(faction);
-      factions.add(newFaction);
-    }
-  }
-
   private void initializeProvinceInstances() {
+    provinces = new ArrayList<Province>();
+    
     for (Map.Entry<String, String> entry : provinceToOwningFactionMap.entrySet()) {
       // The key is the province name, the value is the faction name
-      Faction curr = deserializeFaction(entry.getValue());
-      Province newProvince = new Province(entry.getKey(), curr);
-      curr.addProvince(newProvince);
+      Province newProvince = new Province(entry.getKey(), entry.getValue());
+      provinces.add(newProvince);
     }
 
     for (Map.Entry<String, Integer> entry : provinceToNumberTroopsMap.entrySet()) {
@@ -245,15 +232,6 @@ public class GloriaRomanusController{
       curr.setArmySize(entry.getValue());
     }
   } 
-
-  private Faction deserializeFaction(String name) {
-    for (Faction f : factions) {
-      if (f.getName().equals(name)) {
-        return f;
-      }
-    }
-    return null;
-  }
 
   private void addAllPointGraphics() throws JsonParseException, JsonMappingException, IOException {
     mapView.getGraphicsOverlays().clear();
