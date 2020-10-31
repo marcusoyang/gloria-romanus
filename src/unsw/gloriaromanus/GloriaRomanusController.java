@@ -83,6 +83,7 @@ public class GloriaRomanusController{
   @FXML
   private void initialize() throws JsonParseException, JsonMappingException, IOException {
     
+    readConfigFiles();
     provinces = new ArrayList<Province>();
     
     linkProvincesToFactions();
@@ -97,8 +98,6 @@ public class GloriaRomanusController{
 
     currentlySelectedHumanProvince = null;
     currentlySelectedEnemyProvince = null;
-
-    readConfigFiles();
 
     initializeProvinceLayers();    
   }
