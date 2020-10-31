@@ -70,7 +70,9 @@ public class GloriaRomanusController{
 
   private Map<String, Integer> provinceToNumberTroopsMap;
 
-  private String humanFaction;
+  private Map<String, String> playerToFactionMap;
+
+  private String currentPlayer;
 
   private Feature currentlySelectedHumanProvince;
   private Feature currentlySelectedEnemyProvince;
@@ -88,9 +90,8 @@ public class GloriaRomanusController{
       provinceToNumberTroopsMap.put(provinceName, r.nextInt(500));
     }
 
-    // TODO = load this from a configuration file you create (user should be able to
-    // select in loading screen)
-    humanFaction = "Rome";
+    playerToFactionMap = initializePlayerToFaction();
+    currentPlayer = "player1";
 
     currentlySelectedHumanProvince = null;
     currentlySelectedEnemyProvince = null;
@@ -112,7 +113,7 @@ public class GloriaRomanusController{
           int numTroopsToTransfer = provinceToNumberTroopsMap.get(humanProvince)*2/5;
           provinceToNumberTroopsMap.put(enemyProvince, numTroopsToTransfer);
           provinceToNumberTroopsMap.put(humanProvince, provinceToNumberTroopsMap.get(humanProvince)-numTroopsToTransfer);
-          provinceToOwningFactionMap.put(enemyProvince, humanFaction);
+          provinceToOwningFactionMap.put(enemyProvince, playerToFactionMap.get(currentPlayer));
           printMessageToTerminal("Won battle!");
         }
         else{
@@ -129,6 +130,21 @@ public class GloriaRomanusController{
       }
 
     }
+  }
+
+  @FXML
+  public void clickedEndTurnButton(ActionEvent e) throws IOException {
+    
+  }
+
+  private Map<String, String> initializePlayerToFaction() throws IOException{
+    String content = Files.readString(Paths.get("src/unsw/gloriaromanus/player_to_faction.json"));
+    JSONObject ownership = new JSONObject(content);
+    Map<String, String> m = new HashMap<String, String>();
+    for (String player : ownership.keySet()) {
+      m.put(player, ownership.getString(player));
+    }
+    return m;
   }
 
   /**
@@ -266,7 +282,7 @@ public class GloriaRomanusController{
                 Feature f = features.get(0);
                 String province = (String)f.getAttributes().get("name");
 
-                if (provinceToOwningFactionMap.get(province).equals(humanFaction)){
+                if (provinceToOwningFactionMap.get(province).equals(playerToFactionMap.get(currentPlayer))){
                   // province owned by human
                   if (currentlySelectedHumanProvince != null){
                     featureLayer.unselectFeature(currentlySelectedHumanProvince);
@@ -319,7 +335,7 @@ public class GloriaRomanusController{
 
     String content = Files.readString(Paths.get("src/unsw/gloriaromanus/initial_province_ownership.json"));
     JSONObject ownership = new JSONObject(content);
-    return ArrayUtil.convert(ownership.getJSONArray(humanFaction));
+    return ArrayUtil.convert(ownership.getJSONArray(playerToFactionMap.get(currentPlayer)));
   }
 
   /**
