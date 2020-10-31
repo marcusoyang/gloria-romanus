@@ -44,8 +44,10 @@ import com.esri.arcgisruntime.symbology.TextSymbol.VerticalAlignment;
 import com.esri.arcgisruntime.data.Feature;
 
 import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 
 import org.geojson.FeatureCollection;
 import org.geojson.LngLatAlt;
@@ -86,11 +88,20 @@ public class GloriaRomanusController{
     readConfig();
     provinces = new ArrayList<Province>();
     
-    linkProvincesToFactions();
-    Random r = new Random();
-    for (Province p: provinces) {
-      p.setArmySize(r.nextInt(500));
+    String content = Files.readString(Paths.get("src/unsw/gloriaromanus/saves/campaignData.json"));
+    JSONObject j = new JSONObject(content);
+    if (j.getString("status").equals("saved")) {
+      // restore saved details
+      restoreSavedDetails();
+    } else {
+      // initialise with new details
+      linkProvincesToFactions();
+      Random r = new Random();
+      for (Province p: provinces) {
+        p.setArmySize(r.nextInt(500));
+      }
     }
+    
 
     initializePlayerToFaction();
     currentPlayerID = 0;
@@ -224,6 +235,23 @@ public class GloriaRomanusController{
     return null;
   }
 
+  private void restoreSavedDetails() throws IOException {
+    String content = Files.readString(Paths.get("src/unsw/gloriaromanus/saves/provinceData.json"));
+    JSONArray ja = new JSONArray(content);
+    for (int i = 0; i < ja.length(); i++) {
+      Province newProvince = getProvinceInstance(ja.getJSONObject(i));
+      provinces.add(newProvince);
+    }
+
+    content = Files.readString(Paths.get("src/unsw/gloriaromanus/saves/campaignData.json"));
+    JSONObject jo = new JSONObject(content);
+    ja = jo.getJSONArray("playerIDToFaction");
+    for (int i = 0; i < ja.length(); i++) {
+      playerIDToFaction.add(ja.get(i).toString());
+    }
+    currentPlayerID = Integer.parseInt(jo.getString("currentPlayerID"));
+    currentYear = Integer.parseInt(jo.getString("currentYear"));
+  }
   private void initializePlayerToFaction() throws IOException{
     String content = Files.readString(Paths.get("src/unsw/gloriaromanus/initial_province_ownership.json"));
     JSONObject ownership = new JSONObject(content);
@@ -231,6 +259,12 @@ public class GloriaRomanusController{
     for (String faction : ownership.keySet()) {
       playerIDToFaction.add(faction);
     }
+  }
+
+  private Province getProvinceInstance(JSONObject j) {
+    Province p = new Province(j.getString("name"), j.getString("faction"), unitConfig);
+    p.setDetails(j);
+    return p;
   }
 
   /**
