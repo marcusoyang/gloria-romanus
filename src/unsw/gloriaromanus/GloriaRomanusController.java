@@ -66,10 +66,6 @@ public class GloriaRomanusController{
 
   private ArcGISMap map;
 
-  private Map<String, String> provinceToOwningFactionMap;
-
-  private Map<String, Integer> provinceToNumberTroopsMap;
-
   private String humanFaction;
 
   private Feature currentlySelectedHumanProvince;
@@ -81,13 +77,10 @@ public class GloriaRomanusController{
 
   @FXML
   private void initialize() throws JsonParseException, JsonMappingException, IOException {
-    // TODO = you should rely on an object oriented design to determine ownership
-    provinceToOwningFactionMap = getProvinceToOwningFactionMap();
-
-    provinceToNumberTroopsMap = new HashMap<String, Integer>();
+    linkProvincesToFactions();
     Random r = new Random();
-    for (String provinceName : provinceToOwningFactionMap.keySet()) {
-      provinceToNumberTroopsMap.put(provinceName, r.nextInt(500));
+    for (Province p: provinces) {
+      p.setArmySize(r.nextInt(500));
     }
 
     // TODO = load this from a configuration file you create (user should be able to
@@ -367,20 +360,16 @@ public class GloriaRomanusController{
     return flp;
   }
 
-  private Map<String, String> getProvinceToOwningFactionMap() throws IOException {
+  private void linkProvincesToFactions() throws IOException {
     String content = Files.readString(Paths.get("src/unsw/gloriaromanus/initial_province_ownership.json"));
     JSONObject ownership = new JSONObject(content);
-    Map<String, String> m = new HashMap<String, String>();
-    for (String key : ownership.keySet()) {
-      // key will be the faction name
-      JSONArray ja = ownership.getJSONArray(key);
-      // value is province name
+    for (String faction : ownership.keySet()) {
+      JSONArray ja = ownership.getJSONArray(faction);
       for (int i = 0; i < ja.length(); i++) {
-        String value = ja.getString(i);
-        m.put(value, key);
+        String province = ja.getString(i);
+        provinces.add(new Province(province, faction));
       }
     }
-    return m;
   }
 
   private ArrayList<String> getHumanProvincesList() throws IOException {
