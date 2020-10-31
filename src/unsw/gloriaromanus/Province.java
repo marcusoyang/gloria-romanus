@@ -1,6 +1,8 @@
 package unsw.gloriaromanus;
 
 import java.util.ArrayList;
+import org.json.JSONObject;
+import org.json.JSONArray;
 
 public class Province {
     private static final int MAX_FAC = 2;
@@ -67,5 +69,16 @@ public class Province {
 
     public void setFaction(String faction) {
         this.faction = faction;
+    }
+
+    public JSONObject getJSONObject() {
+        JSONObject j = new JSONObject();
+        j.put("name", name);
+        j.put("faction", faction);
+        j.put("units", new JSONArray(units));
+        j.put("armySize", armySize);
+        j.put("wealth", wealth);
+        j.put("factories", new JSONArray(factories));
+        return j;
     }
 }
