@@ -12,6 +12,8 @@ package unsw.gloriaromanus;
  * armour and morale)
  */
 public class Unit {
+    private static int counter = 0;
+    private int id;
     private int numTroops; // the number of troops in this unit (should reduce based on depletion)
     private int meleeAttack; // can be either missile or melee attack to simplify. Could improve
     private int rangedAttack; // implementation by differentiating!
@@ -47,6 +49,22 @@ public class Unit {
         // TODO = heroic charge ability
 
     }*/
+
+    public Unit() {
+        increaseIDCounter();
+    }
+
+    public void increaseIDCounter() {
+        counter++;
+    }
+
+    public int getID() {
+        return id;
+    }
+
+    public void setID() {
+        this.id = counter;
+    }
 
     public int getNumTroops() {
         return numTroops;
@@ -142,6 +160,10 @@ public class Unit {
 
     public void setTurnsToProduce(int turnsToProduce) {
         this.turnsToProduce = turnsToProduce;
+    }
+
+    public void minusTurnsToProduce(int i) {
+        this.turnsToProduce -= i;
     }
 
     /*
