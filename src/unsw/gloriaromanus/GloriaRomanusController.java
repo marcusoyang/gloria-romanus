@@ -132,8 +132,8 @@ public class GloriaRomanusController{
             // Transfer 40% of the remaining troops of human over to the new province.
             int numTroopsToTransfer = provinceToNumberTroopsMap.get(humanProvinceName)*2/5;
             // Assumption: the remaining troops of the enemy province gets converted to armies of the invading faction.
-            provinceToNumberTroopsMap.put(enemyProvinceName, provinceToNumberTroopsMap.get(enemyProvinceName) + numTroopsToTransfer);
-            provinceToNumberTroopsMap.put(humanProvinceName, provinceToNumberTroopsMap.get(humanProvinceName) - numTroopsToTransfer);
+            changeArmySize(enemyProvinceName, numTroopsToTransfer);
+            changeArmySize(humanProvinceName, -numTroopsToTransfer);
             provinceToOwningFactionMap.put(enemyProvinceName, humanFaction);
             printMessageToTerminal("Won battle!");
           }
@@ -160,23 +160,22 @@ public class GloriaRomanusController{
     Random r = new Random();
     double casultyPercentage = enemyWinningChance + (1 - enemyWinningChance) * r.nextDouble();
     Double casultySize = armySize * casultyPercentage;
-    int remainingArmySize = provinceToNumberTroopsMap.get(province)-casultySize.intValue();
-    if (remainingArmySize < 0) {
-      remainingArmySize = 0;
-    }
-    provinceToNumberTroopsMap.put(province, remainingArmySize);
+    changeArmySize(province, -(casultySize.intValue()));
   }
 
   private void winningArmyCasulties(String province, double enemyWinningChance, int armySize) {
     Random r = new Random();
     double casultyPercentage = enemyWinningChance * r.nextDouble();
     Double casultySize = armySize * casultyPercentage;
-    int remainingArmySize = provinceToNumberTroopsMap.get(province)-casultySize.intValue();
-    if (remainingArmySize < 0) {
-      remainingArmySize = 0;
-    }
-    provinceToNumberTroopsMap.put(province, remainingArmySize);
+    changeArmySize(province, -(casultySize.intValue()));
   }
+
+  private void changeArmySize(String province, int changeSize) {
+    int remainingArmySize = provinceToNumberTroopsMap.get(province) + changeSize;
+    if (remainingArmySize < 0) { remainingArmySize = 0; }
+    provinceToNumberTroopsMap.put(province, remainingArmySize);
+    deserializeProvince(province).setArmySize(remainingArmySize);
+  } 
 
   private Province deserializeProvince(String provinceName) {
     for (Faction f : factions) {
