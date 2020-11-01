@@ -91,10 +91,10 @@ public class GloriaRomanusController{
     String content = Files.readString(Paths.get("src/unsw/gloriaromanus/saves/campaignData.json"));
     JSONObject j = new JSONObject(content);
     if (j.getString("status").equals("saved")) {
-      // restore saved details
+      // restore saved game
       restoreSavedDetails();
     } else {
-      // initialise with new details
+      // initialize new game
       initializeOwnership();
       Random r = new Random();
       for (Province p: provinces) {
