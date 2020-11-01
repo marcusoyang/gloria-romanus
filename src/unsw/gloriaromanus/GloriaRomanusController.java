@@ -460,9 +460,9 @@ public class GloriaRomanusController{
               if (features.size() > 1){
                 printMessageToTerminal("Have more than 1 element - you might have clicked on boundary!");
               }
-              else if (features.size() == 1){
+              else if (features.size() == 0){
                 // note maybe best to track whether selected...
-                Feature f = features.get(1);
+                Feature f = features.get(0);
                 String provinceName = (String)f.getAttributes().get("name");
                 Province province = deserializeProvince(provinceName);
 
