@@ -88,6 +88,7 @@ public class GloriaRomanusController{
   private String filename;
   private String unitConfig;
   private ArrayList<Province> provinces;
+  private boolean hasWon;
 
   @FXML
   private void initialize() throws JsonParseException, JsonMappingException, IOException {
@@ -95,6 +96,7 @@ public class GloriaRomanusController{
     readConfig();
     provinces = new ArrayList<Province>();
     players = new ArrayList<Player>();
+    hasWon = false;
 
     filename = "world_1";    
     String content = stringFromCampaignFile(filename);
@@ -388,14 +390,19 @@ public class GloriaRomanusController{
     resetMovementPoints();
     adjustProvincesTownWealth();
 
+    if (hasWon) { return; } // Reloading the save doesn't continue prompts.
+
     switch (detectVictory()) {
       case 0: 
         printMessageToTerminal("It is player" + currentPlayerID + "'s turn.");
       case CONQUEST_VICTORY:
+        saveGame();
         printMessageToTerminal("Player" + currentPlayerID + " has achieved Conquest Victory!");
       case TREASURY_VICTORY:
+        saveGame();
         printMessageToTerminal("Player" + currentPlayerID + " has achieved Treasury Victory!");
       case WEALTH_VICTORY:
+        saveGame();
         printMessageToTerminal("Player" + currentPlayerID + " has achieved Wealth Victory!");
     }
   }
@@ -460,6 +467,10 @@ public class GloriaRomanusController{
 
   @FXML
   public void clickedSaveButton(ActionEvent e) throws IOException {
+    saveGame();
+  }
+
+  private void saveGame() throws IOException {
     // Things to save: data in the province class
     JSONArray provinceList = new JSONArray();
     for (Province p : provinces) {
@@ -486,11 +497,14 @@ public class GloriaRomanusController{
     campaignData.put("currentPlayerID", currentPlayerID);
     // What year it is (How many turns have passed)
     campaignData.put("currentYear", currentYear);
+    // Whether the game victory has already been achieved
+    campaignData.put("hasWon", hasWon);
     
     content = campaignData.toString(2);
     Files.writeString(Paths.get("src/unsw/gloriaromanus/saves/" + filename + "_campaign.json"), content);
 
     printMessageToTerminal("Game is saved!");
+
   }
 
   private double findMeleeEngagementChance(int meleeSpeed, int rangedSpeed) {
@@ -544,6 +558,7 @@ public class GloriaRomanusController{
     JSONObject jo = new JSONObject(content);
     currentPlayerID = jo.getInt("currentPlayerID");
     currentYear = jo.getInt("currentYear");
+    hasWon = jo.getBoolean("hasWon");
 
     content = Files.readString(Paths.get("src/unsw/gloriaromanus/saves/" + filename + "_province.json"));
     JSONArray jaProvince = new JSONArray(content);
