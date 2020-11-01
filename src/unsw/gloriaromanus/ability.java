@@ -2,7 +2,7 @@ package unsw.gloriaromanus;
 
 import java.util.ArrayList;
 
-public class ability {
+public class Ability {
     private static ArrayList<Province> provinces;
     
     public static void process() {
@@ -73,6 +73,6 @@ public class ability {
     }
 
     public static void setProvinces(ArrayList<Province> provinces) {
-        ability.provinces = provinces;
+        Ability.provinces = provinces;
     }
 }
