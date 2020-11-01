@@ -245,4 +245,8 @@ public class Unit {
         this.numTroops = remaining;
         return false;
     }
+
+    public static void setCounter(int counter) {
+        Unit.counter = counter;
+    }
 }

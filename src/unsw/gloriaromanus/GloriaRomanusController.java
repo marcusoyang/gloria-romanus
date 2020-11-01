@@ -105,7 +105,7 @@ public class GloriaRomanusController{
 
     JSONObject j = new JSONObject(content);
     if (j.getString("status").equals("saved")) {
-      // restore saved game
+      // restores saved game if status is "saved"
       restoreSavedDetails();
     } else {
       // initialize new game
