@@ -417,6 +417,13 @@ public class GloriaRomanusController{
     resetMovementPoints();
     adjustProvincesTownWealth();
 
+    // Collect taxes for the next player
+    for (Province p : provinces) {
+      if (getPlayerFromID(currentPlayerID).equals(p.getPlayer())) {
+        p.collectTaxRevenue();
+      }
+    }
+
     // Reloading the save doesn't continue prompts.
     if (hasWon) { return; }
     hasWon = true;
