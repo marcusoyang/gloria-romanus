@@ -14,28 +14,28 @@ public class UnitTest {
 
     @Test
     public void numUnitTest() throws IOException {
-        UnitFactory myFac = new UnitFactory(config);
+        UnitFactory myFac = new UnitFactory();
         Unit u = myFac.newUnit("legionary", 50);
         assertEquals(u.getNumTroops(), 50);
     }
 
     @Test
     public void unitTypeTest() throws IOException {
-        UnitFactory myFac = new UnitFactory(config);
+        UnitFactory myFac = new UnitFactory();
         Unit u = myFac.newUnit("legionary", 50);
         assertEquals(u.getType(), "heavy infantry");
     }
 
     @Test
     public void unitAbilityTest() throws IOException {
-        UnitFactory myFac = new UnitFactory(config);
+        UnitFactory myFac = new UnitFactory();
         Unit u = myFac.newUnit("legionary", 50);
         assertEquals(u.getAbility(), "Legionary Eagle");
     }
 
     @Test
     public void unitElephantTest() throws IOException {
-        UnitFactory myFac = new UnitFactory(config);
+        UnitFactory myFac = new UnitFactory();
         Unit u = myFac.newUnit("elephant", 50);
         assertEquals(u.getAbility(), "Elephant Amok");
         assertEquals(u.getTurnsToProduce(), 2);
@@ -43,7 +43,7 @@ public class UnitTest {
 
     @Test
     public void noAbilityTest() throws IOException {
-        UnitFactory myFac = new UnitFactory(config);
+        UnitFactory myFac = new UnitFactory();
         Unit u = myFac.newUnit("catapult", 50);
         assertEquals(u.getAbility(), "");
     }
