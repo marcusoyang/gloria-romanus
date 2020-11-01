@@ -43,7 +43,7 @@ public class Skirmish {
     }
 
     public Boolean addEngagement(String range) {
-        Engagement e = new Engagement(range, human, enemy);
+        Engagement e = new Engagement(range, human, enemy, this);
         engagements.add(e);
         if (e.checkEnemyDefeat()) {
             winner = human;
@@ -55,17 +55,19 @@ public class Skirmish {
             return true;
         } else if (e.checkEnemyBreak()) {
             broken = enemy;
-            enemy = null;
             return false;
         } else if (e.checkHumanBreak()) {
             broken = human;
-            human = null;
             return false;
         } else if (enemy == null && human == null) {
             // successful routing
             return true;
         }
         return false;
+    }
+
+    public Unit getBroken() {
+        return broken;
     }
 }
 

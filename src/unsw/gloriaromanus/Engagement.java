@@ -14,7 +14,7 @@ public class Engagement {
     private double humanBreakChance;
     private double enemyBreakChance;
 
-    public Engagement(String range, Unit human, Unit enemy) {
+    public Engagement(String range, Unit human, Unit enemy, Skirmish curr) {
         this.range = range;
         
         this.human = human;
@@ -25,8 +25,6 @@ public class Engagement {
     }
 
     private void calculateCasulty() {
-        
-        if (human != null) 
         Random N = new Random();
         switch(range) { 
             case "ranged":
