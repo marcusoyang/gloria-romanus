@@ -68,6 +68,11 @@ public class GloriaRomanusController{
   private ArcGISMap map;
 
   private static final int MOVE_COST = 4;
+  private static final int TREASURY_GOAL = 100000;
+  private static final int WEALTH_GOAL = 400000;
+  private static final int CONQUEST_VICTORY = 1;
+  private static final int TREASURY_VICTORY = 2;
+  private static final int WEALTH_VICTORY = 3;
 
   private ArrayList<Player> players;
   private int currentPlayerID;
@@ -141,6 +146,15 @@ public class GloriaRomanusController{
     }
     return requestSuccess;
   }
+
+  @FXML
+  public void clickedStartCampaign(ActionEvent e) {}
+  
+  @FXML
+  public void clickedSelectCamAI(ActionEvent e) {}
+  
+  @FXML
+  public void clickedSelectBattleRes(ActionEvent e) {}
 
   @FXML
   public void clickedInvadeButton(ActionEvent e) throws IOException {
@@ -223,8 +237,63 @@ public class GloriaRomanusController{
     }
     resetMovementPoints();
     adjustProvincesTownWealth();
-    printMessageToTerminal("It is player" + currentPlayerID + "'s turn.");
 
+    switch (detectVictory()) {
+      case 0: 
+        printMessageToTerminal("It is player" + currentPlayerID + "'s turn.");
+      case CONQUEST_VICTORY:
+        printMessageToTerminal("Player" + currentPlayerID + " has achieved Conquest Victory!");
+      case TREASURY_VICTORY:
+        printMessageToTerminal("Player" + currentPlayerID + " has achieved Treasury Victory!");
+      case WEALTH_VICTORY:
+        printMessageToTerminal("Player" + currentPlayerID + " has achieved Wealth Victory!");
+    }
+  }
+
+  private int detectVictory() {
+    if (detectConquestVict()) { return CONQUEST_VICTORY; }
+    if (detectTreasuryVict()) { return TREASURY_VICTORY; }
+    if (detectWealthVict()) { return WEALTH_VICTORY; }  
+    return 0;
+  }
+
+  private boolean detectWealthVict() {
+    Player currentPlayer = getPlayerFromID(currentPlayerID);
+    if (getTotalWealth(currentPlayer) >= WEALTH_GOAL) { return true; }
+    return false;
+  }
+
+  private int getTotalWealth(Player currentPlayer) {
+    int totalWealth = 0;
+    for (Province p : provinces) {
+      if (p.getPlayer().equals(currentPlayer)) {
+        totalWealth += p.getWealth();
+      }
+    }
+    return totalWealth;
+  }
+
+  private boolean detectTreasuryVict() {
+    return (getPlayerFromID(currentPlayerID).getGold() >= TREASURY_GOAL);
+  }
+
+  private boolean detectConquestVict() {
+    boolean ownsAllProvinces = true;
+    for (Province p : provinces) {
+      if (p.getPlayer().getID() != currentPlayerID) {
+        ownsAllProvinces = false;
+      }
+    }
+    return ownsAllProvinces;
+  }
+
+  private Player getPlayerFromID(int currentPlayerID) {
+    for (Player p : players) {
+      if (p.getID() == currentPlayerID) {
+        return p;
+      }
+    }
+    return null;
   }
 
   private void resetMovementPoints() {

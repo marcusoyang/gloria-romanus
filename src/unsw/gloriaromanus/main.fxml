@@ -50,5 +50,8 @@
             <TextArea fx:id="output_terminal" text="" editable="false"/>
         </VBox>
         <Button text="Save" onAction="#clickedSaveButton"/>
+        <Button text="Start Campaign" onAction="#clickedStartCampaign"/>
+        <Button text="Select Campaign AI" onAction="#clickedSelectCamAI"/>
+        <Button text="Select Battle Resolver" onAction="#clickedSelectBattleRes"/>
     </VBox>
 </StackPane>
