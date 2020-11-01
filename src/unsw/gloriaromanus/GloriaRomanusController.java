@@ -226,7 +226,6 @@ public class GloriaRomanusController{
         }
 
         // Skirmish should have finished. we check the status of our units.
-        System.out.println(s.getHumanStatus());
         switch(s.getHumanStatus()) {
           case "defeat":
             // Defeated. We remove this unit from our armies list.
