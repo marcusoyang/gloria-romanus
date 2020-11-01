@@ -58,6 +58,6 @@ public class UnitFactory {
     
     public int getPrice(String unitType, int numTroops) {
         JSONObject unitStats = config.getJSONObject(unitType);
-        return unitStats.getInt("price") * numTroops;
+        return unitStats.getInt("cost") * numTroops;
     }
 }
