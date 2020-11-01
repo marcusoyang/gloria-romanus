@@ -12,6 +12,9 @@ package unsw.gloriaromanus;
  * armour and morale)
  */
 public class Unit {
+    private static final int CAVALRY_MP = 15;
+    private static final int INFANTRY_MP = 10;
+    private static final int ARTILLERY_MP = 4;
     private static int counter = 0;
     private int id;
     private int numTroops; // the number of troops in this unit (should reduce based on depletion)
@@ -159,8 +162,21 @@ public class Unit {
         return movementPoints;
     }
 
-    public void setMovementPoints(int movementPoints) {
-        this.movementPoints = movementPoints;
+    public void resetMovementPoint() {
+        switch (type) {
+        case "heavy infantry":
+            this.movementPoints = INFANTRY_MP;
+        case "spearmen":
+            this.movementPoints = INFANTRY_MP;
+        case "missile infantry":
+            this.movementPoints = INFANTRY_MP;
+        case "cavalry":
+            this.movementPoints = CAVALRY_MP;
+        case "horse archer":
+            this.movementPoints = CAVALRY_MP;
+        case "artillery":
+            this.movementPoints = ARTILLERY_MP;
+        }
     }
 
     public void minusMovementPoints(int i) {

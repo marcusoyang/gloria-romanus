@@ -188,8 +188,15 @@ public class GloriaRomanusController{
       currentPlayerID = 0;
       currentYear++;
     }
+    resetMovementPoints();
     printMessageToTerminal("It is player" + currentPlayerID + "'s turn.");
 
+  }
+
+  private void resetMovementPoints() {
+    for (Province p : provinces) {
+      p.resetMovePoints();
+    }
   }
 
   @FXML

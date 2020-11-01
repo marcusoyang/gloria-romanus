@@ -120,4 +120,10 @@ public class Province {
     public ArrayList<Unit> getUnits() {
         return units;
     }
+
+	public void resetMovePoints() {
+        for (Unit u : units) {
+            u.resetMovementPoint();
+        }
+	}
 }
