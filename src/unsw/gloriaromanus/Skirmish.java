@@ -16,6 +16,9 @@ public class Skirmish {
     private Status humanStatus;
     private Status enemyStatus;
 
+    private int humanInitialNumTroops;
+    private int enemyInitialNumTroops;
+
     public Skirmish(Unit human, Unit enemy, int engagementIndex) {
         engagements = new ArrayList<Engagement>();
         this.human = human;
@@ -24,6 +27,9 @@ public class Skirmish {
 
         this.humanStatus = new Status(human);
         this.enemyStatus = new Status(enemy);
+
+        humanInitialNumTroops = human.getNumTroops();
+        enemyInitialNumTroops = enemy.getNumTroops();
     }
     public void start(String range) {
         this.range = range;
@@ -76,4 +82,11 @@ public class Skirmish {
         return enemyStatus.getStatus();
     }
 
+    public int getHumanInitialNumTroops() {
+        return humanInitialNumTroops;
+    }
+
+    public int getEnemyInitialNumTroops() {
+        return enemyInitialNumTroops;
+    }
  }

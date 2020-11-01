@@ -241,6 +241,7 @@ public class Unit {
             this.numTroops = 0;
             return true;
         }
+
         this.numTroops = remaining;
         return false;
     }
