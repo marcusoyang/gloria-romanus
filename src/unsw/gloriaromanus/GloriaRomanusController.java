@@ -75,6 +75,7 @@ public class GloriaRomanusController{
   private static final int WEALTH_VICTORY = 3;
 
   private ArrayList<Player> players;
+  private ArrayList<Province> provinces;
   private int currentPlayerID;
   private int currentYear;
 
@@ -85,7 +86,6 @@ public class GloriaRomanusController{
 
   private String filename;
   private String unitConfig;
-  private ArrayList<Province> provinces;
   private boolean hasWon;
 
   @FXML
@@ -105,7 +105,8 @@ public class GloriaRomanusController{
       restoreSavedDetails();
     } else {
       // initialize new game
-      initializeOwnership();
+      generatePlayers();
+      initializeOfflineMultiOwnership();
       Random r = new Random();
       for (Province p: provinces) {
         p.setInitialArmy(r.nextInt(500));
@@ -119,6 +120,21 @@ public class GloriaRomanusController{
     currentlySelectedEnemyProvince = null;
 
     initializeProvinceLayers();    
+  }
+
+  private void generatePlayers() throws IOException {
+    JSONArray factions = readFactionsList();
+    for (int i = 0; i < factions.length(); i++) {
+      Player p = new Player(players.size() + 1, factions.getString(i));
+      players.add(p);
+    }
+  }
+
+  private JSONArray readFactionsList() throws IOException {
+    String content = Files.readString(Paths.get("src/unsw/gloriaromanus/factions_list.json"));
+    JSONObject ownership = new JSONObject(content);
+    JSONArray ja = ownership.getJSONArray("factions_list");
+    return ja;
   }
 
   private String stringFromCampaignFile(String filename) throws IOException {
@@ -157,13 +173,19 @@ public class GloriaRomanusController{
   }
 
   @FXML
-  public void clickedStartCampaign(ActionEvent e) {}
+  public void clickedStartCampaign(ActionEvent e) {
+    // TODO
+  }
   
   @FXML
-  public void clickedSelectCamAI(ActionEvent e) {}
+  public void clickedSelectCamAI(ActionEvent e) {
+    // TODO
+  }
   
   @FXML
-  public void clickedSelectBattleRes(ActionEvent e) {}
+  public void clickedSelectBattleRes(ActionEvent e) {
+    // TODO
+  }
 
   @FXML
   public void clickedInvadeButton(ActionEvent e) throws IOException {
@@ -249,7 +271,9 @@ public class GloriaRomanusController{
     resetMovementPoints();
     adjustProvincesTownWealth();
 
-    if (hasWon) { return; } // Reloading the save doesn't continue prompts.
+    // Reloading the save doesn't continue prompts.
+    if (hasWon) { return; }
+    hasWon = true;
 
     switch (detectVictory()) {
       case 0: 
@@ -327,6 +351,7 @@ public class GloriaRomanusController{
   @FXML
   public void clickedSaveButton(ActionEvent e) throws IOException {
     saveGame();
+    printMessageToTerminal("Game is saved!");
   }
 
   private void saveGame() throws IOException {
@@ -361,9 +386,6 @@ public class GloriaRomanusController{
     
     content = campaignData.toString(2);
     Files.writeString(Paths.get("src/unsw/gloriaromanus/saves/" + filename + "_campaign.json"), content);
-
-    printMessageToTerminal("Game is saved!");
-
   }
 
   private void losingArmyCasulties(Province province, double enemyWinningChance) {
@@ -478,6 +500,8 @@ public class GloriaRomanusController{
             faction + "\n" + provinceName + "\n" + province.getArmySize() + "\n" + province.getWealth(), 0xFFFF0000,
             HorizontalAlignment.CENTER, VerticalAlignment.BOTTOM);
 
+        s = new PictureMarkerSymbol("images/legionary.png"); // TODO: Import other images
+        
         switch (faction) {
           case "Gaul":
             // note can instantiate a PictureMarkerSymbol using the JavaFX Image class - so could
@@ -592,17 +616,28 @@ public class GloriaRomanusController{
     return flp;
   }
 
-  private void initializeOwnership() throws IOException {
+  /*private void initializeOfflineMultiOwnership() throws IOException {
     String content = Files.readString(Paths.get("src/unsw/gloriaromanus/initial_province_ownership.json"));
     JSONObject ownership = new JSONObject(content);
     for (String faction : ownership.keySet()) {
-      Player p = new Player(players.size(), faction);
+      Player p = new Player(players.size() + 1, faction);
       players.add(p);
       JSONArray ja = ownership.getJSONArray(faction);
       for (int i = 0; i < ja.length(); i++) {
         String province = ja.getString(i);
         provinces.add(new Province(province, p, unitConfig));
       }
+    }
+  }*/
+
+  private void initializeOfflineMultiOwnership() throws IOException {
+    String content = Files.readString(Paths.get("src/unsw/gloriaromanus/provinces_list.json"));
+    JSONObject ownership = new JSONObject(content);
+    JSONArray ja = ownership.getJSONArray("provinces_list");
+    Random r = new Random();
+    for (int i = 0; i < ja.length(); i++) {
+      int randNum = r.nextInt(players.size() - 1);
+      provinces.add(new Province(ja.getString(i), players.get(randNum), unitConfig));
     }
   }
 
