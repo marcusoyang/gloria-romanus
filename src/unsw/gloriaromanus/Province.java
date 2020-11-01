@@ -6,17 +6,16 @@ public class Province {
     private static final int MAX_FAC = 2;
 
     private String name;
-    private String faction;
+    private Player player;
     private ArrayList<Unit> units;
-    // the below armySize variable will be deleted when units list is implemented
     private int initialArmySize;
     private int wealth;
     private UnitFactory[] factories;
 
-    public Province(String name, String faction, String unitConfig) {
+    public Province(String name, Player player, String unitConfig) {
         generateFactories(unitConfig);
         this.name = name;
-        this.faction = faction;
+        this.player = player;
         this.units = new ArrayList<Unit>();
         this.initialArmySize = 0;
         this.wealth = 0;
@@ -29,7 +28,6 @@ public class Province {
                 units.remove(u);
             }
         }
-        
     }
 
     public void insertUnit(Unit u) {
@@ -47,8 +45,10 @@ public class Province {
 
     public boolean trainUnit(String unitType, int numTroops) {
         for (UnitFactory fac : factories) {
-            if (!fac.isTraining) {
+            int price = fac.getPrice(unitType, numTroops);
+            if (!fac.isTraining && player.getGold() >= price) {
                 fac.addToTraining(unitType, numTroops);
+                player.minusGold(price);
                 return true;
             }
         }
@@ -101,11 +101,11 @@ public class Province {
     }
 
     public String getFaction() {
-        return faction;
+        return player.getFaction();
     }
 
     public void setFaction(String faction) {
-        this.faction = faction;
+        player.setFaction(faction);
     }
 
     public ArrayList<Unit> getUnits() {
