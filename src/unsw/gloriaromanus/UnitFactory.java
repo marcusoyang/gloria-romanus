@@ -54,5 +54,10 @@ public class UnitFactory {
 	public void removeTraining() {
         isTraining = false;
         training = null;
-	}
+    }
+    
+    public int getPrice(String unitType, int numTroops) {
+        JSONObject unitStats = config.getJSONObject(unitType);
+        return unitStats.getInt("price") * numTroops;
+    }
 }

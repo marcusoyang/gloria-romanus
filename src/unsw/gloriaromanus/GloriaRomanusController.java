@@ -47,6 +47,7 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+
 import org.geojson.FeatureCollection;
 import org.geojson.LngLatAlt;
 
@@ -66,10 +67,9 @@ public class GloriaRomanusController{
 
   private ArcGISMap map;
 
-  private ArrayList<String> playerIDToFaction;
-
   private static final int MOVE_COST = 4;
 
+  private ArrayList<Player> players;
   private int currentPlayerID;
   private int currentYear;
 
@@ -86,14 +86,22 @@ public class GloriaRomanusController{
     
     readConfig();
     provinces = new ArrayList<Province>();
+    players = new ArrayList<Player>();
     
-    linkProvincesToFactions();
-    Random r = new Random();
-    for (Province p: provinces) {
-      p.setArmySize(r.nextInt(500));
+    String content = Files.readString(Paths.get("src/unsw/gloriaromanus/saves/campaignData.json"));
+    JSONObject j = new JSONObject(content);
+    if (j.getString("status").equals("saved")) {
+      // restore saved details
+      restoreSavedDetails();
+    } else {
+      // initialise with new details
+      initializeOwnership();
+      Random r = new Random();
+      for (Province p: provinces) {
+        p.setArmySize(r.nextInt(500));
+      }
     }
 
-    initializePlayerToFaction();
     currentPlayerID = 0;
     currentYear = 0;
 
@@ -174,8 +182,10 @@ public class GloriaRomanusController{
             // Assumption: the remaining troops of the enemy province gets converted to armies of the invading faction.
             changeArmySize(enemyProvince, numTroopsToTransfer);
             changeArmySize(humanProvince, -numTroopsToTransfer);
-            enemyProvince.setFaction(playerIDToFaction.get(currentPlayerID));
+
+            enemyProvince.setFaction(players.get(currentPlayerID).getFaction());
             enemyProvince.stopUnitProduction();
+
             printMessageToTerminal("Won battle!");
 
           }
@@ -207,7 +217,7 @@ public class GloriaRomanusController{
   public void clickedEndTurnButton() throws IOException {
     printMessageToTerminal("player" + currentPlayerID + " ended their turn.");
     currentPlayerID++;
-    if (currentPlayerID == playerIDToFaction.size()) {
+    if (currentPlayerID == players.size()) {
       currentPlayerID = 0;
       currentYear++;
     }
@@ -225,10 +235,39 @@ public class GloriaRomanusController{
   @FXML
   public void clickedSaveButton(ActionEvent e) throws IOException {
     // Things to save: data in the province class
+    JSONArray provinceList = new JSONArray();
+    for (Province p : provinces) {
+      ObjectMapper mapper = new ObjectMapper();
+      String jsonString = mapper.writeValueAsString(p);
+      JSONObject joProvince = new JSONObject(jsonString);
+      joProvince.remove("unitsTroopSize");
+      joProvince.remove("armyStrength");
+      provinceList.put(joProvince);
+    }
+    String content = provinceList.toString();
+    Files.writeString(Paths.get("src/unsw/gloriaromanus/saves/provinceData.json"), content);
 
-    // which player has which faction
+    JSONObject campaignData = new JSONObject();
+    // The saved status
+    campaignData.put("status", "saved");
     // Who's turn it is
+    campaignData.put("currentPlayerID", currentPlayerID);
     // What year it is (How many turns have passed)
+    campaignData.put("currentYear", currentYear);
+    
+    content = campaignData.toString();
+    Files.writeString(Paths.get("src/unsw/gloriaromanus/saves/campaignData.json"), content);
+
+    // And data in the player class
+    JSONArray playerList = new JSONArray();
+    for (Player p : players) {
+      ObjectMapper mapper = new ObjectMapper();
+      String jsonString = mapper.writeValueAsString(p);
+      JSONObject joPlayer = new JSONObject(jsonString);
+      playerList.put(joPlayer);
+    }
+    content = playerList.toString();
+    Files.writeString(Paths.get("src/unsw/gloriaromanus/saves/playerData.json"), content);
 
     printMessageToTerminal("Game is saved!");
   }
@@ -262,13 +301,39 @@ public class GloriaRomanusController{
     return null;
   }
 
-  private void initializePlayerToFaction() throws IOException{
-    String content = Files.readString(Paths.get("src/unsw/gloriaromanus/initial_province_ownership.json"));
-    JSONObject ownership = new JSONObject(content);
-    playerIDToFaction = new ArrayList<String>();
-    for (String faction : ownership.keySet()) {
-      playerIDToFaction.add(faction);
+  private void restoreSavedDetails() throws IOException {
+    String content = Files.readString(Paths.get("src/unsw/gloriaromanus/saves/campaignData.json"));
+    JSONObject jo = new JSONObject(content);
+    currentPlayerID = jo.getInt("currentPlayerID");
+    currentYear = jo.getInt("currentYear");
+
+    content = Files.readString(Paths.get("src/unsw/gloriaromanus/saves/playerData.json"));
+    JSONArray jaPlayer = new JSONArray(content);
+    for (int i = 0; i < jaPlayer.length(); i++) {
+      ObjectMapper objectMapper = new ObjectMapper();
+      String jsonString = jaPlayer.getJSONObject(i).toString();
+      Player newPlayer = objectMapper.readValue(jsonString, Player.class);
+      players.add(newPlayer);
     }
+
+    content = Files.readString(Paths.get("src/unsw/gloriaromanus/saves/provinceData.json"));
+    JSONArray jaProvince = new JSONArray(content);
+    for (int i = 0; i < jaProvince.length(); i++) {
+      ObjectMapper objectMapper = new ObjectMapper();
+      JSONObject joProvince = jaProvince.getJSONObject(i);
+      String jsonString = joProvince.toString();
+      Province newProvince =  objectMapper.readValue(jsonString, Province.class);
+      newProvince.setPlayer(findPlayer(joProvince.getString("faction")));
+      provinces.add(newProvince);
+    }
+  }
+
+  public Player findPlayer(String faction) {
+    for (Player p : players) {
+      if (p.getFaction().equals(faction)) {
+        return p;
+      }
+    } return null;
   }
 
   /**
@@ -408,7 +473,7 @@ public class GloriaRomanusController{
                 String provinceName = (String)f.getAttributes().get("name");
                 Province province = deserializeProvince(provinceName);
 
-                if (province.getFaction().equals(playerIDToFaction.get(currentPlayerID))){
+                if (province.getFaction().equals(players.get(currentPlayerID).getFaction())){
                   // province owned by human
                   if (currentlySelectedHumanProvince != null){
                     featureLayer.unselectFeature(currentlySelectedHumanProvince);
@@ -440,14 +505,16 @@ public class GloriaRomanusController{
     return flp;
   }
 
-  private void linkProvincesToFactions() throws IOException {
+  private void initializeOwnership() throws IOException {
     String content = Files.readString(Paths.get("src/unsw/gloriaromanus/initial_province_ownership.json"));
     JSONObject ownership = new JSONObject(content);
     for (String faction : ownership.keySet()) {
+      Player p = new Player(players.size(), faction);
+      players.add(p);
       JSONArray ja = ownership.getJSONArray(faction);
       for (int i = 0; i < ja.length(); i++) {
         String province = ja.getString(i);
-        provinces.add(new Province(province, faction, unitConfig));
+        provinces.add(new Province(province, p, unitConfig));
       }
     }
   }
@@ -457,7 +524,7 @@ public class GloriaRomanusController{
 
     String content = Files.readString(Paths.get("src/unsw/gloriaromanus/initial_province_ownership.json"));
     JSONObject ownership = new JSONObject(content);
-    return ArrayUtil.convert(ownership.getJSONArray(playerIDToFaction.get(currentPlayerID)));
+    return ArrayUtil.convert(ownership.getJSONArray(players.get(currentPlayerID).getFaction()));
   }
 
   /**
