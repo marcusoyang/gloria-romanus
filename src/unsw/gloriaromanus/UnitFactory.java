@@ -22,7 +22,7 @@ public class UnitFactory {
 
     public Unit newUnit(String unitType, int numTroops) throws IOException {
 
-        JSONObject unitStats = getUnitStats(unitType);
+        JSONObject unitStats = generateUnitStats(unitType);
         
         Unit u = new Unit();
         u.setID();
@@ -42,7 +42,7 @@ public class UnitFactory {
         return u;
     }
 
-    public JSONObject getUnitStats(String unitType) throws IOException {
+    public JSONObject generateUnitStats(String unitType) throws IOException {
         // String configString = Files.readString(Paths.get("src/unsw/gloriaromanus/unit_config.json"));
         JSONObject config = new JSONObject(configString);
         return config.getJSONObject(unitType);
@@ -66,7 +66,7 @@ public class UnitFactory {
     }
     
     public int getCost(String unitType, int numTroops) throws IOException {
-        JSONObject unitStats = getUnitStats(unitType);
+        JSONObject unitStats = generateUnitStats(unitType);
         return unitStats.getInt("cost") * numTroops;
     }
 
