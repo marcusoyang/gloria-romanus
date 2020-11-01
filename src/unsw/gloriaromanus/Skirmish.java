@@ -16,7 +16,7 @@ public class Skirmish {
     private Status humanStatus;
     private Status enemyStatus;
 
-    private int humanInitialNumTroops;
+    private int humanInitialNumTroops; 
     private int enemyInitialNumTroops;
 
     public Skirmish(Unit human, Unit enemy, int engagementIndex) {
