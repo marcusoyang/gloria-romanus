@@ -68,8 +68,9 @@ public class GloriaRomanusController{
 
   private ArrayList<String> playerIDToFaction;
 
-  private int currentPlayerID;
+  private static final int MOVE_COST = 4;
 
+  private int currentPlayerID;
   private int currentYear;
 
   private Feature currentlySelectedHumanProvince;
@@ -106,8 +107,23 @@ public class GloriaRomanusController{
     unitConfig = (Files.readString(Paths.get("src/unsw/gloriaromanus/unit_config.json")));
   }
 
-  public void moveUnits(List<Integer> ids, Province src, Province dest) throws IOException {
+  public boolean moveUnits(List<Integer> ids, Province src, Province dest) throws IOException {
     int shortestPathLength = DijkstraAlgorithm.findShortestPathLength(src.getName(), dest.getName());
+    boolean allCanMove = true;
+    for (int id : ids) {
+      Unit u = src.findUnit(id);
+      if (u.getMovementPoints() < (MOVE_COST * shortestPathLength)) {
+        allCanMove = false;
+      }
+    }
+    if (allCanMove == true) {
+      for (int id2 : ids) {
+        Unit u2 = src.findUnit(id2);
+        u2.minusMovementPoints(MOVE_COST * shortestPathLength);
+      }
+      return true;
+    }
+    return false;
   }
 
   @FXML

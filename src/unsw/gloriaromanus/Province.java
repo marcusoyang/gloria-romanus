@@ -22,6 +22,15 @@ public class Province {
         this.wealth = 0;
     }
 
+    public Unit findUnit(int id) {
+        for (Unit u : units) {
+            if (u.getID() == id) {
+                return u;
+            }
+        }
+        return null;
+    }
+
     public void moveUnit(Province p, int id) {
         for (Unit u : units) {
             if (u.getID() == id) {

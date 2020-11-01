@@ -163,6 +163,10 @@ public class Unit {
         this.movementPoints = movementPoints;
     }
 
+    public void minusMovementPoints(int i) {
+        this.movementPoints -= i;
+    }
+
     public int getTurnsToProduce() {
         return turnsToProduce;
     }
@@ -190,14 +194,11 @@ public class Unit {
      * file.write(unitStats.toString()); file.close(); }
      */
 
-    public int getTotalDefense() {
-        // TODO: Marcus, can you work on these two? I'm not sure what to include for total defense and total attack alongside with some soldier
-        // abilities having buffs to these values. Thanks :--)
-        return 42;
+    public int getTotalAttack() {
+        return meleeAttack + rangedAttack;
     }
 
-    public int getTotalAttack() {
-        // TODO: see above
-        return 42;
+    public int getTotalDefense() {
+        return defenseSkill + armour + shieldDefense;
     }
 }
