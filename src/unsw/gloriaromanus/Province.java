@@ -132,4 +132,10 @@ public class Province {
             u.setMovementPoints(mp);
         }
 	}
+
+	public void stopUnitProduction() {
+        for (UnitFactory uf : factories) {
+            uf.removeTraining();
+        }
+	}
 }

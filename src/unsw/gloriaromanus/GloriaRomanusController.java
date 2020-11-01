@@ -126,6 +126,14 @@ public class GloriaRomanusController{
     return false;
   }
 
+  public boolean unitTrainRequest(Province p, String unitType, int numTroops) {   
+    boolean requestSuccess = p.trainUnit(unitType, numTroops);
+    if (!requestSuccess) {
+      printMessageToTerminal("Province has no open training slots!");
+    }
+    return requestSuccess;
+  }
+
   @FXML
   public void clickedInvadeButton(ActionEvent e) throws IOException {
     if (currentlySelectedHumanProvince != null && currentlySelectedEnemyProvince != null){
@@ -134,6 +142,13 @@ public class GloriaRomanusController{
 
       if (humanProvince == null || enemyProvince == null) {
         // throw some kind of exception
+      }
+
+      for (Unit u : humanProvince.getUnits()) {
+        if (u.getMovementPoints() < MOVE_COST) {
+          printMessageToTerminal("Troops have insufficient movement points!");
+          return;
+        }
       }
 
       if (humanProvince.getArmySize() > 0) {
@@ -156,7 +171,9 @@ public class GloriaRomanusController{
             changeArmySize(enemyProvince, numTroopsToTransfer);
             changeArmySize(humanProvince, -numTroopsToTransfer);
             enemyProvince.setFaction(playerIDToFaction.get(currentPlayerID));
+            enemyProvince.stopUnitProduction();
             printMessageToTerminal("Won battle!");
+
           }
           else{
             // enemy won.
@@ -164,6 +181,8 @@ public class GloriaRomanusController{
             losingArmyCasulties(humanProvince, enemyWinningChance);
             printMessageToTerminal("Lost battle!");
           }
+          humanProvince.setMovePoints(0);
+          enemyProvince.setMovePoints(0);
           resetSelections();  // reset selections in UI
           addAllPointGraphics(); // reset graphics
           // TODO: For a pass mark, Player must be able to move troops between adjacent regions 1 turn at a time. This condition may change but 
