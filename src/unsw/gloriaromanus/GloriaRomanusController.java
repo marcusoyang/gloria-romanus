@@ -171,6 +171,8 @@ public class GloriaRomanusController{
 
       if (humanProvince == null || enemyProvince == null) {
         // throw some kind of exception
+        printMessageToTerminal("You must select two provinces!");
+        return;
       }
 
       for (Unit u : humanProvince.getUnits()) {

@@ -10,9 +10,7 @@ public class UnitFactory {
     private Unit training;
 
     public UnitFactory() {
-        configString = "";
-        isTraining = false;
-        training = null;
+        // super();
     }
 
     public UnitFactory(String config) {
@@ -43,6 +41,7 @@ public class UnitFactory {
         u.setRange(unitStats.getString("range"));
         u.setType(unitStats.getString("type"));
         u.setAbility(unitStats.getString("ability"));
+        u.resetMovementPoint();
         u.setTurnsToProduce(unitStats.optInt("turnsToProduce"));
 
         return u;
