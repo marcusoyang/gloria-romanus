@@ -66,6 +66,11 @@ public class GloriaRomanusController{
   private ArcGISMap map;
 
   private static final int MOVE_COST = 4;
+  private static final int TREASURY_GOAL = 100000;
+  private static final int WEALTH_GOAL = 400000;
+  private static final int CONQUEST_VICTORY = 1;
+  private static final int TREASURY_VICTORY = 2;
+  private static final int WEALTH_VICTORY = 3;
 
   private static final int ONGOING = 0;
   private static final int LOST = 1;
@@ -80,6 +85,7 @@ public class GloriaRomanusController{
 
   private FeatureLayer featureLayer_provinces;
 
+  private String filename;
   private String unitConfig;
   private ArrayList<Province> provinces;
 
@@ -89,14 +95,16 @@ public class GloriaRomanusController{
     readConfig();
     provinces = new ArrayList<Province>();
     players = new ArrayList<Player>();
-    
-    String content = Files.readString(Paths.get("src/unsw/gloriaromanus/saves/campaignData.json"));
+
+    filename = "world_1";    
+    String content = stringFromCampaignFile(filename);
+
     JSONObject j = new JSONObject(content);
     if (j.getString("status").equals("saved")) {
-      // restore saved details
+      // restore saved game
       restoreSavedDetails();
     } else {
-      // initialise with new details
+      // initialize new game
       initializeOwnership();
       Random r = new Random();
       for (Province p: provinces) {
@@ -111,6 +119,10 @@ public class GloriaRomanusController{
     currentlySelectedEnemyProvince = null;
 
     initializeProvinceLayers();    
+  }
+
+  private String stringFromCampaignFile(String filename) throws IOException {
+    return Files.readString(Paths.get("src/unsw/gloriaromanus/saves/" + filename + "_campaign.json"));
   }
 
   private void readConfig() throws IOException {
@@ -143,6 +155,15 @@ public class GloriaRomanusController{
     }
     return requestSuccess;
   }
+
+  @FXML
+  public void clickedStartCampaign(ActionEvent e) {}
+  
+  @FXML
+  public void clickedSelectCamAI(ActionEvent e) {}
+  
+  @FXML
+  public void clickedSelectBattleRes(ActionEvent e) {}
 
   @FXML
   public void clickedInvadeButton(ActionEvent e) throws IOException {
@@ -291,6 +312,8 @@ public class GloriaRomanusController{
 
       if (humanProvince == null || enemyProvince == null) {
         // throw some kind of exception
+        printMessageToTerminal("You must select two provinces!");
+        return;
       }
 
       for (Unit u : humanProvince.getUnits()) {
@@ -364,8 +387,63 @@ public class GloriaRomanusController{
     }
     resetMovementPoints();
     adjustProvincesTownWealth();
-    printMessageToTerminal("It is player" + currentPlayerID + "'s turn.");
 
+    switch (detectVictory()) {
+      case 0: 
+        printMessageToTerminal("It is player" + currentPlayerID + "'s turn.");
+      case CONQUEST_VICTORY:
+        printMessageToTerminal("Player" + currentPlayerID + " has achieved Conquest Victory!");
+      case TREASURY_VICTORY:
+        printMessageToTerminal("Player" + currentPlayerID + " has achieved Treasury Victory!");
+      case WEALTH_VICTORY:
+        printMessageToTerminal("Player" + currentPlayerID + " has achieved Wealth Victory!");
+    }
+  }
+
+  private int detectVictory() {
+    if (detectConquestVict()) { return CONQUEST_VICTORY; }
+    if (detectTreasuryVict()) { return TREASURY_VICTORY; }
+    if (detectWealthVict()) { return WEALTH_VICTORY; }  
+    return 0;
+  }
+
+  private boolean detectWealthVict() {
+    Player currentPlayer = getPlayerFromID(currentPlayerID);
+    if (getTotalWealth(currentPlayer) >= WEALTH_GOAL) { return true; }
+    return false;
+  }
+
+  private int getTotalWealth(Player currentPlayer) {
+    int totalWealth = 0;
+    for (Province p : provinces) {
+      if (p.getPlayer().equals(currentPlayer)) {
+        totalWealth += p.getWealth();
+      }
+    }
+    return totalWealth;
+  }
+
+  private boolean detectTreasuryVict() {
+    return (getPlayerFromID(currentPlayerID).getGold() >= TREASURY_GOAL);
+  }
+
+  private boolean detectConquestVict() {
+    boolean ownsAllProvinces = true;
+    for (Province p : provinces) {
+      if (p.getPlayer().getID() != currentPlayerID) {
+        ownsAllProvinces = false;
+      }
+    }
+    return ownsAllProvinces;
+  }
+
+  private Player getPlayerFromID(int currentPlayerID) {
+    for (Player p : players) {
+      if (p.getID() == currentPlayerID) {
+        return p;
+      }
+    }
+    return null;
   }
 
   private void resetMovementPoints() {
@@ -398,8 +476,8 @@ public class GloriaRomanusController{
       // Adding the JSONObject to the JSONArray
       provinceList.put(joProvince);
     }
-    String content = provinceList.toString();
-    Files.writeString(Paths.get("src/unsw/gloriaromanus/saves/provinceData.json"), content);
+    String content = provinceList.toString(2);
+    Files.writeString(Paths.get("src/unsw/gloriaromanus/saves/" + filename + "_province.json"), content);
 
     JSONObject campaignData = new JSONObject();
     // The saved status
@@ -409,8 +487,8 @@ public class GloriaRomanusController{
     // What year it is (How many turns have passed)
     campaignData.put("currentYear", currentYear);
     
-    content = campaignData.toString();
-    Files.writeString(Paths.get("src/unsw/gloriaromanus/saves/campaignData.json"), content);
+    content = campaignData.toString(2);
+    Files.writeString(Paths.get("src/unsw/gloriaromanus/saves/" + filename + "_campaign.json"), content);
 
     printMessageToTerminal("Game is saved!");
   }
@@ -462,17 +540,20 @@ public class GloriaRomanusController{
   }
 
   private void restoreSavedDetails() throws IOException {
-    String content = Files.readString(Paths.get("src/unsw/gloriaromanus/saves/campaignData.json"));
+    String content = Files.readString(Paths.get("src/unsw/gloriaromanus/saves/" + filename + "_campaign.json"));
     JSONObject jo = new JSONObject(content);
     currentPlayerID = jo.getInt("currentPlayerID");
     currentYear = jo.getInt("currentYear");
 
-    content = Files.readString(Paths.get("src/unsw/gloriaromanus/saves/provinceData.json"));
+    content = Files.readString(Paths.get("src/unsw/gloriaromanus/saves/" + filename + "_province.json"));
     JSONArray jaProvince = new JSONArray(content);
     for (int i = 0; i < jaProvince.length(); i++) {
       ObjectMapper objectMapper = new ObjectMapper();
       String jsonString = jaProvince.getJSONObject(i).toString();
       Province newProvince =  objectMapper.readValue(jsonString, Province.class);
+      if (!players.contains(newProvince.getPlayer())) {
+        players.add(newProvince.getPlayer());
+      }
       provinces.add(newProvince);
     }
   }

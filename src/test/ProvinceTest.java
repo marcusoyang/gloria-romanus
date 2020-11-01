@@ -7,8 +7,7 @@ import java.nio.file.Paths;
 
 import org.junit.jupiter.api.Test;
 
-import unsw.gloriaromanus.Player;
-import unsw.gloriaromanus.Province;
+import unsw.gloriaromanus.*;
 
 public class ProvinceTest {
     @Test

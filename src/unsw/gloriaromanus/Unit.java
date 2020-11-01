@@ -223,7 +223,8 @@ public class Unit {
      * unitStats.toString());
      * 
      * FileWriter file = new FileWriter("src/unsw/gloriaromanus/testFile.json");
-     * file.write(unitStats.toString()); file.close(); }
+     * file.write(unitStats.toString());
+     * file.close(); }
      */
 
     public int calculateTotalAttack() {
