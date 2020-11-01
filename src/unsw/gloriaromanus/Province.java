@@ -1,16 +1,22 @@
 package unsw.gloriaromanus;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Province {
     private static final int MAX_FAC = 2;
+    // Tax rates
+    private static final double LOW_TR = 0.1;
+    private static final double NOR_TR = 0.15;
+    private static final double HI_TR = 0.2;
+    private static final double VH_TR = 0.25;
 
     private String name;
     private Player player;
     private ArrayList<Unit> units;
-    private int initialArmySize;
     private int wealth;
-    private UnitFactory[] factories;
+    private ArrayList<UnitFactory> factories;
+    private double taxRate;
 
     public Province() {
         //super();
@@ -21,8 +27,8 @@ public class Province {
         this.name = name;
         this.player = player;
         this.units = new ArrayList<Unit>();
-        this.initialArmySize = 0;
         this.wealth = 0;
+        this.taxRate = NOR_TR;
     }
 
     public Unit findUnit(int id) {
@@ -56,7 +62,7 @@ public class Province {
         }
     }
 
-    public boolean trainUnit(String unitType, int numTroops) {
+    public boolean trainUnit(String unitType, int numTroops) throws IOException {
         for (UnitFactory fac : factories) {
             int price = fac.getPrice(unitType, numTroops);
             if (!fac.isTraining && player.getGold() >= price) {
@@ -71,21 +77,22 @@ public class Province {
     public int getArmyStrength() {
         // the sum of number of soldiers in unit x attack x defense for all units in the army
         // We initially assume that a unit that has been initially recruited on the province has 1 attack and 1 defense
-        int totalAttack = initialArmySize;
-        int totalDefense = initialArmySize;
+        int totalAttack = 0;
+        int totalDefense = 0;
         if (units != null) {
             for (Unit u : units) {
-                totalAttack += u.getTotalAttack();
-                totalDefense += u.getTotalDefense();
+                totalAttack += u.calculateTotalAttack();
+                totalDefense += u.calculateTotalDefense();
             }
         }
         return (this.getArmySize() * totalAttack * totalDefense);
     }
 
     private void generateFactories(String unitConfig) {
-        factories = new UnitFactory[MAX_FAC];
+        factories = new ArrayList<UnitFactory>();
         for (int i = 0; i < MAX_FAC; i++) {
-            factories[i] = new UnitFactory(unitConfig);
+            UnitFactory factory = new UnitFactory();
+            factories.add(factory);
         }
     }
 
@@ -94,10 +101,6 @@ public class Province {
     }
 
     public int getArmySize() {
-        return initialArmySize + getUnitsTroopSize();
-    }
-
-    public int getUnitsTroopSize() {
         int size = 0;
         if (units != null) {
             for (Unit u : units) {
@@ -107,9 +110,22 @@ public class Province {
         return size;
     }
 
-    public void setArmySize(int size) {
-        // We assume initial armies are killed off first for the basic battle resolver
-        this.initialArmySize = size - getUnitsTroopSize();
+    public void setInitialArmy(int size) throws IOException {
+        units.add(factories.get(0).newUnit("normal", size));
+    }
+
+    public void setArmySize(int remainingSize) {
+        int casulties = getArmySize() - remainingSize;
+        if (units != null) {
+            for (Unit u : units) {
+                if (u.getNumTroops() < casulties) {
+                    units.remove(u);
+                    casulties -= u.getNumTroops();
+                } else {
+                    u.setNumTroops(u.getNumTroops() - casulties);
+                }
+            }
+        }
     }
 
     public int getWealth() {
@@ -121,7 +137,7 @@ public class Province {
     }
 
     public void setFaction(String faction) {
-        if(player != null) { player.setFaction(faction); }
+        player.setFaction(faction);
     }
 
     public ArrayList<Unit> getUnits() {
@@ -146,7 +162,41 @@ public class Province {
         }
 	}
 
+    public Player getPlayer() {
+        return player;
+    }
+
     public void setPlayer(Player player) {
         this.player = player;
+    }
+
+    public void collectTaxRevenue() {
+        Double taxRevenue = wealth * taxRate;
+        player.plusGold(taxRevenue.intValue());
+    }
+
+    public void adjustTownWealth() {
+        if (taxRate == LOW_TR) {
+            wealth += 10;
+        } else if (taxRate == HI_TR) {
+            wealth -= 10;
+        } else if (taxRate == VH_TR) {
+            wealth -= 30;
+            for (Unit u : units) {
+                u.minusMorale(1);
+            }
+        }
+    }
+
+    public void changeTaxRate(double taxRate) {
+        this.taxRate = taxRate;
+    }
+
+    public ArrayList<UnitFactory> getFactories() {
+        return factories;
+    }
+
+    public double getTaxRate() {
+        return taxRate;
     }
 }

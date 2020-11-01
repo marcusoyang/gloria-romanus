@@ -226,11 +226,11 @@ public class Unit {
      * file.write(unitStats.toString()); file.close(); }
      */
 
-    public int getTotalAttack() {
+    public int calculateTotalAttack() {
         return meleeAttack + rangedAttack;
     }
 
-    public int getTotalDefense() {
+    public int calculateTotalDefense() {
         return defenseSkill + armour + shieldDefense;
     }
 }
