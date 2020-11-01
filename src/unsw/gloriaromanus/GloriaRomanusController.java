@@ -83,6 +83,7 @@ public class GloriaRomanusController{
 
   private FeatureLayer featureLayer_provinces;
 
+  private String filename;
   private String unitConfig;
   private ArrayList<Province> provinces;
 
@@ -92,8 +93,10 @@ public class GloriaRomanusController{
     readConfig();
     provinces = new ArrayList<Province>();
     players = new ArrayList<Player>();
-    
-    String content = Files.readString(Paths.get("src/unsw/gloriaromanus/saves/campaignData.json"));
+
+    filename = "world_1";    
+    String content = stringFromCampaignFile(filename);
+
     JSONObject j = new JSONObject(content);
     if (j.getString("status").equals("saved")) {
       // restore saved game
@@ -114,6 +117,10 @@ public class GloriaRomanusController{
     currentlySelectedEnemyProvince = null;
 
     initializeProvinceLayers();    
+  }
+
+  private String stringFromCampaignFile(String filename) throws IOException {
+    return Files.readString(Paths.get("src/unsw/gloriaromanus/saves/" + filename + "_campaign.json"));
   }
 
   private void readConfig() throws IOException {
@@ -327,7 +334,7 @@ public class GloriaRomanusController{
       provinceList.put(joProvince);
     }
     String content = provinceList.toString(2);
-    Files.writeString(Paths.get("src/unsw/gloriaromanus/saves/provinceData.json"), content);
+    Files.writeString(Paths.get("src/unsw/gloriaromanus/saves/" + filename + "_province.json"), content);
 
     JSONObject campaignData = new JSONObject();
     // The saved status
@@ -338,7 +345,7 @@ public class GloriaRomanusController{
     campaignData.put("currentYear", currentYear);
     
     content = campaignData.toString(2);
-    Files.writeString(Paths.get("src/unsw/gloriaromanus/saves/campaignData.json"), content);
+    Files.writeString(Paths.get("src/unsw/gloriaromanus/saves/" + filename + "_campaign.json"), content);
 
     printMessageToTerminal("Game is saved!");
   }
@@ -373,12 +380,12 @@ public class GloriaRomanusController{
   }
 
   private void restoreSavedDetails() throws IOException {
-    String content = Files.readString(Paths.get("src/unsw/gloriaromanus/saves/campaignData.json"));
+    String content = Files.readString(Paths.get("src/unsw/gloriaromanus/saves/" + filename + "_campaign.json"));
     JSONObject jo = new JSONObject(content);
     currentPlayerID = jo.getInt("currentPlayerID");
     currentYear = jo.getInt("currentYear");
 
-    content = Files.readString(Paths.get("src/unsw/gloriaromanus/saves/provinceData.json"));
+    content = Files.readString(Paths.get("src/unsw/gloriaromanus/saves/" + filename + "_province.json"));
     JSONArray jaProvince = new JSONArray(content);
     for (int i = 0; i < jaProvince.length(); i++) {
       ObjectMapper objectMapper = new ObjectMapper();
