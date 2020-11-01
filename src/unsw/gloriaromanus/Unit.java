@@ -234,4 +234,15 @@ public class Unit {
     public int calculateTotalDefense() {
         return defenseSkill + armour + shieldDefense;
     }
+
+    public Boolean checkDefeated(int minusTroopSize) {
+        int remaining = numTroops - minusTroopSize;
+        if (remaining < 0) {
+            this.numTroops = 0;
+            return true;
+        }
+
+        this.numTroops = remaining;
+        return false;
+    }
 }
