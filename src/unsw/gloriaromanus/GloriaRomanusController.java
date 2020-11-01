@@ -57,6 +57,8 @@ public class GloriaRomanusController{
   @FXML
   private MapView mapView;
   @FXML
+  private TextField current_faction;
+  @FXML
   private TextField invading_province;
   @FXML
   private TextField opponent_province;
@@ -114,6 +116,8 @@ public class GloriaRomanusController{
         p.setInitialArmy(r.nextInt(500));
       }
     }
+
+    current_faction.setText(players.get(currentPlayerID).getFaction());
 
     currentPlayerID = 0;
     currentYear = 0;
@@ -423,6 +427,7 @@ public class GloriaRomanusController{
         p.collectTaxRevenue();
       }
     }
+    current_faction.setText(players.get(currentPlayerID).getFaction());
 
     // Reloading the save doesn't continue prompts.
     if (hasWon) { return; }

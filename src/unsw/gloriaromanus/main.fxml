@@ -33,6 +33,10 @@
                 </fills>
             </Background>
         </background>
+        <VBox>
+                <Label text="Your Faction"/>
+                <TextField fx:id="current_faction" text="" editable="false"/>
+            </VBox>
         <HBox>
             <VBox>
                 <Label text="Your province"/>
@@ -43,8 +47,8 @@
                 <TextField fx:id="opponent_province" text="" editable="false"/>
             </VBox>
         </HBox>
-        <Button text="Invade" onAction="#clickedInvadeButton"/>
-        <Button text="End Turn" onAction="#clickedEndTurnButton"/>
+            <Button text="Invade" onAction="#clickedInvadeButton"/>
+            <Button text="End Turn" onAction="#clickedEndTurnButton"/>
         <VBox>
             <Label text="Output from interactions"/>
             <TextArea fx:id="output_terminal" text="" editable="false"/>
