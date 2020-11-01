@@ -10,7 +10,9 @@ public class UnitFactory {
     private Unit training;
 
     public UnitFactory() {
-        // super();
+        configString = "";
+        isTraining = false;
+        training = null;
     }
 
     public UnitFactory(String config) {

@@ -462,7 +462,7 @@ public class GloriaRomanusController{
               }
               else if (features.size() == 1){
                 // note maybe best to track whether selected...
-                Feature f = features.get(0);
+                Feature f = features.get(1);
                 String provinceName = (String)f.getAttributes().get("name");
                 Province province = deserializeProvince(provinceName);
 
