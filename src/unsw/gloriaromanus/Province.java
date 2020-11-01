@@ -6,10 +6,9 @@ public class Province {
     private static final int MAX_FAC = 2;
 
     private String name;
-    private String faction;
+    private Player player;
     private ArrayList<Unit> units;
-    // the below armySize variable will be deleted when units list is implemented
-    private int armySize;
+    private int initialArmySize;
     private int wealth;
     private UnitFactory[] factories;
 
@@ -17,12 +16,12 @@ public class Province {
         //super();
     }
 
-    public Province(String name, String faction, String unitConfig) {
+    public Province(String name, Player player, String unitConfig) {
         generateFactories(unitConfig);
         this.name = name;
-        this.faction = faction;
+        this.player = player;
         this.units = new ArrayList<Unit>();
-        this.armySize = 0;
+        this.initialArmySize = 0;
         this.wealth = 0;
     }
 
@@ -33,7 +32,6 @@ public class Province {
                 units.remove(u);
             }
         }
-        
     }
 
     public void insertUnit(Unit u) {
@@ -51,8 +49,10 @@ public class Province {
 
     public boolean trainUnit(String unitType, int numTroops) {
         for (UnitFactory fac : factories) {
-            if (!fac.isTraining) {
+            int price = fac.getPrice(unitType, numTroops);
+            if (!fac.isTraining && player.getGold() >= price) {
                 fac.addToTraining(unitType, numTroops);
+                player.minusGold(price);
                 return true;
             }
         }
@@ -61,17 +61,16 @@ public class Province {
 
     public int getArmyStrength() {
         // the sum of number of soldiers in unit x attack x defense for all units in the army
-
-        // the below code will be used when units list is implemented
-        /*int totalAttack = 0;
-        int totalDefense = 0;
-        for (Unit u : units) {
-            totalAttack += u.getAttack();
-            totalDefense += u.getDefense();
-        }*/
-        
-        // We initially assume that a unit has 1 attack and 1 defense
-        return (armySize * armySize * armySize);
+        // We initially assume that a unit that has been initially recruited on the province has 1 attack and 1 defense
+        int totalAttack = initialArmySize;
+        int totalDefense = initialArmySize;
+        if (units != null) {
+            for (Unit u : units) {
+                totalAttack += u.getTotalAttack();
+                totalDefense += u.getTotalDefense();
+            }
+        }
+        return (this.getArmySize() * totalAttack * totalDefense);
     }
 
     private void generateFactories(String unitConfig) {
@@ -86,11 +85,22 @@ public class Province {
     }
 
     public int getArmySize() {
-        return armySize;
+        return initialArmySize + getUnitsTroopSize();
+    }
+
+    public int getUnitsTroopSize() {
+        int size = 0;
+        if (units != null) {
+            for (Unit u : units) {
+                size += u.getNumTroops();
+            }
+        }
+        return size;
     }
 
     public void setArmySize(int size) {
-        this.armySize = size;
+        // We assume initial armies are killed off first for the basic battle resolver
+        this.initialArmySize = size - getUnitsTroopSize();
     }
 
     public int getWealth() {
@@ -98,13 +108,20 @@ public class Province {
     }
 
     public String getFaction() {
-        return faction;
+        return player.getFaction();
     }
 
     public void setFaction(String faction) {
-        this.faction = faction;
+        if(player != null) { player.setFaction(faction); }
     }
 
+    public ArrayList<Unit> getUnits() {
+        return units;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
     /*public JSONObject getJSONObject() throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();
 

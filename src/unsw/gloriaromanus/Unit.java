@@ -25,6 +25,7 @@ public class Unit {
     private String range; // range of the unit
     private String type;
     private String ability;
+    private int movementPoints;
     private int turnsToProduce;
 
     /*public Unit(String unitType, int numTroops2, String config) throws IOException {
@@ -154,6 +155,14 @@ public class Unit {
         this.ability = ability;
     }
 
+    public int getMovementPoints() {
+        return movementPoints;
+    }
+
+    public void setMovementPoints(int movementPoints) {
+        this.movementPoints = movementPoints;
+    }
+
     public int getTurnsToProduce() {
         return turnsToProduce;
     }
@@ -182,6 +191,13 @@ public class Unit {
      */
 
     public int getTotalDefense() {
-        return defenseSkill + shieldDefense;
+        // TODO: Marcus, can you work on these two? I'm not sure what to include for total defense and total attack alongside with some soldier
+        // abilities having buffs to these values. Thanks :--)
+        return 42;
+    }
+
+    public int getTotalAttack() {
+        // TODO: see above
+        return 42;
     }
 }

@@ -9,6 +9,7 @@ public class UnitFactory {
 
     public UnitFactory(String configString) {
         config = new JSONObject(configString);
+        isTraining = false;
     }
 
     public void addToTraining(String unitType, int numTroops) {
@@ -53,5 +54,10 @@ public class UnitFactory {
 	public void removeTraining() {
         isTraining = false;
         training = null;
-	}
+    }
+    
+    public int getPrice(String unitType, int numTroops) {
+        JSONObject unitStats = config.getJSONObject(unitType);
+        return unitStats.getInt("price") * numTroops;
+    }
 }
