@@ -144,7 +144,61 @@ public class GloriaRomanusController{
 
   @FXML
   public void clickedInvadeButton(ActionEvent e) throws IOException {
-    if (currentlySelectedHumanProvince != null && currentlySelectedEnemyProvince != null){
+    if (currentlySelectedHumanProvince != null && currentlySelectedEnemyProvince != null) {
+      Province humanProvince = deserializeProvince((String)currentlySelectedHumanProvince.getAttributes().get("name"));
+      Province enemyProvince = deserializeProvince((String)currentlySelectedEnemyProvince.getAttributes().get("name"));
+
+      for (Unit u : humanProvince.getUnits()) {
+        if (u.getMovementPoints() < MOVE_COST) {
+          printMessageToTerminal("Troops have insufficient movement points!");
+          return;
+        }
+      }
+
+      Ability.setProvinces(provinces);
+      Ability.process();
+      Ability.processHeroicCharge(humanProvince, enemyProvince);      
+
+      for (Unit human : humanProvince.getUnits()) {
+        // Each unit in the battle initiates a skirmish to another unit in the enemy team (randomly chosen)
+        Random r = new Random();
+        Unit enemy = enemyProvince.getUnits().get(r.nextInt(enemyProvince.getUnits().size() - 1));
+        Skirmish s = new Skirmish(human, enemy);
+        // If both units are melee units, there is a 100% chance of a melee engagment.
+        if (human.getRange().equals("melee") && enemy.getRange().equals("melee")) {
+          s.start("melee");
+        } 
+        
+        // If both units are ranged units, there is a 100% chance of a ranged engagement.
+        else if (human.getRange().equals("ranged") && enemy.getRange().equals("ranged")) {
+          s.start("ranged");
+        }
+
+        // If they are both melee and ranged, the chances are calculated.
+        else {
+          // we check who's the melee and who's ranged
+          Unit meleeUnit = enemy;
+          Unit rangedUnit = human;
+          if (human.getRange().equals("melee")) {
+            meleeUnit = human;
+            rangedUnit = enemy;
+          } 
+
+          double meleeEngagementChance = findmeleeEngagementChance(meleeUnit.getSpeed(), rangedUnit.getSpeed());
+
+          if(r.nextDouble() <= meleeEngagementChance) {
+            s.start("melee");
+          } else {
+            s.start("ranged");
+          }
+        }
+      }
+
+    }
+
+    
+
+/*if (currentlySelectedHumanProvince != null && currentlySelectedEnemyProvince != null){
       Province humanProvince = deserializeProvince((String)currentlySelectedHumanProvince.getAttributes().get("name"));
       Province enemyProvince = deserializeProvince((String)currentlySelectedEnemyProvince.getAttributes().get("name"));
 
@@ -210,7 +264,7 @@ public class GloriaRomanusController{
         printMessageToTerminal("Provinces has no soldiers, cannot invade!");
       }
       
-    }
+    }*/
   }
 
   @FXML
@@ -272,6 +326,23 @@ public class GloriaRomanusController{
     Files.writeString(Paths.get("src/unsw/gloriaromanus/saves/campaignData.json"), content);
 
     printMessageToTerminal("Game is saved!");
+  }
+
+  private double findmeleeEngagementChance(int meleeSpeed, int rangedSpeed) {
+    // Base level is 50%
+    double chance = 0.5;
+
+    // melee engagement chance is increased by 10% x (speed of melee unit - speed of ranged unit)
+    chance += (0.1 * (meleeSpeed - rangedSpeed));
+
+    // Max percentage is 95% for both engagements
+    if (chance > 0.95) {
+      chance = 0.95;
+    } else if (chance < 0.05) {
+      chance = 0.05;
+    }
+
+    return chance;
   }
 
   private void losingArmyCasulties(Province province, double enemyWinningChance) {
