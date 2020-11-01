@@ -1,25 +1,28 @@
 package unsw.gloriaromanus;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
 import org.json.JSONObject;
 
 public class UnitFactory {
-    JSONObject config;
     Boolean isTraining;
-    Unit training;
+    private Unit training;
 
-    public UnitFactory(String configString) {
-        config = new JSONObject(configString);
+    public UnitFactory() {
         isTraining = false;
+        training = null;
     }
 
-    public void addToTraining(String unitType, int numTroops) {
+    public void addToTraining(String unitType, int numTroops) throws IOException {
         isTraining = true;
         training = newUnit(unitType, numTroops);
     }
 
-    public Unit newUnit(String unitType, int numTroops) {
+    public Unit newUnit(String unitType, int numTroops) throws IOException {
 
-        JSONObject unitStats = config.getJSONObject(unitType);
+        JSONObject unitStats = showUnitStats(unitType);
 
         Unit u = new Unit();
         u.setID();
@@ -27,16 +30,22 @@ public class UnitFactory {
         u.setMeleeAttack(unitStats.getInt("meleeAttack"));
         u.setRangedAttack(unitStats.optInt("rangedAttack"));
         u.setDefenseSkill(unitStats.getInt("defense"));
-        u.setArmour(unitStats.getInt("armour"));
-        u.setShieldDefense(unitStats.getInt("shield"));
+        u.setArmour(unitStats.optInt("armour"));
+        u.setShieldDefense(unitStats.optInt("shield"));
         u.setMorale(unitStats.getInt("morale"));
         u.setSpeed(unitStats.getInt("speed"));
         u.setRange(unitStats.getString("range"));
         u.setType(unitStats.getString("type"));
         u.setAbility(unitStats.getString("ability"));
-        u.setTurnsToProduce(unitStats.getInt("turnsToProduce"));
+        u.setTurnsToProduce(unitStats.optInt("turnsToProduce"));
 
         return u;
+    }
+
+    public JSONObject showUnitStats(String unitType) throws IOException {
+        String configString = Files.readString(Paths.get("src/unsw/gloriaromanus/unit_config.json"));
+        JSONObject config = new JSONObject(configString);
+        return config.getJSONObject(unitType);
     }
 
     public Unit nextTrainingTurn() {
@@ -56,8 +65,16 @@ public class UnitFactory {
         training = null;
     }
     
-    public int getPrice(String unitType, int numTroops) {
-        JSONObject unitStats = config.getJSONObject(unitType);
+    public int getPrice(String unitType, int numTroops) throws IOException {
+        JSONObject unitStats = showUnitStats(unitType);
         return unitStats.getInt("price") * numTroops;
+    }
+
+    public Boolean getIsTraining() {
+        return isTraining;
+    }
+
+    public Unit getTraining() {
+        return training;
     }
 }
