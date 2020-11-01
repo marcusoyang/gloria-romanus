@@ -257,7 +257,7 @@ public class GloriaRomanusController{
       // Adding the JSONObject to the JSONArray
       provinceList.put(joProvince);
     }
-    String content = provinceList.toString();
+    String content = provinceList.toString(2);
     Files.writeString(Paths.get("src/unsw/gloriaromanus/saves/provinceData.json"), content);
 
     JSONObject campaignData = new JSONObject();
@@ -268,7 +268,7 @@ public class GloriaRomanusController{
     // What year it is (How many turns have passed)
     campaignData.put("currentYear", currentYear);
     
-    content = campaignData.toString();
+    content = campaignData.toString(2);
     Files.writeString(Paths.get("src/unsw/gloriaromanus/saves/campaignData.json"), content);
 
     printMessageToTerminal("Game is saved!");
@@ -461,7 +461,7 @@ public class GloriaRomanusController{
               if (features.size() > 1){
                 printMessageToTerminal("Have more than 1 element - you might have clicked on boundary!");
               }
-              else if (features.size() == 0){
+              else if (features.size() == 1){
                 // note maybe best to track whether selected...
                 Feature f = features.get(0);
                 String provinceName = (String)f.getAttributes().get("name");
