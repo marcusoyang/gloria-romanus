@@ -13,10 +13,10 @@ public class Province {
 
     private String name;
     private Player player;
-    private ArrayList<Unit> units;
-    private int wealth;
     private ArrayList<UnitFactory> factories;
+    private ArrayList<Unit> units;
     private double taxRate;
+    private int wealth;
 
     public Province() {
         //super();
