@@ -251,6 +251,7 @@ public class GloriaRomanusController{
         // Skirmish should have finished. we check the status of our units.
         switch(s.getHumanStatus()) {
           case "defeat":
+            printMessageToTerminal("defeat");
             // Defeated. We remove this unit from our armies list.
             armies.remove(human);
             // We also check that we still have other units to continue the battle.
@@ -260,11 +261,13 @@ public class GloriaRomanusController{
             break;
 
           case "routed":
+            printMessageToTerminal("routed");
             // We have successfully routed and we will go back to our province
             armies.remove(human);
             // humanProvince.getUnits().add(remove);
             break;
           case "draw":
+          printMessageToTerminal("draw");
             // We drew and we go back to our province
             armies.remove(human);
             // humanProvince.getUnits().add(remove)
@@ -273,6 +276,7 @@ public class GloriaRomanusController{
         // Now for the enemies
         switch(s.getEnemyStatus()) {
           case "defeat":
+          printMessageToTerminal("victory");
             // Defeated. We remove this unit from the enemy province list.
             enemyProvince.getUnits().remove(enemy);
             // We also check that we still have other units to continue the battle.
@@ -303,7 +307,8 @@ public class GloriaRomanusController{
 
         engagementIndex = s.getEngagementIndex();
       }
-
+      resetSelections();  // reset selections in UI
+      addAllPointGraphics(); // reset graphics
     }
 
     
