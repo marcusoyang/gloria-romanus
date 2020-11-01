@@ -317,6 +317,9 @@ public class GloriaRomanusController{
       ObjectMapper objectMapper = new ObjectMapper();
       String jsonString = jaProvince.getJSONObject(i).toString();
       Province newProvince =  objectMapper.readValue(jsonString, Province.class);
+      if (!players.contains(newProvince.getPlayer())) {
+        players.add(newProvince.getPlayer());
+      }
       provinces.add(newProvince);
     }
   }
