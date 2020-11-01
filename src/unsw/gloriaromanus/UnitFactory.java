@@ -9,6 +9,10 @@ public class UnitFactory {
     private Boolean isTraining;
     private Unit training;
 
+    public UnitFactory() {
+        // super();
+    }
+
     public UnitFactory(String config) {
         configString = config;
         isTraining = false;
