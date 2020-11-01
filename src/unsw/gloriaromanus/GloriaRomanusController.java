@@ -44,11 +44,9 @@ import com.esri.arcgisruntime.symbology.TextSymbol.VerticalAlignment;
 import com.esri.arcgisruntime.data.Feature;
 
 import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.ObjectWriter;
-import com.fasterxml.jackson.databind.SerializationFeature;
+
 
 import org.geojson.FeatureCollection;
 import org.geojson.LngLatAlt;
@@ -259,21 +257,21 @@ public class GloriaRomanusController{
       // Adding the JSONObject to the JSONArray
       provinceList.put(joProvince);
     }
-    String content = provinceList.toString(4);
+    String content = provinceList.toString();
     Files.writeString(Paths.get("src/unsw/gloriaromanus/saves/provinceData.json"), content);
 
     JSONObject campaignData = new JSONObject();
     // The saved status
-    campaignData.put("status", "imkeepitunsaved");
+    campaignData.put("status", "saved");
     // Who's turn it is
     campaignData.put("currentPlayerID", currentPlayerID);
     // What year it is (How many turns have passed)
     campaignData.put("currentYear", currentYear);
     
-    content = campaignData.toString(4);
+    content = campaignData.toString();
     Files.writeString(Paths.get("src/unsw/gloriaromanus/saves/campaignData.json"), content);
 
-    printMessageToTerminal("Game has been saved!");
+    printMessageToTerminal("Game is saved!");
   }
 
   private void losingArmyCasulties(Province province, double enemyWinningChance) {
@@ -465,7 +463,7 @@ public class GloriaRomanusController{
               }
               else if (features.size() == 1){
                 // note maybe best to track whether selected...
-                Feature f = features.get(1);
+                Feature f = features.get(0);
                 String provinceName = (String)f.getAttributes().get("name");
                 Province province = deserializeProvince(provinceName);
 
