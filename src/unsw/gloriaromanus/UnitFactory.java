@@ -1,16 +1,16 @@
 package unsw.gloriaromanus;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 
 import org.json.JSONObject;
 
 public class UnitFactory {
-    Boolean isTraining;
+    private String configString;
+    private Boolean isTraining;
     private Unit training;
 
-    public UnitFactory() {
+    public UnitFactory(String config) {
+        configString = config;
         isTraining = false;
         training = null;
     }
@@ -22,8 +22,8 @@ public class UnitFactory {
 
     public Unit newUnit(String unitType, int numTroops) throws IOException {
 
-        JSONObject unitStats = showUnitStats(unitType);
-
+        JSONObject unitStats = getUnitStats(unitType);
+        
         Unit u = new Unit();
         u.setID();
         u.setNumTroops(numTroops);
@@ -42,8 +42,8 @@ public class UnitFactory {
         return u;
     }
 
-    public JSONObject showUnitStats(String unitType) throws IOException {
-        String configString = Files.readString(Paths.get("src/unsw/gloriaromanus/unit_config.json"));
+    public JSONObject getUnitStats(String unitType) throws IOException {
+        // String configString = Files.readString(Paths.get("src/unsw/gloriaromanus/unit_config.json"));
         JSONObject config = new JSONObject(configString);
         return config.getJSONObject(unitType);
     }
@@ -66,7 +66,7 @@ public class UnitFactory {
     }
     
     public int getCost(String unitType, int numTroops) throws IOException {
-        JSONObject unitStats = showUnitStats(unitType);
+        JSONObject unitStats = getUnitStats(unitType);
         return unitStats.getInt("cost") * numTroops;
     }
 
@@ -76,5 +76,13 @@ public class UnitFactory {
 
     public Unit getTraining() {
         return training;
+    }
+
+    public String getConfigString() {
+        return configString;
+    }
+
+    public void setConfigString(String configString) {
+        this.configString = configString;
     }
 }

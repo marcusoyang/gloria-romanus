@@ -1,1 +1,5 @@
-{"currentPlayerID":0,"currentYear":0,"status":"saved"}
+{
+    "currentPlayerID": 0,
+    "currentYear": 0,
+    "status": "imkeepitunsaved"
+}

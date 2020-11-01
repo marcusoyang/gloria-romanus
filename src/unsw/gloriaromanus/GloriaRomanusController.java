@@ -44,9 +44,11 @@ import com.esri.arcgisruntime.symbology.TextSymbol.VerticalAlignment;
 import com.esri.arcgisruntime.data.Feature;
 
 import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
+import com.fasterxml.jackson.databind.ObjectWriter;
+import com.fasterxml.jackson.databind.SerializationFeature;
 
 import org.geojson.FeatureCollection;
 import org.geojson.LngLatAlt;
@@ -257,21 +259,21 @@ public class GloriaRomanusController{
       // Adding the JSONObject to the JSONArray
       provinceList.put(joProvince);
     }
-    String content = provinceList.toString();
+    String content = provinceList.toString(4);
     Files.writeString(Paths.get("src/unsw/gloriaromanus/saves/provinceData.json"), content);
 
     JSONObject campaignData = new JSONObject();
     // The saved status
-    campaignData.put("status", "saved");
+    campaignData.put("status", "imkeepitunsaved");
     // Who's turn it is
     campaignData.put("currentPlayerID", currentPlayerID);
     // What year it is (How many turns have passed)
     campaignData.put("currentYear", currentYear);
     
-    content = campaignData.toString();
+    content = campaignData.toString(4);
     Files.writeString(Paths.get("src/unsw/gloriaromanus/saves/campaignData.json"), content);
 
-    printMessageToTerminal("Game is saved!");
+    printMessageToTerminal("Game has been saved!");
   }
 
   private void losingArmyCasulties(Province province, double enemyWinningChance) {

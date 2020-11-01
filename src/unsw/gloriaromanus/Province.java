@@ -65,7 +65,7 @@ public class Province {
     public boolean trainUnit(String unitType, int numTroops) throws IOException {
         for (UnitFactory fac : factories) {
             int price = fac.getCost(unitType, numTroops);
-            if (!fac.isTraining && player.getGold() >= price) {
+            if (!fac.getIsTraining() && player.getGold() >= price) {
                 fac.addToTraining(unitType, numTroops);
                 player.minusGold(price);
                 return true;
@@ -91,7 +91,7 @@ public class Province {
     private void generateFactories(String unitConfig) {
         factories = new ArrayList<UnitFactory>();
         for (int i = 0; i < MAX_FAC; i++) {
-            UnitFactory factory = new UnitFactory();
+            UnitFactory factory = new UnitFactory(unitConfig);
             factories.add(factory);
         }
     }
