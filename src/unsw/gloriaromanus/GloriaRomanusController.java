@@ -66,7 +66,7 @@ public class GloriaRomanusController{
 
   private ArcGISMap map;
 
-  private ArrayList<String> playerIDToFaction;
+  private ArrayList<Player> players;
 
   private int currentPlayerID;
 
@@ -86,13 +86,12 @@ public class GloriaRomanusController{
     readConfig();
     provinces = new ArrayList<Province>();
     
-    linkProvincesToFactions();
+    initializeOwnership();
     Random r = new Random();
     for (Province p: provinces) {
       p.setArmySize(r.nextInt(500));
     }
 
-    initializePlayerToFaction();
     currentPlayerID = 0;
     currentYear = 0;
 
@@ -168,7 +167,7 @@ public class GloriaRomanusController{
             // Assumption: the remaining troops of the enemy province gets converted to armies of the invading faction.
             changeArmySize(enemyProvince, numTroopsToTransfer);
             changeArmySize(humanProvince, -numTroopsToTransfer);
-            enemyProvince.setFaction(playerIDToFaction.get(currentPlayerID));
+            enemyProvince.setFaction(players.get(currentPlayerID).getFaction());
             printMessageToTerminal("Won battle!");
           }
           else{
@@ -197,7 +196,7 @@ public class GloriaRomanusController{
   public void clickedEndTurnButton() throws IOException {
     printMessageToTerminal("player" + currentPlayerID + " ended their turn.");
     currentPlayerID++;
-    if (currentPlayerID == playerIDToFaction.size()) {
+    if (currentPlayerID == players.size()) {
       currentPlayerID = 0;
       currentYear++;
     }
@@ -243,15 +242,6 @@ public class GloriaRomanusController{
       }
     }
     return null;
-  }
-
-  private void initializePlayerToFaction() throws IOException{
-    String content = Files.readString(Paths.get("src/unsw/gloriaromanus/initial_province_ownership.json"));
-    JSONObject ownership = new JSONObject(content);
-    playerIDToFaction = new ArrayList<String>();
-    for (String faction : ownership.keySet()) {
-      playerIDToFaction.add(faction);
-    }
   }
 
   /**
@@ -391,7 +381,7 @@ public class GloriaRomanusController{
                 String provinceName = (String)f.getAttributes().get("name");
                 Province province = deserializeProvince(provinceName);
 
-                if (province.getFaction().equals(playerIDToFaction.get(currentPlayerID))){
+                if (province.getFaction().equals(players.get(currentPlayerID).getFaction())){
                   // province owned by human
                   if (currentlySelectedHumanProvince != null){
                     featureLayer.unselectFeature(currentlySelectedHumanProvince);
@@ -423,14 +413,17 @@ public class GloriaRomanusController{
     return flp;
   }
 
-  private void linkProvincesToFactions() throws IOException {
+  private void initializeOwnership() throws IOException {
     String content = Files.readString(Paths.get("src/unsw/gloriaromanus/initial_province_ownership.json"));
     JSONObject ownership = new JSONObject(content);
+    players = new ArrayList<Player>();
     for (String faction : ownership.keySet()) {
+      Player p = new Player(faction);
+      players.add(p);
       JSONArray ja = ownership.getJSONArray(faction);
       for (int i = 0; i < ja.length(); i++) {
         String province = ja.getString(i);
-        provinces.add(new Province(province, faction, unitConfig));
+        provinces.add(new Province(province, p, unitConfig));
       }
     }
   }
@@ -440,7 +433,7 @@ public class GloriaRomanusController{
 
     String content = Files.readString(Paths.get("src/unsw/gloriaromanus/initial_province_ownership.json"));
     JSONObject ownership = new JSONObject(content);
-    return ArrayUtil.convert(ownership.getJSONArray(playerIDToFaction.get(currentPlayerID)));
+    return ArrayUtil.convert(ownership.getJSONArray(players.get(currentPlayerID).getFaction()));
   }
 
   /**
