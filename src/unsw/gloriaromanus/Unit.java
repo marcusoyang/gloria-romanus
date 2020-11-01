@@ -162,6 +162,10 @@ public class Unit {
         return movementPoints;
     }
 
+    public void setMovementPoints(int movementPoints) {
+        this.movementPoints = movementPoints;
+    }
+
     public void resetMovementPoint() {
         switch (type) {
         case "heavy infantry":

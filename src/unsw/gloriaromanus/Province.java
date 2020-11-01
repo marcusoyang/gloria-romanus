@@ -125,5 +125,11 @@ public class Province {
         for (Unit u : units) {
             u.resetMovementPoint();
         }
+    }
+    
+    public void setMovePoints(int mp) {
+        for (Unit u : units) {
+            u.setMovementPoints(mp);
+        }
 	}
 }
