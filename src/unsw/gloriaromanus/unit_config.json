@@ -119,5 +119,14 @@
         "ability": "",
         "turnsToProduce": 1,
         "price" : 40
+    },
+    "normal": {
+        "meleeAttack": 1,
+        "defense" : 1,
+        "morale" : 1,
+        "speed" : 1,
+        "range" : "melee",
+        "type" : "heavy infantry",
+        "ability" : ""
     }
 }
