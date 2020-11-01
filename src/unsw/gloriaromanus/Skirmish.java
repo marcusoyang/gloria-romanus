@@ -11,69 +11,69 @@ public class Skirmish {
 
     private Unit human;
     private Unit enemy;
-    
-    private Unit winner;
-    private Unit defeated;
-    private Unit broken;
+    private int engagementIndex;
 
-    public Skirmish(Unit human, Unit enemy) {
+    private Status humanStatus;
+    private Status enemyStatus;
+
+    public Skirmish(Unit human, Unit enemy, int engagementIndex) {
         engagements = new ArrayList<Engagement>();
         this.human = human;
         this.enemy = enemy;
-        this.winner = null;
-        this.defeated = null;
-        this.broken = null;
-    }
+        this.engagementIndex = engagementIndex;
 
-    public Boolean start(String range) {
+        this.humanStatus = new Status(human);
+        this.enemyStatus = new Status(enemy);
+    }
+    public void start(String range) {
         this.range = range;
         // A sequence of skirmishes continuously run until a whole army is eliminated or routed entirely
-        int i = 0;
-        while(i < MAX_ENG) {
+        while(engagementIndex < MAX_ENG) {
+            
             if(addEngagement(range)) {
                 break;
             }
-            i++;
+            engagementIndex++;
         }
-        if (i == MAX_ENG || (human == null && enemy == null)) {
-            // draw
-            return false;
+        if (engagementIndex >= MAX_ENG) {
+            humanStatus.setStatus("draw");
+            enemyStatus.setStatus("draw");
         }
-        return true;
     }
 
     public Boolean addEngagement(String range) {
         Engagement e = new Engagement(range, human, enemy, this);
         engagements.add(e);
         if (e.checkEnemyDefeat()) {
-            winner = human;
-            defeated = enemy;
+            humanStatus.setStatus("winner");
+            enemyStatus.setStatus("defeat");
             return true;
         } else if (e.checkHumanDefeat()) {
-            winner = enemy;
-            defeated = human;
+            enemyStatus.setStatus("winner");
+            humanStatus.setStatus("defeat");
             return true;
-        } else if (e.checkEnemyBreak()) {
-            broken = enemy;
-            return false;
-        } else if (e.checkHumanBreak()) {
-            broken = human;
-            return false;
-        } else if (enemy == null && human == null) {
-            // successful routing
-            return true;
-        }
+        }  
         return false;
     }
 
-    public Unit getBroken() {
-        return broken;
+    public int getEngagementIndex() {
+        return engagementIndex;
     }
-}
 
-/*
+    public void setStatus(Unit u, String status) {
+        if (u.equals(human)) {
+            humanStatus.setStatus(status);
+        } else {
+            enemyStatus.setStatus(status);
+        }
+    }
 
-If all units from the opposing team have routed or are defeated, then the battle is a victory
-If the attacking army in an invasion is victorious, the province is conquered by the invaders
+    public String getHumanStatus() {
+        return humanStatus.getStatus();
+    }
 
-If a battle is a draw, the invading army in a draw should return to the province it invaded from */
+    public String getEnemyStatus() {
+        return enemyStatus.getStatus();
+    }
+
+ }

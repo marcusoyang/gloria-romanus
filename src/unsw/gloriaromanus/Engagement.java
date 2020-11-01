@@ -14,11 +14,15 @@ public class Engagement {
     private double humanBreakChance;
     private double enemyBreakChance;
 
-    public Engagement(String range, Unit human, Unit enemy, Skirmish curr) {
+    private Skirmish s;
+
+    public Engagement(String range, Unit human, Unit enemy, Skirmish skirmish) {
         this.range = range;
         
         this.human = human;
         this.enemy = enemy;
+
+        this.s = skirmish;
         
         calculateCasulty();
         breakAttempt();
@@ -46,10 +50,15 @@ public class Engagement {
                 } 
                 break;
             case "melee":
-                // Units in a melee engagement inflict casualties against the opposing unit equal to (size of enemy unit at start of engagement x 10%) x (Effective melee attack damage of unit/(effective armor of enemy unit + effective shield of enemy unit + effective defense skill of enemy unit)) x (N+1 where N ~ N(0,1)
-                Double enemyCasulty = (enemy.getNumTroops() * 0.1) * (human.getMeleeAttack() / enemy.getArmour() + enemy.getShieldDefense()+ enemy.getDefenseSkill()) * (N.nextGaussian() + 1);
+                // Units in a melee engagement inflict casualties as below.
+                double denominator = enemy.getArmour() + enemy.getShieldDefense()+ enemy.getDefenseSkill();
+                if (denominator == 0) { denominator = 1; }
+                Double enemyCasulty = (enemy.getNumTroops() * 0.1) * (human.getMeleeAttack() / denominator) * (N.nextGaussian() + 1);
                 this.enemyCasulty = enemyCasulty.intValue();
-                Double humanCasulty = (human.getNumTroops() * 0.1) * (enemy.getMeleeAttack() / human.getArmour() + human.getShieldDefense()+ human.getDefenseSkill()) * (N.nextGaussian() + 1);
+                
+                denominator = human.getArmour() + human.getShieldDefense()+ human.getDefenseSkill();
+                if (denominator == 0) { denominator = 1; }
+                Double humanCasulty = (human.getNumTroops() * 0.1) * (enemy.getMeleeAttack() / denominator) * (N.nextGaussian() + 1);
                 this.humanCasulty = humanCasulty.intValue();
         }
     }
@@ -58,9 +67,9 @@ public class Engagement {
         // The base-level probability of a unit "breaking" following an engagement is calculated as: 100% - (morale x 10%)
         humanBreakChance = 1 - (human.getMorale() * 0.1);
         enemyBreakChance = 1 - (enemy.getMorale() * 0.1);
-        // The chance of breaking is increased by (a scalar addition): 
-        humanBreakChance += (humanCasulty / human.getNumTroops()) / (enemyCasulty / enemy.getNumTroops()) * 0.1;
-        enemyBreakChance += (enemyCasulty / enemy.getNumTroops()) / (humanCasulty / human.getNumTroops()) * 0.1;
+        // The chance of breaking is increased by (a scalar addition):
+        humanBreakChance += (humanCasulty / Double.valueOf(human.getNumTroops())) / (enemyCasulty / Double.valueOf(enemy.getNumTroops())) * 0.1;
+        enemyBreakChance += (enemyCasulty / Double.valueOf(enemy.getNumTroops())) / (humanCasulty / Double.valueOf(human.getNumTroops())) * 0.1;
 
         //the minimum chance of breaking is 5%, and the maximum chance of breaking is 100%
         if (humanBreakChance < 0.05) {
@@ -75,27 +84,62 @@ public class Engagement {
 
     }
 
+    public Boolean attemptRoute(Unit flee, Unit enemy) {
+        // Units repeatedly attempt to flee the battle until it is successful or destroyed
+        // There is a calculated chance of routing which depends on the unit's speeds
+        double chance = 0.5 + (0.1 * (flee.getSpeed() - enemy.getSpeed()));
+
+        // Minium chance is 10% and the maximum chance is 100%
+        if (chance < 0.1) {
+            chance = 0.1;
+        } else if (chance > 1) {
+            chance = 1;
+        }
+
+        // A unit that successfully routes from the battle as a losing team will return to the province it attacked from
+        Random r = new Random();
+        if (r.nextDouble() <= chance) {
+            s.setStatus(flee, "routed");
+            s.setStatus(enemy, "winner");
+            return true;
+        }
+        return false;
+    }
+
+
     public Boolean checkHumanDefeat() {
+        // if the enemy has been broken, they do not do damage to human unit.
+        // Instead, they'll try to route.
+        if (s.getEnemyStatus().equals("broken")) {
+            return attemptRoute(enemy, human);
+        }
+
         return human.checkDefeated(this.humanCasulty);
     }
 
     public Boolean checkEnemyDefeat() {
+        if (s.getHumanStatus().equals("broken")) {
+            return attemptRoute(human, enemy);
+        }
+        
         return enemy.checkDefeated(this.enemyCasulty);
     }
 
-    public Boolean checkHumanBreak() {
+    public Boolean checkBreak() {
         Random r = new Random();
-        if (r.nextDouble() <= humanBreakChance) {
+        if (r.nextDouble() <= this.humanBreakChance) {
+            s.setStatus(human, "broken");
+        }
+
+        if (r.nextDouble() <= this.enemyBreakChance) {
+            s.setStatus(enemy, "broken");
+        }
+        
+        if (s.getHumanStatus().equals("broken") && s.getEnemyStatus().equals("broken")) {
+            s.setStatus(human, "routed");
+            s.setStatus(enemy, "routed");
             return true;
-        } return false;
+        }
+        return false;
     }
-
-    public Boolean checkEnemyBreak() {
-        Random r = new Random();
-        if (r.nextDouble() <= enemyBreakChance) {
-            return true;
-        } return false;
-    }
-
-
 }
