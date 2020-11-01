@@ -9,7 +9,8 @@
         "range": "melee",
         "type": "heavy infantry",
         "ability": "Legionary Eagle",
-        "turnsToProduce": 1
+        "turnsToProduce": 1,
+        "price" : 10
     },
     "berserker": {
         "meleeAttack": 10,
@@ -21,7 +22,8 @@
         "range": "melee",
         "type": "heavy infantry",
         "ability": "Berserker Rage",
-        "turnsToProduce": 1
+        "turnsToProduce": 1,
+        "price" : 10
     },
     "pikemen": {
         "meleeAttack": 10,
@@ -33,7 +35,8 @@
         "range": "melee",
         "type": "spearmen",
         "ability": "Phalanx",
-        "turnsToProduce": 1
+        "turnsToProduce": 1,
+        "price" : 15
     },
     "hoplite": {
         "meleeAttack": 10,
@@ -46,7 +49,8 @@
         "range": "ranged",
         "type": "heavy infantry",
         "ability": "Phalanx",
-        "turnsToProduce": 1
+        "turnsToProduce": 1,
+        "price" : 15
     },
     "javelin-skirmisher": {
         "meleeAttack": 8,
@@ -59,7 +63,8 @@
         "range": "ranged",
         "type": "missile infantry",
         "ability": "Skirmisher Anti-Armour",
-        "turnsToProduce": 1
+        "turnsToProduce": 1,
+        "price" : 15
     },
     "elephant": {
         "meleeAttack": 10,
@@ -71,7 +76,8 @@
         "range": "melee",
         "type": "cavalry",
         "ability": "Elephant Amok",
-        "turnsToProduce": 2
+        "turnsToProduce": 2,
+        "price" : 50
     },
     "horse_archer": {
         "meleeAttack": 4,
@@ -84,7 +90,8 @@
         "range": "ranged",
         "type": "horse archer",
         "ability": "Cantabrian Circle",
-        "turnsToProduce": 1
+        "turnsToProduce": 1,
+        "price" : 25
     },
     "druid": {
         "meleeAttack": 4,
@@ -96,7 +103,8 @@
         "range": "melee",
         "type": "infantry",
         "ability": "Druidic Fervour",
-        "turnsToProduce": 1
+        "turnsToProduce": 1,
+        "price" : 15
     },
     "catapult": {
         "meleeAttack": 0,
@@ -109,6 +117,7 @@
         "range": "ranged",
         "type": "artillery",
         "ability": "",
-        "turnsToProduce": 1
+        "turnsToProduce": 1,
+        "price" : 40
     }
 }
