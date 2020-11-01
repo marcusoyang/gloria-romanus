@@ -151,6 +151,9 @@ public class GloriaRomanusController{
         }
       }
 
+      ability.setProvinces(provinces);
+      ability.process();
+
       if (humanProvince.getArmySize() > 0) {
         if (confirmIfProvincesConnected(humanProvince.getName(), enemyProvince.getName())){
           // Each army has a uniformly random chance of winning calculated as: army strength/(army strength + enemy army strength)

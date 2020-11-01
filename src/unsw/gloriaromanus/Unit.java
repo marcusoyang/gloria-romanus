@@ -23,7 +23,7 @@ public class Unit {
     private int defenseSkill; // skill to defend in battle. Does not protect from arrows!
     private int armour; // armour defense
     private int shieldDefense; // a shield
-    private int morale; // resistance to fleeing
+    private double morale; // resistance to fleeing
     private int speed; // ability to disengage from disadvantageous battle
     private String range; // range of the unit
     private String type;
@@ -118,13 +118,21 @@ public class Unit {
         this.shieldDefense = shieldDefense;
     }
 
-    public int getMorale() {
+    public double getMorale() {
         return morale;
     }
 
-    public void setMorale(int morale) {
+    public void setMorale(double morale) {
         this.morale = morale;
     }
+
+    public void addMorale(double d) {
+        this.morale += d;
+    }
+    
+	public void minusMorale(double d) {
+        this.morale -= d;
+	}
 
     public int getSpeed() {
         return speed;
