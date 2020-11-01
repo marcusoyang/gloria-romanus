@@ -35,6 +35,10 @@ public class Player {
         this.gold -= cost;
     }
 
+    public void plusGold(int cost) {
+        this.gold += cost;
+    }
+
     public int getID() {
         return id;
     }

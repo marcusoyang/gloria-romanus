@@ -98,7 +98,7 @@ public class GloriaRomanusController{
       initializeOwnership();
       Random r = new Random();
       for (Province p: provinces) {
-        p.setArmySize(r.nextInt(500));
+        p.setInitialArmy(r.nextInt(500));
       }
     }
 
@@ -134,7 +134,7 @@ public class GloriaRomanusController{
     return false;
   }
 
-  public boolean unitTrainRequest(Province p, String unitType, int numTroops) {   
+  public boolean unitTrainRequest(Province p, String unitType, int numTroops) throws IOException {   
     boolean requestSuccess = p.trainUnit(unitType, numTroops);
     if (!requestSuccess) {
       printMessageToTerminal("Province has no open training slots!");
@@ -159,9 +159,9 @@ public class GloriaRomanusController{
         }
       }
 
-      ability.setProvinces(provinces);
-      ability.process();
-      ability.processHeroicCharge(humanProvince, enemyProvince);
+      Ability.setProvinces(provinces);
+      Ability.process();
+      Ability.processHeroicCharge(humanProvince, enemyProvince);
 
       if (humanProvince.getArmySize() > 0) {
         if (confirmIfProvincesConnected(humanProvince.getName(), enemyProvince.getName())){
@@ -222,6 +222,7 @@ public class GloriaRomanusController{
       currentYear++;
     }
     resetMovementPoints();
+    adjustProvincesTownWealth();
     printMessageToTerminal("It is player" + currentPlayerID + "'s turn.");
 
   }
@@ -232,16 +233,28 @@ public class GloriaRomanusController{
     }
   }
 
+  private void adjustProvincesTownWealth() {
+    for (Province p : provinces) {
+      p.adjustTownWealth();
+    }
+  }
+
   @FXML
   public void clickedSaveButton(ActionEvent e) throws IOException {
     // Things to save: data in the province class
     JSONArray provinceList = new JSONArray();
     for (Province p : provinces) {
+      // Using a mapper to parse a java instance to a json
       ObjectMapper mapper = new ObjectMapper();
       String jsonString = mapper.writeValueAsString(p);
       JSONObject joProvince = new JSONObject(jsonString);
-      joProvince.remove("unitsTroopSize");
+
+      // remove unneeded data
+      joProvince.remove("armySize");
+      joProvince.remove("faction");
       joProvince.remove("armyStrength");
+
+      // Adding the JSONObject to the JSONArray
       provinceList.put(joProvince);
     }
     String content = provinceList.toString();
@@ -257,17 +270,6 @@ public class GloriaRomanusController{
     
     content = campaignData.toString();
     Files.writeString(Paths.get("src/unsw/gloriaromanus/saves/campaignData.json"), content);
-
-    // And data in the player class
-    JSONArray playerList = new JSONArray();
-    for (Player p : players) {
-      ObjectMapper mapper = new ObjectMapper();
-      String jsonString = mapper.writeValueAsString(p);
-      JSONObject joPlayer = new JSONObject(jsonString);
-      playerList.put(joPlayer);
-    }
-    content = playerList.toString();
-    Files.writeString(Paths.get("src/unsw/gloriaromanus/saves/playerData.json"), content);
 
     printMessageToTerminal("Game is saved!");
   }
@@ -307,23 +309,12 @@ public class GloriaRomanusController{
     currentPlayerID = jo.getInt("currentPlayerID");
     currentYear = jo.getInt("currentYear");
 
-    content = Files.readString(Paths.get("src/unsw/gloriaromanus/saves/playerData.json"));
-    JSONArray jaPlayer = new JSONArray(content);
-    for (int i = 0; i < jaPlayer.length(); i++) {
-      ObjectMapper objectMapper = new ObjectMapper();
-      String jsonString = jaPlayer.getJSONObject(i).toString();
-      Player newPlayer = objectMapper.readValue(jsonString, Player.class);
-      players.add(newPlayer);
-    }
-
     content = Files.readString(Paths.get("src/unsw/gloriaromanus/saves/provinceData.json"));
     JSONArray jaProvince = new JSONArray(content);
     for (int i = 0; i < jaProvince.length(); i++) {
       ObjectMapper objectMapper = new ObjectMapper();
-      JSONObject joProvince = jaProvince.getJSONObject(i);
-      String jsonString = joProvince.toString();
+      String jsonString = jaProvince.getJSONObject(i).toString();
       Province newProvince =  objectMapper.readValue(jsonString, Province.class);
-      newProvince.setPlayer(findPlayer(joProvince.getString("faction")));
       provinces.add(newProvince);
     }
   }
