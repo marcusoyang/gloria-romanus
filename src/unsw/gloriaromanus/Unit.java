@@ -86,6 +86,10 @@ public class Unit {
         this.meleeAttack = meleeAttack;
     }
 
+    public void addMeleeAttack(int i) {
+        this.meleeAttack += i;
+    }
+
     public int getRangedAttack() {
         return rangedAttack;
     }

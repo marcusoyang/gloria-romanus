@@ -153,6 +153,7 @@ public class GloriaRomanusController{
 
       ability.setProvinces(provinces);
       ability.process();
+      ability.processHeroicCharge(humanProvince, enemyProvince);
 
       if (humanProvince.getArmySize() > 0) {
         if (confirmIfProvincesConnected(humanProvince.getName(), enemyProvince.getName())){
