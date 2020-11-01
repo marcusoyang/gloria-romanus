@@ -64,7 +64,7 @@ public class Province {
 
     public boolean trainUnit(String unitType, int numTroops) throws IOException {
         for (UnitFactory fac : factories) {
-            int price = fac.getPrice(unitType, numTroops);
+            int price = fac.getCost(unitType, numTroops);
             if (!fac.isTraining && player.getGold() >= price) {
                 fac.addToTraining(unitType, numTroops);
                 player.minusGold(price);

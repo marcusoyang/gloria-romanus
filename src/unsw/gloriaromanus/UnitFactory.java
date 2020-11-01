@@ -65,9 +65,9 @@ public class UnitFactory {
         training = null;
     }
     
-    public int getPrice(String unitType, int numTroops) throws IOException {
+    public int getCost(String unitType, int numTroops) throws IOException {
         JSONObject unitStats = showUnitStats(unitType);
-        return unitStats.getInt("price") * numTroops;
+        return unitStats.getInt("cost") * numTroops;
     }
 
     public Boolean getIsTraining() {
