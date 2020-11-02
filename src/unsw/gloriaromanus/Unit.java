@@ -223,7 +223,8 @@ public class Unit {
      * unitStats.toString());
      * 
      * FileWriter file = new FileWriter("src/unsw/gloriaromanus/testFile.json");
-     * file.write(unitStats.toString()); file.close(); }
+     * file.write(unitStats.toString());
+     * file.close(); }
      */
 
     public int calculateTotalAttack() {
@@ -232,5 +233,20 @@ public class Unit {
 
     public int calculateTotalDefense() {
         return defenseSkill + armour + shieldDefense;
+    }
+
+    public Boolean checkDefeated(int minusTroopSize) {
+        int remaining = numTroops - minusTroopSize;
+        if (remaining < 0) {
+            this.numTroops = 0;
+            return true;
+        }
+
+        this.numTroops = remaining;
+        return false;
+    }
+
+    public static void setCounter(int counter) {
+        Unit.counter = counter;
     }
 }

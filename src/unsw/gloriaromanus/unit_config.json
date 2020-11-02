@@ -10,7 +10,7 @@
         "type": "heavy infantry",
         "ability": "Legionary Eagle",
         "turnsToProduce": 1,
-        "price" : 10
+        "cost" : 10
     },
     "berserker": {
         "meleeAttack": 10,
@@ -23,7 +23,7 @@
         "type": "heavy infantry",
         "ability": "Berserker Rage",
         "turnsToProduce": 1,
-        "price" : 10
+        "cost" : 10
     },
     "pikemen": {
         "meleeAttack": 10,
@@ -36,7 +36,7 @@
         "type": "spearmen",
         "ability": "Phalanx",
         "turnsToProduce": 1,
-        "price" : 15
+        "cost" : 15
     },
     "hoplite": {
         "meleeAttack": 10,
@@ -50,7 +50,7 @@
         "type": "heavy infantry",
         "ability": "Phalanx",
         "turnsToProduce": 1,
-        "price" : 15
+        "cost" : 15
     },
     "javelin-skirmisher": {
         "meleeAttack": 8,
@@ -64,7 +64,7 @@
         "type": "missile infantry",
         "ability": "Skirmisher Anti-Armour",
         "turnsToProduce": 1,
-        "price" : 15
+        "cost" : 15
     },
     "elephant": {
         "meleeAttack": 10,
@@ -77,7 +77,7 @@
         "type": "cavalry",
         "ability": "Elephant Amok",
         "turnsToProduce": 2,
-        "price" : 50
+        "cost" : 50
     },
     "horse_archer": {
         "meleeAttack": 4,
@@ -91,7 +91,7 @@
         "type": "horse archer",
         "ability": "Cantabrian Circle",
         "turnsToProduce": 1,
-        "price" : 25
+        "cost" : 25
     },
     "druid": {
         "meleeAttack": 4,
@@ -104,7 +104,7 @@
         "type": "infantry",
         "ability": "Druidic Fervour",
         "turnsToProduce": 1,
-        "price" : 15
+        "cost" : 15
     },
     "catapult": {
         "meleeAttack": 0,
@@ -118,12 +118,12 @@
         "type": "artillery",
         "ability": "",
         "turnsToProduce": 1,
-        "price" : 40
+        "cost" : 40
     },
     "normal": {
         "meleeAttack": 1,
         "defense" : 1,
-        "morale" : 1,
+        "morale" : 10,
         "speed" : 1,
         "range" : "melee",
         "type" : "heavy infantry",
