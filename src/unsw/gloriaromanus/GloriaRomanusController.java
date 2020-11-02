@@ -284,6 +284,7 @@ public class GloriaRomanusController{
             if (armies.size() == 0) {
               finishedBattle = LOST;
             }
+            humanProvince.setPlayer(enemyProvince.getPlayer());
             break;
 
           case "routed":
@@ -309,6 +310,8 @@ public class GloriaRomanusController{
             if (enemyProvince.getUnits().size() == 0) {
               finishedBattle = WON;
             }
+
+            enemyProvince.setPlayer(humanProvince.getPlayer());
             break;
 
           case "routed":
