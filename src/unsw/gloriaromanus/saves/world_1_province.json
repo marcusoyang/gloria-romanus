@@ -20,7 +20,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 155,
+      "numTroops": 410,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -33,8 +33,8 @@
     }],
     "player": {
       "gold": 100000,
-      "faction": "Amenians",
-      "id": 10
+      "faction": "Numidians",
+      "id": 6
     }
   },
   {
@@ -58,7 +58,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 423,
+      "numTroops": 293,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -71,8 +71,8 @@
     }],
     "player": {
       "gold": 100000,
-      "faction": "Pontus",
-      "id": 9
+      "faction": "Seleucid Empire",
+      "id": 8
     }
   },
   {
@@ -96,7 +96,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 150,
+      "numTroops": 437,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -109,8 +109,8 @@
     }],
     "player": {
       "gold": 100000,
-      "faction": "Parthians",
-      "id": 11
+      "faction": "Celtic Britons",
+      "id": 4
     }
   },
   {
@@ -134,7 +134,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 74,
+      "numTroops": 374,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -147,8 +147,8 @@
     }],
     "player": {
       "gold": 100000,
-      "faction": "Carthaginians",
-      "id": 2
+      "faction": "Greek City States",
+      "id": 13
     }
   },
   {
@@ -172,7 +172,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 442,
+      "numTroops": 8,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -185,8 +185,8 @@
     }],
     "player": {
       "gold": 100000,
-      "faction": "Pontus",
-      "id": 9
+      "faction": "Romans",
+      "id": 1
     }
   },
   {
@@ -210,7 +210,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 231,
+      "numTroops": 0,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -223,8 +223,8 @@
     }],
     "player": {
       "gold": 100000,
-      "faction": "Gauls",
-      "id": 3
+      "faction": "Romans",
+      "id": 1
     }
   },
   {
@@ -248,7 +248,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 232,
+      "numTroops": 101,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -261,8 +261,8 @@
     }],
     "player": {
       "gold": 100000,
-      "faction": "Egyptians",
-      "id": 7
+      "faction": "Macedonians",
+      "id": 14
     }
   },
   {
@@ -286,7 +286,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 166,
+      "numTroops": 234,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -299,8 +299,8 @@
     }],
     "player": {
       "gold": 100000,
-      "faction": "Egyptians",
-      "id": 7
+      "faction": "Numidians",
+      "id": 6
     }
   },
   {
@@ -324,7 +324,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 397,
+      "numTroops": 301,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -337,8 +337,8 @@
     }],
     "player": {
       "gold": 100000,
-      "faction": "Seleucid Empire",
-      "id": 8
+      "faction": "Carthaginians",
+      "id": 2
     }
   },
   {
@@ -362,7 +362,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 412,
+      "numTroops": 254,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -375,8 +375,8 @@
     }],
     "player": {
       "gold": 100000,
-      "faction": "Seleucid Empire",
-      "id": 8
+      "faction": "Germanics",
+      "id": 12
     }
   },
   {
@@ -395,26 +395,11 @@
         "training": null
       }
     ],
-    "units": [{
-      "shieldDefense": 0,
-      "range": "melee",
-      "rangedAttack": 0,
-      "type": "heavy infantry",
-      "numTroops": 435,
-      "speed": 1,
-      "armour": 0,
-      "turnsToProduce": 0,
-      "meleeAttack": 1,
-      "movementPoints": 4,
-      "id": 11,
-      "morale": 10,
-      "ability": "",
-      "defenseSkill": 1
-    }],
+    "units": [],
     "player": {
       "gold": 100000,
-      "faction": "Macedonians",
-      "id": 14
+      "faction": "Thracians",
+      "id": 15
     }
   },
   {
@@ -438,7 +423,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 84,
+      "numTroops": 178,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -451,8 +436,8 @@
     }],
     "player": {
       "gold": 100000,
-      "faction": "Thracians",
-      "id": 15
+      "faction": "Germanics",
+      "id": 12
     }
   },
   {
@@ -476,7 +461,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 476,
+      "numTroops": 91,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -489,8 +474,8 @@
     }],
     "player": {
       "gold": 100000,
-      "faction": "Amenians",
-      "id": 10
+      "faction": "Celtic Britons",
+      "id": 4
     }
   },
   {
@@ -514,7 +499,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 293,
+      "numTroops": 437,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -527,8 +512,8 @@
     }],
     "player": {
       "gold": 100000,
-      "faction": "Thracians",
-      "id": 15
+      "faction": "Numidians",
+      "id": 6
     }
   },
   {
@@ -552,7 +537,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 211,
+      "numTroops": 348,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -565,8 +550,8 @@
     }],
     "player": {
       "gold": 100000,
-      "faction": "Gauls",
-      "id": 3
+      "faction": "Germanics",
+      "id": 12
     }
   },
   {
@@ -590,7 +575,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 36,
+      "numTroops": 187,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -603,8 +588,8 @@
     }],
     "player": {
       "gold": 100000,
-      "faction": "Macedonians",
-      "id": 14
+      "faction": "Amenians",
+      "id": 10
     }
   },
   {
@@ -628,7 +613,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 328,
+      "numTroops": 248,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -666,7 +651,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 476,
+      "numTroops": 350,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -679,8 +664,8 @@
     }],
     "player": {
       "gold": 100000,
-      "faction": "Germanics",
-      "id": 12
+      "faction": "Carthaginians",
+      "id": 2
     }
   },
   {
@@ -704,7 +689,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 478,
+      "numTroops": 226,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -717,8 +702,8 @@
     }],
     "player": {
       "gold": 100000,
-      "faction": "Seleucid Empire",
-      "id": 8
+      "faction": "Germanics",
+      "id": 12
     }
   },
   {
@@ -742,7 +727,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 309,
+      "numTroops": 385,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -755,8 +740,8 @@
     }],
     "player": {
       "gold": 100000,
-      "faction": "Romans",
-      "id": 1
+      "faction": "Egyptians",
+      "id": 7
     }
   },
   {
@@ -780,7 +765,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 45,
+      "numTroops": 202,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -793,8 +778,8 @@
     }],
     "player": {
       "gold": 100000,
-      "faction": "Seleucid Empire",
-      "id": 8
+      "faction": "Macedonians",
+      "id": 14
     }
   },
   {
@@ -818,7 +803,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 300,
+      "numTroops": 69,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -831,8 +816,8 @@
     }],
     "player": {
       "gold": 100000,
-      "faction": "Greek City States",
-      "id": 13
+      "faction": "Macedonians",
+      "id": 14
     }
   },
   {
@@ -856,7 +841,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 339,
+      "numTroops": 283,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -869,8 +854,8 @@
     }],
     "player": {
       "gold": 100000,
-      "faction": "Egyptians",
-      "id": 7
+      "faction": "Macedonians",
+      "id": 14
     }
   },
   {
@@ -894,7 +879,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 52,
+      "numTroops": 137,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -907,8 +892,8 @@
     }],
     "player": {
       "gold": 100000,
-      "faction": "Amenians",
-      "id": 10
+      "faction": "Parthians",
+      "id": 11
     }
   },
   {
@@ -932,7 +917,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 486,
+      "numTroops": 240,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -970,7 +955,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 188,
+      "numTroops": 109,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -983,8 +968,8 @@
     }],
     "player": {
       "gold": 100000,
-      "faction": "Macedonians",
-      "id": 14
+      "faction": "Numidians",
+      "id": 6
     }
   },
   {
@@ -1008,7 +993,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 18,
+      "numTroops": 187,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -1021,8 +1006,8 @@
     }],
     "player": {
       "gold": 100000,
-      "faction": "Pontus",
-      "id": 9
+      "faction": "Macedonians",
+      "id": 14
     }
   },
   {
@@ -1046,7 +1031,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 326,
+      "numTroops": 429,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -1059,8 +1044,8 @@
     }],
     "player": {
       "gold": 100000,
-      "faction": "Parthians",
-      "id": 11
+      "faction": "Amenians",
+      "id": 10
     }
   },
   {
@@ -1084,7 +1069,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 72,
+      "numTroops": 119,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -1097,8 +1082,8 @@
     }],
     "player": {
       "gold": 100000,
-      "faction": "Egyptians",
-      "id": 7
+      "faction": "Parthians",
+      "id": 11
     }
   },
   {
@@ -1122,7 +1107,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 17,
+      "numTroops": 409,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -1135,8 +1120,8 @@
     }],
     "player": {
       "gold": 100000,
-      "faction": "Amenians",
-      "id": 10
+      "faction": "Thracians",
+      "id": 15
     }
   },
   {
@@ -1160,7 +1145,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 106,
+      "numTroops": 461,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -1173,8 +1158,8 @@
     }],
     "player": {
       "gold": 100000,
-      "faction": "Parthians",
-      "id": 11
+      "faction": "Celtic Britons",
+      "id": 4
     }
   },
   {
@@ -1198,7 +1183,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 314,
+      "numTroops": 373,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -1211,8 +1196,8 @@
     }],
     "player": {
       "gold": 100000,
-      "faction": "Pontus",
-      "id": 9
+      "faction": "Carthaginians",
+      "id": 2
     }
   },
   {
@@ -1236,7 +1221,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 326,
+      "numTroops": 21,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -1249,8 +1234,8 @@
     }],
     "player": {
       "gold": 100000,
-      "faction": "Germanics",
-      "id": 12
+      "faction": "Pontus",
+      "id": 9
     }
   },
   {
@@ -1274,7 +1259,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 80,
+      "numTroops": 306,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -1287,8 +1272,8 @@
     }],
     "player": {
       "gold": 100000,
-      "faction": "Greek City States",
-      "id": 13
+      "faction": "Macedonians",
+      "id": 14
     }
   },
   {
@@ -1312,7 +1297,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 144,
+      "numTroops": 218,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -1325,8 +1310,8 @@
     }],
     "player": {
       "gold": 100000,
-      "faction": "Celtic Britons",
-      "id": 4
+      "faction": "Pontus",
+      "id": 9
     }
   },
   {
@@ -1350,7 +1335,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 234,
+      "numTroops": 475,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -1363,8 +1348,8 @@
     }],
     "player": {
       "gold": 100000,
-      "faction": "Seleucid Empire",
-      "id": 8
+      "faction": "Macedonians",
+      "id": 14
     }
   },
   {
@@ -1388,7 +1373,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 126,
+      "numTroops": 456,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -1401,8 +1386,8 @@
     }],
     "player": {
       "gold": 100000,
-      "faction": "Greek City States",
-      "id": 13
+      "faction": "Egyptians",
+      "id": 7
     }
   },
   {
@@ -1426,7 +1411,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 394,
+      "numTroops": 487,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -1439,8 +1424,8 @@
     }],
     "player": {
       "gold": 100000,
-      "faction": "Greek City States",
-      "id": 13
+      "faction": "Celtic Britons",
+      "id": 4
     }
   },
   {
@@ -1464,7 +1449,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 379,
+      "numTroops": 428,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -1477,8 +1462,8 @@
     }],
     "player": {
       "gold": 100000,
-      "faction": "Germanics",
-      "id": 12
+      "faction": "Romans",
+      "id": 1
     }
   },
   {
@@ -1502,7 +1487,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 199,
+      "numTroops": 126,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -1515,8 +1500,8 @@
     }],
     "player": {
       "gold": 100000,
-      "faction": "Pontus",
-      "id": 9
+      "faction": "Germanics",
+      "id": 12
     }
   },
   {
@@ -1535,11 +1520,26 @@
         "training": null
       }
     ],
-    "units": [],
+    "units": [{
+      "shieldDefense": 0,
+      "range": "melee",
+      "rangedAttack": 0,
+      "type": "heavy infantry",
+      "numTroops": 97,
+      "speed": 1,
+      "armour": 0,
+      "turnsToProduce": 0,
+      "meleeAttack": 1,
+      "movementPoints": 4,
+      "id": 41,
+      "morale": 10,
+      "ability": "",
+      "defenseSkill": 1
+    }],
     "player": {
       "gold": 100000,
-      "faction": "Romans",
-      "id": 1
+      "faction": "Numidians",
+      "id": 6
     }
   },
   {
@@ -1563,7 +1563,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 457,
+      "numTroops": 467,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -1576,8 +1576,8 @@
     }],
     "player": {
       "gold": 100000,
-      "faction": "Germanics",
-      "id": 12
+      "faction": "Macedonians",
+      "id": 14
     }
   },
   {
@@ -1601,7 +1601,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 36,
+      "numTroops": 457,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -1614,8 +1614,8 @@
     }],
     "player": {
       "gold": 100000,
-      "faction": "Greek City States",
-      "id": 13
+      "faction": "Germanics",
+      "id": 12
     }
   },
   {
@@ -1639,7 +1639,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 477,
+      "numTroops": 447,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -1652,8 +1652,8 @@
     }],
     "player": {
       "gold": 100000,
-      "faction": "Thracians",
-      "id": 15
+      "faction": "Macedonians",
+      "id": 14
     }
   },
   {
@@ -1677,7 +1677,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 322,
+      "numTroops": 431,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -1690,8 +1690,8 @@
     }],
     "player": {
       "gold": 100000,
-      "faction": "Romans",
-      "id": 1
+      "faction": "Amenians",
+      "id": 10
     }
   },
   {
@@ -1715,7 +1715,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 128,
+      "numTroops": 53,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -1728,8 +1728,8 @@
     }],
     "player": {
       "gold": 100000,
-      "faction": "Romans",
-      "id": 1
+      "faction": "Parthians",
+      "id": 11
     }
   },
   {
@@ -1753,7 +1753,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 251,
+      "numTroops": 110,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -1766,8 +1766,8 @@
     }],
     "player": {
       "gold": 100000,
-      "faction": "Numidians",
-      "id": 6
+      "faction": "Romans",
+      "id": 1
     }
   },
   {
@@ -1791,7 +1791,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 213,
+      "numTroops": 356,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -1804,8 +1804,8 @@
     }],
     "player": {
       "gold": 100000,
-      "faction": "Numidians",
-      "id": 6
+      "faction": "Greek City States",
+      "id": 13
     }
   },
   {
@@ -1829,7 +1829,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 14,
+      "numTroops": 404,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -1842,8 +1842,8 @@
     }],
     "player": {
       "gold": 100000,
-      "faction": "Celtic Britons",
-      "id": 4
+      "faction": "Macedonians",
+      "id": 14
     }
   },
   {
@@ -1867,7 +1867,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 428,
+      "numTroops": 245,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -1880,8 +1880,8 @@
     }],
     "player": {
       "gold": 100000,
-      "faction": "Gauls",
-      "id": 3
+      "faction": "Amenians",
+      "id": 10
     }
   },
   {
@@ -1905,7 +1905,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 216,
+      "numTroops": 280,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -1918,8 +1918,8 @@
     }],
     "player": {
       "gold": 100000,
-      "faction": "Egyptians",
-      "id": 7
+      "faction": "Seleucid Empire",
+      "id": 8
     }
   },
   {
@@ -1943,7 +1943,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 270,
+      "numTroops": 222,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -1956,8 +1956,8 @@
     }],
     "player": {
       "gold": 100000,
-      "faction": "Numidians",
-      "id": 6
+      "faction": "Spanish",
+      "id": 5
     }
   },
   {
@@ -1981,7 +1981,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 421,
+      "numTroops": 111,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -1994,8 +1994,8 @@
     }],
     "player": {
       "gold": 100000,
-      "faction": "Spanish",
-      "id": 5
+      "faction": "Parthians",
+      "id": 11
     }
   }
 ]
