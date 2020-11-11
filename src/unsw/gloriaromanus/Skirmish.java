@@ -51,7 +51,7 @@ public class Skirmish {
         Engagement e = new Engagement(range, human, enemy, this);
         engagements.add(e);
         if (e.checkEnemyDefeat()) {
-            humanStatus.setStatus("winner");
+            humanStatus.setStatus("winner");   // "winner" changed to "victory"
             enemyStatus.setStatus("defeat");
             return true;
         } else if (e.checkHumanDefeat()) {
