@@ -24,47 +24,48 @@ public class Engagement {
 
         this.s = skirmish;
         
-        calculateCasulty();
+        calculatecasualty();
         breakAttempt();
     }
 
-    private void calculateCasulty() {
+    private void calculatecasualty() {
         Random N = new Random();
         switch(range) { 
             case "ranged":
-                // Ranged units can inflict casulty caluclated below in ranged engagements. We cap the balanced battle stats to 10.
+                // Ranged units can inflict casualty caluclated below in ranged engagements. We cap the balanced battle stats to 10.
                 if (human.getRange().equals("ranged")) {
-                    double balancedBattleStats = (human.getRangedAttack() / (enemy.getArmour() + enemy.getShieldDefense()));
+                    
+                    double balancedBattleStats = (human.getTotalRangedAttack() / (enemy.getTotalArmour() + enemy.getTotalShieldDefense()));
                     if (balancedBattleStats > 10) {
                         balancedBattleStats = 10;
                     }
-                    Double enemyCasualty = (s.getEnemyInitialNumTroops() * 0.1) * balancedBattleStats * (N.nextGaussian() + 1);
+                    Double enemyCasualty = (enemy.getNumTroops() * 0.1) * balancedBattleStats * (N.nextGaussian() + 1);
                     if (enemyCasualty < 0.0) { enemyCasualty = 0.0;}
                     this.enemyCasualty = enemyCasualty.intValue();
                 } else if (enemy.getRange().equals("ranged")) {
-                    double balancedBattleStats = (enemy.getRangedAttack() / (human.getArmour() + human.getShieldDefense()));
+                    double balancedBattleStats = (enemy.getTotalRangedAttack() / (human.getTotalArmour() + human.getTotalShieldDefense()));
                     if (balancedBattleStats > 10) {
                         balancedBattleStats = 10;
                     }
-                    Double humanCasualty = (s.getHumanInitialNumTroops() * 0.1) * balancedBattleStats * (N.nextGaussian() + 1);
+                    Double humanCasualty = (human.getNumTroops() * 0.1) * balancedBattleStats * (N.nextGaussian() + 1);
                     if (humanCasualty < 0.0) { humanCasualty = 0.0; }
                     this.humanCasualty = humanCasualty.intValue();
                 } 
                 break;
             case "melee":
                 // Units in a melee engagement inflict casualties as below.
-                double denominator = enemy.getArmour() + enemy.getShieldDefense()+ enemy.getDefenseSkill();
+                double denominator = enemy.getTotalArmour() + enemy.getTotalShieldDefense()+ enemy.getTotalDefenseSkill();
                 if (denominator == 0) { denominator = 1; }
-                Double enemyCasualty = (s.getEnemyInitialNumTroops() * 0.1) * (human.getMeleeAttack() / denominator) * (N.nextGaussian() + 1);
+                Double enemyCasualty = (enemy.getNumTroops() * 0.1) * (human.getTotalMeleeAttack() / denominator) * (N.nextGaussian() + 1);
                 
-                if (enemyCasualty < 0.0) { enemyCasualty = 0.0;}
+                if (enemyCasualty < 1.0) { enemyCasualty = 1.0;}
                 this.enemyCasualty = enemyCasualty.intValue();
                 
-                denominator = human.getArmour() + human.getShieldDefense()+ human.getDefenseSkill();
+                denominator = human.getTotalArmour() + human.getTotalShieldDefense()+ human.getTotalDefenseSkill();
                 if (denominator == 0) { denominator = 1; }
-                Double humanCasualty = (s.getHumanInitialNumTroops() * 0.1) * (enemy.getMeleeAttack() / denominator) * (N.nextGaussian() + 1);
+                Double humanCasualty = (human.getNumTroops() * 0.1) * (enemy.getTotalMeleeAttack() / denominator) * (N.nextGaussian() + 1);
                 
-                if (humanCasualty < 0.0) { humanCasualty = 0.0; }
+                if (humanCasualty < 1.0) { humanCasualty = 1.0; }
                 this.humanCasualty = humanCasualty.intValue();
         }
     }
@@ -74,8 +75,8 @@ public class Engagement {
         humanBreakChance = 1 - (human.getMorale() * 0.1);
         enemyBreakChance = 1 - (enemy.getMorale() * 0.1);
         // The chance of breaking is increased by (a scalar addition):
-        humanBreakChance += (humanCasualty / Double.valueOf(s.getHumanInitialNumTroops())) / (enemyCasualty / Double.valueOf(s.getEnemyInitialNumTroops())) * 0.1;
-        enemyBreakChance += (enemyCasualty / Double.valueOf(s.getEnemyInitialNumTroops())) / (humanCasualty / Double.valueOf(s.getHumanInitialNumTroops())) * 0.1;
+        humanBreakChance += (humanCasualty / Double.valueOf(human.getNumTroops())) / (enemyCasualty / Double.valueOf(enemy.getNumTroops())) * 0.1;
+        enemyBreakChance += (enemyCasualty / Double.valueOf(enemy.getNumTroops())) / (humanCasualty / Double.valueOf(human.getNumTroops())) * 0.1;
 
         //the minimum chance of breaking is 5%, and the maximum chance of breaking is 100%
         if (humanBreakChance < 0.05) {
