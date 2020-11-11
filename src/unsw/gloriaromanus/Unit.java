@@ -222,6 +222,26 @@ public class Unit {
     public void setPlayer(Player player) {
         this.player = player;
     }
+
+    public int getTotalRangedAttack() {
+        return rangedAttack * numTroops;
+    }
+
+    public int getTotalArmour() {
+        return armour * numTroops;
+    }
+
+    public int getTotalShieldDefense() {
+        return shieldDefense * numTroops;
+    }
+
+    public int getTotalDefenseSkill() {
+        return defenseSkill * numTroops;
+    }
+
+    public int getTotalMeleeAttack() {
+        return meleeAttack * numTroops;
+    }
 }
 
 /*public Unit(String unitType, int numTroops2, String config) throws IOException {
