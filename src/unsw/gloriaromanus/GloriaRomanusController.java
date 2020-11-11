@@ -193,6 +193,8 @@ public class GloriaRomanusController{
     // TODO
   }
 
+  // TEST
+
   @FXML
   public void clickedInvadeButton(ActionEvent e) throws IOException {
     if (currentlySelectedHumanProvince != null && currentlySelectedEnemyProvince != null) {
