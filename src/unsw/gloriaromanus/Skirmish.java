@@ -31,6 +31,7 @@ public class Skirmish {
         humanInitialNumTroops = human.getNumTroops();
         enemyInitialNumTroops = enemy.getNumTroops();
     }
+    
     public void start(String range) {
         this.range = range;
         // A sequence of skirmishes continuously run until a whole army is eliminated or routed entirely

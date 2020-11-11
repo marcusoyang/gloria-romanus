@@ -23,13 +23,9 @@ public class Engagement {
         this.enemy = enemy;
 
         this.s = skirmish;
-
-        Ability.initiate(human, enemy);
         
         calculateCasulty();
         breakAttempt();
-
-        Ability.restore(human, enemy);
     }
 
     private void calculateCasulty() {

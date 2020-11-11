@@ -23,7 +23,7 @@ public class ProvinceTest {
     public void trainingTest1() throws IOException {
         Player pl = new Player(0, "faction");
         Province p = new Province("faction", pl, config);
-        UnitFactory myFac = new UnitFactory(config);
+        UnitFactory myFac = new UnitFactory(config, pl);
         myFac.addToTraining("elephant", 100);
         assertEquals(myFac.getIsTraining(), true);
         assertEquals(myFac.nextTrainingTurn(), null);
@@ -35,7 +35,7 @@ public class ProvinceTest {
     public void trainingTest2() throws IOException {
         Player pl = new Player(0, "faction");
         Province p = new Province("faction", pl, config);
-        UnitFactory myFac = new UnitFactory(config);
+        UnitFactory myFac = new UnitFactory(config, pl);
         myFac.addToTraining("elephant", 100);
         assertEquals(myFac.getIsTraining(), true);
         assertEquals(myFac.nextTrainingTurn(), null);
@@ -49,7 +49,7 @@ public class ProvinceTest {
         Player pl = new Player(0, "faction");
         Province p = new Province("faction", pl, config);
         p.trainUnit("elephant", 50);
-        UnitFactory myFac = new UnitFactory(config);
+        UnitFactory myFac = new UnitFactory(config, pl);
         myFac.addToTraining("elephant", 100);
         assertEquals(myFac.getIsTraining(), true);
         assertEquals(myFac.nextTrainingTurn(), null);

@@ -231,6 +231,9 @@ public class GloriaRomanusController{
       // Starting the battle
       int unitIndex = 0;
       int engagementIndex = 0;
+      Ability.initiate(humanProvince);
+      Ability.initiate(enemyProvince);
+
       while (finishedBattle == ONGOING) {
         // Each unit in the battle initiates a skirmish to another unit in the enemy team
         Unit human = armies.get(unitIndex);
@@ -274,6 +277,9 @@ public class GloriaRomanusController{
           }
         }
 
+        Ability.restore(humanProvince);
+        Ability.restore(enemyProvince);
+
         // Skirmish should have finished. we check the status of our units.
         switch(s.getHumanStatus()) {
           case "defeat":
@@ -285,6 +291,9 @@ public class GloriaRomanusController{
               finishedBattle = LOST;
             }
             humanProvince.setPlayer(enemyProvince.getPlayer());
+
+            Ability.processLegionaryEagleDeath(human, s.getHumanInitialNumTroops(), humanProvince);
+            Ability.checkLERecapture(human, humanProvince);
             break;
 
           case "routed":
@@ -325,6 +334,7 @@ public class GloriaRomanusController{
             // We drew and we stay at our province
 
         }
+        
         unitIndex++;
         if (unitIndex >= armies.size()) {
           unitIndex = 0;
@@ -418,7 +428,7 @@ public class GloriaRomanusController{
     printMessageToTerminal("player" + currentPlayerID + " ended their turn.");
     currentPlayerID++;
     if (currentPlayerID == players.size()) {
-      currentPlayerID = 0;
+      currentPlayerID = 1;
       currentYear++;
     }
     resetMovementPoints();

@@ -20,7 +20,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 155,
+      "numTroops": 376,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -29,12 +29,14 @@
       "id": 1,
       "morale": 10,
       "ability": "",
-      "defenseSkill": 1
+      "defenseSkill": 1,
+      "player": null
     }],
     "player": {
       "gold": 100000,
-      "faction": "Amenians",
-      "id": 10
+      "moralePenalty": 0,
+      "faction": "Pontus",
+      "id": 9
     }
   },
   {
@@ -58,7 +60,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 423,
+      "numTroops": 417,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -67,10 +69,12 @@
       "id": 2,
       "morale": 10,
       "ability": "",
-      "defenseSkill": 1
+      "defenseSkill": 1,
+      "player": null
     }],
     "player": {
       "gold": 100000,
+      "moralePenalty": 0,
       "faction": "Pontus",
       "id": 9
     }
@@ -96,7 +100,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 150,
+      "numTroops": 124,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -105,12 +109,14 @@
       "id": 3,
       "morale": 10,
       "ability": "",
-      "defenseSkill": 1
+      "defenseSkill": 1,
+      "player": null
     }],
     "player": {
       "gold": 100000,
-      "faction": "Parthians",
-      "id": 11
+      "moralePenalty": 0,
+      "faction": "Carthaginians",
+      "id": 2
     }
   },
   {
@@ -134,7 +140,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 74,
+      "numTroops": 150,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -143,12 +149,14 @@
       "id": 4,
       "morale": 10,
       "ability": "",
-      "defenseSkill": 1
+      "defenseSkill": 1,
+      "player": null
     }],
     "player": {
       "gold": 100000,
-      "faction": "Carthaginians",
-      "id": 2
+      "moralePenalty": 0,
+      "faction": "Germanics",
+      "id": 12
     }
   },
   {
@@ -172,7 +180,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 442,
+      "numTroops": 235,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -181,12 +189,14 @@
       "id": 5,
       "morale": 10,
       "ability": "",
-      "defenseSkill": 1
+      "defenseSkill": 1,
+      "player": null
     }],
     "player": {
       "gold": 100000,
-      "faction": "Pontus",
-      "id": 9
+      "moralePenalty": 0,
+      "faction": "Macedonians",
+      "id": 14
     }
   },
   {
@@ -210,7 +220,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 231,
+      "numTroops": 154,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -219,10 +229,12 @@
       "id": 6,
       "morale": 10,
       "ability": "",
-      "defenseSkill": 1
+      "defenseSkill": 1,
+      "player": null
     }],
     "player": {
       "gold": 100000,
+      "moralePenalty": 0,
       "faction": "Gauls",
       "id": 3
     }
@@ -248,7 +260,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 232,
+      "numTroops": 182,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -257,12 +269,14 @@
       "id": 7,
       "morale": 10,
       "ability": "",
-      "defenseSkill": 1
+      "defenseSkill": 1,
+      "player": null
     }],
     "player": {
       "gold": 100000,
-      "faction": "Egyptians",
-      "id": 7
+      "moralePenalty": 0,
+      "faction": "Germanics",
+      "id": 12
     }
   },
   {
@@ -286,7 +300,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 166,
+      "numTroops": 158,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -295,12 +309,14 @@
       "id": 8,
       "morale": 10,
       "ability": "",
-      "defenseSkill": 1
+      "defenseSkill": 1,
+      "player": null
     }],
     "player": {
       "gold": 100000,
-      "faction": "Egyptians",
-      "id": 7
+      "moralePenalty": 0,
+      "faction": "Seleucid Empire",
+      "id": 8
     }
   },
   {
@@ -324,7 +340,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 397,
+      "numTroops": 236,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -333,12 +349,14 @@
       "id": 9,
       "morale": 10,
       "ability": "",
-      "defenseSkill": 1
+      "defenseSkill": 1,
+      "player": null
     }],
     "player": {
       "gold": 100000,
-      "faction": "Seleucid Empire",
-      "id": 8
+      "moralePenalty": 0,
+      "faction": "Amenians",
+      "id": 10
     }
   },
   {
@@ -362,7 +380,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 412,
+      "numTroops": 108,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -371,12 +389,14 @@
       "id": 10,
       "morale": 10,
       "ability": "",
-      "defenseSkill": 1
+      "defenseSkill": 1,
+      "player": null
     }],
     "player": {
       "gold": 100000,
-      "faction": "Seleucid Empire",
-      "id": 8
+      "moralePenalty": 0,
+      "faction": "Germanics",
+      "id": 12
     }
   },
   {
@@ -400,7 +420,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 435,
+      "numTroops": 272,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -409,12 +429,14 @@
       "id": 11,
       "morale": 10,
       "ability": "",
-      "defenseSkill": 1
+      "defenseSkill": 1,
+      "player": null
     }],
     "player": {
       "gold": 100000,
-      "faction": "Macedonians",
-      "id": 14
+      "moralePenalty": 0,
+      "faction": "Pontus",
+      "id": 9
     }
   },
   {
@@ -438,7 +460,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 84,
+      "numTroops": 133,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -447,12 +469,14 @@
       "id": 12,
       "morale": 10,
       "ability": "",
-      "defenseSkill": 1
+      "defenseSkill": 1,
+      "player": null
     }],
     "player": {
       "gold": 100000,
-      "faction": "Thracians",
-      "id": 15
+      "moralePenalty": 0,
+      "faction": "Pontus",
+      "id": 9
     }
   },
   {
@@ -476,7 +500,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 476,
+      "numTroops": 406,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -485,12 +509,14 @@
       "id": 13,
       "morale": 10,
       "ability": "",
-      "defenseSkill": 1
+      "defenseSkill": 1,
+      "player": null
     }],
     "player": {
       "gold": 100000,
-      "faction": "Amenians",
-      "id": 10
+      "moralePenalty": 0,
+      "faction": "Carthaginians",
+      "id": 2
     }
   },
   {
@@ -514,7 +540,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 293,
+      "numTroops": 113,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -523,12 +549,14 @@
       "id": 14,
       "morale": 10,
       "ability": "",
-      "defenseSkill": 1
+      "defenseSkill": 1,
+      "player": null
     }],
     "player": {
       "gold": 100000,
-      "faction": "Thracians",
-      "id": 15
+      "moralePenalty": 0,
+      "faction": "Carthaginians",
+      "id": 2
     }
   },
   {
@@ -552,7 +580,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 211,
+      "numTroops": 186,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -561,12 +589,14 @@
       "id": 15,
       "morale": 10,
       "ability": "",
-      "defenseSkill": 1
+      "defenseSkill": 1,
+      "player": null
     }],
     "player": {
       "gold": 100000,
-      "faction": "Gauls",
-      "id": 3
+      "moralePenalty": 0,
+      "faction": "Thracians",
+      "id": 15
     }
   },
   {
@@ -590,7 +620,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 36,
+      "numTroops": 187,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -599,12 +629,14 @@
       "id": 16,
       "morale": 10,
       "ability": "",
-      "defenseSkill": 1
+      "defenseSkill": 1,
+      "player": null
     }],
     "player": {
       "gold": 100000,
-      "faction": "Macedonians",
-      "id": 14
+      "moralePenalty": 0,
+      "faction": "Amenians",
+      "id": 10
     }
   },
   {
@@ -628,7 +660,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 328,
+      "numTroops": 140,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -637,12 +669,14 @@
       "id": 17,
       "morale": 10,
       "ability": "",
-      "defenseSkill": 1
+      "defenseSkill": 1,
+      "player": null
     }],
     "player": {
       "gold": 100000,
-      "faction": "Germanics",
-      "id": 12
+      "moralePenalty": 0,
+      "faction": "Carthaginians",
+      "id": 2
     }
   },
   {
@@ -666,7 +700,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 476,
+      "numTroops": 488,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -675,12 +709,14 @@
       "id": 18,
       "morale": 10,
       "ability": "",
-      "defenseSkill": 1
+      "defenseSkill": 1,
+      "player": null
     }],
     "player": {
       "gold": 100000,
-      "faction": "Germanics",
-      "id": 12
+      "moralePenalty": 0,
+      "faction": "Egyptians",
+      "id": 7
     }
   },
   {
@@ -704,7 +740,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 478,
+      "numTroops": 432,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -713,12 +749,14 @@
       "id": 19,
       "morale": 10,
       "ability": "",
-      "defenseSkill": 1
+      "defenseSkill": 1,
+      "player": null
     }],
     "player": {
       "gold": 100000,
-      "faction": "Seleucid Empire",
-      "id": 8
+      "moralePenalty": 0,
+      "faction": "Germanics",
+      "id": 12
     }
   },
   {
@@ -742,7 +780,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 309,
+      "numTroops": 235,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -751,12 +789,14 @@
       "id": 20,
       "morale": 10,
       "ability": "",
-      "defenseSkill": 1
+      "defenseSkill": 1,
+      "player": null
     }],
     "player": {
       "gold": 100000,
-      "faction": "Romans",
-      "id": 1
+      "moralePenalty": 0,
+      "faction": "Numidians",
+      "id": 6
     }
   },
   {
@@ -780,7 +820,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 45,
+      "numTroops": 358,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -789,12 +829,14 @@
       "id": 21,
       "morale": 10,
       "ability": "",
-      "defenseSkill": 1
+      "defenseSkill": 1,
+      "player": null
     }],
     "player": {
       "gold": 100000,
-      "faction": "Seleucid Empire",
-      "id": 8
+      "moralePenalty": 0,
+      "faction": "Carthaginians",
+      "id": 2
     }
   },
   {
@@ -818,7 +860,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 300,
+      "numTroops": 235,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -827,12 +869,14 @@
       "id": 22,
       "morale": 10,
       "ability": "",
-      "defenseSkill": 1
+      "defenseSkill": 1,
+      "player": null
     }],
     "player": {
       "gold": 100000,
-      "faction": "Greek City States",
-      "id": 13
+      "moralePenalty": 0,
+      "faction": "Macedonians",
+      "id": 14
     }
   },
   {
@@ -851,26 +895,12 @@
         "training": null
       }
     ],
-    "units": [{
-      "shieldDefense": 0,
-      "range": "melee",
-      "rangedAttack": 0,
-      "type": "heavy infantry",
-      "numTroops": 339,
-      "speed": 1,
-      "armour": 0,
-      "turnsToProduce": 0,
-      "meleeAttack": 1,
-      "movementPoints": 4,
-      "id": 23,
-      "morale": 10,
-      "ability": "",
-      "defenseSkill": 1
-    }],
+    "units": [],
     "player": {
       "gold": 100000,
-      "faction": "Egyptians",
-      "id": 7
+      "moralePenalty": 0,
+      "faction": "Pontus",
+      "id": 9
     }
   },
   {
@@ -894,7 +924,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 52,
+      "numTroops": 325,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -903,12 +933,14 @@
       "id": 24,
       "morale": 10,
       "ability": "",
-      "defenseSkill": 1
+      "defenseSkill": 1,
+      "player": null
     }],
     "player": {
       "gold": 100000,
-      "faction": "Amenians",
-      "id": 10
+      "moralePenalty": 0,
+      "faction": "Pontus",
+      "id": 9
     }
   },
   {
@@ -932,7 +964,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 486,
+      "numTroops": 389,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -941,12 +973,14 @@
       "id": 25,
       "morale": 10,
       "ability": "",
-      "defenseSkill": 1
+      "defenseSkill": 1,
+      "player": null
     }],
     "player": {
       "gold": 100000,
-      "faction": "Amenians",
-      "id": 10
+      "moralePenalty": 0,
+      "faction": "Seleucid Empire",
+      "id": 8
     }
   },
   {
@@ -970,7 +1004,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 188,
+      "numTroops": 299,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -979,12 +1013,14 @@
       "id": 26,
       "morale": 10,
       "ability": "",
-      "defenseSkill": 1
+      "defenseSkill": 1,
+      "player": null
     }],
     "player": {
       "gold": 100000,
-      "faction": "Macedonians",
-      "id": 14
+      "moralePenalty": 0,
+      "faction": "Celtic Britons",
+      "id": 4
     }
   },
   {
@@ -1003,24 +1039,10 @@
         "training": null
       }
     ],
-    "units": [{
-      "shieldDefense": 0,
-      "range": "melee",
-      "rangedAttack": 0,
-      "type": "heavy infantry",
-      "numTroops": 18,
-      "speed": 1,
-      "armour": 0,
-      "turnsToProduce": 0,
-      "meleeAttack": 1,
-      "movementPoints": 4,
-      "id": 27,
-      "morale": 10,
-      "ability": "",
-      "defenseSkill": 1
-    }],
+    "units": [],
     "player": {
       "gold": 100000,
+      "moralePenalty": 0,
       "faction": "Pontus",
       "id": 9
     }
@@ -1046,7 +1068,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 326,
+      "numTroops": 159,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -1055,12 +1077,14 @@
       "id": 28,
       "morale": 10,
       "ability": "",
-      "defenseSkill": 1
+      "defenseSkill": 1,
+      "player": null
     }],
     "player": {
       "gold": 100000,
-      "faction": "Parthians",
-      "id": 11
+      "moralePenalty": 0,
+      "faction": "Germanics",
+      "id": 12
     }
   },
   {
@@ -1084,7 +1108,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 72,
+      "numTroops": 97,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -1093,12 +1117,14 @@
       "id": 29,
       "morale": 10,
       "ability": "",
-      "defenseSkill": 1
+      "defenseSkill": 1,
+      "player": null
     }],
     "player": {
       "gold": 100000,
-      "faction": "Egyptians",
-      "id": 7
+      "moralePenalty": 0,
+      "faction": "Spanish",
+      "id": 5
     }
   },
   {
@@ -1122,7 +1148,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 17,
+      "numTroops": 381,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -1131,10 +1157,12 @@
       "id": 30,
       "morale": 10,
       "ability": "",
-      "defenseSkill": 1
+      "defenseSkill": 1,
+      "player": null
     }],
     "player": {
       "gold": 100000,
+      "moralePenalty": 0,
       "faction": "Amenians",
       "id": 10
     }
@@ -1160,7 +1188,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 106,
+      "numTroops": 71,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -1169,12 +1197,14 @@
       "id": 31,
       "morale": 10,
       "ability": "",
-      "defenseSkill": 1
+      "defenseSkill": 1,
+      "player": null
     }],
     "player": {
       "gold": 100000,
-      "faction": "Parthians",
-      "id": 11
+      "moralePenalty": 0,
+      "faction": "Egyptians",
+      "id": 7
     }
   },
   {
@@ -1198,7 +1228,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 314,
+      "numTroops": 52,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -1207,12 +1237,14 @@
       "id": 32,
       "morale": 10,
       "ability": "",
-      "defenseSkill": 1
+      "defenseSkill": 1,
+      "player": null
     }],
     "player": {
       "gold": 100000,
-      "faction": "Pontus",
-      "id": 9
+      "moralePenalty": 0,
+      "faction": "Seleucid Empire",
+      "id": 8
     }
   },
   {
@@ -1236,7 +1268,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 326,
+      "numTroops": 159,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -1245,12 +1277,14 @@
       "id": 33,
       "morale": 10,
       "ability": "",
-      "defenseSkill": 1
+      "defenseSkill": 1,
+      "player": null
     }],
     "player": {
       "gold": 100000,
-      "faction": "Germanics",
-      "id": 12
+      "moralePenalty": 0,
+      "faction": "Carthaginians",
+      "id": 2
     }
   },
   {
@@ -1274,7 +1308,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 80,
+      "numTroops": 50,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -1283,12 +1317,14 @@
       "id": 34,
       "morale": 10,
       "ability": "",
-      "defenseSkill": 1
+      "defenseSkill": 1,
+      "player": null
     }],
     "player": {
       "gold": 100000,
-      "faction": "Greek City States",
-      "id": 13
+      "moralePenalty": 0,
+      "faction": "Pontus",
+      "id": 9
     }
   },
   {
@@ -1312,7 +1348,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 144,
+      "numTroops": 350,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -1321,12 +1357,14 @@
       "id": 35,
       "morale": 10,
       "ability": "",
-      "defenseSkill": 1
+      "defenseSkill": 1,
+      "player": null
     }],
     "player": {
       "gold": 100000,
-      "faction": "Celtic Britons",
-      "id": 4
+      "moralePenalty": 0,
+      "faction": "Germanics",
+      "id": 12
     }
   },
   {
@@ -1350,7 +1388,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 234,
+      "numTroops": 217,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -1359,12 +1397,14 @@
       "id": 36,
       "morale": 10,
       "ability": "",
-      "defenseSkill": 1
+      "defenseSkill": 1,
+      "player": null
     }],
     "player": {
       "gold": 100000,
-      "faction": "Seleucid Empire",
-      "id": 8
+      "moralePenalty": 0,
+      "faction": "Numidians",
+      "id": 6
     }
   },
   {
@@ -1388,7 +1428,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 126,
+      "numTroops": 353,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -1397,12 +1437,14 @@
       "id": 37,
       "morale": 10,
       "ability": "",
-      "defenseSkill": 1
+      "defenseSkill": 1,
+      "player": null
     }],
     "player": {
       "gold": 100000,
-      "faction": "Greek City States",
-      "id": 13
+      "moralePenalty": 0,
+      "faction": "Germanics",
+      "id": 12
     }
   },
   {
@@ -1426,7 +1468,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 394,
+      "numTroops": 295,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -1435,12 +1477,14 @@
       "id": 38,
       "morale": 10,
       "ability": "",
-      "defenseSkill": 1
+      "defenseSkill": 1,
+      "player": null
     }],
     "player": {
       "gold": 100000,
-      "faction": "Greek City States",
-      "id": 13
+      "moralePenalty": 0,
+      "faction": "Macedonians",
+      "id": 14
     }
   },
   {
@@ -1464,7 +1508,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 379,
+      "numTroops": 2,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -1473,12 +1517,14 @@
       "id": 39,
       "morale": 10,
       "ability": "",
-      "defenseSkill": 1
+      "defenseSkill": 1,
+      "player": null
     }],
     "player": {
       "gold": 100000,
-      "faction": "Germanics",
-      "id": 12
+      "moralePenalty": 0,
+      "faction": "Carthaginians",
+      "id": 2
     }
   },
   {
@@ -1502,7 +1548,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 199,
+      "numTroops": 230,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -1511,12 +1557,14 @@
       "id": 40,
       "morale": 10,
       "ability": "",
-      "defenseSkill": 1
+      "defenseSkill": 1,
+      "player": null
     }],
     "player": {
       "gold": 100000,
-      "faction": "Pontus",
-      "id": 9
+      "moralePenalty": 0,
+      "faction": "Thracians",
+      "id": 15
     }
   },
   {
@@ -1535,11 +1583,28 @@
         "training": null
       }
     ],
-    "units": [],
+    "units": [{
+      "shieldDefense": 0,
+      "range": "melee",
+      "rangedAttack": 0,
+      "type": "heavy infantry",
+      "numTroops": 17,
+      "speed": 1,
+      "armour": 0,
+      "turnsToProduce": 0,
+      "meleeAttack": 1,
+      "movementPoints": 4,
+      "id": 41,
+      "morale": 10,
+      "ability": "",
+      "defenseSkill": 1,
+      "player": null
+    }],
     "player": {
       "gold": 100000,
-      "faction": "Romans",
-      "id": 1
+      "moralePenalty": 0,
+      "faction": "Pontus",
+      "id": 9
     }
   },
   {
@@ -1563,7 +1628,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 457,
+      "numTroops": 239,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -1572,12 +1637,14 @@
       "id": 42,
       "morale": 10,
       "ability": "",
-      "defenseSkill": 1
+      "defenseSkill": 1,
+      "player": null
     }],
     "player": {
       "gold": 100000,
-      "faction": "Germanics",
-      "id": 12
+      "moralePenalty": 0,
+      "faction": "Gauls",
+      "id": 3
     }
   },
   {
@@ -1601,7 +1668,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 36,
+      "numTroops": 176,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -1610,12 +1677,14 @@
       "id": 43,
       "morale": 10,
       "ability": "",
-      "defenseSkill": 1
+      "defenseSkill": 1,
+      "player": null
     }],
     "player": {
       "gold": 100000,
-      "faction": "Greek City States",
-      "id": 13
+      "moralePenalty": 0,
+      "faction": "Numidians",
+      "id": 6
     }
   },
   {
@@ -1639,7 +1708,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 477,
+      "numTroops": 474,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -1648,12 +1717,14 @@
       "id": 44,
       "morale": 10,
       "ability": "",
-      "defenseSkill": 1
+      "defenseSkill": 1,
+      "player": null
     }],
     "player": {
       "gold": 100000,
-      "faction": "Thracians",
-      "id": 15
+      "moralePenalty": 0,
+      "faction": "Amenians",
+      "id": 10
     }
   },
   {
@@ -1677,7 +1748,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 322,
+      "numTroops": 130,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -1686,12 +1757,14 @@
       "id": 45,
       "morale": 10,
       "ability": "",
-      "defenseSkill": 1
+      "defenseSkill": 1,
+      "player": null
     }],
     "player": {
       "gold": 100000,
-      "faction": "Romans",
-      "id": 1
+      "moralePenalty": 0,
+      "faction": "Seleucid Empire",
+      "id": 8
     }
   },
   {
@@ -1715,7 +1788,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 128,
+      "numTroops": 13,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -1724,12 +1797,14 @@
       "id": 46,
       "morale": 10,
       "ability": "",
-      "defenseSkill": 1
+      "defenseSkill": 1,
+      "player": null
     }],
     "player": {
       "gold": 100000,
-      "faction": "Romans",
-      "id": 1
+      "moralePenalty": 0,
+      "faction": "Gauls",
+      "id": 3
     }
   },
   {
@@ -1753,7 +1828,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 251,
+      "numTroops": 393,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -1762,12 +1837,14 @@
       "id": 47,
       "morale": 10,
       "ability": "",
-      "defenseSkill": 1
+      "defenseSkill": 1,
+      "player": null
     }],
     "player": {
       "gold": 100000,
-      "faction": "Numidians",
-      "id": 6
+      "moralePenalty": 0,
+      "faction": "Amenians",
+      "id": 10
     }
   },
   {
@@ -1791,7 +1868,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 213,
+      "numTroops": 59,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -1800,12 +1877,14 @@
       "id": 48,
       "morale": 10,
       "ability": "",
-      "defenseSkill": 1
+      "defenseSkill": 1,
+      "player": null
     }],
     "player": {
       "gold": 100000,
-      "faction": "Numidians",
-      "id": 6
+      "moralePenalty": 0,
+      "faction": "Gauls",
+      "id": 3
     }
   },
   {
@@ -1829,7 +1908,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 14,
+      "numTroops": 47,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -1838,10 +1917,12 @@
       "id": 49,
       "morale": 10,
       "ability": "",
-      "defenseSkill": 1
+      "defenseSkill": 1,
+      "player": null
     }],
     "player": {
       "gold": 100000,
+      "moralePenalty": 0,
       "faction": "Celtic Britons",
       "id": 4
     }
@@ -1867,7 +1948,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 428,
+      "numTroops": 122,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -1876,12 +1957,14 @@
       "id": 50,
       "morale": 10,
       "ability": "",
-      "defenseSkill": 1
+      "defenseSkill": 1,
+      "player": null
     }],
     "player": {
       "gold": 100000,
-      "faction": "Gauls",
-      "id": 3
+      "moralePenalty": 0,
+      "faction": "Macedonians",
+      "id": 14
     }
   },
   {
@@ -1905,7 +1988,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 216,
+      "numTroops": 116,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -1914,12 +1997,14 @@
       "id": 51,
       "morale": 10,
       "ability": "",
-      "defenseSkill": 1
+      "defenseSkill": 1,
+      "player": null
     }],
     "player": {
       "gold": 100000,
-      "faction": "Egyptians",
-      "id": 7
+      "moralePenalty": 0,
+      "faction": "Numidians",
+      "id": 6
     }
   },
   {
@@ -1943,7 +2028,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 270,
+      "numTroops": 384,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -1952,12 +2037,14 @@
       "id": 52,
       "morale": 10,
       "ability": "",
-      "defenseSkill": 1
+      "defenseSkill": 1,
+      "player": null
     }],
     "player": {
       "gold": 100000,
-      "faction": "Numidians",
-      "id": 6
+      "moralePenalty": 0,
+      "faction": "Amenians",
+      "id": 10
     }
   },
   {
@@ -1981,7 +2068,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 421,
+      "numTroops": 260,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -1990,12 +2077,14 @@
       "id": 53,
       "morale": 10,
       "ability": "",
-      "defenseSkill": 1
+      "defenseSkill": 1,
+      "player": null
     }],
     "player": {
       "gold": 100000,
-      "faction": "Spanish",
-      "id": 5
+      "moralePenalty": 0,
+      "faction": "Carthaginians",
+      "id": 2
     }
   }
 ]
