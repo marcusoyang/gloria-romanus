@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Ability {
     private static ArrayList<Province> provinces;
     
-    public static void process() {
+    public static void initiate(Unit human, Unit enemy) {
         for (Province p : provinces) {
             ArrayList<Unit> units = p.getUnits();
             for (Unit u : units) {
@@ -13,6 +13,9 @@ public class Ability {
             }
         }
     }
+
+	public static void restore(Unit human, Unit enemy) {
+	}
 
     private static void processAbility(Unit u) {
         switch (u.getAbility()) {

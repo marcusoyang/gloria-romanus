@@ -163,7 +163,7 @@ public class GloriaRomanusController{
     if (allCanMove == true) {
       for (int id2 : ids) {
         Unit u2 = src.findUnit(id2);
-        u2.minusMovementPoints(MOVE_COST * shortestPathLength);
+        u2.minusMovementPoints(MOVE_COST * shortestPathLength);     // MOVE FUNCTION NOT IMPLEMENTED
       }
       return true;
     }
@@ -206,9 +206,9 @@ public class GloriaRomanusController{
         }
       }*/
 
-      Ability.setProvinces(provinces);
-      Ability.process();
-      Ability.processHeroicCharge(humanProvince, enemyProvince);
+      // Ability.setProvinces(provinces);
+      // Ability.process();
+      // Ability.processHeroicCharge(humanProvince, enemyProvince);
       
       // TODO: Some implementation of code to have different lists of Units go to certain provinces
       // For now it'll just be our whole troop 

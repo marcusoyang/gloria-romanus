@@ -47,11 +47,16 @@ public class Skirmish {
         }
     }
 
+    /**
+     * 
+     * @param range
+     * @return true if a unit has been defeated
+     */
     public Boolean addEngagement(String range) {
         Engagement e = new Engagement(range, human, enemy, this);
         engagements.add(e);
         if (e.checkEnemyDefeat()) {
-            humanStatus.setStatus("winner");   // "winner" changed to "victory"
+            humanStatus.setStatus("winner");   // "winner" should be changed to "victory"
             enemyStatus.setStatus("defeat");
             return true;
         } else if (e.checkHumanDefeat()) {
