@@ -1,60 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.VBox?>
-<?import com.esri.arcgisruntime.mapping.view.MapView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.ProgressIndicator?>
+<?import com.esri.arcgisruntime.mapping.view.MapView?>
 <?import javafx.scene.layout.Background?>
 <?import javafx.scene.layout.BackgroundFill?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
-<?import javafx.geometry.Insets?>
-<StackPane xmlns:fx="http://javafx.com/fxml" stylesheets="/unsw/gloriaromanus/style.css">
-    <MapView fx:id="mapView"/>
-    <VBox StackPane.alignment="TOP_LEFT" spacing="10" maxWidth="250" styleClass="panel-region">
+
+<StackPane stylesheets="/unsw/gloriaromanus/style.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1">
+    <MapView fx:id="mapView" />
+    <VBox maxWidth="250" spacing="10" styleClass="panel-region" StackPane.alignment="TOP_LEFT">
         <padding>
-            <Insets topRightBottomLeft="10"/>
+            <Insets topRightBottomLeft="10" />
         </padding>
         <background>
             <Background>
                 <fills>
                     <BackgroundFill>
                         <fill>
-                            <Color opacity="0.3"/>
+                            <Color opacity="0.3" />
                         </fill>
                     </BackgroundFill>
                 </fills>
             </Background>
         </background>
         <VBox>
-                <Label text="Your Faction"/>
-                <TextField fx:id="current_faction" text="" editable="false"/>
+                <Label text="Your Faction" />
+                <TextField fx:id="current_faction" editable="false" text="" />
             </VBox>
         <HBox>
             <VBox>
-                <Label text="Your province"/>
-                <TextField fx:id="invading_province" text="" editable="false"/>
+                <Label text="Your province" />
+                <TextField fx:id="invading_province" editable="false" text="" />
             </VBox>
             <VBox>
-                <Label text="Enemy province"/>
-                <TextField fx:id="opponent_province" text="" editable="false"/>
+                <Label text="Enemy province" />
+                <TextField fx:id="opponent_province" editable="false" text="" />
             </VBox>
         </HBox>
-            <Button text="Invade" onAction="#clickedInvadeButton"/>
-            <Button text="End Turn" onAction="#clickedEndTurnButton"/>
+            <Button onAction="#clickedInvadeButton" text="Invade" />
+            <Button onAction="#clickedEndTurnButton" text="End Turn" />
         <VBox>
-            <Label text="Output from interactions"/>
-            <TextArea fx:id="output_terminal" text="" editable="false"/>
+            <Label text="Output from interactions" />
+            <TextArea fx:id="output_terminal" editable="false" text="" />
         </VBox>
-        <Button text="Save" onAction="#clickedSaveButton"/>
-        <Button text="Start Campaign" onAction="#clickedStartCampaign"/>
-        <Button text="Select Campaign AI" onAction="#clickedSelectCamAI"/>
-        <Button text="Select Battle Resolver" onAction="#clickedSelectBattleRes"/>
+        <Button onAction="#clickedSaveButton" text="Save" />
+        <Button onAction="#clickedStartCampaign" text="Start Campaign" />
+        <Button onAction="#clickedSelectCamAI" text="Select Campaign AI" />
+        <Button onAction="#clickedSelectBattleRes" text="Select Battle Resolver" />
+      <Button mnemonicParsing="false" onAction="#clickedStartMenu" text="Start Menu" />
     </VBox>
 </StackPane>

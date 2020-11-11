@@ -185,6 +185,15 @@ public class GloriaRomanusController{
     return requestSuccess;
   }
 
+  public void setStartScreen(StartScreen startScreen) {
+    this.startScreen = startScreen;
+  }
+
+  @FXML
+    public void clickedStartMenu(ActionEvent e) {
+      startScreen.start();
+    }
+
   @FXML
   public void clickedStartCampaign(ActionEvent e) {
     // TODO
@@ -883,9 +892,5 @@ public class GloriaRomanusController{
     if (mapView != null) {
       mapView.dispose();
     }
-  }
-
-  public void setStartScreen(StartScreen startScreen) {
-    this.startScreen = startScreen;
   }
 }
