@@ -1,5 +1,11 @@
 package unsw.gloriaromanus;
 
+/**
+ * Scenebuilder does not work with this line in main.fxml
+ * Restore it to the top before launching
+ * <?import com.esri.arcgisruntime.mapping.view.MapView?>
+ */
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -91,6 +97,7 @@ public class GloriaRomanusController{
   private String filename;
   private String unitConfig;
   private boolean hasWon;
+  private StartScreen startScreen;
 
   @FXML
   private void initialize() throws JsonParseException, JsonMappingException, IOException {
@@ -192,8 +199,6 @@ public class GloriaRomanusController{
   public void clickedSelectBattleRes(ActionEvent e) {
     // TODO
   }
-
-  // TEST
 
   @FXML
   public void clickedInvadeButton(ActionEvent e) throws IOException {
@@ -878,5 +883,9 @@ public class GloriaRomanusController{
     if (mapView != null) {
       mapView.dispose();
     }
+  }
+
+  public void setStartScreen(StartScreen startScreen) {
+    this.startScreen = startScreen;
   }
 }

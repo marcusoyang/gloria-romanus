@@ -15,8 +15,7 @@
 <?import javafx.scene.layout.BackgroundFill?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.geometry.Insets?>
-<StackPane fx:controller="unsw.gloriaromanus.GloriaRomanusController" xmlns:fx="http://javafx.com/fxml"
-           stylesheets="/unsw/gloriaromanus/style.css">
+<StackPane xmlns:fx="http://javafx.com/fxml" stylesheets="/unsw/gloriaromanus/style.css">
     <MapView fx:id="mapView"/>
     <VBox StackPane.alignment="TOP_LEFT" spacing="10" maxWidth="250" styleClass="panel-region">
         <padding>
