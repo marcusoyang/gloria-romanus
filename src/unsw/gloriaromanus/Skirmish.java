@@ -7,7 +7,6 @@ public class Skirmish {
     
     // During a skirmish, both units engage in a sequence of "engagements" against each other
     private ArrayList<Engagement> engagements;
-    private String range;
 
     private Unit human;
     private Unit enemy;
@@ -15,9 +14,6 @@ public class Skirmish {
 
     private Status humanStatus;
     private Status enemyStatus;
-
-    private int humanInitialNumTroops; 
-    private int enemyInitialNumTroops;
 
     public Skirmish(Unit human, Unit enemy, int engagementIndex) {
         engagements = new ArrayList<Engagement>();
@@ -27,16 +23,11 @@ public class Skirmish {
 
         this.humanStatus = new Status(human);
         this.enemyStatus = new Status(enemy);
-
-        humanInitialNumTroops = human.getNumTroops();
-        enemyInitialNumTroops = enemy.getNumTroops();
     }
     
     public void start(String range) {
-        this.range = range;
         // A sequence of skirmishes continuously run until a whole army is eliminated or routed entirely
         while(engagementIndex < MAX_ENG) {
-            
             if(addEngagement(range)) {
                 break;
             }
@@ -86,13 +77,5 @@ public class Skirmish {
 
     public String getEnemyStatus() {
         return enemyStatus.getStatus();
-    }
-
-    public int getHumanInitialNumTroops() {
-        return humanInitialNumTroops;
-    }
-
-    public int getEnemyInitialNumTroops() {
-        return enemyInitialNumTroops;
     }
  }
