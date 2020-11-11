@@ -240,6 +240,9 @@ public class GloriaRomanusController{
       // Starting the battle
       int unitIndex = 0;
       int engagementIndex = 0;
+
+      // I commented out ability for now because these initiate to the whole province rather than the invading army
+      // I think we should implement sending specific troops for invasion (and not the whole province troop) first.
       // Ability.initiate(humanProvince);
       // Ability.initiate(enemyProvince);
 
