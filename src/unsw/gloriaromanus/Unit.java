@@ -200,7 +200,7 @@ public class Unit {
         return defenseSkill + armour + shieldDefense;
     }
 
-    public Boolean checkDefeated(int minusTroopSize) {
+    public Boolean isDefeated(int minusTroopSize) {
         int remaining = numTroops - minusTroopSize;
         if (remaining < 0) {
             this.numTroops = 0;
