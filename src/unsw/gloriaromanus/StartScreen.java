@@ -19,7 +19,7 @@ public class StartScreen {
         title = "Start Screen";
 
         controller = new StartController();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("javafxmls/start.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("start.fxml"));
         loader.setController(controller);
 
         // load into a Parent node called root
