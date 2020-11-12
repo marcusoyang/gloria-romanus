@@ -141,6 +141,7 @@ public class GloriaRomanusController{
   }
 
   private void initializeVolumeSlider() {
+    volumeSlider.setValue(1);
     volumeSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
       audio.changeVolume((double) newValue);
     });
