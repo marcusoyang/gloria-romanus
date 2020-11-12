@@ -5,6 +5,7 @@ import java.io.IOException;
 import org.json.JSONObject;
 
 public class UnitFactory {
+    private Player player;
     private String configString;
     private Boolean isTraining;
     private Unit training;
@@ -13,7 +14,8 @@ public class UnitFactory {
         // super();
     }
 
-    public UnitFactory(String config) {
+    public UnitFactory(String config, Player p) {
+        player = p;
         configString = config;
         isTraining = false;
         training = null;
@@ -43,6 +45,7 @@ public class UnitFactory {
         u.setAbility(unitStats.getString("ability"));
         u.resetMovementPoint();
         u.setTurnsToProduce(unitStats.optInt("turnsToProduce"));
+        u.setPlayer(player);
 
         return u;
     }

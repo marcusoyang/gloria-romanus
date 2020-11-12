@@ -91,7 +91,7 @@ public class Province {
     private void generateFactories(String unitConfig) {
         factories = new ArrayList<UnitFactory>();
         for (int i = 0; i < MAX_FAC; i++) {
-            UnitFactory factory = new UnitFactory(unitConfig);
+            UnitFactory factory = new UnitFactory(unitConfig, player);
             factories.add(factory);
         }
     }

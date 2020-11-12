@@ -1,18 +1,20 @@
 package unsw.gloriaromanus;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Ability {
     private static ArrayList<Province> provinces;
     
-    public static void process() {
-        for (Province p : provinces) {
-            ArrayList<Unit> units = p.getUnits();
-            for (Unit u : units) {
-                processAbility(u);
-            }
+    public static void initiate(Province p) {
+        ArrayList<Unit> units = p.getUnits();
+        for (Unit u : units) {
+            processAbility(u);
         }
     }
+
+	public static void restore(Province p) {
+	}
 
     private static void processAbility(Unit u) {
         switch (u.getAbility()) {
@@ -61,16 +63,41 @@ public class Ability {
         }
     }
 
-    public static void processLegionaryEagleDeath(Province p) {
-        for (Province p2 : provinces) {
-            if (p2.getFaction().equals(p.getFaction())) {
-                ArrayList<Unit> units = p2.getUnits();
+    /**
+     * Processes legionary eagle penalty after each skirmish
+     * @param unit
+     * @param initialTroops
+     * @param humanProvince
+     */
+    public static void processLegionaryEagleDeath(Unit u, int initialTroops, Province p) {
+        if (u.getAbility() == "Legionary Eagle") {
+            double casualties = initialTroops - u.getNumTroops();
+            double penalty = casualties * 0.2;
+            sufferMoralePenalty(u.getPlayer(), penalty);
+            u.getPlayer().addToLEPenaltyMap(p.getName(), penalty);
+        }
+    }
+
+    public static void sufferMoralePenalty(Player player, double penalty) {
+        for (Province p : provinces) {
+            if (p.getPlayer().equals(player)) {
+                ArrayList<Unit> units = p.getUnits();
                 for (Unit u2 : units) {
-                    u2.minusMorale(0.2);
+                    u2.minusMorale(penalty);
                 }
+                player.increaseMoralePenalty(penalty);
             }
         }
     }
+
+	public static void checkLERecapture(Unit u, Province p) {
+        if (u.getAbility() == "Legionary Eagle") {
+            Player player = u.getPlayer();
+            if (player.mapContainsProvince(p)) {
+                player.mapRemoveProvince(p);
+            }
+        }
+	}
 
     public static void setProvinces(ArrayList<Province> provinces) {
         Ability.provinces = provinces;

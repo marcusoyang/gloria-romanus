@@ -10,32 +10,49 @@ import javafx.stage.Stage;
 
 public class GloriaRomanusApplication extends Application {
 
-  private static GloriaRomanusController controller;
+  // private static GloriaRomanusController controller;
 
   @Override
   public void start(Stage stage) throws IOException {
-    // set up the scene
-    FXMLLoader loader = new FXMLLoader(getClass().getResource("main.fxml"));
-    Parent root = loader.load();
-    controller = loader.getController();
-    Scene scene = new Scene(root);
 
-    // set up the stage
-    stage.setTitle("Gloria Romanus");
+    StartScreen startScreen = new StartScreen(stage);
+    MainScreen mainScreen = new MainScreen(stage);
+
+    startScreen.getController().setMainScreen(mainScreen);
+    mainScreen.getController().setStartScreen(startScreen);
+
+    Audio audio = new Audio();
+    startScreen.getController().setAudio(audio);
+    mainScreen.getController().setAudio(audio);;
+
     stage.setWidth(1280);
     stage.setHeight(720);
-    stage.setScene(scene);
-    stage.show();
+
+    startScreen.start();
+    audio.playAudio();
+
+    // set up the scene
+    /*FXMLLoader loader = new FXMLLoader(getClass().getResource("main.fxml"));
+    Parent root = loader.load();
+    controller = loader.getController();
+    main = new Scene(root);*/
+
+    // set up the stage
+    /*stage.setTitle("Gloria Romanus");
+    stage.setWidth(1280);
+    stage.setHeight(720);
+    stage.setScene(start);
+    stage.show();*/
 
   }
 
   /**
    * Stops and releases all resources used in application.
    */
-  @Override
+  /*@Override
   public void stop() {
     controller.terminate();
-  }
+  }*/
 
   /**
    * Opens and runs application.
