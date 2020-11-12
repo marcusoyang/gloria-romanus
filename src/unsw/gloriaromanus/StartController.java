@@ -11,6 +11,7 @@ public class StartController {
     private Button startButton;
 
     private MainScreen mainScreen;
+    private Audio audio;
 
     @FXML
     public void handleStartButton(ActionEvent event) {
@@ -20,5 +21,9 @@ public class StartController {
 	public void setMainScreen(MainScreen mainScreen) {
         this.mainScreen = mainScreen;
 	}
+
+    public void setAudio(Audio audio) {
+        this.audio = audio;
+    }
 }
 

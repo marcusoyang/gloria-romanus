@@ -23,6 +23,7 @@ import java.util.stream.Collectors;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Point2D;
+import javafx.scene.control.Slider;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -70,6 +71,8 @@ public class GloriaRomanusController{
   private TextField opponent_province;
   @FXML
   private TextArea output_terminal;
+  @FXML
+  private Slider volumeSlider;
 
   private ArcGISMap map;
 
@@ -98,10 +101,12 @@ public class GloriaRomanusController{
   private String unitConfig;
   private boolean hasWon;
   private StartScreen startScreen;
+  private Audio audio;
 
   @FXML
   private void initialize() throws JsonParseException, JsonMappingException, IOException {
     
+    initializeVolumeSlider();
     readConfig();
     provinces = new ArrayList<Province>();
     players = new ArrayList<Player>();
@@ -133,6 +138,12 @@ public class GloriaRomanusController{
     currentlySelectedEnemyProvince = null;
 
     initializeProvinceLayers();    
+  }
+
+  private void initializeVolumeSlider() {
+    volumeSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
+      audio.changeVolume((double) newValue);
+    });
   }
 
   private void generatePlayers() throws IOException {
@@ -883,6 +894,10 @@ public class GloriaRomanusController{
   private void printMessageToTerminal(String message){
     output_terminal.appendText(message+"\n");
   }
+
+  public void setAudio(Audio audio) {
+    this.audio = audio;
+}
 
   /**
    * Stops and releases all resources used in application.

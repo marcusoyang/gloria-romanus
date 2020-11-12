@@ -19,7 +19,7 @@ public class MainScreen {
         title = "Gloria Romanus";
 
         controller = new GloriaRomanusController();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("main.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("javafxmls/main.fxml"));
         loader.setController(controller);
 
         // load into a Parent node called root
