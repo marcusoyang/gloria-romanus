@@ -30,7 +30,7 @@ public class StartScreen {
         // load into a Parent node called root
         Parent root = loader.load();
 
-        /*String startVidFile = "src/unsw/gloriaromanus/media/genshin1080.mp4";
+        String startVidFile = "src/unsw/gloriaromanus/media/genshin900.mp4";
         Media startVideo = new Media(new File(startVidFile).toURI().toString());
         MediaPlayer vidPlayer = new MediaPlayer(startVideo);
         vidPlayer.setAutoPlay(true);  
@@ -38,9 +38,10 @@ public class StartScreen {
 
         MediaView mediaView = new MediaView(vidPlayer);
         Group group = new Group();
-        group.getChildren().add(mediaView);*/
+        group.getChildren().add(mediaView);
+        group.getChildren().add(root);
 
-        scene = new Scene(root, 500, 300);
+        scene = new Scene(group, 1600, 900);
     }
 
     public void start() {

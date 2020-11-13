@@ -2,10 +2,12 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button fx:id="startButton" onAction="#handleStartButton" layoutX="600.0" layoutY="346.0" mnemonicParsing="false" text="Start Game" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="940.0" layoutX="-20.0" layoutY="-20.0" opacity="0.3" stroke="BLACK" strokeType="INSIDE" width="329.0" />
+      <Button fx:id="startButton" layoutX="64.0" layoutY="425.0" mnemonicParsing="false" onAction="#handleStartButton" prefHeight="46.0" prefWidth="185.0" text="New Game" />
+      <Button fx:id="loadButton" layoutX="65.0" layoutY="498.0" mnemonicParsing="false" onAction="#handleLoadButton" prefHeight="46.0" prefWidth="185.0" text="Load Game" />
    </children>
 </Pane>

@@ -66,6 +66,8 @@ public class GloriaRomanusController{
   @FXML
   private TextField current_faction;
   @FXML
+  private TextField current_year;
+  @FXML
   private TextField invading_province;
   @FXML
   private TextField opponent_province;
@@ -112,32 +114,36 @@ public class GloriaRomanusController{
     players = new ArrayList<Player>();
     hasWon = false;
 
-    filename = "world_1";    
-    String content = stringFromCampaignFile(filename);
+    currentlySelectedHumanProvince = null;
+    currentlySelectedEnemyProvince = null;  
+  }
 
-    JSONObject j = new JSONObject(content);
-    if (j.getString("status").equals("saved")) {
-      // restores saved game if status is "saved"
-      restoreSavedDetails();
-    } else {
-      // initialize new game
-      generatePlayers();
-      initializeOfflineMultiOwnership();
-      Random r = new Random();
-      for (Province p: provinces) {
-        p.setInitialArmy(r.nextInt(500));
-      }
+  public void newGame() throws IOException {
+    initialize();
+    generatePlayers();
+    initializeOfflineMultiOwnership();
+    Random r = new Random();
+    for (Province p: provinces) {
+      p.setInitialArmy(r.nextInt(500));
     }
-
-    current_faction.setText(players.get(currentPlayerID).getFaction());
-
     currentPlayerID = 0;
     currentYear = 0;
+    initializeFrontendText();
+    initializeProvinceLayers();  
+  }
 
-    currentlySelectedHumanProvince = null;
-    currentlySelectedEnemyProvince = null;
+  public void loadGame() throws IOException {
+    filename = "world_1";    
+    // String content = stringFromCampaignFile(filename);
+    // JSONObject j = new JSONObject(content);
+    restoreSavedDetails();
+    initializeFrontendText();
+    initializeProvinceLayers();  
+  }
 
-    initializeProvinceLayers();    
+  private void initializeFrontendText() {
+    current_faction.setText(players.get(currentPlayerID).getFaction());
+    current_year.setText(String.valueOf(currentYear));
   }
 
   /**
