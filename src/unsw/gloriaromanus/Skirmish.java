@@ -7,86 +7,73 @@ public class Skirmish {
     
     // During a skirmish, both units engage in a sequence of "engagements" against each other
     private ArrayList<Engagement> engagements;
-    private String range;
 
     private Unit human;
     private Unit enemy;
+
     private int engagementIndex;
 
-    private Status humanStatus;
-    private Status enemyStatus;
-
-    private int humanInitialNumTroops; 
-    private int enemyInitialNumTroops;
+    private SkirmishResult result;
 
     public Skirmish(Unit human, Unit enemy, int engagementIndex) {
         engagements = new ArrayList<Engagement>();
         this.human = human;
         this.enemy = enemy;
         this.engagementIndex = engagementIndex;
-
-        this.humanStatus = new Status(human);
-        this.enemyStatus = new Status(enemy);
-
-        humanInitialNumTroops = human.getNumTroops();
-        enemyInitialNumTroops = enemy.getNumTroops();
+        result = new SkirmishResult(human, enemy);
     }
+    
     public void start(String range) {
-        this.range = range;
         // A sequence of skirmishes continuously run until a whole army is eliminated or routed entirely
         while(engagementIndex < MAX_ENG) {
-            
-            if(addEngagement(range)) {
+            addEngagement(range);
+            if(!result.getResult().equals("")) {
                 break;
             }
             engagementIndex++;
         }
+        
         if (engagementIndex >= MAX_ENG) {
-            humanStatus.setStatus("draw");
-            enemyStatus.setStatus("draw");
+            result.setDraw();
         }
     }
 
-    public Boolean addEngagement(String range) {
-        Engagement e = new Engagement(range, human, enemy, this);
-        engagements.add(e);
-        if (e.checkEnemyDefeat()) {
-            humanStatus.setStatus("winner");
-            enemyStatus.setStatus("defeat");
-            return true;
-        } else if (e.checkHumanDefeat()) {
-            enemyStatus.setStatus("winner");
-            humanStatus.setStatus("defeat");
-            return true;
+    public void addEngagement(String range) {
+        Engagement e;
+        if (range.equals("melee")) {
+            e = new MeleeEngagement(human, enemy, this);
+        } else {
+            e = new RangedEngagement(human, enemy, this);
         }  
-        return false;
+
+        engagements.add(e);
     }
 
     public int getEngagementIndex() {
         return engagementIndex;
     }
 
-    public void setStatus(Unit u, String status) {
-        if (u.equals(human)) {
-            humanStatus.setStatus(status);
-        } else {
-            enemyStatus.setStatus(status);
-        }
+    public void setNormalResult(Unit winner, Unit loser) {
+        result.setNormal(winner);
     }
 
-    public String getHumanStatus() {
-        return humanStatus.getStatus();
+    public void setOneRoutedResult(Unit winner) {
+        result.setOneRouted(winner);
     }
 
-    public String getEnemyStatus() {
-        return enemyStatus.getStatus();
+    public boolean isBroken(Unit u) {
+        return result.isBroken(u);
     }
 
-    public int getHumanInitialNumTroops() {
-        return humanInitialNumTroops;
+    public void setBrokenUnit(Unit u) {
+        result.setBrokenUnit(u);
     }
 
-    public int getEnemyInitialNumTroops() {
-        return enemyInitialNumTroops;
+    public void setBothRoutedResult() {
+        result.setBothRouted();
+    }
+
+    public String getResult() {
+        return result.getResult();
     }
  }

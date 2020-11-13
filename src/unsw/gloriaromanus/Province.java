@@ -91,7 +91,7 @@ public class Province {
     private void generateFactories(String unitConfig) {
         factories = new ArrayList<UnitFactory>();
         for (int i = 0; i < MAX_FAC; i++) {
-            UnitFactory factory = new UnitFactory(unitConfig);
+            UnitFactory factory = new UnitFactory(unitConfig, player);
             factories.add(factory);
         }
     }
@@ -111,7 +111,7 @@ public class Province {
     }
 
     public void setInitialArmy(int size) throws IOException {
-        units.add(factories.get(0).newUnit("normal", size));
+        units.add(factories.get(0).newUnit("legionary", size));
     }
 
     public void setArmySize(int remainingSize) {

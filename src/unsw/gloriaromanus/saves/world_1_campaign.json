@@ -1,6 +1,6 @@
 {
   "currentPlayerID": 1,
-  "hasWon": true,
+  "hasWon": false,
   "currentYear": 0,
   "status": "saved"
 }

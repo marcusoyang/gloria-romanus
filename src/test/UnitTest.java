@@ -13,7 +13,7 @@ public class UnitTest {
 
     @Test
     public void unitIDTest() throws IOException {
-        UnitFactory myFac = new UnitFactory(config);
+        UnitFactory myFac = new UnitFactory(config, null);
         Unit.setCounter(0);
         Unit u1 = myFac.newUnit("catapult", 4);
         assertEquals(u1.getID(), 1);
@@ -27,7 +27,7 @@ public class UnitTest {
 
     @Test
     public void basicNewUnitTest() throws IOException {
-        UnitFactory myFac = new UnitFactory(config);
+        UnitFactory myFac = new UnitFactory(config, null);
         Unit u = myFac.newUnit("legionary", 50);
         assertEquals(u.getNumTroops(), 50);
         assertEquals(u.getRange(), "melee");
@@ -36,7 +36,7 @@ public class UnitTest {
 
     @Test
     public void basicNewUnitTest2() throws IOException {
-        UnitFactory myFac = new UnitFactory(config);
+        UnitFactory myFac = new UnitFactory(config, null);
         Unit u = myFac.newUnit("catapult", 100);
         assertEquals(u.getShieldDefense(), 0);
         assertEquals(u.getType(), "artillery");
@@ -45,7 +45,7 @@ public class UnitTest {
 
     @Test
     public void trainingTest() throws IOException {
-        UnitFactory myFac = new UnitFactory(config);
+        UnitFactory myFac = new UnitFactory(config, null);
         myFac.addToTraining("elephant", 30);
         assertEquals(myFac.nextTrainingTurn(), null);
         assertEquals(myFac.nextTrainingTurn().getClass(), Unit.class);
@@ -54,7 +54,7 @@ public class UnitTest {
 
     @Test
     public void trainingTest2() throws IOException {
-        UnitFactory myFac = new UnitFactory(config);
+        UnitFactory myFac = new UnitFactory(config, null);
         assertEquals(myFac.getIsTraining(), false);
         myFac.addToTraining("catapult", 30);
         assertEquals(myFac.getIsTraining(), true);
@@ -64,7 +64,7 @@ public class UnitTest {
 
     @Test
     public void trainingTest3() throws IOException {
-        UnitFactory myFac = new UnitFactory(config);
+        UnitFactory myFac = new UnitFactory(config, null);
         assertEquals(myFac.getIsTraining(), false);
         myFac.addToTraining("pikemen", 100);
         assertEquals(myFac.getIsTraining(), true);
