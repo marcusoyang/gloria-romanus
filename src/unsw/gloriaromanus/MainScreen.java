@@ -24,10 +24,18 @@ public class MainScreen {
 
         // load into a Parent node called root
         Parent root = loader.load();
-        scene = new Scene(root, 500, 300);
+        scene = new Scene(root, 1600, 900);
     }
 
-    public void start() {
+    public void start() throws IOException {
+        controller.newGame();
+        stage.setTitle(title);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void load() throws IOException {
+        controller.loadGame();
         stage.setTitle(title);
         stage.setScene(scene);
         stage.show();

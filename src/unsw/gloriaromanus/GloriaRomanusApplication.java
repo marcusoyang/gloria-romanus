@@ -23,13 +23,12 @@ public class GloriaRomanusApplication extends Application {
 
     Audio audio = new Audio();
     startScreen.getController().setAudio(audio);
-    mainScreen.getController().setAudio(audio);;
+    mainScreen.getController().setAudio(audio);
 
-    stage.setWidth(1280);
-    stage.setHeight(720);
+    stage.setWidth(1600);
+    stage.setHeight(900);
 
     startScreen.start();
-    audio.playAudio();
 
     // set up the scene
     /*FXMLLoader loader = new FXMLLoader(getClass().getResource("main.fxml"));

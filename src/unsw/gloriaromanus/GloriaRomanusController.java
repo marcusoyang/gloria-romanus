@@ -66,6 +66,8 @@ public class GloriaRomanusController{
   @FXML
   private TextField current_faction;
   @FXML
+  private TextField current_year;
+  @FXML
   private TextField invading_province;
   @FXML
   private TextField opponent_province;
@@ -106,42 +108,49 @@ public class GloriaRomanusController{
   @FXML
   private void initialize() throws JsonParseException, JsonMappingException, IOException {
     
+    filename = "world_1";  // Implement text field
+
     initializeVolumeSlider();
     readConfig();
     provinces = new ArrayList<Province>();
     players = new ArrayList<Player>();
     hasWon = false;
 
-    filename = "world_1";    
-    String content = stringFromCampaignFile(filename);
-
-    JSONObject j = new JSONObject(content);
-    if (j.getString("status").equals("saved")) {
-      // restores saved game if status is "saved"
-      restoreSavedDetails();
-    } else {
-      // initialize new game
-      generatePlayers();
-      initializeOfflineMultiOwnership();
-      Random r = new Random();
-      for (Province p: provinces) {
-        p.setInitialArmy(r.nextInt(500));
-      }
-    }
-
-    current_faction.setText(players.get(currentPlayerID).getFaction());
-
-    currentPlayerID = 0;
-    currentYear = 0;
-
     currentlySelectedHumanProvince = null;
-    currentlySelectedEnemyProvince = null;
-
-    initializeProvinceLayers();    
+    currentlySelectedEnemyProvince = null;  
   }
 
+  public void newGame() throws IOException {
+    initialize();
+    generatePlayers();
+    initializeOfflineMultiOwnership();
+    Random r = new Random();
+    for (Province p: provinces) {
+      p.setInitialArmy(r.nextInt(500));
+    }
+    currentPlayerID = 0;
+    currentYear = 0;
+    initializeFrontendText();
+    initializeProvinceLayers();  
+  }
+
+  public void loadGame() throws IOException {  
+    // String content = stringFromCampaignFile(filename);
+    // JSONObject j = new JSONObject(content);
+    restoreSavedDetails();
+    initializeFrontendText();
+    initializeProvinceLayers();  
+  }
+
+  private void initializeFrontendText() {
+    current_faction.setText(players.get(currentPlayerID).getFaction());
+    current_year.setText(String.valueOf(currentYear));
+  }
+
+  /**
+   * Initializes an observer to update the volume when the slider has changed.
+   */
   private void initializeVolumeSlider() {
-    volumeSlider.setValue(1);
     volumeSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
       audio.changeVolume((double) newValue);
     });
@@ -898,7 +907,8 @@ public class GloriaRomanusController{
 
   public void setAudio(Audio audio) {
     this.audio = audio;
-}
+    volumeSlider.setValue(Audio.getDefaultVol());
+  }
 
   /**
    * Stops and releases all resources used in application.
