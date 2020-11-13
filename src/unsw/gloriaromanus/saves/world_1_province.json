@@ -15,13 +15,38 @@
         "training": null
       }
     ],
+<<<<<<< HEAD
     "units": [],
+=======
+    "units": [{
+      "shieldDefense": 0,
+      "range": "melee",
+      "rangedAttack": 0,
+      "type": "heavy infantry",
+      "numTroops": 130,
+      "speed": 1,
+      "armour": 0,
+      "turnsToProduce": 0,
+      "meleeAttack": 1,
+      "movementPoints": 4,
+      "id": 1,
+      "morale": 10,
+      "ability": "",
+      "defenseSkill": 1,
+      "player": null
+    }],
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
     "player": {
       "gold": 100000,
       "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
+<<<<<<< HEAD
       "faction": "Romans",
       "id": 1
+=======
+      "faction": "Numidians",
+      "id": 6
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
     }
   },
   {
@@ -45,11 +70,19 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
+<<<<<<< HEAD
       "numTroops": 72,
       "speed": 10,
       "armour": 10,
       "turnsToProduce": 1,
       "meleeAttack": 10,
+=======
+      "numTroops": 109,
+      "speed": 1,
+      "armour": 0,
+      "turnsToProduce": 0,
+      "meleeAttack": 1,
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
       "movementPoints": 4,
       "id": 37,
       "morale": 10,
@@ -61,8 +94,13 @@
       "gold": 100000,
       "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
+<<<<<<< HEAD
       "faction": "Romans",
       "id": 1
+=======
+      "faction": "Thracians",
+      "id": 15
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
     }
   },
   {
@@ -86,11 +124,19 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
+<<<<<<< HEAD
       "numTroops": 248,
       "speed": 10,
       "armour": 10,
       "turnsToProduce": 1,
       "meleeAttack": 10,
+=======
+      "numTroops": 138,
+      "speed": 1,
+      "armour": 0,
+      "turnsToProduce": 0,
+      "meleeAttack": 1,
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
       "movementPoints": 4,
       "id": 3,
       "morale": 10,
@@ -127,11 +173,19 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
+<<<<<<< HEAD
       "numTroops": 305,
       "speed": 10,
       "armour": 10,
       "turnsToProduce": 1,
       "meleeAttack": 10,
+=======
+      "numTroops": 440,
+      "speed": 1,
+      "armour": 0,
+      "turnsToProduce": 0,
+      "meleeAttack": 1,
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
       "movementPoints": 4,
       "id": 4,
       "morale": 10,
@@ -143,8 +197,13 @@
       "gold": 100000,
       "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
+<<<<<<< HEAD
       "faction": "Spanish",
       "id": 5
+=======
+      "faction": "Egyptians",
+      "id": 7
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
     }
   },
   {
@@ -168,11 +227,19 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
+<<<<<<< HEAD
       "numTroops": 258,
       "speed": 10,
       "armour": 10,
       "turnsToProduce": 1,
       "meleeAttack": 10,
+=======
+      "numTroops": 239,
+      "speed": 1,
+      "armour": 0,
+      "turnsToProduce": 0,
+      "meleeAttack": 1,
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
       "movementPoints": 4,
       "id": 5,
       "morale": 10,
@@ -184,8 +251,13 @@
       "gold": 100000,
       "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
+<<<<<<< HEAD
       "faction": "Amenians",
       "id": 10
+=======
+      "faction": "Spanish",
+      "id": 5
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
     }
   },
   {
@@ -204,13 +276,33 @@
         "training": null
       }
     ],
+<<<<<<< HEAD
     "units": [],
+=======
+    "units": [{
+      "shieldDefense": 0,
+      "range": "melee",
+      "rangedAttack": 0,
+      "type": "heavy infantry",
+      "numTroops": 262,
+      "speed": 1,
+      "armour": 0,
+      "turnsToProduce": 0,
+      "meleeAttack": 1,
+      "movementPoints": 4,
+      "id": 6,
+      "morale": 10,
+      "ability": "",
+      "defenseSkill": 1,
+      "player": null
+    }],
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
     "player": {
       "gold": 100000,
       "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
-      "faction": "Gauls",
-      "id": 3
+      "faction": "Celtic Britons",
+      "id": 4
     }
   },
   {
@@ -234,11 +326,19 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
+<<<<<<< HEAD
       "numTroops": 126,
       "speed": 10,
       "armour": 10,
       "turnsToProduce": 1,
       "meleeAttack": 10,
+=======
+      "numTroops": 99,
+      "speed": 1,
+      "armour": 0,
+      "turnsToProduce": 0,
+      "meleeAttack": 1,
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
       "movementPoints": 4,
       "id": 7,
       "morale": 10,
@@ -250,8 +350,13 @@
       "gold": 100000,
       "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
+<<<<<<< HEAD
       "faction": "Parthians",
       "id": 11
+=======
+      "faction": "Macedonians",
+      "id": 14
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
     }
   },
   {
@@ -275,11 +380,19 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
+<<<<<<< HEAD
       "numTroops": 485,
       "speed": 10,
       "armour": 10,
       "turnsToProduce": 1,
       "meleeAttack": 10,
+=======
+      "numTroops": 37,
+      "speed": 1,
+      "armour": 0,
+      "turnsToProduce": 0,
+      "meleeAttack": 1,
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
       "movementPoints": 4,
       "id": 8,
       "morale": 10,
@@ -291,8 +404,13 @@
       "gold": 100000,
       "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
+<<<<<<< HEAD
       "faction": "Parthians",
       "id": 11
+=======
+      "faction": "Amenians",
+      "id": 10
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
     }
   },
   {
@@ -311,13 +429,38 @@
         "training": null
       }
     ],
+<<<<<<< HEAD
     "units": [],
+=======
+    "units": [{
+      "shieldDefense": 0,
+      "range": "melee",
+      "rangedAttack": 0,
+      "type": "heavy infantry",
+      "numTroops": 346,
+      "speed": 1,
+      "armour": 0,
+      "turnsToProduce": 0,
+      "meleeAttack": 1,
+      "movementPoints": 4,
+      "id": 9,
+      "morale": 10,
+      "ability": "",
+      "defenseSkill": 1,
+      "player": null
+    }],
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
     "player": {
       "gold": 100000,
       "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
+<<<<<<< HEAD
       "faction": "Celtic Britons",
       "id": 4
+=======
+      "faction": "Seleucid Empire",
+      "id": 8
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
     }
   },
   {
@@ -336,7 +479,27 @@
         "training": null
       }
     ],
+<<<<<<< HEAD
     "units": [],
+=======
+    "units": [{
+      "shieldDefense": 0,
+      "range": "melee",
+      "rangedAttack": 0,
+      "type": "heavy infantry",
+      "numTroops": 314,
+      "speed": 1,
+      "armour": 0,
+      "turnsToProduce": 0,
+      "meleeAttack": 1,
+      "movementPoints": 4,
+      "id": 10,
+      "morale": 10,
+      "ability": "",
+      "defenseSkill": 1,
+      "player": null
+    }],
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
     "player": {
       "gold": 100000,
       "legionaryEaglePenaltyMap": {},
@@ -366,11 +529,19 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
+<<<<<<< HEAD
       "numTroops": 56,
       "speed": 10,
       "armour": 10,
       "turnsToProduce": 1,
       "meleeAttack": 10,
+=======
+      "numTroops": 333,
+      "speed": 1,
+      "armour": 0,
+      "turnsToProduce": 0,
+      "meleeAttack": 1,
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
       "movementPoints": 4,
       "id": 11,
       "morale": 10,
@@ -382,8 +553,13 @@
       "gold": 100000,
       "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
+<<<<<<< HEAD
       "faction": "Amenians",
       "id": 10
+=======
+      "faction": "Seleucid Empire",
+      "id": 8
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
     }
   },
   {
@@ -407,11 +583,19 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
+<<<<<<< HEAD
       "numTroops": 428,
       "speed": 10,
       "armour": 10,
       "turnsToProduce": 1,
       "meleeAttack": 10,
+=======
+      "numTroops": 6,
+      "speed": 1,
+      "armour": 0,
+      "turnsToProduce": 0,
+      "meleeAttack": 1,
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
       "movementPoints": 4,
       "id": 12,
       "morale": 10,
@@ -423,8 +607,13 @@
       "gold": 100000,
       "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
+<<<<<<< HEAD
       "faction": "Greek City States",
       "id": 13
+=======
+      "faction": "Amenians",
+      "id": 10
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
     }
   },
   {
@@ -448,11 +637,19 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
+<<<<<<< HEAD
       "numTroops": 493,
       "speed": 10,
       "armour": 10,
       "turnsToProduce": 1,
       "meleeAttack": 10,
+=======
+      "numTroops": 14,
+      "speed": 1,
+      "armour": 0,
+      "turnsToProduce": 0,
+      "meleeAttack": 1,
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
       "movementPoints": 4,
       "id": 13,
       "morale": 10,
@@ -464,8 +661,13 @@
       "gold": 100000,
       "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
+<<<<<<< HEAD
       "faction": "Amenians",
       "id": 10
+=======
+      "faction": "Gauls",
+      "id": 3
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
     }
   },
   {
@@ -484,13 +686,38 @@
         "training": null
       }
     ],
+<<<<<<< HEAD
     "units": [],
+=======
+    "units": [{
+      "shieldDefense": 0,
+      "range": "melee",
+      "rangedAttack": 0,
+      "type": "heavy infantry",
+      "numTroops": 174,
+      "speed": 1,
+      "armour": 0,
+      "turnsToProduce": 0,
+      "meleeAttack": 1,
+      "movementPoints": 4,
+      "id": 14,
+      "morale": 10,
+      "ability": "",
+      "defenseSkill": 1,
+      "player": null
+    }],
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
     "player": {
       "gold": 100000,
       "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
+<<<<<<< HEAD
       "faction": "Celtic Britons",
       "id": 4
+=======
+      "faction": "Pontus",
+      "id": 9
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
     }
   },
   {
@@ -514,11 +741,19 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
+<<<<<<< HEAD
       "numTroops": 340,
       "speed": 10,
       "armour": 10,
       "turnsToProduce": 1,
       "meleeAttack": 10,
+=======
+      "numTroops": 39,
+      "speed": 1,
+      "armour": 0,
+      "turnsToProduce": 0,
+      "meleeAttack": 1,
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
       "movementPoints": 4,
       "id": 15,
       "morale": 10,
@@ -530,8 +765,8 @@
       "gold": 100000,
       "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
-      "faction": "Thracians",
-      "id": 15
+      "faction": "Macedonians",
+      "id": 14
     }
   },
   {
@@ -555,11 +790,19 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
+<<<<<<< HEAD
       "numTroops": 124,
       "speed": 10,
       "armour": 10,
       "turnsToProduce": 1,
       "meleeAttack": 10,
+=======
+      "numTroops": 38,
+      "speed": 1,
+      "armour": 0,
+      "turnsToProduce": 0,
+      "meleeAttack": 1,
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
       "movementPoints": 4,
       "id": 16,
       "morale": 10,
@@ -571,8 +814,13 @@
       "gold": 100000,
       "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
+<<<<<<< HEAD
       "faction": "Spanish",
       "id": 5
+=======
+      "faction": "Macedonians",
+      "id": 14
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
     }
   },
   {
@@ -591,13 +839,38 @@
         "training": null
       }
     ],
+<<<<<<< HEAD
     "units": [],
+=======
+    "units": [{
+      "shieldDefense": 0,
+      "range": "melee",
+      "rangedAttack": 0,
+      "type": "heavy infantry",
+      "numTroops": 110,
+      "speed": 1,
+      "armour": 0,
+      "turnsToProduce": 0,
+      "meleeAttack": 1,
+      "movementPoints": 4,
+      "id": 17,
+      "morale": 10,
+      "ability": "",
+      "defenseSkill": 1,
+      "player": null
+    }],
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
     "player": {
       "gold": 100000,
       "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
+<<<<<<< HEAD
       "faction": "Romans",
       "id": 1
+=======
+      "faction": "Parthians",
+      "id": 11
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
     }
   },
   {
@@ -616,13 +889,38 @@
         "training": null
       }
     ],
+<<<<<<< HEAD
     "units": [],
+=======
+    "units": [{
+      "shieldDefense": 0,
+      "range": "melee",
+      "rangedAttack": 0,
+      "type": "heavy infantry",
+      "numTroops": 180,
+      "speed": 1,
+      "armour": 0,
+      "turnsToProduce": 0,
+      "meleeAttack": 1,
+      "movementPoints": 4,
+      "id": 18,
+      "morale": 10,
+      "ability": "",
+      "defenseSkill": 1,
+      "player": null
+    }],
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
     "player": {
       "gold": 100000,
       "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
+<<<<<<< HEAD
       "faction": "Romans",
       "id": 1
+=======
+      "faction": "Parthians",
+      "id": 11
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
     }
   },
   {
@@ -646,11 +944,19 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
+<<<<<<< HEAD
       "numTroops": 82,
       "speed": 10,
       "armour": 10,
       "turnsToProduce": 1,
       "meleeAttack": 10,
+=======
+      "numTroops": 395,
+      "speed": 1,
+      "armour": 0,
+      "turnsToProduce": 0,
+      "meleeAttack": 1,
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
       "movementPoints": 4,
       "id": 19,
       "morale": 10,
@@ -662,8 +968,13 @@
       "gold": 100000,
       "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
+<<<<<<< HEAD
       "faction": "Amenians",
       "id": 10
+=======
+      "faction": "Gauls",
+      "id": 3
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
     }
   },
   {
@@ -687,11 +998,19 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
+<<<<<<< HEAD
       "numTroops": 216,
       "speed": 10,
       "armour": 10,
       "turnsToProduce": 1,
       "meleeAttack": 10,
+=======
+      "numTroops": 461,
+      "speed": 1,
+      "armour": 0,
+      "turnsToProduce": 0,
+      "meleeAttack": 1,
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
       "movementPoints": 4,
       "id": 20,
       "morale": 10,
@@ -703,8 +1022,13 @@
       "gold": 100000,
       "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
+<<<<<<< HEAD
       "faction": "Romans",
       "id": 1
+=======
+      "faction": "Macedonians",
+      "id": 14
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
     }
   },
   {
@@ -728,11 +1052,19 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
+<<<<<<< HEAD
       "numTroops": 256,
       "speed": 10,
       "armour": 10,
       "turnsToProduce": 1,
       "meleeAttack": 10,
+=======
+      "numTroops": 189,
+      "speed": 1,
+      "armour": 0,
+      "turnsToProduce": 0,
+      "meleeAttack": 1,
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
       "movementPoints": 4,
       "id": 21,
       "morale": 10,
@@ -744,8 +1076,13 @@
       "gold": 100000,
       "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
+<<<<<<< HEAD
       "faction": "Pontus",
       "id": 9
+=======
+      "faction": "Amenians",
+      "id": 10
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
     }
   },
   {
@@ -764,7 +1101,27 @@
         "training": null
       }
     ],
+<<<<<<< HEAD
     "units": [],
+=======
+    "units": [{
+      "shieldDefense": 0,
+      "range": "melee",
+      "rangedAttack": 0,
+      "type": "heavy infantry",
+      "numTroops": 480,
+      "speed": 1,
+      "armour": 0,
+      "turnsToProduce": 0,
+      "meleeAttack": 1,
+      "movementPoints": 4,
+      "id": 22,
+      "morale": 10,
+      "ability": "",
+      "defenseSkill": 1,
+      "player": null
+    }],
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
     "player": {
       "gold": 100000,
       "legionaryEaglePenaltyMap": {},
@@ -789,13 +1146,34 @@
         "training": null
       }
     ],
-    "units": [],
+    "units": [{
+      "shieldDefense": 0,
+      "range": "melee",
+      "rangedAttack": 0,
+      "type": "heavy infantry",
+      "numTroops": 418,
+      "speed": 1,
+      "armour": 0,
+      "turnsToProduce": 0,
+      "meleeAttack": 1,
+      "movementPoints": 4,
+      "id": 23,
+      "morale": 10,
+      "ability": "",
+      "defenseSkill": 1,
+      "player": null
+    }],
     "player": {
       "gold": 100000,
       "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
+<<<<<<< HEAD
       "faction": "Celtic Britons",
       "id": 4
+=======
+      "faction": "Amenians",
+      "id": 10
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
     }
   },
   {
@@ -814,13 +1192,38 @@
         "training": null
       }
     ],
+<<<<<<< HEAD
     "units": [],
+=======
+    "units": [{
+      "shieldDefense": 0,
+      "range": "melee",
+      "rangedAttack": 0,
+      "type": "heavy infantry",
+      "numTroops": 386,
+      "speed": 1,
+      "armour": 0,
+      "turnsToProduce": 0,
+      "meleeAttack": 1,
+      "movementPoints": 4,
+      "id": 24,
+      "morale": 10,
+      "ability": "",
+      "defenseSkill": 1,
+      "player": null
+    }],
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
     "player": {
       "gold": 100000,
       "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
+<<<<<<< HEAD
       "faction": "Gauls",
       "id": 3
+=======
+      "faction": "Egyptians",
+      "id": 7
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
     }
   },
   {
@@ -839,13 +1242,38 @@
         "training": null
       }
     ],
+<<<<<<< HEAD
     "units": [],
+=======
+    "units": [{
+      "shieldDefense": 0,
+      "range": "melee",
+      "rangedAttack": 0,
+      "type": "heavy infantry",
+      "numTroops": 469,
+      "speed": 1,
+      "armour": 0,
+      "turnsToProduce": 0,
+      "meleeAttack": 1,
+      "movementPoints": 4,
+      "id": 25,
+      "morale": 10,
+      "ability": "",
+      "defenseSkill": 1,
+      "player": null
+    }],
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
     "player": {
       "gold": 100000,
       "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
+<<<<<<< HEAD
       "faction": "Gauls",
       "id": 3
+=======
+      "faction": "Macedonians",
+      "id": 14
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
     }
   },
   {
@@ -869,11 +1297,19 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
+<<<<<<< HEAD
       "numTroops": 487,
       "speed": 10,
       "armour": 10,
       "turnsToProduce": 1,
       "meleeAttack": 10,
+=======
+      "numTroops": 286,
+      "speed": 1,
+      "armour": 0,
+      "turnsToProduce": 0,
+      "meleeAttack": 1,
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
       "movementPoints": 4,
       "id": 26,
       "morale": 10,
@@ -906,6 +1342,7 @@
       }
     ],
     "units": [{
+<<<<<<< HEAD
       "shieldDefense": 10,
       "range": "melee",
       "rangedAttack": 0,
@@ -920,14 +1357,35 @@
       "morale": 10,
       "ability": "Legionary Eagle",
       "defenseSkill": 10,
+=======
+      "shieldDefense": 0,
+      "range": "melee",
+      "rangedAttack": 0,
+      "type": "heavy infantry",
+      "numTroops": 107,
+      "speed": 1,
+      "armour": 0,
+      "turnsToProduce": 0,
+      "meleeAttack": 1,
+      "movementPoints": 4,
+      "id": 27,
+      "morale": 10,
+      "ability": "",
+      "defenseSkill": 1,
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
       "player": null
     }],
     "player": {
       "gold": 100000,
       "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
+<<<<<<< HEAD
       "faction": "Spanish",
       "id": 5
+=======
+      "faction": "Macedonians",
+      "id": 14
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
     }
   },
   {
@@ -951,11 +1409,19 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
+<<<<<<< HEAD
       "numTroops": 376,
       "speed": 10,
       "armour": 10,
       "turnsToProduce": 1,
       "meleeAttack": 10,
+=======
+      "numTroops": 144,
+      "speed": 1,
+      "armour": 0,
+      "turnsToProduce": 0,
+      "meleeAttack": 1,
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
       "movementPoints": 4,
       "id": 28,
       "morale": 10,
@@ -967,8 +1433,13 @@
       "gold": 100000,
       "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
+<<<<<<< HEAD
       "faction": "Seleucid Empire",
       "id": 8
+=======
+      "faction": "Gauls",
+      "id": 3
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
     }
   },
   {
@@ -987,7 +1458,27 @@
         "training": null
       }
     ],
+<<<<<<< HEAD
     "units": [],
+=======
+    "units": [{
+      "shieldDefense": 0,
+      "range": "melee",
+      "rangedAttack": 0,
+      "type": "heavy infantry",
+      "numTroops": 432,
+      "speed": 1,
+      "armour": 0,
+      "turnsToProduce": 0,
+      "meleeAttack": 1,
+      "movementPoints": 4,
+      "id": 29,
+      "morale": 10,
+      "ability": "",
+      "defenseSkill": 1,
+      "player": null
+    }],
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
     "player": {
       "gold": 100000,
       "legionaryEaglePenaltyMap": {},
@@ -1017,11 +1508,19 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
+<<<<<<< HEAD
       "numTroops": 158,
       "speed": 10,
       "armour": 10,
       "turnsToProduce": 1,
       "meleeAttack": 10,
+=======
+      "numTroops": 168,
+      "speed": 1,
+      "armour": 0,
+      "turnsToProduce": 0,
+      "meleeAttack": 1,
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
       "movementPoints": 4,
       "id": 30,
       "morale": 10,
@@ -1033,8 +1532,13 @@
       "gold": 100000,
       "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
+<<<<<<< HEAD
       "faction": "Macedonians",
       "id": 14
+=======
+      "faction": "Greek City States",
+      "id": 13
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
     }
   },
   {
@@ -1053,13 +1557,38 @@
         "training": null
       }
     ],
+<<<<<<< HEAD
     "units": [],
+=======
+    "units": [{
+      "shieldDefense": 0,
+      "range": "melee",
+      "rangedAttack": 0,
+      "type": "heavy infantry",
+      "numTroops": 188,
+      "speed": 1,
+      "armour": 0,
+      "turnsToProduce": 0,
+      "meleeAttack": 1,
+      "movementPoints": 4,
+      "id": 31,
+      "morale": 10,
+      "ability": "",
+      "defenseSkill": 1,
+      "player": null
+    }],
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
     "player": {
       "gold": 100000,
       "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
+<<<<<<< HEAD
       "faction": "Celtic Britons",
       "id": 4
+=======
+      "faction": "Greek City States",
+      "id": 13
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
     }
   },
   {
@@ -1078,13 +1607,38 @@
         "training": null
       }
     ],
+<<<<<<< HEAD
     "units": [],
+=======
+    "units": [{
+      "shieldDefense": 0,
+      "range": "melee",
+      "rangedAttack": 0,
+      "type": "heavy infantry",
+      "numTroops": 73,
+      "speed": 1,
+      "armour": 0,
+      "turnsToProduce": 0,
+      "meleeAttack": 1,
+      "movementPoints": 4,
+      "id": 32,
+      "morale": 10,
+      "ability": "",
+      "defenseSkill": 1,
+      "player": null
+    }],
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
     "player": {
       "gold": 100000,
       "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
+<<<<<<< HEAD
       "faction": "Romans",
       "id": 1
+=======
+      "faction": "Thracians",
+      "id": 15
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
     }
   },
   {
@@ -1108,11 +1662,19 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
+<<<<<<< HEAD
       "numTroops": 60,
       "speed": 10,
       "armour": 10,
       "turnsToProduce": 1,
       "meleeAttack": 10,
+=======
+      "numTroops": 56,
+      "speed": 1,
+      "armour": 0,
+      "turnsToProduce": 0,
+      "meleeAttack": 1,
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
       "movementPoints": 4,
       "id": 33,
       "morale": 10,
@@ -1124,8 +1686,13 @@
       "gold": 100000,
       "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
+<<<<<<< HEAD
       "faction": "Thracians",
       "id": 15
+=======
+      "faction": "Celtic Britons",
+      "id": 4
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
     }
   },
   {
@@ -1144,13 +1711,38 @@
         "training": null
       }
     ],
+<<<<<<< HEAD
     "units": [],
+=======
+    "units": [{
+      "shieldDefense": 0,
+      "range": "melee",
+      "rangedAttack": 0,
+      "type": "heavy infantry",
+      "numTroops": 293,
+      "speed": 1,
+      "armour": 0,
+      "turnsToProduce": 0,
+      "meleeAttack": 1,
+      "movementPoints": 4,
+      "id": 34,
+      "morale": 10,
+      "ability": "",
+      "defenseSkill": 1,
+      "player": null
+    }],
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
     "player": {
       "gold": 100000,
       "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
+<<<<<<< HEAD
       "faction": "Romans",
       "id": 1
+=======
+      "faction": "Macedonians",
+      "id": 14
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
     }
   },
   {
@@ -1174,11 +1766,19 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
+<<<<<<< HEAD
       "numTroops": 458,
       "speed": 10,
       "armour": 10,
       "turnsToProduce": 1,
       "meleeAttack": 10,
+=======
+      "numTroops": 446,
+      "speed": 1,
+      "armour": 0,
+      "turnsToProduce": 0,
+      "meleeAttack": 1,
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
       "movementPoints": 4,
       "id": 35,
       "morale": 10,
@@ -1190,8 +1790,13 @@
       "gold": 100000,
       "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
+<<<<<<< HEAD
       "faction": "Egyptians",
       "id": 7
+=======
+      "faction": "Thracians",
+      "id": 15
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
     }
   },
   {
@@ -1210,13 +1815,38 @@
         "training": null
       }
     ],
+<<<<<<< HEAD
     "units": [],
+=======
+    "units": [{
+      "shieldDefense": 0,
+      "range": "melee",
+      "rangedAttack": 0,
+      "type": "heavy infantry",
+      "numTroops": 140,
+      "speed": 1,
+      "armour": 0,
+      "turnsToProduce": 0,
+      "meleeAttack": 1,
+      "movementPoints": 4,
+      "id": 36,
+      "morale": 10,
+      "ability": "",
+      "defenseSkill": 1,
+      "player": null
+    }],
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
     "player": {
       "gold": 100000,
       "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
+<<<<<<< HEAD
       "faction": "Romans",
       "id": 1
+=======
+      "faction": "Greek City States",
+      "id": 13
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
     }
   },
   {
@@ -1235,13 +1865,38 @@
         "training": null
       }
     ],
+<<<<<<< HEAD
     "units": [],
+=======
+    "units": [{
+      "shieldDefense": 0,
+      "range": "melee",
+      "rangedAttack": 0,
+      "type": "heavy infantry",
+      "numTroops": 30,
+      "speed": 1,
+      "armour": 0,
+      "turnsToProduce": 0,
+      "meleeAttack": 1,
+      "movementPoints": 4,
+      "id": 37,
+      "morale": 10,
+      "ability": "",
+      "defenseSkill": 1,
+      "player": null
+    }],
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
     "player": {
       "gold": 100000,
       "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
+<<<<<<< HEAD
       "faction": "Romans",
       "id": 1
+=======
+      "faction": "Macedonians",
+      "id": 14
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
     }
   },
   {
@@ -1265,11 +1920,19 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
+<<<<<<< HEAD
       "numTroops": 60,
       "speed": 10,
       "armour": 10,
       "turnsToProduce": 1,
       "meleeAttack": 10,
+=======
+      "numTroops": 252,
+      "speed": 1,
+      "armour": 0,
+      "turnsToProduce": 0,
+      "meleeAttack": 1,
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
       "movementPoints": 4,
       "id": 38,
       "morale": 10,
@@ -1281,8 +1944,13 @@
       "gold": 100000,
       "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
+<<<<<<< HEAD
       "faction": "Greek City States",
       "id": 13
+=======
+      "faction": "Egyptians",
+      "id": 7
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
     }
   },
   {
@@ -1306,11 +1974,19 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
+<<<<<<< HEAD
       "numTroops": 207,
       "speed": 10,
       "armour": 10,
       "turnsToProduce": 1,
       "meleeAttack": 10,
+=======
+      "numTroops": 183,
+      "speed": 1,
+      "armour": 0,
+      "turnsToProduce": 0,
+      "meleeAttack": 1,
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
       "movementPoints": 4,
       "id": 39,
       "morale": 10,
@@ -1322,8 +1998,13 @@
       "gold": 100000,
       "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
+<<<<<<< HEAD
       "faction": "Numidians",
       "id": 6
+=======
+      "faction": "Egyptians",
+      "id": 7
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
     }
   },
   {
@@ -1342,13 +2023,38 @@
         "training": null
       }
     ],
+<<<<<<< HEAD
     "units": [],
+=======
+    "units": [{
+      "shieldDefense": 0,
+      "range": "melee",
+      "rangedAttack": 0,
+      "type": "heavy infantry",
+      "numTroops": 363,
+      "speed": 1,
+      "armour": 0,
+      "turnsToProduce": 0,
+      "meleeAttack": 1,
+      "movementPoints": 4,
+      "id": 40,
+      "morale": 10,
+      "ability": "",
+      "defenseSkill": 1,
+      "player": null
+    }],
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
     "player": {
       "gold": 100000,
       "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
+<<<<<<< HEAD
       "faction": "Romans",
       "id": 1
+=======
+      "faction": "Carthaginians",
+      "id": 2
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
     }
   },
   {
@@ -1372,11 +2078,19 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
+<<<<<<< HEAD
       "numTroops": 151,
       "speed": 10,
       "armour": 10,
       "turnsToProduce": 1,
       "meleeAttack": 10,
+=======
+      "numTroops": 178,
+      "speed": 1,
+      "armour": 0,
+      "turnsToProduce": 0,
+      "meleeAttack": 1,
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
       "movementPoints": 4,
       "id": 41,
       "morale": 10,
@@ -1388,8 +2102,13 @@
       "gold": 100000,
       "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
+<<<<<<< HEAD
       "faction": "Seleucid Empire",
       "id": 8
+=======
+      "faction": "Amenians",
+      "id": 10
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
     }
   },
   {
@@ -1408,13 +2127,38 @@
         "training": null
       }
     ],
+<<<<<<< HEAD
     "units": [],
+=======
+    "units": [{
+      "shieldDefense": 0,
+      "range": "melee",
+      "rangedAttack": 0,
+      "type": "heavy infantry",
+      "numTroops": 398,
+      "speed": 1,
+      "armour": 0,
+      "turnsToProduce": 0,
+      "meleeAttack": 1,
+      "movementPoints": 4,
+      "id": 42,
+      "morale": 10,
+      "ability": "",
+      "defenseSkill": 1,
+      "player": null
+    }],
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
     "player": {
       "gold": 100000,
       "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
+<<<<<<< HEAD
       "faction": "Romans",
       "id": 1
+=======
+      "faction": "Spanish",
+      "id": 5
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
     }
   },
   {
@@ -1438,11 +2182,19 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
+<<<<<<< HEAD
       "numTroops": 377,
       "speed": 10,
       "armour": 10,
       "turnsToProduce": 1,
       "meleeAttack": 10,
+=======
+      "numTroops": 467,
+      "speed": 1,
+      "armour": 0,
+      "turnsToProduce": 0,
+      "meleeAttack": 1,
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
       "movementPoints": 4,
       "id": 43,
       "morale": 10,
@@ -1454,8 +2206,13 @@
       "gold": 100000,
       "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
+<<<<<<< HEAD
       "faction": "Pontus",
       "id": 9
+=======
+      "faction": "Gauls",
+      "id": 3
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
     }
   },
   {
@@ -1479,11 +2236,19 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
+<<<<<<< HEAD
       "numTroops": 236,
       "speed": 10,
       "armour": 10,
       "turnsToProduce": 1,
       "meleeAttack": 10,
+=======
+      "numTroops": 281,
+      "speed": 1,
+      "armour": 0,
+      "turnsToProduce": 0,
+      "meleeAttack": 1,
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
       "movementPoints": 4,
       "id": 44,
       "morale": 10,
@@ -1515,13 +2280,38 @@
         "training": null
       }
     ],
+<<<<<<< HEAD
     "units": [],
+=======
+    "units": [{
+      "shieldDefense": 0,
+      "range": "melee",
+      "rangedAttack": 0,
+      "type": "heavy infantry",
+      "numTroops": 289,
+      "speed": 1,
+      "armour": 0,
+      "turnsToProduce": 0,
+      "meleeAttack": 1,
+      "movementPoints": 4,
+      "id": 45,
+      "morale": 10,
+      "ability": "",
+      "defenseSkill": 1,
+      "player": null
+    }],
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
     "player": {
       "gold": 100000,
       "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
+<<<<<<< HEAD
       "faction": "Romans",
       "id": 1
+=======
+      "faction": "Macedonians",
+      "id": 14
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
     }
   },
   {
@@ -1545,11 +2335,19 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
+<<<<<<< HEAD
       "numTroops": 205,
       "speed": 10,
       "armour": 10,
       "turnsToProduce": 1,
       "meleeAttack": 10,
+=======
+      "numTroops": 46,
+      "speed": 1,
+      "armour": 0,
+      "turnsToProduce": 0,
+      "meleeAttack": 1,
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
       "movementPoints": 4,
       "id": 46,
       "morale": 10,
@@ -1561,8 +2359,13 @@
       "gold": 100000,
       "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
+<<<<<<< HEAD
       "faction": "Parthians",
       "id": 11
+=======
+      "faction": "Egyptians",
+      "id": 7
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
     }
   },
   {
@@ -1581,13 +2384,38 @@
         "training": null
       }
     ],
+<<<<<<< HEAD
     "units": [],
+=======
+    "units": [{
+      "shieldDefense": 0,
+      "range": "melee",
+      "rangedAttack": 0,
+      "type": "heavy infantry",
+      "numTroops": 136,
+      "speed": 1,
+      "armour": 0,
+      "turnsToProduce": 0,
+      "meleeAttack": 1,
+      "movementPoints": 4,
+      "id": 47,
+      "morale": 10,
+      "ability": "",
+      "defenseSkill": 1,
+      "player": null
+    }],
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
     "player": {
       "gold": 100000,
       "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
+<<<<<<< HEAD
       "faction": "Celtic Britons",
       "id": 4
+=======
+      "faction": "Thracians",
+      "id": 15
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
     }
   },
   {
@@ -1611,11 +2439,19 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
+<<<<<<< HEAD
       "numTroops": 345,
       "speed": 10,
       "armour": 10,
       "turnsToProduce": 1,
       "meleeAttack": 10,
+=======
+      "numTroops": 105,
+      "speed": 1,
+      "armour": 0,
+      "turnsToProduce": 0,
+      "meleeAttack": 1,
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
       "movementPoints": 4,
       "id": 48,
       "morale": 10,
@@ -1627,8 +2463,13 @@
       "gold": 100000,
       "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
+<<<<<<< HEAD
       "faction": "Pontus",
       "id": 9
+=======
+      "faction": "Egyptians",
+      "id": 7
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
     }
   },
   {
@@ -1652,11 +2493,19 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
+<<<<<<< HEAD
       "numTroops": 27,
       "speed": 10,
       "armour": 10,
       "turnsToProduce": 1,
       "meleeAttack": 10,
+=======
+      "numTroops": 443,
+      "speed": 1,
+      "armour": 0,
+      "turnsToProduce": 0,
+      "meleeAttack": 1,
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
       "movementPoints": 4,
       "id": 49,
       "morale": 10,
@@ -1668,8 +2517,13 @@
       "gold": 100000,
       "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
+<<<<<<< HEAD
       "faction": "Spanish",
       "id": 5
+=======
+      "faction": "Germanics",
+      "id": 12
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
     }
   },
   {
@@ -1693,11 +2547,19 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
+<<<<<<< HEAD
       "numTroops": 214,
       "speed": 10,
       "armour": 10,
       "turnsToProduce": 1,
       "meleeAttack": 10,
+=======
+      "numTroops": 22,
+      "speed": 1,
+      "armour": 0,
+      "turnsToProduce": 0,
+      "meleeAttack": 1,
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
       "movementPoints": 4,
       "id": 50,
       "morale": 10,
@@ -1709,8 +2571,13 @@
       "gold": 100000,
       "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
+<<<<<<< HEAD
       "faction": "Pontus",
       "id": 9
+=======
+      "faction": "Parthians",
+      "id": 11
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
     }
   },
   {
@@ -1734,11 +2601,19 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
+<<<<<<< HEAD
       "numTroops": 14,
       "speed": 10,
       "armour": 10,
       "turnsToProduce": 1,
       "meleeAttack": 10,
+=======
+      "numTroops": 348,
+      "speed": 1,
+      "armour": 0,
+      "turnsToProduce": 0,
+      "meleeAttack": 1,
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
       "movementPoints": 4,
       "id": 51,
       "morale": 10,
@@ -1770,13 +2645,38 @@
         "training": null
       }
     ],
+<<<<<<< HEAD
     "units": [],
+=======
+    "units": [{
+      "shieldDefense": 0,
+      "range": "melee",
+      "rangedAttack": 0,
+      "type": "heavy infantry",
+      "numTroops": 286,
+      "speed": 1,
+      "armour": 0,
+      "turnsToProduce": 0,
+      "meleeAttack": 1,
+      "movementPoints": 4,
+      "id": 52,
+      "morale": 10,
+      "ability": "",
+      "defenseSkill": 1,
+      "player": null
+    }],
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
     "player": {
       "gold": 100000,
       "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
+<<<<<<< HEAD
       "faction": "Celtic Britons",
       "id": 4
+=======
+      "faction": "Carthaginians",
+      "id": 2
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
     }
   },
   {
@@ -1800,11 +2700,19 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
+<<<<<<< HEAD
       "numTroops": 360,
       "speed": 10,
       "armour": 10,
       "turnsToProduce": 1,
       "meleeAttack": 10,
+=======
+      "numTroops": 107,
+      "speed": 1,
+      "armour": 0,
+      "turnsToProduce": 0,
+      "meleeAttack": 1,
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
       "movementPoints": 4,
       "id": 53,
       "morale": 10,
@@ -1816,8 +2724,13 @@
       "gold": 100000,
       "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
+<<<<<<< HEAD
       "faction": "Germanics",
       "id": 12
+=======
+      "faction": "Macedonians",
+      "id": 14
+>>>>>>> bd3a8b0dfe45f1c891dc73f1792c1c514aa3ae54
     }
   }
 ]
