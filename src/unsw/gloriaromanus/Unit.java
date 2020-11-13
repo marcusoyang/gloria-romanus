@@ -223,23 +223,23 @@ public class Unit {
         this.player = player;
     }
 
-    public int getTotalRangedAttack() {
+    public int calculateTotalRangedAttack() {
         return rangedAttack * numTroops;
     }
 
-    public int getTotalArmour() {
+    public int calculateTotalArmour() {
         return armour * numTroops;
     }
 
-    public int getTotalShieldDefense() {
+    public int calculateTotalShieldDefense() {
         return shieldDefense * numTroops;
     }
 
-    public int getTotalDefenseSkill() {
+    public int calculateTotalDefenseSkill() {
         return defenseSkill * numTroops;
     }
 
-    public int getTotalMeleeAttack() {
+    public int calculateTotalMeleeAttack() {
         return meleeAttack * numTroops;
     }
 }

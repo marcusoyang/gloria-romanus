@@ -21,7 +21,7 @@ public class RangedEngagement extends Engagement {
         if (enemy.getRange().equals("melee")) {
             return 0;
         }
-        double balancedBattleStats = (enemy.getTotalRangedAttack() / (human.getTotalArmour() + human.getTotalShieldDefense()));
+        double balancedBattleStats = (enemy.calculateTotalRangedAttack() / (human.calculateTotalArmour() + human.calculateTotalShieldDefense()));
         // We cap this stats to 10 if it exceeds 10.
         if (balancedBattleStats > 10) {
             balancedBattleStats = 10;
@@ -37,7 +37,7 @@ public class RangedEngagement extends Engagement {
         if (human.getRange().equals("melee")) {
             return 0;
         }
-        double balancedBattleStats = (human.getTotalRangedAttack() / (enemy.getTotalArmour() + enemy.getTotalShieldDefense()));
+        double balancedBattleStats = (human.calculateTotalRangedAttack() / (enemy.calculateTotalArmour() + enemy.calculateTotalShieldDefense()));
         if (balancedBattleStats > 10) {
             balancedBattleStats = 10;
         }

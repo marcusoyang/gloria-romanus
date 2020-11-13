@@ -18,9 +18,9 @@ public class MeleeEngagement extends Engagement {
 
     public int calculateHumanCasualty(Unit human, Unit enemy) {
         Random N = new Random();
-        double denominator = human.getTotalArmour() + human.getTotalShieldDefense()+ human.getTotalDefenseSkill();
+        double denominator = human.calculateTotalArmour() + human.calculateTotalShieldDefense()+ human.calculateTotalDefenseSkill();
         if (denominator == 0) { denominator = 1; }
-        Double humanCasualty = (human.getNumTroops() * 0.1) * (enemy.getTotalMeleeAttack() / denominator) * (N.nextGaussian() + 1);
+        Double humanCasualty = (human.getNumTroops() * 0.1) * (enemy.calculateTotalMeleeAttack() / denominator) * (N.nextGaussian() + 1);
         
         if (humanCasualty < 1.0) { humanCasualty = 1.0; }
         return humanCasualty.intValue();
@@ -28,9 +28,9 @@ public class MeleeEngagement extends Engagement {
 
     public int calculateEnemyCasualty(Unit human, Unit enemy) {
         Random N = new Random();
-        double denominator = enemy.getTotalArmour() + enemy.getTotalShieldDefense()+ enemy.getTotalDefenseSkill();
+        double denominator = enemy.calculateTotalArmour() + enemy.calculateTotalShieldDefense()+ enemy.calculateTotalDefenseSkill();
         if (denominator == 0) { denominator = 1; }
-        Double enemyCasualty = (enemy.getNumTroops() * 0.1) * (human.getTotalMeleeAttack() / denominator) * (N.nextGaussian() + 1);
+        Double enemyCasualty = (enemy.getNumTroops() * 0.1) * (human.calculateTotalMeleeAttack() / denominator) * (N.nextGaussian() + 1);
         
         if (enemyCasualty < 1.0) { enemyCasualty = 1.0;}
         return enemyCasualty.intValue();
