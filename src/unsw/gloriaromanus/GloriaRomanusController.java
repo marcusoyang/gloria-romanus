@@ -123,12 +123,12 @@ public class GloriaRomanusController{
       for (Province p: provinces) {
         p.setInitialArmy(r.nextInt(500));
       }
+      
+      currentPlayerID = 1;
+      currentYear = 0;
     }
 
-    current_faction.setText(players.get(currentPlayerID).getFaction());
-
-    currentPlayerID = 1;
-    currentYear = 0;
+    current_faction.setText(getPlayerFromID(currentPlayerID).getFaction());
 
     currentlySelectedHumanProvince = null;
     currentlySelectedEnemyProvince = null;
@@ -411,7 +411,7 @@ public class GloriaRomanusController{
         p.collectTaxRevenue();
       }
     }
-    current_faction.setText(players.get(currentPlayerID - 1).getFaction());
+    current_faction.setText(getPlayerFromID(currentPlayerID).getFaction());
 
     // Reloading the save doesn't continue prompts.
     if (hasWon) { return; }
@@ -756,7 +756,7 @@ public class GloriaRomanusController{
                 String provinceName = (String)f.getAttributes().get("name");
                 Province province = deserializeProvince(provinceName);
 
-                if (province.getFaction().equals(players.get(currentPlayerID).getFaction())){
+                if (province.getFaction().equals(getPlayerFromID(currentPlayerID).getFaction())){
                   // province owned by human
                   if (currentlySelectedHumanProvince != null){
                     featureLayer.unselectFeature(currentlySelectedHumanProvince);
@@ -825,7 +825,7 @@ public class GloriaRomanusController{
 
     String content = Files.readString(Paths.get("src/unsw/gloriaromanus/initial_province_ownership.json"));
     JSONObject ownership = new JSONObject(content);
-    return ArrayUtil.convert(ownership.getJSONArray(players.get(currentPlayerID).getFaction()));
+    return ArrayUtil.convert(ownership.getJSONArray(getPlayerFromID(currentPlayerID).getFaction()));
   }
 
   /**
