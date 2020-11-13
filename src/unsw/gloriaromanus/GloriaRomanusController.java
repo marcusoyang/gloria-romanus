@@ -1,5 +1,11 @@
 package unsw.gloriaromanus;
 
+/**
+ * Scenebuilder does not work with this line in main.fxml
+ * Restore it to the top before launching
+ * <?import com.esri.arcgisruntime.mapping.view.MapView?>
+ */
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -17,6 +23,7 @@ import java.util.stream.Collectors;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Point2D;
+import javafx.scene.control.Slider;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -64,6 +71,8 @@ public class GloriaRomanusController{
   private TextField opponent_province;
   @FXML
   private TextArea output_terminal;
+  @FXML
+  private Slider volumeSlider;
 
   private ArcGISMap map;
 
@@ -87,10 +96,13 @@ public class GloriaRomanusController{
   private String filename;
   private String unitConfig;
   private boolean hasWon;
+  private StartScreen startScreen;
+  private Audio audio;
 
   @FXML
   private void initialize() throws JsonParseException, JsonMappingException, IOException {
     
+    initializeVolumeSlider();
     readConfig();
     provinces = new ArrayList<Province>();
     players = new ArrayList<Player>();
@@ -115,13 +127,22 @@ public class GloriaRomanusController{
 
     current_faction.setText(players.get(currentPlayerID).getFaction());
 
-    currentPlayerID = 0;
+    currentPlayerID = 1;
     currentYear = 0;
 
     currentlySelectedHumanProvince = null;
     currentlySelectedEnemyProvince = null;
 
     initializeProvinceLayers();    
+  }
+
+  /**
+   * Initializes an observer to update the volume when the slider has changed.
+   */
+  private void initializeVolumeSlider() {
+    volumeSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
+      audio.changeVolume((double) newValue);
+    });
   }
 
   private void generatePlayers() throws IOException {
@@ -175,6 +196,15 @@ public class GloriaRomanusController{
     }
     return requestSuccess;
   }
+
+  public void setStartScreen(StartScreen startScreen) {
+    this.startScreen = startScreen;
+  }
+
+  @FXML
+    public void clickedStartMenu(ActionEvent e) {
+      startScreen.start();
+    }
 
   @FXML
   public void clickedStartCampaign(ActionEvent e) {
@@ -368,8 +398,7 @@ public class GloriaRomanusController{
   public void clickedEndTurnButton() throws IOException {
     printMessageToTerminal("player" + currentPlayerID + " ended their turn.");
     currentPlayerID++;
-
-    if (currentPlayerID == players.size()) {
+    if (currentPlayerID > players.size()) {
       currentPlayerID = 1;
       currentYear++;
     }
@@ -378,12 +407,11 @@ public class GloriaRomanusController{
 
     // Collect taxes for the next player
     for (Province p : provinces) {
-
       if (getPlayerFromID(currentPlayerID).equals(p.getPlayer())) {
         p.collectTaxRevenue();
       }
     }
-    current_faction.setText(players.get(currentPlayerID).getFaction());
+    current_faction.setText(players.get(currentPlayerID - 1).getFaction());
 
     // Reloading the save doesn't continue prompts.
     if (hasWon) { return; }
@@ -533,26 +561,6 @@ public class GloriaRomanusController{
     return chance;
   }
 
-  /*private void losingArmyCasulties(Province province, double enemyWinningChance) {
-    Random r = new Random();
-    double casualtyPercentage = enemyWinningChance + (1 - enemyWinningChance) * r.nextDouble();
-    Double casualtySize = province.getArmySize() * casualtyPercentage;
-    changeArmySize(province, -(casualtySize.intValue()));
-  }
-
-  private void winningArmyCasulties(Province province, double enemyWinningChance) {
-    Random r = new Random();
-    double casualtyPercentage = enemyWinningChance * r.nextDouble();
-    Double casualtySize = province.getArmySize() * casualtyPercentage;
-    changeArmySize(province, -(casualtySize.intValue()));
-  }
-
-  private void changeArmySize(Province province, int changeSize) {
-    int remainingArmySize = province.getArmySize() + changeSize;
-    if (remainingArmySize < 0) { remainingArmySize = 0; }
-    province.setArmySize(remainingArmySize);
-  }*/ 
-
   private Province deserializeProvince(String provinceName) {
     for (Province p : provinces) {
       if (p.getName().equals(provinceName)) {
@@ -576,6 +584,14 @@ public class GloriaRomanusController{
       String jsonString = jaProvince.getJSONObject(i).toString();
       Province newProvince =  objectMapper.readValue(jsonString, Province.class);
       provinces.add(newProvince);
+    }
+
+    for (Province p : provinces) {
+      if (findPlayer(p.getFaction()) == null) {
+        players.add(p.getPlayer());
+      } else {
+        p.setPlayer(findPlayer(p.getFaction()));
+      }
     }
   }
 
@@ -777,6 +793,13 @@ public class GloriaRomanusController{
     JSONObject ownership = new JSONObject(content);
     JSONArray ja = ownership.getJSONArray("provinces_list");
     Random r = new Random();
+
+    for (int i = 0; i < players.size(); i++) {
+      int randNum = r.nextInt(ja.length() - 1);
+      provinces.add(new Province(ja.getString(randNum), players.get(i), unitConfig));
+      ja.remove(randNum);
+    }
+
     for (int i = 0; i < ja.length(); i++) {
       int randNum = r.nextInt(players.size() - 1);
       provinces.add(new Province(ja.getString(i), players.get(randNum), unitConfig));
@@ -820,6 +843,11 @@ public class GloriaRomanusController{
 
   private void printMessageToTerminal(String message){
     output_terminal.appendText(message+"\n");
+  }
+
+  public void setAudio(Audio audio) {
+    this.audio = audio;
+    volumeSlider.setValue(Audio.getDefaultVol());
   }
 
   /**
