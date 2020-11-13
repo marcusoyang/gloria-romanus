@@ -26,8 +26,9 @@ public abstract class Engagement {
 
     public void breakAttempt() {
         // The base-level probability of a unit "breaking" following an engagement is calculated as: 100% - (morale x 10%)
-        humanBreakChance = 1 - (human.getMorale() * 0.1);
-        enemyBreakChance = 1 - (enemy.getMorale() * 0.1);
+        humanBreakChance = (100 - (human.getMorale() * 0.1)) / 100;
+        enemyBreakChance = (100 - (enemy.getMorale() * 0.1)) / 100;
+
         // The chance of breaking is increased by (a scalar addition):
         humanBreakChance += (humanCasualty / Double.valueOf(human.getNumTroops())) / (enemyCasualty / Double.valueOf(enemy.getNumTroops())) * 0.1;
         enemyBreakChance += (enemyCasualty / Double.valueOf(enemy.getNumTroops())) / (humanCasualty / Double.valueOf(human.getNumTroops())) * 0.1;
@@ -87,14 +88,14 @@ public abstract class Engagement {
     public void inflictCasualties() {
         if (skirmish.isBroken(human)) {
             attemptRoute(human, enemy);
-        } else if (human.isDefeated(humanCasualty)) {
-            skirmish.setNormalResult(enemy, human);
+        } else if (enemy.isDefeated(enemyCasualty)) {
+            skirmish.setNormalResult(human, enemy);
         } 
         
         if (skirmish.isBroken(enemy)) {
             attemptRoute(enemy, human);
-        } else if (enemy.isDefeated(enemyCasualty)) {
-            skirmish.setNormalResult(human, enemy);
+        } else if (human.isDefeated(humanCasualty)) {
+            skirmish.setNormalResult(enemy, human);
         }
     }
 }   
