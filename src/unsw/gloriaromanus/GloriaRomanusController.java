@@ -234,24 +234,20 @@ public class GloriaRomanusController{
         }
       }*/
 
-      // Ability.setProvinces(provinces);
-      // Ability.process();
+      Ability.setProvinces(provinces);
       // Ability.processHeroicCharge(humanProvince, enemyProvince);
       
       // TODO: Some implementation of code to have different lists of Units go to certain provinces
       // For now it'll just be our whole troop 
-      ArrayList<Unit> armies = new ArrayList<Unit>();
+      ArrayList<Unit> invadingList = new ArrayList<Unit>();
       for (Unit u : humanProvince.getUnits()) {
-        armies.add(u);
+        invadingList.add(u);
       }
-      
-      // We take away these troops from the humanProvince
-      humanProvince.getUnits().removeAll(armies);
       
       Result battleResult = new Result();
 
       // Some tests. We cannot have an empty army
-      if (armies.size() == 0) {
+      if (invadingList.size() == 0) {
         printMessageToTerminal("No soldiers, cannot invade!");
         battleResult.setNotStarted();
       }
@@ -265,31 +261,36 @@ public class GloriaRomanusController{
         battleResult.setVictory();
       }
 
-      battle(battleResult, armies, enemyProvince, humanProvince);
+      battle(battleResult, invadingList, enemyProvince, humanProvince);
 
       resetSelections();  // reset selections in UI
       addAllPointGraphics(); // reset graphics
     }
   }
 
-  private void battle(Result battleResult, ArrayList<Unit> armies, Province enemyProvince, Province humanProvince) {
+  private void battle(Result battleResult, ArrayList<Unit> invadingList, Province enemyProvince, Province humanProvince) {
     // Starting the battle
     int engagementIndex = 0;
-    ArrayList<Unit> routedArmies = new ArrayList<Unit>();
 
-    // I commented out ability for now because these initiate to the whole province rather than the invading army
-    // I think we should implement sending specific troops for invasion (and not the whole province troop) first.
-    // Ability.initiate(humanProvince);
-    // Ability.initiate(enemyProvince);
+    Ability.initiate(invadingList);
+    Ability.initiate(enemyProvince.getUnits());
+    
+    // We take away these troops from the humanProvince
+    humanProvince.getUnits().removeAll(invadingList);
+
+    ArrayList<Unit> routedList = new ArrayList<Unit>();
+
+    Ability.initiate(invadingList);
+    Ability.initiate(enemyProvince.getUnits());
 
     while (battleResult.getResult().equals("")) {
       // Random units from each side are chosen
       Unit human;
       Random r = new Random();
-      if(armies.size() > 1) {
-        human = armies.get(r.nextInt(armies.size() - 1));
+      if(invadingList.size() > 1) {
+        human = invadingList.get(r.nextInt(invadingList.size() - 1));
       } else {
-        human = armies.get(0);
+        human = invadingList.get(0);
       }
       
       Unit enemy;
@@ -320,7 +321,7 @@ public class GloriaRomanusController{
       // Ability.restore(enemyProvince);
 
       // Skirmish should have finished. we check the result of the skirmish.
-      battleResult = checkSkirmishResult(s, enemyProvince.getUnits(), enemy, armies, human, battleResult, routedArmies);
+      battleResult = checkSkirmishResult(s, enemyProvince, enemy, invadingList, human, battleResult, routedList);
 
       engagementIndex = s.getEngagementIndex();
     }
@@ -333,36 +334,42 @@ public class GloriaRomanusController{
         enemyProvince.setPlayer(humanProvince.getPlayer());
         
         // Moving leftover armies to the invaded province
-        enemyProvince.getUnits().addAll(armies);
+        enemyProvince.getUnits().addAll(invadingList);
 
         // Moving the routed armies to the invaded province
-        enemyProvince.getUnits().addAll(routedArmies);
+        enemyProvince.getUnits().addAll(routedList);
+
+        // If this province has been recaptured by human, we restore the morale penalty.
+        Ability.checkLERecapture(humanProvince);
+
         break;
       case "defeat":
         printMessageToTerminal("defeat");
         
         // Moving the routed armies back to the human province
-        humanProvince.getUnits().addAll(routedArmies);
+        humanProvince.getUnits().addAll(routedList);
         break;
       case "draw":
         printMessageToTerminal("draw");
 
         // We move the army back to our human province.
-        humanProvince.getUnits().addAll(armies);
+        humanProvince.getUnits().addAll(invadingList);
         break;
       case "routed":
         printMessageToTerminal("routed");
           
         // Moving the routed armies back to the human province
-        humanProvince.getUnits().addAll(routedArmies);
+        humanProvince.getUnits().addAll(routedList);
     }
   }
 
-  private Result checkSkirmishResult(Skirmish s, ArrayList<Unit> enemyArmies, Unit enemy, ArrayList<Unit> humanArmies, Unit human, Result battleResult, ArrayList<Unit> humanRoutedArmies) {
+  private Result checkSkirmishResult(Skirmish s, Province enemyProvince, Unit enemy, ArrayList<Unit> humanArmies, Unit human, Result battleResult, ArrayList<Unit> humanRoutedArmies) {
     switch(s.getResult()) {
       case "victory":
-        enemyArmies.remove(enemy);
-        if (enemyArmies.size() == 0) {
+        enemyProvince.getUnits().remove(enemy);
+        if (enemyProvince.getUnits().size() == 0) {
+          // Adding morale penalty of the enemy
+          Ability.processLegionaryEagleDeath(enemy, s.getEnemyInitialNumTroops(), enemyProvince);
           battleResult.setVictory();
         }
         break;  
@@ -374,8 +381,6 @@ public class GloriaRomanusController{
           battleResult.setDefeat();
         }
 
-        // Ability.processLegionaryEagleDeath(human, s.getHumanInitialNumTroops(), humanProvince);
-        // Ability.checkLERecapture(human, humanProvince);
         break;
       case "human routed":
         humanArmies.remove(human);
@@ -386,8 +391,10 @@ public class GloriaRomanusController{
         } 
         break;
       case "enemy routed":
-        enemyArmies.remove(enemy);
-        if (enemyArmies.size() == 0) {
+        enemyProvince.getUnits().remove(enemy);
+        if (enemyProvince.getUnits().size() == 0) {
+          // Adding morale penalty of the enemy
+          Ability.processLegionaryEagleDeath(enemy, s.getEnemyInitialNumTroops(), enemyProvince);
           battleResult.setVictory();
         }
     }
@@ -558,7 +565,7 @@ public class GloriaRomanusController{
     Files.writeString(Paths.get("src/unsw/gloriaromanus/saves/" + filename + "_campaign.json"), content);
   }
 
-  private double findMeleeEngagementChance(int meleeSpeed, int rangedSpeed) {
+  private double findMeleeEngagementChance(double meleeSpeed, double rangedSpeed) {
     // Base level is 50%
     double chance = 0.5;
 
@@ -600,11 +607,18 @@ public class GloriaRomanusController{
       provinces.add(newProvince);
     }
 
-    for (Province p : provinces) {
-      if (findPlayer(p.getFaction()) == null) {
-        players.add(p.getPlayer());
+    for (Province province : provinces) {
+      Player player = findPlayer(province.getFaction());
+      if (player == null) {
+        players.add(province.getPlayer());
+        for (Unit u : province.getUnits()) {
+          u.setPlayer(province.getPlayer());
+        }
       } else {
-        p.setPlayer(findPlayer(p.getFaction()));
+        province.setPlayer(player);
+        for (Unit u : province.getUnits()) {
+          u.setPlayer(player);
+        } 
       }
     }
   }
