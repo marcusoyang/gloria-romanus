@@ -1,5 +1,11 @@
 package unsw.gloriaromanus;
 
+/**
+ * Scenebuilder does not work with this line in main.fxml
+ * Restore it to the top before launching
+ * <?import com.esri.arcgisruntime.mapping.view.MapView?>
+ */
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -17,6 +23,7 @@ import java.util.stream.Collectors;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Point2D;
+import javafx.scene.control.Slider;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -64,6 +71,8 @@ public class GloriaRomanusController{
   private TextField opponent_province;
   @FXML
   private TextArea output_terminal;
+  @FXML
+  private Slider volumeSlider;
 
   private ArcGISMap map;
 
@@ -87,10 +96,13 @@ public class GloriaRomanusController{
   private String filename;
   private String unitConfig;
   private boolean hasWon;
+  private StartScreen startScreen;
+  private Audio audio;
 
   @FXML
   private void initialize() throws JsonParseException, JsonMappingException, IOException {
     
+    initializeVolumeSlider();
     readConfig();
     provinces = new ArrayList<Province>();
     players = new ArrayList<Player>();
@@ -122,6 +134,15 @@ public class GloriaRomanusController{
     currentlySelectedEnemyProvince = null;
 
     initializeProvinceLayers();    
+  }
+
+  /**
+   * Initializes an observer to update the volume when the slider has changed.
+   */
+  private void initializeVolumeSlider() {
+    volumeSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
+      audio.changeVolume((double) newValue);
+    });
   }
 
   private void generatePlayers() throws IOException {
@@ -175,6 +196,15 @@ public class GloriaRomanusController{
     }
     return requestSuccess;
   }
+
+  public void setStartScreen(StartScreen startScreen) {
+    this.startScreen = startScreen;
+  }
+
+  @FXML
+    public void clickedStartMenu(ActionEvent e) {
+      startScreen.start();
+    }
 
   @FXML
   public void clickedStartCampaign(ActionEvent e) {
@@ -821,6 +851,11 @@ public class GloriaRomanusController{
 
   private void printMessageToTerminal(String message){
     output_terminal.appendText(message+"\n");
+  }
+
+  public void setAudio(Audio audio) {
+    this.audio = audio;
+    volumeSlider.setValue(Audio.getDefaultVol());
   }
 
   /**

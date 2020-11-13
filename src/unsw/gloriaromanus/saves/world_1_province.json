@@ -20,7 +20,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 376,
+      "numTroops": 130,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -34,9 +34,10 @@
     }],
     "player": {
       "gold": 100000,
+      "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
-      "faction": "Pontus",
-      "id": 9
+      "faction": "Numidians",
+      "id": 6
     }
   },
   {
@@ -60,7 +61,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 417,
+      "numTroops": 109,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -74,9 +75,10 @@
     }],
     "player": {
       "gold": 100000,
+      "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
-      "faction": "Pontus",
-      "id": 9
+      "faction": "Thracians",
+      "id": 15
     }
   },
   {
@@ -100,7 +102,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 124,
+      "numTroops": 138,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -114,6 +116,7 @@
     }],
     "player": {
       "gold": 100000,
+      "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
       "faction": "Carthaginians",
       "id": 2
@@ -140,7 +143,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 150,
+      "numTroops": 440,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -154,9 +157,10 @@
     }],
     "player": {
       "gold": 100000,
+      "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
-      "faction": "Germanics",
-      "id": 12
+      "faction": "Egyptians",
+      "id": 7
     }
   },
   {
@@ -180,7 +184,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 235,
+      "numTroops": 239,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -194,9 +198,10 @@
     }],
     "player": {
       "gold": 100000,
+      "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
-      "faction": "Macedonians",
-      "id": 14
+      "faction": "Spanish",
+      "id": 5
     }
   },
   {
@@ -220,7 +225,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 154,
+      "numTroops": 262,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -234,9 +239,10 @@
     }],
     "player": {
       "gold": 100000,
+      "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
-      "faction": "Gauls",
-      "id": 3
+      "faction": "Celtic Britons",
+      "id": 4
     }
   },
   {
@@ -260,7 +266,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 182,
+      "numTroops": 99,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -274,9 +280,10 @@
     }],
     "player": {
       "gold": 100000,
+      "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
-      "faction": "Germanics",
-      "id": 12
+      "faction": "Macedonians",
+      "id": 14
     }
   },
   {
@@ -300,7 +307,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 158,
+      "numTroops": 37,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -314,9 +321,10 @@
     }],
     "player": {
       "gold": 100000,
+      "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
-      "faction": "Seleucid Empire",
-      "id": 8
+      "faction": "Amenians",
+      "id": 10
     }
   },
   {
@@ -340,7 +348,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 236,
+      "numTroops": 346,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -354,9 +362,10 @@
     }],
     "player": {
       "gold": 100000,
+      "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
-      "faction": "Amenians",
-      "id": 10
+      "faction": "Seleucid Empire",
+      "id": 8
     }
   },
   {
@@ -380,7 +389,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 108,
+      "numTroops": 314,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -394,6 +403,7 @@
     }],
     "player": {
       "gold": 100000,
+      "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
       "faction": "Germanics",
       "id": 12
@@ -420,7 +430,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 272,
+      "numTroops": 333,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -434,9 +444,10 @@
     }],
     "player": {
       "gold": 100000,
+      "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
-      "faction": "Pontus",
-      "id": 9
+      "faction": "Seleucid Empire",
+      "id": 8
     }
   },
   {
@@ -460,7 +471,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 133,
+      "numTroops": 6,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -474,9 +485,10 @@
     }],
     "player": {
       "gold": 100000,
+      "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
-      "faction": "Pontus",
-      "id": 9
+      "faction": "Amenians",
+      "id": 10
     }
   },
   {
@@ -500,7 +512,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 406,
+      "numTroops": 14,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -514,9 +526,10 @@
     }],
     "player": {
       "gold": 100000,
+      "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
-      "faction": "Carthaginians",
-      "id": 2
+      "faction": "Gauls",
+      "id": 3
     }
   },
   {
@@ -540,7 +553,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 113,
+      "numTroops": 174,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -554,9 +567,10 @@
     }],
     "player": {
       "gold": 100000,
+      "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
-      "faction": "Carthaginians",
-      "id": 2
+      "faction": "Pontus",
+      "id": 9
     }
   },
   {
@@ -580,7 +594,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 186,
+      "numTroops": 39,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -594,9 +608,10 @@
     }],
     "player": {
       "gold": 100000,
+      "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
-      "faction": "Thracians",
-      "id": 15
+      "faction": "Macedonians",
+      "id": 14
     }
   },
   {
@@ -620,7 +635,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 187,
+      "numTroops": 38,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -634,9 +649,10 @@
     }],
     "player": {
       "gold": 100000,
+      "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
-      "faction": "Amenians",
-      "id": 10
+      "faction": "Macedonians",
+      "id": 14
     }
   },
   {
@@ -660,7 +676,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 140,
+      "numTroops": 110,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -674,9 +690,10 @@
     }],
     "player": {
       "gold": 100000,
+      "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
-      "faction": "Carthaginians",
-      "id": 2
+      "faction": "Parthians",
+      "id": 11
     }
   },
   {
@@ -700,7 +717,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 488,
+      "numTroops": 180,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -714,9 +731,10 @@
     }],
     "player": {
       "gold": 100000,
+      "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
-      "faction": "Egyptians",
-      "id": 7
+      "faction": "Parthians",
+      "id": 11
     }
   },
   {
@@ -740,7 +758,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 432,
+      "numTroops": 395,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -754,9 +772,10 @@
     }],
     "player": {
       "gold": 100000,
+      "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
-      "faction": "Germanics",
-      "id": 12
+      "faction": "Gauls",
+      "id": 3
     }
   },
   {
@@ -780,7 +799,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 235,
+      "numTroops": 461,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -794,9 +813,10 @@
     }],
     "player": {
       "gold": 100000,
+      "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
-      "faction": "Numidians",
-      "id": 6
+      "faction": "Macedonians",
+      "id": 14
     }
   },
   {
@@ -820,7 +840,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 358,
+      "numTroops": 189,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -834,9 +854,10 @@
     }],
     "player": {
       "gold": 100000,
+      "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
-      "faction": "Carthaginians",
-      "id": 2
+      "faction": "Amenians",
+      "id": 10
     }
   },
   {
@@ -860,7 +881,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 235,
+      "numTroops": 480,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -874,6 +895,7 @@
     }],
     "player": {
       "gold": 100000,
+      "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
       "faction": "Macedonians",
       "id": 14
@@ -895,12 +917,29 @@
         "training": null
       }
     ],
-    "units": [],
+    "units": [{
+      "shieldDefense": 0,
+      "range": "melee",
+      "rangedAttack": 0,
+      "type": "heavy infantry",
+      "numTroops": 418,
+      "speed": 1,
+      "armour": 0,
+      "turnsToProduce": 0,
+      "meleeAttack": 1,
+      "movementPoints": 4,
+      "id": 23,
+      "morale": 10,
+      "ability": "",
+      "defenseSkill": 1,
+      "player": null
+    }],
     "player": {
       "gold": 100000,
+      "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
-      "faction": "Pontus",
-      "id": 9
+      "faction": "Amenians",
+      "id": 10
     }
   },
   {
@@ -924,7 +963,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 325,
+      "numTroops": 386,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -938,9 +977,10 @@
     }],
     "player": {
       "gold": 100000,
+      "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
-      "faction": "Pontus",
-      "id": 9
+      "faction": "Egyptians",
+      "id": 7
     }
   },
   {
@@ -964,7 +1004,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 389,
+      "numTroops": 469,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -978,9 +1018,10 @@
     }],
     "player": {
       "gold": 100000,
+      "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
-      "faction": "Seleucid Empire",
-      "id": 8
+      "faction": "Macedonians",
+      "id": 14
     }
   },
   {
@@ -1004,7 +1045,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 299,
+      "numTroops": 286,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -1018,6 +1059,7 @@
     }],
     "player": {
       "gold": 100000,
+      "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
       "faction": "Celtic Britons",
       "id": 4
@@ -1039,12 +1081,29 @@
         "training": null
       }
     ],
-    "units": [],
+    "units": [{
+      "shieldDefense": 0,
+      "range": "melee",
+      "rangedAttack": 0,
+      "type": "heavy infantry",
+      "numTroops": 107,
+      "speed": 1,
+      "armour": 0,
+      "turnsToProduce": 0,
+      "meleeAttack": 1,
+      "movementPoints": 4,
+      "id": 27,
+      "morale": 10,
+      "ability": "",
+      "defenseSkill": 1,
+      "player": null
+    }],
     "player": {
       "gold": 100000,
+      "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
-      "faction": "Pontus",
-      "id": 9
+      "faction": "Macedonians",
+      "id": 14
     }
   },
   {
@@ -1068,7 +1127,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 159,
+      "numTroops": 144,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -1082,9 +1141,10 @@
     }],
     "player": {
       "gold": 100000,
+      "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
-      "faction": "Germanics",
-      "id": 12
+      "faction": "Gauls",
+      "id": 3
     }
   },
   {
@@ -1108,7 +1168,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 97,
+      "numTroops": 432,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -1122,6 +1182,7 @@
     }],
     "player": {
       "gold": 100000,
+      "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
       "faction": "Spanish",
       "id": 5
@@ -1148,7 +1209,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 381,
+      "numTroops": 168,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -1162,9 +1223,10 @@
     }],
     "player": {
       "gold": 100000,
+      "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
-      "faction": "Amenians",
-      "id": 10
+      "faction": "Greek City States",
+      "id": 13
     }
   },
   {
@@ -1188,7 +1250,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 71,
+      "numTroops": 188,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -1202,9 +1264,10 @@
     }],
     "player": {
       "gold": 100000,
+      "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
-      "faction": "Egyptians",
-      "id": 7
+      "faction": "Greek City States",
+      "id": 13
     }
   },
   {
@@ -1228,7 +1291,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 52,
+      "numTroops": 73,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -1242,9 +1305,10 @@
     }],
     "player": {
       "gold": 100000,
+      "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
-      "faction": "Seleucid Empire",
-      "id": 8
+      "faction": "Thracians",
+      "id": 15
     }
   },
   {
@@ -1268,7 +1332,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 159,
+      "numTroops": 56,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -1282,9 +1346,10 @@
     }],
     "player": {
       "gold": 100000,
+      "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
-      "faction": "Carthaginians",
-      "id": 2
+      "faction": "Celtic Britons",
+      "id": 4
     }
   },
   {
@@ -1308,7 +1373,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 50,
+      "numTroops": 293,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -1322,9 +1387,10 @@
     }],
     "player": {
       "gold": 100000,
+      "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
-      "faction": "Pontus",
-      "id": 9
+      "faction": "Macedonians",
+      "id": 14
     }
   },
   {
@@ -1348,7 +1414,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 350,
+      "numTroops": 446,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -1362,9 +1428,10 @@
     }],
     "player": {
       "gold": 100000,
+      "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
-      "faction": "Germanics",
-      "id": 12
+      "faction": "Thracians",
+      "id": 15
     }
   },
   {
@@ -1388,7 +1455,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 217,
+      "numTroops": 140,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -1402,9 +1469,10 @@
     }],
     "player": {
       "gold": 100000,
+      "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
-      "faction": "Numidians",
-      "id": 6
+      "faction": "Greek City States",
+      "id": 13
     }
   },
   {
@@ -1428,7 +1496,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 353,
+      "numTroops": 30,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -1442,9 +1510,10 @@
     }],
     "player": {
       "gold": 100000,
+      "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
-      "faction": "Germanics",
-      "id": 12
+      "faction": "Macedonians",
+      "id": 14
     }
   },
   {
@@ -1468,7 +1537,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 295,
+      "numTroops": 252,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -1482,9 +1551,10 @@
     }],
     "player": {
       "gold": 100000,
+      "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
-      "faction": "Macedonians",
-      "id": 14
+      "faction": "Egyptians",
+      "id": 7
     }
   },
   {
@@ -1508,7 +1578,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 2,
+      "numTroops": 183,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -1522,9 +1592,10 @@
     }],
     "player": {
       "gold": 100000,
+      "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
-      "faction": "Carthaginians",
-      "id": 2
+      "faction": "Egyptians",
+      "id": 7
     }
   },
   {
@@ -1548,7 +1619,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 230,
+      "numTroops": 363,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -1562,9 +1633,10 @@
     }],
     "player": {
       "gold": 100000,
+      "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
-      "faction": "Thracians",
-      "id": 15
+      "faction": "Carthaginians",
+      "id": 2
     }
   },
   {
@@ -1588,7 +1660,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 17,
+      "numTroops": 178,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -1602,9 +1674,10 @@
     }],
     "player": {
       "gold": 100000,
+      "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
-      "faction": "Pontus",
-      "id": 9
+      "faction": "Amenians",
+      "id": 10
     }
   },
   {
@@ -1628,7 +1701,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 239,
+      "numTroops": 398,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -1642,9 +1715,10 @@
     }],
     "player": {
       "gold": 100000,
+      "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
-      "faction": "Gauls",
-      "id": 3
+      "faction": "Spanish",
+      "id": 5
     }
   },
   {
@@ -1668,7 +1742,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 176,
+      "numTroops": 467,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -1682,9 +1756,10 @@
     }],
     "player": {
       "gold": 100000,
+      "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
-      "faction": "Numidians",
-      "id": 6
+      "faction": "Gauls",
+      "id": 3
     }
   },
   {
@@ -1708,7 +1783,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 474,
+      "numTroops": 281,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -1722,9 +1797,10 @@
     }],
     "player": {
       "gold": 100000,
+      "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
-      "faction": "Amenians",
-      "id": 10
+      "faction": "Spanish",
+      "id": 5
     }
   },
   {
@@ -1748,7 +1824,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 130,
+      "numTroops": 289,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -1762,9 +1838,10 @@
     }],
     "player": {
       "gold": 100000,
+      "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
-      "faction": "Seleucid Empire",
-      "id": 8
+      "faction": "Macedonians",
+      "id": 14
     }
   },
   {
@@ -1788,7 +1865,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 13,
+      "numTroops": 46,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -1802,9 +1879,10 @@
     }],
     "player": {
       "gold": 100000,
+      "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
-      "faction": "Gauls",
-      "id": 3
+      "faction": "Egyptians",
+      "id": 7
     }
   },
   {
@@ -1828,7 +1906,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 393,
+      "numTroops": 136,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -1842,9 +1920,10 @@
     }],
     "player": {
       "gold": 100000,
+      "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
-      "faction": "Amenians",
-      "id": 10
+      "faction": "Thracians",
+      "id": 15
     }
   },
   {
@@ -1868,7 +1947,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 59,
+      "numTroops": 105,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -1882,9 +1961,10 @@
     }],
     "player": {
       "gold": 100000,
+      "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
-      "faction": "Gauls",
-      "id": 3
+      "faction": "Egyptians",
+      "id": 7
     }
   },
   {
@@ -1908,7 +1988,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 47,
+      "numTroops": 443,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -1922,9 +2002,10 @@
     }],
     "player": {
       "gold": 100000,
+      "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
-      "faction": "Celtic Britons",
-      "id": 4
+      "faction": "Germanics",
+      "id": 12
     }
   },
   {
@@ -1948,7 +2029,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 122,
+      "numTroops": 22,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -1962,9 +2043,10 @@
     }],
     "player": {
       "gold": 100000,
+      "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
-      "faction": "Macedonians",
-      "id": 14
+      "faction": "Parthians",
+      "id": 11
     }
   },
   {
@@ -1988,7 +2070,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 116,
+      "numTroops": 348,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -2002,6 +2084,7 @@
     }],
     "player": {
       "gold": 100000,
+      "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
       "faction": "Numidians",
       "id": 6
@@ -2028,7 +2111,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 384,
+      "numTroops": 286,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -2042,9 +2125,10 @@
     }],
     "player": {
       "gold": 100000,
+      "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
-      "faction": "Amenians",
-      "id": 10
+      "faction": "Carthaginians",
+      "id": 2
     }
   },
   {
@@ -2068,7 +2152,7 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 260,
+      "numTroops": 107,
       "speed": 1,
       "armour": 0,
       "turnsToProduce": 0,
@@ -2082,9 +2166,10 @@
     }],
     "player": {
       "gold": 100000,
+      "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
-      "faction": "Carthaginians",
-      "id": 2
+      "faction": "Macedonians",
+      "id": 14
     }
   }
 ]
