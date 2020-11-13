@@ -30,29 +30,7 @@ public class Unit {
     private String ability;
     private int movementPoints;
     private int turnsToProduce;
-
-    /*public Unit(String unitType, int numTroops2, String config) throws IOException {
-
-        JSONObject unitStats = new JSONObject(config).getJSONObject(unitType);
-
-        // Unit stat values obtained from unit config file
-        this.numTroops = numTroops2;
-        this.meleeAttack = unitStats.getInt("meleeAttack");
-        this.rangedAttack = unitStats.optInt("rangedAttack");
-        this.defenseSkill = unitStats.getInt("defense");
-        this.armour = unitStats.getInt("armour");
-        this.shieldDefense = unitStats.getInt("shield");
-        this.morale = unitStats.getInt("morale");
-        this.speed = unitStats.getInt("speed");
-        this.range = unitStats.getString("range");
-        this.type = unitStats.getString("type");
-        this.ability = unitStats.getString("ability");
-        this.turnsToProduce = unitStats.getInt("turnsToProduce");
-
-        // TODO = shield charge ability
-        // TODO = heroic charge ability
-
-    }*/
+    private Player player;
 
     public Unit() {
         increaseIDCounter();
@@ -136,6 +114,9 @@ public class Unit {
     
 	public void minusMorale(double d) {
         this.morale -= d;
+        if (this.morale < 1) {
+            this.morale = 1;
+        }
 	}
 
     public int getSpeed() {
@@ -211,7 +192,82 @@ public class Unit {
         this.turnsToProduce -= i;
     }
 
-    /*
+    public int calculateTotalAttack() {
+        return meleeAttack + rangedAttack;
+    }
+
+    public int calculateTotalDefense() {
+        return defenseSkill + armour + shieldDefense;
+    }
+
+    public Boolean isDefeated(int minusTroopSize) {
+        int remaining = numTroops - minusTroopSize;
+        if (remaining < 0) {
+            this.numTroops = 0;
+            return true;
+        }
+
+        this.numTroops = remaining;
+        return false;
+    }
+
+    public static void setCounter(int counter) {
+        Unit.counter = counter;
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
+    public int calculateTotalRangedAttack() {
+        return rangedAttack * numTroops;
+    }
+
+    public int calculateTotalArmour() {
+        return armour * numTroops;
+    }
+
+    public int calculateTotalShieldDefense() {
+        return shieldDefense * numTroops;
+    }
+
+    public int calculateTotalDefenseSkill() {
+        return defenseSkill * numTroops;
+    }
+
+    public int calculateTotalMeleeAttack() {
+        return meleeAttack * numTroops;
+    }
+}
+
+/*public Unit(String unitType, int numTroops2, String config) throws IOException {
+
+        JSONObject unitStats = new JSONObject(config).getJSONObject(unitType);
+
+        // Unit stat values obtained from unit config file
+        this.numTroops = numTroops2;
+        this.meleeAttack = unitStats.getInt("meleeAttack");
+        this.rangedAttack = unitStats.optInt("rangedAttack");
+        this.defenseSkill = unitStats.getInt("defense");
+        this.armour = unitStats.getInt("armour");
+        this.shieldDefense = unitStats.getInt("shield");
+        this.morale = unitStats.getInt("morale");
+        this.speed = unitStats.getInt("speed");
+        this.range = unitStats.getString("range");
+        this.type = unitStats.getString("type");
+        this.ability = unitStats.getString("ability");
+        this.turnsToProduce = unitStats.getInt("turnsToProduce");
+
+        // TODO = shield charge ability
+        // TODO = heroic charge ability
+
+    }*/
+
+   /*
      * public static void main(String[] args) throws JsonGenerationException,
      * JsonMappingException, IOException { String content =
      * Files.readString(Paths.get("src/unsw/gloriaromanus/unit_config.json"));
@@ -223,14 +279,6 @@ public class Unit {
      * unitStats.toString());
      * 
      * FileWriter file = new FileWriter("src/unsw/gloriaromanus/testFile.json");
-     * file.write(unitStats.toString()); file.close(); }
+     * file.write(unitStats.toString());
+     * file.close(); }
      */
-
-    public int calculateTotalAttack() {
-        return meleeAttack + rangedAttack;
-    }
-
-    public int calculateTotalDefense() {
-        return defenseSkill + armour + shieldDefense;
-    }
-}

@@ -1,9 +1,13 @@
 package unsw.gloriaromanus;
 
+import java.util.HashMap;
+
 public class Player {
     private int id;
     private String faction;
     private int gold;
+    private double moralePenalty;
+    private HashMap<String,Double> legionaryEaglePenaltyMap;
 
     public Player() {
         // super();
@@ -13,6 +17,8 @@ public class Player {
         this.id = id;
         this.faction = faction;
         this.gold = 100000;
+        this.moralePenalty = 0;
+        this.legionaryEaglePenaltyMap = new HashMap<String,Double>();
     }
 
     public String getFaction() {
@@ -41,5 +47,36 @@ public class Player {
 
     public int getID() {
         return id;
+    }
+
+    public double getMoralePenalty() {
+        return moralePenalty;
+    }
+
+    public void setMoralePenalty(double moralePenalty) {
+        this.moralePenalty = moralePenalty;
+    }
+
+    public void increaseMoralePenalty(double moralePenalty) {
+        this.moralePenalty += moralePenalty;
+    }
+
+    public void addToLEPenaltyMap(String province, double penalty) {
+        this.legionaryEaglePenaltyMap.put(province, penalty);
+    }
+
+    public HashMap<String, Double> getLegionaryEaglePenaltyMap() {
+        return legionaryEaglePenaltyMap;
+    }
+
+    public boolean mapContainsProvince(Province p) {
+        if (this.legionaryEaglePenaltyMap.containsKey(p.getName())) {
+            return true;
+        }
+        return false;
+    }
+
+    public void mapRemoveProvince(Province p) {
+        this.legionaryEaglePenaltyMap.remove(p.getName());
     }
 }

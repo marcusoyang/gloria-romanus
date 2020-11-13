@@ -13,10 +13,10 @@ public class Province {
 
     private String name;
     private Player player;
-    private ArrayList<Unit> units;
-    private int wealth;
     private ArrayList<UnitFactory> factories;
+    private ArrayList<Unit> units;
     private double taxRate;
+    private int wealth;
 
     public Province() {
         //super();
@@ -64,8 +64,8 @@ public class Province {
 
     public boolean trainUnit(String unitType, int numTroops) throws IOException {
         for (UnitFactory fac : factories) {
-            int price = fac.getPrice(unitType, numTroops);
-            if (!fac.isTraining && player.getGold() >= price) {
+            int price = fac.getCost(unitType, numTroops);
+            if (!fac.getIsTraining() && player.getGold() >= price) {
                 fac.addToTraining(unitType, numTroops);
                 player.minusGold(price);
                 return true;
@@ -91,7 +91,7 @@ public class Province {
     private void generateFactories(String unitConfig) {
         factories = new ArrayList<UnitFactory>();
         for (int i = 0; i < MAX_FAC; i++) {
-            UnitFactory factory = new UnitFactory();
+            UnitFactory factory = new UnitFactory(unitConfig, player);
             factories.add(factory);
         }
     }
@@ -111,7 +111,7 @@ public class Province {
     }
 
     public void setInitialArmy(int size) throws IOException {
-        units.add(factories.get(0).newUnit("normal", size));
+        units.add(factories.get(0).newUnit("legionary", size));
     }
 
     public void setArmySize(int remainingSize) {
