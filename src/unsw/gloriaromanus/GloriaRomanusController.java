@@ -140,8 +140,10 @@ public class GloriaRomanusController{
     initializeProvinceLayers();    
   }
 
+  /**
+   * Initializes an observer to update the volume when the slider has changed.
+   */
   private void initializeVolumeSlider() {
-    volumeSlider.setValue(1);
     volumeSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
       audio.changeVolume((double) newValue);
     });
@@ -898,7 +900,8 @@ public class GloriaRomanusController{
 
   public void setAudio(Audio audio) {
     this.audio = audio;
-}
+    volumeSlider.setValue(Audio.getDefaultVol());
+  }
 
   /**
    * Stops and releases all resources used in application.
