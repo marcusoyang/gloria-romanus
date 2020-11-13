@@ -26,7 +26,7 @@ public class UnitFactory {
         training = newUnit(unitType, numTroops);
     }
 
-    public Unit newUnit(String unitType, int numTroops) throws IOException {
+    public Unit newUnit(String unitType, int numTroops) {
 
         JSONObject unitStats = generateUnitStats(unitType);
         
@@ -38,7 +38,7 @@ public class UnitFactory {
         u.setDefenseSkill(unitStats.getInt("defense"));
         u.setArmour(unitStats.optInt("armour"));
         u.setShieldDefense(unitStats.optInt("shield"));
-        u.setMorale(unitStats.getInt("morale"));
+        u.setMorale(unitStats.getDouble("morale"));
         u.setSpeed(unitStats.getInt("speed"));
         u.setRange(unitStats.getString("range"));
         u.setType(unitStats.getString("type"));
@@ -50,8 +50,7 @@ public class UnitFactory {
         return u;
     }
 
-    public JSONObject generateUnitStats(String unitType) throws IOException {
-        // String configString = Files.readString(Paths.get("src/unsw/gloriaromanus/unit_config.json"));
+    public JSONObject generateUnitStats(String unitType) {
         JSONObject config = new JSONObject(configString);
         return config.getJSONObject(unitType);
     }
