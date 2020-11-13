@@ -108,6 +108,8 @@ public class GloriaRomanusController{
   @FXML
   private void initialize() throws JsonParseException, JsonMappingException, IOException {
     
+    filename = "world_1";  // Implement text field
+
     initializeVolumeSlider();
     readConfig();
     provinces = new ArrayList<Province>();
@@ -132,8 +134,7 @@ public class GloriaRomanusController{
     initializeProvinceLayers();  
   }
 
-  public void loadGame() throws IOException {
-    filename = "world_1";    
+  public void loadGame() throws IOException {  
     // String content = stringFromCampaignFile(filename);
     // JSONObject j = new JSONObject(content);
     restoreSavedDetails();
