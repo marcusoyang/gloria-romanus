@@ -265,133 +265,133 @@ public class GloriaRomanusController{
         battleResult.setVictory();
       }
 
-      // Starting the battle
-      int engagementIndex = 0;
-      ArrayList<Unit> routedArmies = new ArrayList<Unit>();
+      battle(battleResult, armies, enemyProvince, humanProvince);
 
-      // I commented out ability for now because these initiate to the whole province rather than the invading army
-      // I think we should implement sending specific troops for invasion (and not the whole province troop) first.
-      // Ability.initiate(humanProvince);
-      // Ability.initiate(enemyProvince);
-
-      while (battleResult.getResult().equals("")) {
-        // Random units from each side are chosen
-        Unit human;
-        Random r = new Random();
-        if(armies.size() > 1) {
-          human = armies.get(r.nextInt(armies.size() - 1));
-        } else {
-          human = armies.get(0);
-        }
-        
-        Unit enemy;
-        if (enemyProvince.getUnits().size() > 1) {
-          enemy = enemyProvince.getUnits().get(r.nextInt(enemyProvince.getUnits().size() - 1));
-        } else {
-          enemy = enemyProvince.getUnits().get(0);
-        }
-        
-        Skirmish s = new Skirmish(human, enemy, engagementIndex);
-        
-        // If both units are melee units, there is a 100% chance of a melee engagment.
-        if (human.getRange().equals("melee") && enemy.getRange().equals("melee")) {
-          s.start("melee");
-        } 
-        
-        // If both units are ranged units, there is a 100% chance of a ranged engagement.
-        else if (human.getRange().equals("ranged") && enemy.getRange().equals("ranged")) {
-          s.start("ranged");
-        }
-
-        // If they are both melee and ranged, the chances are calculated.
-        else {
-          // we check who's the melee and who's ranged
-          Unit meleeUnit = findMeleeUnit(human, enemy);
-          Unit rangedUnit = findRangedUnit(human, enemy);
-
-          double meleeEngagementChance = findMeleeEngagementChance(meleeUnit.getSpeed(), rangedUnit.getSpeed());
-          if(r.nextDouble() <= meleeEngagementChance) {
-            s.start("melee");
-          } else {
-            s.start("ranged");
-          }
-        }
-
-        // Ability.restore(humanProvince);
-        // Ability.restore(enemyProvince);
-
-        // Skirmish should have finished. we check the result of the skirmish.
-        switch(s.getResult()) {
-          case "victory":
-            enemyProvince.getUnits().remove(enemy);
-            if (enemyProvince.getUnits().size() == 0) {
-              battleResult.setVictory();
-            }
-            break;  
-          case "defeat":
-          // We remove this losing unit from our armies list.
-            armies.remove(human);
-            // We also check that we still have other units to continue the battle.
-            if (armies.size() == 0) {
-              battleResult.setDefeat();
-            }
-
-            // Ability.processLegionaryEagleDeath(human, s.getHumanInitialNumTroops(), humanProvince);
-            // Ability.checkLERecapture(human, humanProvince);
-            break;
-          case "human routed":
-            armies.remove(human);
-            routedArmies.add(human);
-            
-            if (armies.size() == 0) {
-              battleResult.setRouted();
-            } 
-            break;
-          case "enemy routed":
-            enemyProvince.getUnits().remove(enemy);
-            if (enemyProvince.getUnits().size() == 0) {
-              battleResult.setVictory();
-            }
-            break;
-        }
-
-        engagementIndex = s.getEngagementIndex();
-      }
-
-      // Battle has been finished.
-      switch(battleResult.getResult()) {
-        case "victory":
-          printMessageToTerminal("victory");
-          // Setting the invaded province as the winner's faction
-          enemyProvince.setPlayer(humanProvince.getPlayer());
-          
-          // Moving leftover armies to the invaded province
-          enemyProvince.getUnits().addAll(armies);
-
-          // Moving the routed armies to the invaded province
-          enemyProvince.getUnits().addAll(routedArmies);
-          break;
-        case "defeat":
-          printMessageToTerminal("defeat");
-          
-          // Moving the routed armies back to the human province
-          humanProvince.getUnits().addAll(routedArmies);
-          break;
-        case "draw":
-          printMessageToTerminal("draw");
-
-          // We move the army back to our human province.
-          humanProvince.getUnits().addAll(armies);
-          break;
-        case "routed":
-          printMessageToTerminal("routed");
-            
-          // Moving the routed armies back to the human province
-          humanProvince.getUnits().addAll(routedArmies);
-      }
       resetSelections();  // reset selections in UI
       addAllPointGraphics(); // reset graphics
     }
+  }
+
+  private void battle(Result battleResult, ArrayList<Unit> armies, Province enemyProvince, Province humanProvince) {
+    // Starting the battle
+    int engagementIndex = 0;
+    ArrayList<Unit> routedArmies = new ArrayList<Unit>();
+
+    // I commented out ability for now because these initiate to the whole province rather than the invading army
+    // I think we should implement sending specific troops for invasion (and not the whole province troop) first.
+    // Ability.initiate(humanProvince);
+    // Ability.initiate(enemyProvince);
+
+    while (battleResult.getResult().equals("")) {
+      // Random units from each side are chosen
+      Unit human;
+      Random r = new Random();
+      if(armies.size() > 1) {
+        human = armies.get(r.nextInt(armies.size() - 1));
+      } else {
+        human = armies.get(0);
+      }
+      
+      Unit enemy;
+      if (enemyProvince.getUnits().size() > 1) {
+        enemy = enemyProvince.getUnits().get(r.nextInt(enemyProvince.getUnits().size() - 1));
+      } else {
+        enemy = enemyProvince.getUnits().get(0);
+      }
+      
+      Skirmish s = new Skirmish(human, enemy, engagementIndex);
+      
+      // If both units are melee units, there is a 100% chance of a melee engagment.
+      if (human.getRange().equals("melee") && enemy.getRange().equals("melee")) {
+        s.start("melee");
+      } 
+      
+      // If both units are ranged units, there is a 100% chance of a ranged engagement.
+      else if (human.getRange().equals("ranged") && enemy.getRange().equals("ranged")) {
+        s.start("ranged");
+      }
+
+      // If they are both melee and ranged, the chances are calculated.
+      else {
+        s.start(getEngagementType(human, enemy));
+      }
+
+      // Ability.restore(humanProvince);
+      // Ability.restore(enemyProvince);
+
+      // Skirmish should have finished. we check the result of the skirmish.
+      battleResult = checkSkirmishResult(s, enemyProvince.getUnits(), enemy, armies, human, battleResult, routedArmies);
+
+      engagementIndex = s.getEngagementIndex();
+    }
+
+    // Battle has been finished.
+    switch(battleResult.getResult()) {
+      case "victory":
+        printMessageToTerminal("victory");
+        // Setting the invaded province as the winner's faction
+        enemyProvince.setPlayer(humanProvince.getPlayer());
+        
+        // Moving leftover armies to the invaded province
+        enemyProvince.getUnits().addAll(armies);
+
+        // Moving the routed armies to the invaded province
+        enemyProvince.getUnits().addAll(routedArmies);
+        break;
+      case "defeat":
+        printMessageToTerminal("defeat");
+        
+        // Moving the routed armies back to the human province
+        humanProvince.getUnits().addAll(routedArmies);
+        break;
+      case "draw":
+        printMessageToTerminal("draw");
+
+        // We move the army back to our human province.
+        humanProvince.getUnits().addAll(armies);
+        break;
+      case "routed":
+        printMessageToTerminal("routed");
+          
+        // Moving the routed armies back to the human province
+        humanProvince.getUnits().addAll(routedArmies);
+    }
+  }
+
+  private Result checkSkirmishResult(Skirmish s, ArrayList<Unit> enemyArmies, Unit enemy, ArrayList<Unit> humanArmies, Unit human, Result battleResult, ArrayList<Unit> humanRoutedArmies) {
+    switch(s.getResult()) {
+      case "victory":
+        enemyArmies.remove(enemy);
+        if (enemyArmies.size() == 0) {
+          battleResult.setVictory();
+        }
+        break;  
+      case "defeat":
+      // We remove this losing unit from our armies list.
+        humanArmies.remove(human);
+        // We also check that we still have other units to continue the battle.
+        if (humanArmies.size() == 0) {
+          battleResult.setDefeat();
+        }
+
+        // Ability.processLegionaryEagleDeath(human, s.getHumanInitialNumTroops(), humanProvince);
+        // Ability.checkLERecapture(human, humanProvince);
+        break;
+      case "human routed":
+        humanArmies.remove(human);
+        humanRoutedArmies.add(human);
+        
+        if (humanArmies.size() == 0) {
+          battleResult.setRouted();
+        } 
+        break;
+      case "enemy routed":
+        enemyArmies.remove(enemy);
+        if (enemyArmies.size() == 0) {
+          battleResult.setVictory();
+        }
+    }
+    return battleResult;
   }
 
   @FXML
@@ -429,6 +429,20 @@ public class GloriaRomanusController{
       case WEALTH_VICTORY:
         saveGame();
         printMessageToTerminal("Player" + currentPlayerID + " has achieved Wealth Victory!");
+    }
+  }
+
+  private String getEngagementType(Unit human, Unit enemy) {
+    // we check who's the melee and who's ranged
+    Unit meleeUnit = findMeleeUnit(human, enemy);
+    Unit rangedUnit = findRangedUnit(human, enemy);
+
+    double meleeEngagementChance = findMeleeEngagementChance(meleeUnit.getSpeed(), rangedUnit.getSpeed());
+    Random r = new Random();
+    if(r.nextDouble() <= meleeEngagementChance) {
+      return "melee";
+    } else {
+      return "ranged";
     }
   }
 
