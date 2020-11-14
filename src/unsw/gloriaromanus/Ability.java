@@ -35,7 +35,7 @@ public abstract class Ability {
         switch (u.getAbility()) {
             case "Legionary Eagle": restoreLegionaryEagle(); break;
             case "Berserker Rage": restoreBerserkerRage(u); break;
-            case "Phalanx": 
+            case "Phalanx": restorePhalanx(u); break;
             case "Elephant Amok": 
             case "Cantabrian Circle":
             case "Druidic Fervour":
@@ -82,11 +82,6 @@ public abstract class Ability {
         u.setArmour(uf.restoreArmour(u.getUnitType()));
     }
 
-	private static void processPhalanx(Unit u) {
-        u.setDefenseSkill(u.getDefenseSkill() * 2);   // double defense
-        u.setSpeed(u.getSpeed() / 2);                 // half speed
-    }
-
     public static void processHeroicCharge(Province humanProvince, Province enemyProvince) {
         if (humanProvince.getArmySize() * 2 < (enemyProvince.getArmySize())) {
             ArrayList<Unit> units = humanProvince.getUnits();
@@ -102,6 +97,16 @@ public abstract class Ability {
     public static void restoreHeroicCharge(Unit u) {
         u.setMeleeAttack(u.getMeleeAttack() / 2);
         u.setMorale(u.getMorale() * (2/3));
+    }
+
+    private static void processPhalanx(Unit u) {
+        u.setDefenseSkill(u.getDefenseSkill() * 2);   // double defense
+        u.setSpeed(u.getSpeed() / 2);                 // half speed
+    }
+
+    private static void restorePhalanx(Unit u) {
+        u.setDefenseSkill(u.getDefenseSkill() / 2);
+        u.setSpeed(u.getSpeed() / 2);
     }
 
     /**
