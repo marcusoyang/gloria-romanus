@@ -104,6 +104,7 @@ public class GloriaRomanusController{
   private String unitConfig;
   private boolean hasWon;
   private StartScreen startScreen;
+  private RecruitScreen recruitScreen;
   private Audio audio;
 
   @FXML
@@ -221,26 +222,58 @@ public class GloriaRomanusController{
     return false;
   }
 
-  public boolean unitTrainRequest(Province p, String unitType, int numTroops) throws IOException {   
-    boolean requestSuccess = p.trainUnit(unitType, numTroops);
+  /**
+   * Recruit menu requests training to check sufficient wealth and space in province.
+   * @param unitType
+   * @param numTroops
+   * @throws IOException
+   */
+  public void requestTraining(String unitType, int numTroops) throws IOException {
+
+    if (currentlySelectedHumanProvince == null) {
+      printMessageToTerminal("Please select a province before recruiting!");
+      return;
+    }
+    Province humanProvince = deserializeProvince((String)currentlySelectedHumanProvince.getAttributes().get("name"));
+    int cost = getCostOfUnit(unitType) * numTroops;
+    if (getPlayerFromID(currentPlayerID).getGold() < cost) {
+      printMessageToTerminal("Insufficient gold!");
+    } else {
+      unitTrainRequest(humanProvince, unitType, numTroops);
+    }
+  }
+
+  private int getCostOfUnit(String unitType) {
+    JSONObject config = new JSONObject(unitConfig);
+    return config.getJSONObject(unitType).optInt("cost");
+  }
+
+  private void unitTrainRequest(Province p, String unitType, int numTroops) throws IOException {
+    boolean requestSuccess = p.trainUnit(unitType, numTroops);  // Charges the player for cost of production.
     if (!requestSuccess) {
       printMessageToTerminal("Province has no open training slots!");
+    } else {
+      updateFrontendText();
+      printMessageToTerminal(p.getName() + " is now recruiting " + numTroops + " " + unitType + "'s.'");
     }
-    return requestSuccess;
   }
 
   public void setStartScreen(StartScreen startScreen) {
     this.startScreen = startScreen;
   }
 
+  public void setRecruitScreen(RecruitScreen recruitScreen) {
+    this.recruitScreen = recruitScreen;
+  }
+
   @FXML
-    public void clickedStartMenu(ActionEvent e) {
-      startScreen.start();
-    }
-  
+  public void clickedStartMenu(ActionEvent e) {
+    startScreen.start();
+  }
+
   @FXML
-  public void clickedSelectBattleRes(ActionEvent e) {
-    // TODO
+  public void clickedRecruit(ActionEvent e) {
+    recruitScreen.start();
   }
 
   @FXML
@@ -903,7 +936,7 @@ public class GloriaRomanusController{
     opponent_province.setText("");
   }
 
-  private void printMessageToTerminal(String message){
+  public void printMessageToTerminal(String message){
     output_terminal.appendText(message+"\n");
   }
 

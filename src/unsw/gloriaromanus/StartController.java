@@ -23,6 +23,9 @@ public class StartController {
 
     @FXML
     public void handleStartButton(ActionEvent event) throws IOException {
+        if (numPlayers.getText().isEmpty()) {
+            return;
+        }
         mainScreen.start(numPlayers.getText());
     }
 

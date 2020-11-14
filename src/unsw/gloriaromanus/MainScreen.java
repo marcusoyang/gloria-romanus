@@ -3,9 +3,12 @@ package unsw.gloriaromanus;
 import java.io.IOException;
 
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 public class MainScreen {
@@ -23,8 +26,9 @@ public class MainScreen {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("main.fxml"));
         loader.setController(controller);
 
-        // load into a Parent node called root
+        // load into a Parent node
         Parent root = loader.load();
+
         scene = new Scene(root, 1600, 900);
     }
 
@@ -42,8 +46,22 @@ public class MainScreen {
         stage.show();
     }
 
+    public void returnToMain() {
+        stage.setTitle(title);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void purchaseUnit(String unitType, int numTroops) throws IOException {
+        controller.requestTraining(unitType, numTroops);
+    }
+
     public GloriaRomanusController getController() {
         return controller;
     }
+
+	public void printToTerminal(String msg) {
+        controller.printMessageToTerminal(msg);
+	}
 }
 

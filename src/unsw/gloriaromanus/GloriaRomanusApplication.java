@@ -21,6 +21,8 @@ public class GloriaRomanusApplication extends Application {
 
     startScreen.getController().setMainScreen(mainScreen);
     mainScreen.getController().setStartScreen(startScreen);
+    mainScreen.getController().setRecruitScreen(recruitScreen);
+    recruitScreen.getController().setMainScreen(mainScreen);
 
     Audio audio = new Audio();
     startScreen.getController().setAudio(audio);
