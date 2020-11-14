@@ -34,7 +34,7 @@ public class UnitFactory {
         u.setID();
         u.setUnitType(unitType);
         u.setNumTroops(numTroops);
-        u.setMeleeAttack(unitStats.getDouble("meleeAttack"));
+        u.setMeleeAttack(unitStats.getInt("meleeAttack"));
         u.setRangedAttack(unitStats.optInt("rangedAttack"));
         u.setDefenseSkill(unitStats.getInt("defense"));
         u.setArmour(unitStats.optInt("armour"));
