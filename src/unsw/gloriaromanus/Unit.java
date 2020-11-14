@@ -17,6 +17,7 @@ public class Unit {
     private static final int ARTILLERY_MP = 4;
     private static int counter = 0;
     private int id;
+    private String unitType;
     private int numTroops; // the number of troops in this unit (should reduce based on depletion)
     private int meleeAttack; // can be either missile or melee attack to simplify. Could improve
     private int rangedAttack; // implementation by differentiating!
@@ -223,6 +224,14 @@ public class Unit {
 
     public void setPlayer(Player player) {
         this.player = player;
+    }
+
+    public void setUnitType(String unitType) {
+        this.unitType = unitType;
+    }
+
+    public String getUnitType() {
+        return unitType;
     }
 
     public int calculateTotalRangedAttack() {
