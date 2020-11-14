@@ -88,10 +88,10 @@ public abstract class Ability {
     }
 
     public static void processHeroicCharge(Province humanProvince, Province enemyProvince) {
-        if (humanProvince.getArmySize() < (enemyProvince.getArmySize() / 2)) {
+        if (humanProvince.getArmySize() * 2 < (enemyProvince.getArmySize())) {
             ArrayList<Unit> units = humanProvince.getUnits();
             for (Unit u : units) {
-                if (u.getRange() == "melee" && u.getType() == "cavalry") {
+                if (u.getRange().equals("melee") && u.getType().equals("cavalry")) {
                     u.setMeleeAttack(u.getMeleeAttack() * 2);  // double melee attack
                     u.addMorale(u.getMorale() / 2);            // 50% higher morale
                 }
