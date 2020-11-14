@@ -235,7 +235,6 @@ public class GloriaRomanusController{
       }*/
 
       Ability.setProvinces(provinces);
-      // Ability.processHeroicCharge(humanProvince, enemyProvince);
       
       // TODO: Some implementation of code to have different lists of Units go to certain provinces
       // For now it'll just be our whole troop 
@@ -272,16 +271,12 @@ public class GloriaRomanusController{
     // Starting the battle
     int engagementIndex = 0;
 
-    Ability.initiate(invadingList);
-    Ability.initiate(enemyProvince.getUnits());
-    
+    initiateAbilities(invadingList, enemyProvince, humanProvince); 
+
     // We take away these troops from the humanProvince
     humanProvince.getUnits().removeAll(invadingList);
 
     ArrayList<Unit> routedList = new ArrayList<Unit>();
-
-    Ability.initiate(invadingList);
-    Ability.initiate(enemyProvince.getUnits());
 
     while (battleResult.getResult().equals("")) {
       // Random units from each side are chosen
@@ -317,9 +312,6 @@ public class GloriaRomanusController{
         s.start(getEngagementType(human, enemy));
       }
 
-      // Ability.restore(humanProvince);
-      // Ability.restore(enemyProvince);
-
       // Skirmish should have finished. we check the result of the skirmish.
       battleResult = checkSkirmishResult(s, enemyProvince, enemy, invadingList, human, battleResult, routedList);
 
@@ -327,6 +319,8 @@ public class GloriaRomanusController{
     }
 
     // Battle has been finished.
+    restoreAbilities(invadingList, enemyProvince.getUnits());
+
     switch(battleResult.getResult()) {
       case "victory":
         printMessageToTerminal("victory");
@@ -399,6 +393,17 @@ public class GloriaRomanusController{
         }
     }
     return battleResult;
+  }
+
+  private void initiateAbilities(ArrayList<Unit> invadingList, Province enemyProvince, Province humanProvince) {
+    Ability.initiate(invadingList);
+    Ability.initiate(enemyProvince.getUnits());
+    Ability.processHeroicCharge(humanProvince, enemyProvince);
+  } 
+
+  private void restoreAbilities(ArrayList<Unit> invadingList, ArrayList<Unit> defendingList) {
+    Ability.restore(invadingList);
+    Ability.restore(defendingList);
   }
 
   @FXML
