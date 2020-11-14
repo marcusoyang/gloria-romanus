@@ -6,6 +6,10 @@ public abstract class Ability {
     private static ArrayList<Province> provinces;
     private static ArrayList<Unit> units; 
 
+    public static void setProvinces(ArrayList<Province> provinces) {
+        Ability.provinces = provinces;
+    }
+    
     public static void initiate(ArrayList<Unit> units) {
         Ability.units = units;
         for (Unit u : units) {
@@ -58,6 +62,39 @@ public abstract class Ability {
         }
     }
 
+    /**
+     * Processes legionary eagle penalty after each battle
+     * @param unit
+     * @param initialTroops
+     * @param humanProvince
+     */
+    public static void processLegionaryEagleDeath(Unit u, int casualty, Province p) {
+        if (u.getAbility() == "Legionary Eagle") {
+            double penalty = casualty * 0.2;
+            sufferMoralePenalty(u.getPlayer(), penalty);
+            u.getPlayer().addToLEPenaltyMap(p.getName(), penalty);
+        }
+    }
+
+    public static void sufferMoralePenalty(Player player, double penalty) {
+        for (Province p : provinces) {
+            if (p.getPlayer().equals(player)) {
+                ArrayList<Unit> units = p.getUnits();
+                for (Unit u2 : units) {
+                    u2.minusMorale(penalty);
+                }
+                player.increaseMoralePenalty(penalty);
+            }
+        }
+    }
+
+	public static void checkLERecapture(Province p) {
+        Player player = p.getPlayer();
+        if (player.mapContainsProvince(p)) {
+            player.mapRemoveProvince(p);
+        }
+	}
+
     private static void processBerserkerRage(Unit u) {
         u.addMorale(9999);
         u.setMeleeAttack(u.getMeleeAttack() * 2);
@@ -109,40 +146,15 @@ public abstract class Ability {
         u.setSpeed(u.getSpeed() / 2);
     }
 
-    /**
-     * Processes legionary eagle penalty after each battle
-     * @param unit
-     * @param initialTroops
-     * @param humanProvince
-     */
-    public static void processLegionaryEagleDeath(Unit u, int casualty, Province p) {
-        if (u.getAbility() == "Legionary Eagle") {
-            double penalty = casualty * 0.2;
-            sufferMoralePenalty(u.getPlayer(), penalty);
-            u.getPlayer().addToLEPenaltyMap(p.getName(), penalty);
+    public static void processSkirmisherAntiArmour(Unit javelinSkirmisher, Unit other) {
+        if (javelinSkirmisher.getAbility().equals("Skirmisher Anti-Armour")) {
+            other.setArmour(other.getArmour() / 2);
         }
     }
 
-    public static void sufferMoralePenalty(Player player, double penalty) {
-        for (Province p : provinces) {
-            if (p.getPlayer().equals(player)) {
-                ArrayList<Unit> units = p.getUnits();
-                for (Unit u2 : units) {
-                    u2.minusMorale(penalty);
-                }
-                player.increaseMoralePenalty(penalty);
-            }
-        }
-    }
-
-	public static void checkLERecapture(Province p) {
-        Player player = p.getPlayer();
-        if (player.mapContainsProvince(p)) {
-            player.mapRemoveProvince(p);
-        }
-	}
-
-    public static void setProvinces(ArrayList<Province> provinces) {
-        Ability.provinces = provinces;
-    }
+   public static void restoreSkirmisherAntiArmour(Unit javelinSkirmisher, Unit other) {
+       if (javelinSkirmisher.getAbility().equals("Skirmisher Anti-Armour")) {
+           other.setArmour(other.getArmour() * 2);
+       }
+   }
 }
