@@ -11,7 +11,7 @@ public class Audio {
 	private MediaPlayer mediaPlayer;
     
     public Audio() {
-        String musicFile = "src/unsw/gloriaromanus/media/bustlingAfternoonOfMondstadt.wav";
+        String musicFile = "src/unsw/gloriaromanus/media/bustlingAfternoonOfMondstadt.mp3";
 
         Media defaultBackground = new Media(new File(musicFile).toURI().toString());
         mediaPlayer = new MediaPlayer(defaultBackground);
