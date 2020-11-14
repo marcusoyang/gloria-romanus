@@ -1,10 +1,14 @@
 package unsw.gloriaromanus;
 
+import java.io.File;
 import java.io.IOException;
 
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 public class RecruitScreen {
@@ -25,7 +29,16 @@ public class RecruitScreen {
         // load into a Parent node
         Parent root = recruitLoader.load();
 
-        scene = new Scene(root, 1600, 900);
+        // Wallpaper
+        String titleFile = "src/unsw/gloriaromanus/media/recruit.jpg";
+        Image titleImage = new Image(new File(titleFile).toURI().toString());
+        ImageView imageView = new ImageView(titleImage);
+
+        Group group = new Group();
+        group.getChildren().add(imageView);
+        group.getChildren().add(root);
+
+        scene = new Scene(group, 1600, 900);
     }
 
     public void start() {
