@@ -1,13 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Background?>
+<?import javafx.scene.layout.BackgroundFill?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="940.0" layoutX="-20.0" layoutY="-20.0" opacity="0.3" stroke="BLACK" strokeType="INSIDE" width="329.0" />
-      <Button fx:id="startButton" layoutX="64.0" layoutY="425.0" mnemonicParsing="false" onAction="#handleStartButton" prefHeight="46.0" prefWidth="185.0" text="New Game" />
-      <Button fx:id="loadButton" layoutX="65.0" layoutY="498.0" mnemonicParsing="false" onAction="#handleLoadButton" prefHeight="46.0" prefWidth="185.0" text="Load Game" />
+      <VBox maxWidth="250" spacing="10" styleClass="panel-region" StackPane.alignment="TOP_LEFT">
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+         <background>
+            <Background>
+                <fills>
+                    <BackgroundFill>
+                        <fill>
+                            <Color opacity="0.3" />
+                        </fill>
+                    </BackgroundFill>
+                </fills>
+            </Background>
+        </background>
+        <children>
+            <Pane prefHeight="900.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="startButton" alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="363.0" mnemonicParsing="false" onAction="#handleStartButton" prefHeight="46.0" prefWidth="185.0" text="New Game" />
+                  <Button fx:id="loadButton" alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="470.0" mnemonicParsing="false" onAction="#handleLoadButton" prefHeight="46.0" prefWidth="185.0" text="Load Game" />
+                  <TextField fx:id="loadFilename" layoutX="20.0" layoutY="516.0" prefWidth="185.0" promptText="Filename">
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                  </TextField>
+                  <TextField fx:id="numPlayers" layoutX="20.0" layoutY="409.0" prefWidth="185.0" promptText="Number of Players">
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                  </TextField>
+               </children>
+            </Pane>
+         </children>
+      </VBox>
    </children>
-</Pane>
+</StackPane>

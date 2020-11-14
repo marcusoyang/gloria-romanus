@@ -45,6 +45,7 @@ public class StartScreen {
     }
 
     public void start() {
+        controller.clearTextFields();
         stage.setTitle(title);
         stage.setScene(scene);
         stage.show();

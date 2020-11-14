@@ -16,7 +16,7 @@ public class Player {
     public Player(int id, String faction) {
         this.id = id;
         this.faction = faction;
-        this.gold = 100000;
+        this.gold = 100;
         this.moralePenalty = 0;
         this.legionaryEaglePenaltyMap = new HashMap<String,Double>();
     }

@@ -17,6 +17,7 @@ public class GloriaRomanusApplication extends Application {
 
     StartScreen startScreen = new StartScreen(stage);
     MainScreen mainScreen = new MainScreen(stage);
+    RecruitScreen recruitScreen = new RecruitScreen(stage);
 
     startScreen.getController().setMainScreen(mainScreen);
     mainScreen.getController().setStartScreen(startScreen);

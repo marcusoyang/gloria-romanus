@@ -66,6 +66,8 @@ public class GloriaRomanusController{
   @FXML
   private TextField current_faction;
   @FXML
+  private TextField current_player_gold;
+  @FXML
   private TextField current_year;
   @FXML
   private TextField invading_province;
@@ -73,6 +75,8 @@ public class GloriaRomanusController{
   private TextField opponent_province;
   @FXML
   private TextArea output_terminal;
+  @FXML
+  private TextField saveFilename;
   @FXML
   private Slider volumeSlider;
 
@@ -84,6 +88,7 @@ public class GloriaRomanusController{
   private static final int CONQUEST_VICTORY = 1;
   private static final int TREASURY_VICTORY = 2;
   private static final int WEALTH_VICTORY = 3;
+  private static final String DEFAULT_FILENAME = "_default";
 
   private ArrayList<Player> players;
   private ArrayList<Province> provinces;
@@ -104,7 +109,7 @@ public class GloriaRomanusController{
   @FXML
   private void initialize() throws JsonParseException, JsonMappingException, IOException {
     
-    filename = "world_1";  // Implement text field
+    filename = DEFAULT_FILENAME;  // Default prefix for save filename.
 
     initializeVolumeSlider();
     readConfig();
@@ -116,9 +121,9 @@ public class GloriaRomanusController{
     currentlySelectedEnemyProvince = null;  
   }
 
-  public void newGame() throws IOException {
+  public void newGame(Integer numPlayers) throws IOException {
     initialize();
-    generatePlayers();
+    generatePlayers(numPlayers);
     initializeOfflineMultiOwnership();
     Random r = new Random();
     for (Province p: provinces) {
@@ -126,21 +131,36 @@ public class GloriaRomanusController{
     }
     currentPlayerID = 1;
     currentYear = 0;
-    initializeFrontendText();
+    clearTextFields();
+    updateFrontendText();
     initializeProvinceLayers();  
   }
 
-  public void loadGame() throws IOException {  
+  public void loadGame(String loadFilename) throws IOException {  
     // String content = stringFromCampaignFile(filename);
     // JSONObject j = new JSONObject(content);
+    filename = loadFilename;
+    clearTextFields();
+    saveFilename.setText(filename);
+
     restoreSavedDetails();
-    initializeFrontendText();
+    updateFrontendText();
     initializeProvinceLayers();  
   }
 
-  private void initializeFrontendText() {
+  private void updateFrontendText() {
     current_faction.setText(getPlayerFromID(currentPlayerID).getFaction());
     current_year.setText(String.valueOf(currentYear));
+    current_player_gold.setText(String.valueOf(getPlayerGold(currentPlayerID)));
+  }
+
+  private void clearTextFields() {
+    output_terminal.clear();
+    saveFilename.clear();
+  }
+
+  private int getPlayerGold(int ID) {
+    return getPlayerFromID(ID).getGold();
   }
 
   /**
@@ -152,10 +172,15 @@ public class GloriaRomanusController{
     });
   }
 
-  private void generatePlayers() throws IOException {
+  /**
+   * Initializes the player list from the number of players and allocates a faction.
+   * @param numPlayers
+   * @throws IOException
+   */
+  private void generatePlayers(Integer numPlayers) throws IOException {
     JSONArray factions = readFactionsList();
-    for (int i = 0; i < factions.length(); i++) {
-      Player p = new Player(players.size() + 1, factions.getString(i));
+    for (int i = 0; i < numPlayers; i++) {
+      Player p = new Player(i + 1, factions.getString(i));
       players.add(p);
     }
   }
@@ -212,16 +237,6 @@ public class GloriaRomanusController{
     public void clickedStartMenu(ActionEvent e) {
       startScreen.start();
     }
-
-  @FXML
-  public void clickedStartCampaign(ActionEvent e) {
-    // TODO
-  }
-  
-  @FXML
-  public void clickedSelectCamAI(ActionEvent e) {
-    // TODO
-  }
   
   @FXML
   public void clickedSelectBattleRes(ActionEvent e) {
@@ -410,7 +425,13 @@ public class GloriaRomanusController{
 
   @FXML
   public void clickedEndTurnButton() throws IOException {
-    printMessageToTerminal("player" + currentPlayerID + " ended their turn.");
+    printMessageToTerminal("Player " + currentPlayerID + " ended their turn.");
+
+    // Reloading the save doesn't continue prompts.
+    if (!hasWon) { 
+      processVictories();
+    }
+
     currentPlayerID++;
     if (currentPlayerID > players.size()) {
       currentPlayerID = 1;
@@ -425,24 +446,23 @@ public class GloriaRomanusController{
         p.collectTaxRevenue();
       }
     }
-    current_faction.setText(getPlayerFromID(currentPlayerID).getFaction());
+    updateFrontendText();
+    printMessageToTerminal("It is Player " + currentPlayerID + "'s turn.");
+  }
 
-    // Reloading the save doesn't continue prompts.
-    if (hasWon) { return; }
-    hasWon = true;
-
-    switch (detectVictory()) {
-      case 0: 
-        printMessageToTerminal("It is player" + currentPlayerID + "'s turn.");
+  private void processVictories() throws IOException {
+    switch (detectVictory()) {      
       case CONQUEST_VICTORY:
-        saveGame();
-        printMessageToTerminal("Player" + currentPlayerID + " has achieved Conquest Victory!");
+      saveGame();
+      printMessageToTerminal("Player " + currentPlayerID + " has achieved Conquest Victory!");
+      break;
       case TREASURY_VICTORY:
-        saveGame();
-        printMessageToTerminal("Player" + currentPlayerID + " has achieved Treasury Victory!");
+      saveGame();
+      printMessageToTerminal("Player " + currentPlayerID + " has achieved Treasury Victory!");
+      break;
       case WEALTH_VICTORY:
-        saveGame();
-        printMessageToTerminal("Player" + currentPlayerID + " has achieved Wealth Victory!");
+      saveGame();
+      printMessageToTerminal("Player " + currentPlayerID + " has achieved Wealth Victory!");
     }
   }
 
@@ -475,9 +495,11 @@ public class GloriaRomanusController{
   }
 
   private int detectVictory() {
+    hasWon = true;
     if (detectConquestVict()) { return CONQUEST_VICTORY; }
     if (detectTreasuryVict()) { return TREASURY_VICTORY; }
-    if (detectWealthVict()) { return WEALTH_VICTORY; }  
+    if (detectWealthVict()) { return WEALTH_VICTORY; }
+    hasWon = false;
     return 0;
   }
 
@@ -534,11 +556,16 @@ public class GloriaRomanusController{
 
   @FXML
   public void clickedSaveButton(ActionEvent e) throws IOException {
+    filename = saveFilename.getText();
+    if (filename == "") {
+      filename = DEFAULT_FILENAME;
+    }
     saveGame();
     printMessageToTerminal("Game is saved!");
   }
 
   private void saveGame() throws IOException {
+
     // Things to save: data in the province class
     JSONArray provinceList = new JSONArray();
     for (Province p : provinces) {
@@ -836,7 +863,7 @@ public class GloriaRomanusController{
     }
 
     for (int i = 0; i < ja.length(); i++) {
-      int randNum = r.nextInt(players.size() - 1);
+      int randNum = r.nextInt(players.size());
       provinces.add(new Province(ja.getString(i), players.get(randNum), unitConfig));
     }
   }

@@ -45,18 +45,40 @@
                 <TextField fx:id="opponent_province" editable="false" text="" />
             </VBox>
         </HBox>
-            <Button onAction="#clickedInvadeButton" text="Invade" />
-            <Button onAction="#clickedEndTurnButton" text="End Turn" />
+      <HBox alignment="TOP_CENTER">
+         <children>
+                  <Button onAction="#clickedInvadeButton" prefWidth="100.0" text="Invade">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin>
+            </Button>
+                  <Button onAction="#clickedEndTurnButton" prefWidth="100.0" text="End Turn">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
         <VBox>
             <Label text="Output from interactions" />
             <TextArea fx:id="output_terminal" editable="false" text="" />
         </VBox>
-        <Button onAction="#clickedSaveButton" text="Save" />
-        <Button onAction="#clickedStartCampaign" text="Start Campaign" />
-        <Button onAction="#clickedSelectCamAI" text="Select Campaign AI" />
-        <Button onAction="#clickedSelectBattleRes" text="Select Battle Resolver" />
-      <Button mnemonicParsing="false" onAction="#clickedStartMenu" text="Start Menu" />
-      <VBox>
+      <HBox alignment="TOP_CENTER">
+         <children>
+              <Button onAction="#clickedSaveButton" prefWidth="100.0" text="Save">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin>
+            </Button>
+            <TextField fx:id="saveFilename" promptText="Filename">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin>
+            </TextField>
+         </children>
+      </HBox>
+      <Button mnemonicParsing="false" onAction="#clickedStartMenu" prefWidth="100.0" text="Start Menu" />
+      <VBox alignment="BOTTOM_LEFT">
          <children>
             <Label text="Volume" />
             <Slider fx:id="volumeSlider" blockIncrement="0.1" majorTickUnit="0.5" max="1.0" minorTickCount="1" showTickLabels="true" showTickMarks="true" />
@@ -81,8 +103,17 @@
       <children>
          <HBox maxHeight="-Infinity" maxWidth="-Infinity" spacing="5.0">
             <children>
-               <Label text="Current Year:" />
+               <Label text="Current Year:" translateY="3.0" />
                <TextField fx:id="current_year" editable="false" text="" />
+            </children>
+            <padding>
+               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+            </padding>
+         </HBox>
+         <HBox maxHeight="-Infinity" maxWidth="-Infinity" spacing="5.0">
+            <children>
+               <Label text="Treasury:" translateY="3.0" />
+               <TextField fx:id="current_player_gold" editable="false" text="" />
             </children>
             <padding>
                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
