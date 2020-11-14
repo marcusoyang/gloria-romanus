@@ -90,6 +90,9 @@ public class Unit {
     }
 
     public void setArmour(int armour) {
+        if (armour < 1) {
+            armour = 1;
+        }
         this.armour = armour;
     }
 
@@ -98,6 +101,9 @@ public class Unit {
     }
 
     public void setShieldDefense(int shieldDefense) {
+        if (shieldDefense < 1) {
+            shieldDefense = 1;
+        }
         this.shieldDefense = shieldDefense;
     }
 
