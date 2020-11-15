@@ -273,29 +273,29 @@ public class GloriaRomanusController{
 
     initiateAbilities(invadingList, enemyProvince, humanProvince); 
 
-    // We take away these troops from the humanProvince
-    humanProvince.getUnits().removeAll(invadingList);
-
     ArrayList<Unit> routedList = new ArrayList<Unit>();
 
     while (battleResult.getResult().equals("")) {
+      // We take away these troops from the humanProvince as the battle has started
+      humanProvince.getUnits().removeAll(invadingList);
+
       // Random units from each side are chosen
       Unit human;
       Random r = new Random();
       if(invadingList.size() > 1) {
-        human = invadingList.get(r.nextInt(invadingList.size() - 1));
+        human = invadingList.get(r.nextInt(invadingList.size()));
       } else {
         human = invadingList.get(0);
       }
       
       Unit enemy;
       if (enemyProvince.getUnits().size() > 1) {
-        enemy = enemyProvince.getUnits().get(r.nextInt(enemyProvince.getUnits().size() - 1));
+        enemy = enemyProvince.getUnits().get(r.nextInt(enemyProvince.getUnits().size()));
       } else {
         enemy = enemyProvince.getUnits().get(0);
       }
       
-      Skirmish s = new Skirmish(human, enemy, engagementIndex);
+      Skirmish s = new Skirmish(human, enemy, engagementIndex, invadingList);
       
       // If both units are melee units, there is a 100% chance of a melee engagment.
       if (human.getRange().equals("melee") && enemy.getRange().equals("melee")) {
@@ -396,9 +396,9 @@ public class GloriaRomanusController{
   }
 
   private void initiateAbilities(ArrayList<Unit> invadingList, Province enemyProvince, Province humanProvince) {
-    Ability.initiate(invadingList);
-    Ability.initiate(enemyProvince.getUnits());
-    Ability.processHeroicCharge(humanProvince, enemyProvince);
+    Ability.initiateInvade(invadingList);
+    Ability.initiateDefend(enemyProvince.getUnits());
+    Ability.processHeroicCharge();
   } 
 
   private void restoreAbilities(ArrayList<Unit> invadingList, ArrayList<Unit> defendingList) {
@@ -828,13 +828,13 @@ public class GloriaRomanusController{
     Random r = new Random();
 
     for (int i = 0; i < players.size(); i++) {
-      int randNum = r.nextInt(ja.length() - 1);
+      int randNum = r.nextInt(ja.length());
       provinces.add(new Province(ja.getString(randNum), players.get(i), unitConfig));
       ja.remove(randNum);
     }
 
     for (int i = 0; i < ja.length(); i++) {
-      int randNum = r.nextInt(players.size() - 1);
+      int randNum = r.nextInt(players.size());
       provinces.add(new Province(ja.getString(i), players.get(randNum), unitConfig));
     }
   }
