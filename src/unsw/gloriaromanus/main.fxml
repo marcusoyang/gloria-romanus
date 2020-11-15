@@ -16,7 +16,7 @@
 
 <StackPane maxHeight="900.0" maxWidth="1600.0" minHeight="900.0" minWidth="1600.0" prefHeight="900.0" prefWidth="1600.0" stylesheets="/unsw/gloriaromanus/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
     <MapView fx:id="mapView" />
-    <VBox maxWidth="250" spacing="10" styleClass="panel-region" StackPane.alignment="TOP_LEFT">
+    <VBox maxWidth="310.0" spacing="10" styleClass="panel-region" StackPane.alignment="TOP_LEFT">
         <padding>
             <Insets topRightBottomLeft="10" />
         </padding>
@@ -59,13 +59,9 @@
             </Button>
          </children>
       </HBox>
-        <VBox>
-            <Label text="Output from interactions" />
-            <TextArea fx:id="output_terminal" editable="false" text="" />
-        </VBox>
-      <HBox>
+      <HBox alignment="TOP_CENTER">
          <children>
-            <Button mnemonicParsing="false" onAction="#clickedStartMenu" prefWidth="100.0" text="Start Menu">
+            <Button mnemonicParsing="false" onAction="#clickedMove" prefWidth="100.0" text="Move Troops">
                <HBox.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </HBox.margin>
@@ -76,10 +72,11 @@
                </HBox.margin>
             </Button>
          </children>
-         <VBox.margin>
-            <Insets />
-         </VBox.margin>
       </HBox>
+        <VBox>
+            <Label text="Output from interactions" />
+            <TextArea fx:id="output_terminal" editable="false" prefHeight="400.0" text="" wrapText="true" />
+        </VBox>
       <HBox alignment="TOP_CENTER">
          <children>
               <Button onAction="#clickedSaveButton" prefWidth="100.0" text="Save">
@@ -93,6 +90,18 @@
                </HBox.margin>
             </TextField>
          </children>
+      </HBox>
+      <HBox alignment="TOP_CENTER">
+         <children>
+            <Button mnemonicParsing="false" onAction="#clickedStartMenu" prefWidth="100.0" text="Start Menu">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
       </HBox>
       <VBox alignment="BOTTOM_LEFT">
          <children>

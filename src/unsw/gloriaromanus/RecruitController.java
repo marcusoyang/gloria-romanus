@@ -1,6 +1,10 @@
 package unsw.gloriaromanus;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+import org.json.JSONObject;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -9,6 +13,24 @@ public class RecruitController {
 
     @FXML
     private TextField numTroops;
+    @FXML
+    private TextField legionaryCost;
+    @FXML
+    private TextField berserkerCost;
+    @FXML
+    private TextField pikemenCost;
+    @FXML
+    private TextField hopeliteCost;
+    @FXML
+    private TextField javelinSkirmisherCost;
+    @FXML
+    private TextField elephantCost;
+    @FXML
+    private TextField horseArcherCost;
+    @FXML
+    private TextField druidCost;
+    @FXML
+    private TextField catapultCost;
 
     private MainScreen mainScreen;
 
@@ -104,5 +126,19 @@ public class RecruitController {
 
 	public void clearTextFields() {
         numTroops.clear();
+	}
+
+	public void loadPrices(String path) throws IOException {
+        String configString = Files.readString(Paths.get(path));
+        JSONObject config = new JSONObject(configString);
+        legionaryCost.setText(config.getJSONObject("legionary").optString("cost"));
+        berserkerCost.setText(config.getJSONObject("berserker").optString("cost"));
+        pikemenCost.setText(config.getJSONObject("pikemen").optString("cost"));
+        hopeliteCost.setText(config.getJSONObject("hoplite").optString("cost"));
+        javelinSkirmisherCost.setText(config.getJSONObject("javelin-skirmisher").optString("cost"));
+        elephantCost.setText(config.getJSONObject("elephant").optString("cost"));
+        horseArcherCost.setText(config.getJSONObject("horse_archer").optString("cost"));
+        druidCost.setText(config.getJSONObject("druid").optString("cost"));
+        catapultCost.setText(config.getJSONObject("catapult").optString("cost"));
 	}
 }

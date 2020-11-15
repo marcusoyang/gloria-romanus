@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.Array;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -91,18 +92,20 @@ public class GloriaRomanusController{
   private static final String DEFAULT_FILENAME = "_default";
 
   private ArrayList<Player> players;
+  private ArrayList<String> factions;
   private ArrayList<Province> provinces;
   private int currentPlayerID;
   private int currentYear;
+  private String filename;
+  private String unitConfig;
+  private boolean hasWon;
+  private Province waitingForDestination;
 
   private Feature currentlySelectedHumanProvince;
   private Feature currentlySelectedEnemyProvince;
 
   private FeatureLayer featureLayer_provinces;
 
-  private String filename;
-  private String unitConfig;
-  private boolean hasWon;
   private StartScreen startScreen;
   private RecruitScreen recruitScreen;
   private Audio audio;
@@ -113,10 +116,10 @@ public class GloriaRomanusController{
     filename = DEFAULT_FILENAME;  // Default prefix for save filename.
 
     initializeVolumeSlider();
-    readConfig();
     provinces = new ArrayList<Province>();
     players = new ArrayList<Player>();
     hasWon = false;
+    waitingForDestination = null;
 
     currentlySelectedHumanProvince = null;
     currentlySelectedEnemyProvince = null;  
@@ -179,9 +182,9 @@ public class GloriaRomanusController{
    * @throws IOException
    */
   private void generatePlayers(Integer numPlayers) throws IOException {
-    JSONArray factions = readFactionsList();
+    // JSONArray factions = readFactionsList();
     for (int i = 0; i < numPlayers; i++) {
-      Player p = new Player(i + 1, factions.getString(i));
+      Player p = new Player(i + 1, factions.get(i));
       players.add(p);
     }
   }
@@ -193,12 +196,8 @@ public class GloriaRomanusController{
     return ja;
   }
 
-  private String stringFromCampaignFile(String filename) throws IOException {
-    return Files.readString(Paths.get("src/unsw/gloriaromanus/saves/" + filename + "_campaign.json"));
-  }
-
-  private void readConfig() throws IOException {
-    unitConfig = (Files.readString(Paths.get("src/unsw/gloriaromanus/unit_config.json")));
+  public void loadConfig(String path) throws IOException {
+    unitConfig = Files.readString(Paths.get(path));
   }
 
   public boolean moveUnits(List<Integer> ids, Province src, Province dest) throws IOException {
@@ -209,6 +208,7 @@ public class GloriaRomanusController{
     for (int id : ids) {
       Unit u = src.findUnit(id);
       if (u.getMovementPoints() < (MOVE_COST * shortestPathLength)) {
+        printMessageToTerminal("Insufficient movement points!");
         allCanMove = false;
       }
     }
@@ -216,6 +216,7 @@ public class GloriaRomanusController{
       for (int id2 : ids) {
         Unit u2 = src.findUnit(id2);
         u2.minusMovementPoints(MOVE_COST * shortestPathLength);     // MOVE FUNCTION NOT IMPLEMENTED
+        src.moveUnit(dest, id2);
       }
       return true;
     }
@@ -269,6 +270,24 @@ public class GloriaRomanusController{
   @FXML
   public void clickedStartMenu(ActionEvent e) {
     startScreen.start();
+  }
+
+  @FXML
+  public void clickedMove(ActionEvent e) {
+    if (currentlySelectedHumanProvince == null) {
+      printMessageToTerminal("Please select a province to move from!");
+      return;
+    }    
+    String provinceName = (String)currentlySelectedHumanProvince.getAttributes().get("name");
+    Province province = deserializeProvince(provinceName);
+
+    if (province.getUnits() == null || province.getArmySize() == 0) {
+      printMessageToTerminal(provinceName + " has no troops.");
+      return;
+    }
+    printMessageToTerminal(provinceName + " with an army size of " + province.getArmySize() + " has been selected for movement.");
+    
+    waitingForDestination = province;
   }
 
   @FXML
@@ -465,6 +484,8 @@ public class GloriaRomanusController{
       processVictories();
     }
 
+    checkLostFactions();
+
     currentPlayerID++;
     if (currentPlayerID > players.size()) {
       currentPlayerID = 1;
@@ -473,14 +494,33 @@ public class GloriaRomanusController{
     resetMovementPoints();
     adjustProvincesTownWealth();
 
-    // Collect taxes for the next player
+    // Collect taxes for the next player and processes trained units
     for (Province p : provinces) {
+      if (p.nextTurn()) {
+        printMessageToTerminal(p.getName() + " has just recruited a new unit!");
+      }
       if (getPlayerFromID(currentPlayerID).equals(p.getPlayer())) {
         p.collectTaxRevenue();
       }
     }
     updateFrontendText();
+    addAllPointGraphics();
     printMessageToTerminal("It is Player " + currentPlayerID + "'s turn.");
+  }
+
+  private void checkLostFactions() {
+    boolean hasLost;
+    for (Player p : players) {
+      hasLost = true;
+      for (Province prov : provinces) {
+        if (prov.getFaction().equals(p.getFaction())) {
+          hasLost = false;
+        }
+      }
+      if (hasLost) {
+        printMessageToTerminal(p.getFaction() + " has lost all their provinces. GG!");
+      }
+    }
   }
 
   private void processVictories() throws IOException {
@@ -750,7 +790,7 @@ public class GloriaRomanusController{
         String faction = province.getFaction();
 
         TextSymbol t = new TextSymbol(10,
-            faction + "\n" + provinceName + "\n" + province.getArmySize() + "\n" + province.getWealth(), 0xFFFF0000,
+            faction + "\n" + provinceName + "\nArmy size: " + province.getArmySize() + "\nWealth: " + province.getWealth(), 0xFFFF0000,
             HorizontalAlignment.CENTER, VerticalAlignment.BOTTOM);
 
         s = new PictureMarkerSymbol("images/legionary.png"); // TODO: Import other images
@@ -844,6 +884,10 @@ public class GloriaRomanusController{
                   }
                   currentlySelectedHumanProvince = f;
                   invading_province.setText(provinceName);
+                  if (waitingForDestination != null) {
+                    processMove(province);
+                    waitingForDestination = null;
+                  }
                 }
                 else{
                   if (currentlySelectedEnemyProvince != null){
@@ -853,12 +897,10 @@ public class GloriaRomanusController{
                   opponent_province.setText(provinceName);
                 }
 
-                featureLayer.selectFeature(f);                
-              }
-
-              
+                featureLayer.selectFeature(f);
+              }             
             }
-          } catch (InterruptedException | ExecutionException ex) {
+          } catch (InterruptedException | ExecutionException | IOException ex) {
             // ... must deal with checked exceptions thrown from the async identify
             // operation
             System.out.println("InterruptedException occurred");
@@ -869,19 +911,32 @@ public class GloriaRomanusController{
     return flp;
   }
 
-  /*private void initializeOfflineMultiOwnership() throws IOException {
-    String content = Files.readString(Paths.get("src/unsw/gloriaromanus/initial_province_ownership.json"));
-    JSONObject ownership = new JSONObject(content);
-    for (String faction : ownership.keySet()) {
-      Player p = new Player(players.size() + 1, faction);
-      players.add(p);
-      JSONArray ja = ownership.getJSONArray(faction);
-      for (int i = 0; i < ja.length(); i++) {
-        String province = ja.getString(i);
-        provinces.add(new Province(province, p, unitConfig));
-      }
+  /**
+   * Moves all units from one province for now
+   * 
+   * @param province
+   * @throws IOException
+   */
+  private void processMove(Province province) throws IOException {
+    Province origin = waitingForDestination;
+
+    if (origin.getName().equals(province.getName())) {
+      printMessageToTerminal("Can not move to the same province.");
+      return;
     }
-  }*/
+
+    ArrayList<Unit> originUnits = origin.getUnits();
+    List<Integer> originIDs = new ArrayList<Integer>();
+
+    for (Unit u : originUnits) {
+      originIDs.add(u.getID());
+    }
+    if (moveUnits(originIDs, origin, province)) {
+      printMessageToTerminal("Units successfully moved!");
+    }
+
+    addAllPointGraphics(); // reset graphics
+  }
 
   private void initializeOfflineMultiOwnership() throws IOException {
     String content = Files.readString(Paths.get("src/unsw/gloriaromanus/provinces_list.json"));
@@ -953,5 +1008,13 @@ public class GloriaRomanusController{
     if (mapView != null) {
       mapView.dispose();
     }
+  }
+
+  public int getFactionsSize() {
+    return factions.size();
+  }
+
+  public void setFactions(ArrayList<String> factions) {
+    this.factions = factions;
   }
 }

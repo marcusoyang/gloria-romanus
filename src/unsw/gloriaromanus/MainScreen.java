@@ -1,14 +1,11 @@
 package unsw.gloriaromanus;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 public class MainScreen {
@@ -32,8 +29,9 @@ public class MainScreen {
         scene = new Scene(root, 1600, 900);
     }
 
-    public void start(String numPlayers) throws IOException {
-        controller.newGame(Integer.valueOf(numPlayers));
+    public void start(int numPlayers) throws IOException {
+        if (controller.getFactionsSize() < numPlayers) { return; }
+        controller.newGame(numPlayers);
         stage.setTitle(title);
         stage.setScene(scene);
         stage.show();
@@ -62,6 +60,10 @@ public class MainScreen {
 
 	public void printToTerminal(String msg) {
         controller.printMessageToTerminal(msg);
-	}
+    }
+    
+    public void setControllerFactions(ArrayList<String> factions) {
+        controller.setFactions(factions);
+    }
 }
 
