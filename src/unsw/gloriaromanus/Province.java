@@ -17,6 +17,7 @@ public class Province {
     private ArrayList<Unit> units;
     private double taxRate;
     private int wealth;
+    private boolean invadedThisTurn;
 
     public Province() {
         //super();
@@ -28,7 +29,7 @@ public class Province {
         this.player = player;
         this.units = new ArrayList<Unit>();
         this.wealth = 0;
-        this.taxRate = NOR_TR;
+        this.taxRate = LOW_TR;
     }
 
     public Unit findUnit(int id) {
@@ -58,7 +59,7 @@ public class Province {
 
     /**
      * 
-     * @return true if 
+     * @return true if there is new unit
      */
     public boolean nextTurn() {
         boolean hasNewUnit = false;
@@ -181,8 +182,8 @@ public class Province {
     }
 
     public void collectTaxRevenue() {
-        Double taxRevenue = wealth * taxRate;
-        player.plusGold(taxRevenue.intValue());
+        double taxRevenue = wealth * taxRate;
+        player.plusGold(taxRevenue);
     }
 
     public void adjustTownWealth() {
@@ -196,10 +197,16 @@ public class Province {
                 u.minusMorale(1);
             }
         }
+        if (wealth < 0) { wealth = 0; }
     }
 
-    public void changeTaxRate(double taxRate) {
-        this.taxRate = taxRate;
+    public void changeTaxRate(String taxRate) {
+        switch (taxRate) {
+            case "low": this.taxRate = LOW_TR;
+            case "normal": this.taxRate = NOR_TR;
+            case "high": this.taxRate = HI_TR;
+            case "vhigh": this.taxRate = VH_TR;
+        }
     }
 
     public ArrayList<UnitFactory> getFactories() {
@@ -208,5 +215,13 @@ public class Province {
 
     public double getTaxRate() {
         return taxRate;
+    }
+
+    public boolean invadedThisTurn() {
+        return invadedThisTurn;
+    }
+
+    public void setInvadedThisTurn(boolean invadedThisTurn) {
+        this.invadedThisTurn = invadedThisTurn;
     }
 }

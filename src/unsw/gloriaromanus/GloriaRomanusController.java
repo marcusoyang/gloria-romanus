@@ -104,6 +104,7 @@ public class GloriaRomanusController{
 
   private Feature currentlySelectedHumanProvince;
   private Feature currentlySelectedEnemyProvince;
+  private ArrayList<Unit> currentlySelectedHumanProvinceUnits;
 
   private FeatureLayer featureLayer_provinces;
 
@@ -166,7 +167,8 @@ public class GloriaRomanusController{
   }
 
   private int getPlayerGold(int ID) {
-    return getPlayerFromID(ID).getGold();
+    Double gold = getPlayerFromID(ID).getGold();
+    return gold.intValue();
   }
 
   /**
@@ -276,12 +278,18 @@ public class GloriaRomanusController{
 
   @FXML
   public void clickedMove(ActionEvent e) {
+    
     if (currentlySelectedHumanProvince == null) {
       printMessageToTerminal("Please select a province to move from!");
       return;
     }    
     String provinceName = (String)currentlySelectedHumanProvince.getAttributes().get("name");
     Province province = deserializeProvince(provinceName);
+
+    if (checkProvinceInvaded(province)) { 
+      printMessageToTerminal("Units can not move after invading.");
+      return;
+    }
 
     if (province.getUnits() == null || province.getArmySize() == 0) {
       printMessageToTerminal(provinceName + " has no troops.");
@@ -292,57 +300,100 @@ public class GloriaRomanusController{
     waitingForDestination = province;
   }
 
+  private boolean checkProvinceInvaded(Province province) {
+    return province.invadedThisTurn();
+  }
+
   @FXML
   public void clickedRecruit(ActionEvent e) {
     recruitScreen.start();
   }
 
   @FXML
-  public void clickedInvadeButton(ActionEvent e) throws IOException {
-    //
+  public void clickedLowTax(ActionEvent e) {
+    setTaxRate("low");
   }
 
-  public void invade() {
+  @FXML
+  public void clickedNormalTax(ActionEvent e) {
+    setTaxRate("normal");
+  }
+
+  @FXML
+  public void clickedHighTax(ActionEvent e) {
+    setTaxRate("high");
+  }
+
+  @FXML
+  public void clickedVeryHighTax(ActionEvent e) {
+    setTaxRate("vhigh");
+  }
+
+  private void setTaxRate(String taxRate) {
+    printMessageToTerminal("Tax Rate for " + getPlayerFromID(currentPlayerID).getFaction() + " set to " + taxRate + ".");
+    for (Province p : provinces) {
+      if (p.getPlayer().getID() == currentPlayerID) {
+        p.changeTaxRate(taxRate);
+      }
+    }
+  }
+
+  @FXML
+  public void clickedInvadeButton(ActionEvent e) throws IOException {
     if (currentlySelectedHumanProvince != null && currentlySelectedEnemyProvince != null) {
       Province humanProvince = deserializeProvince((String)currentlySelectedHumanProvince.getAttributes().get("name"));
       Province enemyProvince = deserializeProvince((String)currentlySelectedEnemyProvince.getAttributes().get("name"));
 
-      /*for (Unit u : humanProvince.getUnits()) {
-        if (u.getMovementPoints() < MOVE_COST) {
-          printMessageToTerminal("Troops have insufficient movement points!");
-          return;
-        }
-      }*/
+      currentlySelectedHumanProvinceUnits = humanProvince.getUnits();
 
-      Ability.setProvinces(provinces);
-      
-      ArrayList<Unit> invadingList = getInvadingList();
-      
-      Result battleResult = new Result();
-
-      // Some tests. We cannot have an empty army
-      if (invadingList.size() == 0) {
-        printMessageToTerminal("No soldiers, cannot invade!");
-        battleResult.setNotStarted();
-      }
-      // Provinces should be connected
-      if (!confirmIfProvincesConnected(humanProvince.getName(), enemyProvince.getName())) {
-        printMessageToTerminal("Provinces not adjacent, cannot invade!");
-        battleResult.setNotStarted();
-      }
-      // If the enemy province is empty, automatic victory
-      if (enemyProvince.getUnits().size() == 0) {
-        battleResult.setVictory();
-      }
-
-      battle(battleResult, invadingList, enemyProvince, humanProvince);
-
-      resetSelections();  // reset selections in UI
-      addAllPointGraphics(); // reset graphics
+      //somehow evoke invade(ids, humanProvince, enemyProvince)
     }
   }
 
-  private void battle(Result battleResult, ArrayList<Unit> invadingList, Province enemyProvince, Province humanProvince) {
+  public void invade(ArrayList<Integer> ids, Province humanProvince, Province enemyProvince) throws IOException {
+    if (hasAlreadyInvaded(humanProvince)) {
+      printMessageToTerminal("Soldiers have already invaded this turn!");
+      return;
+    }
+      
+    Ability.setProvinces(provinces);
+    
+    ArrayList<Unit> invadingList = getInvadingList(ids, humanProvince);
+    
+    Result battleResult = new Result();
+
+    // Some tests. We cannot have an empty army
+    if (invadingList.size() == 0) {
+      printMessageToTerminal("No soldiers, cannot invade!");
+      battleResult.setNotStarted();
+    }
+    // Provinces should be connected
+    if (!confirmIfProvincesConnected(humanProvince.getName(), enemyProvince.getName())) {
+      printMessageToTerminal("Provinces not adjacent, cannot invade!");
+      battleResult.setNotStarted();
+    }
+    // If the enemy province is empty, automatic victory
+    if (enemyProvince.getUnits().size() == 0) {
+      battleResult.setVictory();
+    }
+
+    battle(battleResult, invadingList, enemyProvince, humanProvince);
+
+    resetSelections();  // reset selections in UI
+    addAllPointGraphics(); // reset graphics
+  }
+
+  private boolean hasAlreadyInvaded(Province humanProvince) {
+    for (Unit u : humanProvince.getUnits()) {
+      if (u.hasInvaded()) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  private void battle(Result battleResult, ArrayList<Unit> invadingList, Province enemyProvince,
+      Province humanProvince) {
     // Starting the battle
     int engagementIndex = 0;
 
@@ -414,8 +465,15 @@ public class GloriaRomanusController{
         // Moving the routed armies to the invaded province
         enemyProvince.getUnits().addAll(routedList);
 
-        // If this province has been recaptured by human, we restore the morale penalty.
+        // If this province has been recaptured by human, we restore the morale penalty
         Ability.checkLERecapture(humanProvince);
+
+        // All soldiers are tagged as having invaded this turn
+        for (Unit u : enemyProvince.getUnits()) {
+          u.setHasInvaded(true);
+        }
+        enemyProvince.setInvadedThisTurn(true);
+        enemyProvince.stopUnitProduction();
 
         break;
       case "defeat":
@@ -514,28 +572,46 @@ public class GloriaRomanusController{
       processVictories();
     }
 
+    resetHasInvaded();
     checkLostFactions();
 
     currentPlayerID++;
+    
+    // All players had their turn, goes back to player 1.
     if (currentPlayerID > players.size()) {
       currentPlayerID = 1;
       currentYear++;
-    }
-    resetMovementPoints();
-    adjustProvincesTownWealth();
-
-    // Collect taxes for the next player and processes trained units
-    for (Province p : provinces) {
-      if (p.nextTurn()) {
-        printMessageToTerminal(p.getName() + " has just recruited a new unit!");
-      }
-      if (getPlayerFromID(currentPlayerID).equals(p.getPlayer())) {
+      
+      adjustProvincesTownWealth();
+      for (Province p : provinces) {
         p.collectTaxRevenue();
       }
+      
     }
+    resetMovementPoints();
+
+    // Collect taxes for the next player
+    // Trained units are available at the beginning of the players' next turn
+    for (Province p : provinces) {
+      if (p.getPlayer().getID() == currentPlayerID) {
+        if (p.nextTurn()) {
+          printMessageToTerminal(p.getName() + " has just recruited a new unit!");
+        }
+      }
+    }
+
     updateFrontendText();
     addAllPointGraphics();
     printMessageToTerminal("It is Player " + currentPlayerID + "'s turn.");
+  }
+
+  private void resetHasInvaded() {
+    for (Province p : provinces) {
+      p.setInvadedThisTurn(false);
+      for (Unit u : p.getUnits()) {
+        u.setHasInvaded(false);
+      }
+    }
   }
 
   private void checkLostFactions() {
@@ -950,6 +1026,11 @@ public class GloriaRomanusController{
   private void processMove(Province province) throws IOException {
     Province origin = waitingForDestination;
 
+    if (checkProvinceInvaded(province)) {
+      printMessageToTerminal("Units can not move to a recently invaded province!");
+      return;
+    }
+
     if (origin.getName().equals(province.getName())) {
       printMessageToTerminal("Can not move to the same province.");
       return;
@@ -1048,7 +1129,15 @@ public class GloriaRomanusController{
     this.factions = factions;
   }
 
-  private ArrayList<Unit> getInvadingList() {
-
+  private ArrayList<Unit> getInvadingList(ArrayList<Integer> ids, Province p) {
+    ArrayList<Unit> units = new ArrayList<Unit>();
+    for (int id : ids) {
+      for (Unit u : p.getUnits()) {
+        if (u.getID() == id) {
+          units.add(u);
+        }
+      }
+    }
+    return units;
   }
 }

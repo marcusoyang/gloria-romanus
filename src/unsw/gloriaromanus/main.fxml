@@ -73,6 +73,34 @@
             </Button>
          </children>
       </HBox>
+      <HBox alignment="TOP_CENTER">
+         <children>
+            <Label text="Tax Rate:" translateY="5.0">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="2.0" right="2.0" top="10.0" />
+               </HBox.margin>
+            </Label>
+            <Button mnemonicParsing="false" onAction="#clickedLowTax" text="Low">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="4.0" right="4.0" top="10.0" />
+               </HBox.margin></Button>
+            <Button mnemonicParsing="false" onAction="#clickedNormalTax" text="Normal">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="4.0" right="4.0" top="10.0" />
+               </HBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#clickedHighTax" text="High">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="4.0" right="4.0" top="10.0" />
+               </HBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#clickedVeryHighTax" text="Very High">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="4.0" right="4.0" top="10.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
         <VBox>
             <Label text="Output from interactions" />
             <TextArea fx:id="output_terminal" editable="false" prefHeight="400.0" text="" wrapText="true" />
