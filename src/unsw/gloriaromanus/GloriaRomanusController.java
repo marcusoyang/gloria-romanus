@@ -401,7 +401,7 @@ public class GloriaRomanusController{
 
     switch(battleResult.getResult()) {
       case "victory":
-        printMessageToTerminal("victory");
+        printMessageToTerminal("The " + humanProvince.getFaction() + " won the battle!");
         // Setting the invaded province as the winner's faction
         enemyProvince.setPlayer(humanProvince.getPlayer());
         
@@ -416,19 +416,19 @@ public class GloriaRomanusController{
 
         break;
       case "defeat":
-        printMessageToTerminal("defeat");
+        printMessageToTerminal("The " + enemyProvince.getFaction() + " won the battle.");
         
         // Moving the routed armies back to the human province
         humanProvince.getUnits().addAll(routedList);
         break;
       case "draw":
-        printMessageToTerminal("draw");
+        printMessageToTerminal("The battle was a draw.");
 
         // We move the army back to our human province.
         humanProvince.getUnits().addAll(invadingList);
         break;
       case "routed":
-        printMessageToTerminal("routed");
+        printMessageToTerminal("The " + humanProvince.getFaction() + " succesfully routed!");
           
         // Moving the routed armies back to the human province
         humanProvince.getUnits().addAll(routedList);
