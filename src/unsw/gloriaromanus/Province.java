@@ -29,7 +29,7 @@ public class Province {
         this.player = player;
         this.units = new ArrayList<Unit>();
         this.wealth = 0;
-        this.taxRate = NOR_TR;
+        this.taxRate = LOW_TR;
     }
 
     public Unit findUnit(int id) {
@@ -182,8 +182,8 @@ public class Province {
     }
 
     public void collectTaxRevenue() {
-        Double taxRevenue = wealth * taxRate;
-        player.plusGold(taxRevenue.intValue());
+        double taxRevenue = wealth * taxRate;
+        player.plusGold(taxRevenue);
     }
 
     public void adjustTownWealth() {
