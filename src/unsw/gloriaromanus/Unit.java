@@ -16,6 +16,8 @@ public class Unit {
     private static final int INFANTRY_MP = 10;
     private static final int ARTILLERY_MP = 4;
     private static int counter = 0;
+
+    private boolean hasInvaded;
     private int id;
     private String unitType;
     private int numTroops; // the number of troops in this unit (should reduce based on depletion)
@@ -271,6 +273,14 @@ public class Unit {
         } else {
             return false;
         }
+    }
+
+    public boolean hasInvaded() {
+        return hasInvaded;
+    }
+
+    public void setHasInvaded(boolean hasInvaded) {
+        this.hasInvaded = hasInvaded;
     }
 }
 

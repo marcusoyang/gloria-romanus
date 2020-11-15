@@ -31,6 +31,7 @@ public class UnitFactory {
         JSONObject unitStats = generateUnitStats(unitType);
         
         Unit u = new Unit();
+        u.setHasInvaded(false);
         u.setID();
         u.setUnitType(unitType);
         u.setNumTroops(numTroops);

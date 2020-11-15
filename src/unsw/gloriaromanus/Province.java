@@ -17,6 +17,7 @@ public class Province {
     private ArrayList<Unit> units;
     private double taxRate;
     private int wealth;
+    private boolean invadedThisTurn;
 
     public Province() {
         //super();
@@ -198,8 +199,13 @@ public class Province {
         }
     }
 
-    public void changeTaxRate(double taxRate) {
-        this.taxRate = taxRate;
+    public void changeTaxRate(String taxRate) {
+        switch (taxRate) {
+            case "low": this.taxRate = LOW_TR;
+            case "normal": this.taxRate = NOR_TR;
+            case "high": this.taxRate = HI_TR;
+            case "vhigh": this.taxRate = VH_TR;
+        }
     }
 
     public ArrayList<UnitFactory> getFactories() {
@@ -208,5 +214,13 @@ public class Province {
 
     public double getTaxRate() {
         return taxRate;
+    }
+
+    public boolean invadedThisTurn() {
+        return invadedThisTurn;
+    }
+
+    public void setInvadedThisTurn(boolean invadedThisTurn) {
+        this.invadedThisTurn = invadedThisTurn;
     }
 }
