@@ -90,4 +90,16 @@ public class Skirmish {
     public void removeUnit(Unit u) {
         humanUnits.remove(u);
     }
+
+    public ArrayList<Engagement> getEngagements() {
+        return engagements;
+    }
+
+    public String getHumanType() {
+        return human.getUnitType();
+    }
+    
+    public String getEnemyType() {
+        return enemy.getUnitType();
+    }
  }

@@ -99,6 +99,7 @@ public class GloriaRomanusController{
   private String filename;
   private String unitConfig;
   private boolean hasWon;
+  private boolean displayEngagement;
   private Province waitingForDestination;
 
   private Feature currentlySelectedHumanProvince;
@@ -119,6 +120,7 @@ public class GloriaRomanusController{
     provinces = new ArrayList<Province>();
     players = new ArrayList<Player>();
     hasWon = false;
+    displayEngagement = false;
     waitingForDestination = null;
 
     currentlySelectedHumanProvince = null;
@@ -390,6 +392,8 @@ public class GloriaRomanusController{
 
       restoreSkirmishAbilities(human, enemy);
 
+      printSkirmishResult(s, humanProvince.getFaction(), enemyProvince.getFaction());
+
       // Skirmish should have finished. we check the result of the skirmish.
       battleResult = checkSkirmishResult(s, enemyProvince, enemy, invadingList, human, battleResult, routedList);
 
@@ -432,6 +436,15 @@ public class GloriaRomanusController{
           
         // Moving the routed armies back to the human province
         humanProvince.getUnits().addAll(routedList);
+    }
+  }
+
+  private void printSkirmishResult(Skirmish s, String humanFaction, String enemyFaction) {
+    if (displayEngagement) {
+      for (Engagement e: s.getEngagements()) {
+        printMessageToTerminal(humanFaction + " " + s.getHumanType() + " has defeated " + e.getEnemyCasualty() + " " + enemyFaction + " " + s.getEnemyType());
+        printMessageToTerminal(enemyFaction + " " + s.getEnemyType() + " has defeated " + e.getHumanCasualty() + " " + enemyFaction + " " + s.getHumanType());
+      }
     }
   }
 

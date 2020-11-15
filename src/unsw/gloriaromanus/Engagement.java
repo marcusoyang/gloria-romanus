@@ -129,4 +129,12 @@ public abstract class Engagement {
         }
         return n;
     }
+
+    public int getEnemyCasualty() {
+        return enemyCasualty;
+    }
+
+    public int getHumanCasualty() {
+        return humanCasualty;
+    }
 }   
