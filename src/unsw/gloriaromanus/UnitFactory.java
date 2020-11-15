@@ -31,7 +31,9 @@ public class UnitFactory {
         JSONObject unitStats = generateUnitStats(unitType);
         
         Unit u = new Unit();
+        u.setHasInvaded(false);
         u.setID();
+        u.setUnitType(unitType);
         u.setNumTroops(numTroops);
         u.setMeleeAttack(unitStats.getInt("meleeAttack"));
         u.setRangedAttack(unitStats.optInt("rangedAttack"));
@@ -39,7 +41,7 @@ public class UnitFactory {
         u.setArmour(unitStats.optInt("armour"));
         u.setShieldDefense(unitStats.optInt("shield"));
         u.setMorale(unitStats.getDouble("morale"));
-        u.setSpeed(unitStats.getInt("speed"));
+        u.setSpeed(unitStats.getDouble("speed"));
         u.setRange(unitStats.getString("range"));
         u.setType(unitStats.getString("type"));
         u.setAbility(unitStats.getString("ability"));
@@ -91,5 +93,15 @@ public class UnitFactory {
 
     public void setConfigString(String configString) {
         this.configString = configString;
+    }
+
+    public int restoreArmour(String unitType) {
+        JSONObject unitStats = generateUnitStats(unitType);
+        return unitStats.getInt("armour");
+    }
+
+    public int restoreShieldDefense(String unitType) {
+        JSONObject unitStats = generateUnitStats(unitType);
+        return unitStats.getInt("shield");
     }
 }

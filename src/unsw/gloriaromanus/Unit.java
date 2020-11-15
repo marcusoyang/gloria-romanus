@@ -16,7 +16,10 @@ public class Unit {
     private static final int INFANTRY_MP = 10;
     private static final int ARTILLERY_MP = 4;
     private static int counter = 0;
+
+    private boolean hasInvaded;
     private int id;
+    private String unitType;
     private int numTroops; // the number of troops in this unit (should reduce based on depletion)
     private int meleeAttack; // can be either missile or melee attack to simplify. Could improve
     private int rangedAttack; // implementation by differentiating!
@@ -225,6 +228,14 @@ public class Unit {
         this.player = player;
     }
 
+    public void setUnitType(String unitType) {
+        this.unitType = unitType;
+    }
+
+    public String getUnitType() {
+        return unitType;
+    }
+
     public int calculateTotalRangedAttack() {
         return rangedAttack * numTroops;
     }
@@ -243,6 +254,33 @@ public class Unit {
 
     public int calculateTotalMeleeAttack() {
         return meleeAttack * numTroops;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) { 
+            return false; 
+        }
+        
+        // Checking the class of both objects
+        if (this.getClass() != obj.getClass()) {
+            return false;
+        }
+
+        Unit other = (Unit) obj;
+        if (other.getID() == this.id){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean hasInvaded() {
+        return hasInvaded;
+    }
+
+    public void setHasInvaded(boolean hasInvaded) {
+        this.hasInvaded = hasInvaded;
     }
 }
 
