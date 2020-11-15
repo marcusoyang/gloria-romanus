@@ -4,8 +4,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 
 public class InvadeController {
@@ -67,6 +69,11 @@ public class InvadeController {
     @FXML
     private CheckBox s9;
 
+    @FXML
+    private Button invadeButton;
+    @FXML
+    private Button moveButton;
+
     private MainScreen mainScreen;
     private ArrayList<TextField> numTroopFieldList;
     private ArrayList<TextField> troopNameFieldList;
@@ -83,6 +90,13 @@ public class InvadeController {
         generateInvadingList();
         mainScreen.returnToMain();
         mainScreen.invade(invadingIDs);
+    }
+
+    @FXML
+    private void clickedMoveUnits() throws IOException {
+        generateInvadingList();
+        mainScreen.returnToMain();
+        mainScreen.processMove(invadingIDs);
     }
 
     private void generateInvadingList() {
@@ -221,4 +235,20 @@ public class InvadeController {
         s8.setSelected(false);
         s9.setSelected(false);
 	}
+
+	public void hideInvade() {
+        invadeButton.setVisible(false);
+    }
+    
+    public void hideMove() {
+        moveButton.setVisible(false);
+    }
+    
+    public void showInvade() {
+        invadeButton.setVisible(true);
+    }
+    
+    public void showMove() {
+        moveButton.setVisible(true);
+    }
 }

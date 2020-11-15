@@ -101,6 +101,7 @@ public class GloriaRomanusController{
   private boolean hasWon;
   private boolean displayEngagement;
   private Province waitingForDestination;
+  private Province destination;
 
   private Feature currentlySelectedHumanProvince;
   private Feature currentlySelectedEnemyProvince;
@@ -290,6 +291,7 @@ public class GloriaRomanusController{
     }    
     String provinceName = (String)currentlySelectedHumanProvince.getAttributes().get("name");
     Province province = deserializeProvince(provinceName);
+    currentlySelectedHumanProvinceUnits = province.getUnits();
 
     if (checkProvinceInvaded(province)) { 
       printMessageToTerminal("Units can not move after invading.");
@@ -355,6 +357,8 @@ public class GloriaRomanusController{
         return;
       }
 
+      invadeScreen.showInvadeButton();
+      invadeScreen.hideMoveButton();
       invadeScreen.start(currentlySelectedHumanProvinceUnits);
     }
   }
@@ -1006,8 +1010,10 @@ public class GloriaRomanusController{
                   currentlySelectedHumanProvince = f;
                   invading_province.setText(provinceName);
                   if (waitingForDestination != null) {
-                    processMove(province);
-                    waitingForDestination = null;
+                    invadeScreen.hideInvadeButton();
+                    invadeScreen.showMoveButton();
+                    invadeScreen.start(currentlySelectedHumanProvinceUnits);
+                    destination = province;
                   }
                 }
                 else{
@@ -1021,7 +1027,7 @@ public class GloriaRomanusController{
                 featureLayer.selectFeature(f);
               }             
             }
-          } catch (InterruptedException | ExecutionException | IOException ex) {
+          } catch (InterruptedException | ExecutionException ex) {
             // ... must deal with checked exceptions thrown from the async identify
             // operation
             System.out.println("InterruptedException occurred");
@@ -1033,34 +1039,27 @@ public class GloriaRomanusController{
   }
 
   /**
-   * Moves all units from one province for now
    * 
-   * @param province
    * @throws IOException
    */
-  private void processMove(Province province) throws IOException {
+  public void processMove(ArrayList<Integer> moveUnitIDs) throws IOException {
     Province origin = waitingForDestination;
 
-    if (checkProvinceInvaded(province)) {
+    if (checkProvinceInvaded(destination)) {
       printMessageToTerminal("Units can not move to a recently invaded province!");
       return;
     }
 
-    if (origin.getName().equals(province.getName())) {
+    if (origin.getName().equals(destination.getName())) {
       printMessageToTerminal("Can not move to the same province.");
       return;
     }
 
-    ArrayList<Unit> originUnits = origin.getUnits();
-    List<Integer> originIDs = new ArrayList<Integer>();
-
-    for (Unit u : originUnits) {
-      originIDs.add(u.getID());
-    }
-    if (moveUnits(originIDs, origin, province)) {
+    if (moveUnits(moveUnitIDs, origin, destination)) {
       printMessageToTerminal("Units successfully moved!");
     }
 
+    waitingForDestination = null;
     addAllPointGraphics(); // reset graphics
   }
 

@@ -52,4 +52,20 @@ public class InvadeScreen {
     public InvadeController getController() {
         return controller;
     }
+
+    public void hideInvadeButton() {
+        controller.hideInvade();
+    }
+
+    public void hideMoveButton() {
+        controller.hideMove();
+    }
+
+    public void showInvadeButton() {
+        controller.showInvade();
+    }
+
+    public void showMoveButton() {
+        controller.showMove();
+    }
 }
