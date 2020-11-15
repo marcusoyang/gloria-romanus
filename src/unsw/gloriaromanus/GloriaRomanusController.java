@@ -349,6 +349,12 @@ public class GloriaRomanusController{
       Province humanProvince = deserializeProvince((String)currentlySelectedHumanProvince.getAttributes().get("name"));
       currentlySelectedHumanProvinceUnits = humanProvince.getUnits();
 
+      // Some tests. We cannot have an empty army
+      if (currentlySelectedHumanProvinceUnits.size() == 0) {
+        printMessageToTerminal("No soldiers, cannot invade!");
+        return;
+      }
+
       invadeScreen.start(currentlySelectedHumanProvinceUnits);
     }
   }
@@ -359,7 +365,7 @@ public class GloriaRomanusController{
       Province humanProvince = deserializeProvince((String)currentlySelectedHumanProvince.getAttributes().get("name"));
       Province enemyProvince = deserializeProvince((String)currentlySelectedEnemyProvince.getAttributes().get("name"));
       
-      if (hasAlreadyInvaded(humanProvince)) {
+      if (hasAlreadyInvaded(ids, humanProvince)) {
         printMessageToTerminal("Soldiers have already invaded this turn!");
         return;
       }
@@ -370,11 +376,6 @@ public class GloriaRomanusController{
       
       Result battleResult = new Result();
 
-      // Some tests. We cannot have an empty army
-      if (invadingList.size() == 0) {
-        printMessageToTerminal("No soldiers, cannot invade!");
-        battleResult.setNotStarted();
-      }
       // Provinces should be connected
       if (!confirmIfProvincesConnected(humanProvince.getName(), enemyProvince.getName())) {
         printMessageToTerminal("Provinces not adjacent, cannot invade!");
@@ -392,10 +393,12 @@ public class GloriaRomanusController{
     }
   }
 
-  private boolean hasAlreadyInvaded(Province humanProvince) {
+  private boolean hasAlreadyInvaded(ArrayList<Integer> ids, Province humanProvince) {
     for (Unit u : humanProvince.getUnits()) {
-      if (u.hasInvaded()) {
-        return true;
+      for (int id : ids) {
+        if (u.getID() == id && u.hasInvaded()) {
+          return true;
+        }
       }
     }
     return false;

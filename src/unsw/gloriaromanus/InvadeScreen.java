@@ -30,7 +30,7 @@ public class InvadeScreen {
         Parent root = invadeLoader.load();
 
         // Wallpaper
-        String titleFile = "src/unsw/gloriaromanus/media/recruit.jpg";
+        String titleFile = "src/unsw/gloriaromanus/media/invade.jpg";
         Image titleImage = new Image(new File(titleFile).toURI().toString());
         ImageView imageView = new ImageView(titleImage);
 
@@ -42,6 +42,7 @@ public class InvadeScreen {
     }
 
     public void start(ArrayList<Unit> units) {
+        controller.clearTextFields();
         controller.loadUnits(units);
         stage.setTitle(title);
         stage.setScene(scene);

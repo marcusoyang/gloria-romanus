@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
@@ -47,6 +48,25 @@ public class InvadeController {
     @FXML
     private TextField unit9;
 
+    @FXML
+    private CheckBox s1;
+    @FXML
+    private CheckBox s2;
+    @FXML
+    private CheckBox s3;
+    @FXML
+    private CheckBox s4;
+    @FXML
+    private CheckBox s5;
+    @FXML
+    private CheckBox s6;
+    @FXML
+    private CheckBox s7;
+    @FXML
+    private CheckBox s8;
+    @FXML
+    private CheckBox s9;
+
     private MainScreen mainScreen;
     private ArrayList<TextField> numTroopFieldList;
     private ArrayList<TextField> troopNameFieldList;
@@ -60,7 +80,22 @@ public class InvadeController {
 
     @FXML
     private void clickedInvade() throws IOException {
+        generateInvadingList();
         mainScreen.returnToMain();
+        mainScreen.invade(invadingIDs);
+    }
+
+    private void generateInvadingList() {
+        invadingIDs = new ArrayList<Integer>();
+        if (s1.isSelected()) { invadingIDs.add(allIDs.get(0)); }
+        if (s2.isSelected()) { invadingIDs.add(allIDs.get(1)); }
+        if (s3.isSelected()) { invadingIDs.add(allIDs.get(2)); }
+        if (s4.isSelected()) { invadingIDs.add(allIDs.get(3)); }
+        if (s5.isSelected()) { invadingIDs.add(allIDs.get(4)); }
+        if (s6.isSelected()) { invadingIDs.add(allIDs.get(5)); }
+        if (s7.isSelected()) { invadingIDs.add(allIDs.get(6)); }
+        if (s8.isSelected()) { invadingIDs.add(allIDs.get(7)); }
+        if (s9.isSelected()) { invadingIDs.add(allIDs.get(8)); }
     }
 
     @FXML
@@ -117,15 +152,23 @@ public class InvadeController {
     }
 
 	public void loadUnits(ArrayList<Unit> units) {
+        initializeFieldLists();
         int i = 0;
         for (Unit u : units) {
+            allIDs.add(u.getID());
             String numTroops = String.valueOf(u.getNumTroops());
             numTroopFieldList.get(i).setText(numTroops);
             troopNameFieldList.get(i).setText(u.getType());
+            i++;
+            if (i == 9) { return; }
         }
     }
     
-    public void numTroopFieldList() {
+    public void initializeFieldLists() {
+        numTroopFieldList = new ArrayList<TextField>();
+        troopNameFieldList = new ArrayList<TextField>();
+        allIDs = new ArrayList<Integer>();
+
         numTroopFieldList.add(n1);
         numTroopFieldList.add(n2);
         numTroopFieldList.add(n3);
@@ -146,4 +189,36 @@ public class InvadeController {
         troopNameFieldList.add(unit8);
         troopNameFieldList.add(unit9);
     }
+
+    public void clearTextFields() {
+        n1.clear();
+        n2.clear();
+        n3.clear();
+        n4.clear();
+        n5.clear();
+        n6.clear();
+        n7.clear();
+        n8.clear();
+        n9.clear();
+
+        unit1.clear();
+        unit2.clear();
+        unit3.clear();
+        unit4.clear();
+        unit5.clear();
+        unit6.clear();
+        unit7.clear();
+        unit8.clear();
+        unit9.clear();
+
+        s1.setSelected(false);
+        s2.setSelected(false);
+        s3.setSelected(false);
+        s4.setSelected(false);
+        s5.setSelected(false);
+        s6.setSelected(false);
+        s7.setSelected(false);
+        s8.setSelected(false);
+        s9.setSelected(false);
+	}
 }
