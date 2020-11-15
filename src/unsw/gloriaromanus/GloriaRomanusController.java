@@ -99,10 +99,12 @@ public class GloriaRomanusController{
   private String filename;
   private String unitConfig;
   private boolean hasWon;
+  private boolean displayEngagement;
   private Province waitingForDestination;
 
   private Feature currentlySelectedHumanProvince;
   private Feature currentlySelectedEnemyProvince;
+  private ArrayList<Unit> currentlySelectedHumanProvinceUnits;
 
   private FeatureLayer featureLayer_provinces;
 
@@ -120,6 +122,7 @@ public class GloriaRomanusController{
     provinces = new ArrayList<Province>();
     players = new ArrayList<Player>();
     hasWon = false;
+    displayEngagement = false;
     waitingForDestination = null;
 
     currentlySelectedHumanProvince = null;
@@ -346,42 +349,43 @@ public class GloriaRomanusController{
       Province humanProvince = deserializeProvince((String)currentlySelectedHumanProvince.getAttributes().get("name"));
       Province enemyProvince = deserializeProvince((String)currentlySelectedEnemyProvince.getAttributes().get("name"));
 
-      if (hasAlreadyInvaded(humanProvince)) {
-        printMessageToTerminal("Soldiers have already invaded this turn!");
-        return;
-      }
-      
-      Ability.setProvinces(provinces);
-      
-      // TODO: Some implementation of code to have different lists of Units go to certain provinces
-      // For now it'll just be our whole troop 
-      ArrayList<Unit> invadingList = new ArrayList<Unit>();
-      for (Unit u : humanProvince.getUnits()) {
-        invadingList.add(u);
-      }
-      
-      Result battleResult = new Result();
+      currentlySelectedHumanProvinceUnits = humanProvince.getUnits();
 
-      // Some tests. We cannot have an empty army
-      if (invadingList.size() == 0) {
-        printMessageToTerminal("No soldiers, cannot invade!");
-        battleResult.setNotStarted();
-      }
-      // Provinces should be connected
-      if (!confirmIfProvincesConnected(humanProvince.getName(), enemyProvince.getName())) {
-        printMessageToTerminal("Provinces not adjacent, cannot invade!");
-        battleResult.setNotStarted();
-      }
-      // If the enemy province is empty, automatic victory
-      if (enemyProvince.getUnits().size() == 0) {
-        battleResult.setVictory();
-      }
-
-      battle(battleResult, invadingList, enemyProvince, humanProvince);
-
-      resetSelections();  // reset selections in UI
-      addAllPointGraphics(); // reset graphics
+      //somehow evoke invade(ids, humanProvince, enemyProvince)
     }
+  }
+
+  public void invade(ArrayList<Integer> ids, Province humanProvince, Province enemyProvince) throws IOException {
+    if (hasAlreadyInvaded(humanProvince)) {
+      printMessageToTerminal("Soldiers have already invaded this turn!");
+      return;
+    }
+      
+    Ability.setProvinces(provinces);
+    
+    ArrayList<Unit> invadingList = getInvadingList(ids, humanProvince);
+    
+    Result battleResult = new Result();
+
+    // Some tests. We cannot have an empty army
+    if (invadingList.size() == 0) {
+      printMessageToTerminal("No soldiers, cannot invade!");
+      battleResult.setNotStarted();
+    }
+    // Provinces should be connected
+    if (!confirmIfProvincesConnected(humanProvince.getName(), enemyProvince.getName())) {
+      printMessageToTerminal("Provinces not adjacent, cannot invade!");
+      battleResult.setNotStarted();
+    }
+    // If the enemy province is empty, automatic victory
+    if (enemyProvince.getUnits().size() == 0) {
+      battleResult.setVictory();
+    }
+
+    battle(battleResult, invadingList, enemyProvince, humanProvince);
+
+    resetSelections();  // reset selections in UI
+    addAllPointGraphics(); // reset graphics
   }
 
   private boolean hasAlreadyInvaded(Province humanProvince) {
@@ -443,6 +447,8 @@ public class GloriaRomanusController{
 
       restoreSkirmishAbilities(human, enemy);
 
+      printSkirmishResult(s, humanProvince.getFaction(), enemyProvince.getFaction());
+
       // Skirmish should have finished. we check the result of the skirmish.
       battleResult = checkSkirmishResult(s, enemyProvince, enemy, invadingList, human, battleResult, routedList);
 
@@ -492,6 +498,15 @@ public class GloriaRomanusController{
           
         // Moving the routed armies back to the human province
         humanProvince.getUnits().addAll(routedList);
+    }
+  }
+
+  private void printSkirmishResult(Skirmish s, String humanFaction, String enemyFaction) {
+    if (displayEngagement) {
+      for (Engagement e: s.getEngagements()) {
+        printMessageToTerminal(humanFaction + " " + s.getHumanType() + " has defeated " + e.getEnemyCasualty() + " " + enemyFaction + " " + s.getEnemyType());
+        printMessageToTerminal(enemyFaction + " " + s.getEnemyType() + " has defeated " + e.getHumanCasualty() + " " + enemyFaction + " " + s.getHumanType());
+      }
     }
   }
 
@@ -1120,5 +1135,17 @@ public class GloriaRomanusController{
 
   public void setFactions(ArrayList<String> factions) {
     this.factions = factions;
+  }
+
+  private ArrayList<Unit> getInvadingList(ArrayList<Integer> ids, Province p) {
+    ArrayList<Unit> units = new ArrayList<Unit>();
+    for (int id : ids) {
+      for (Unit u : p.getUnits()) {
+        if (u.getID() == id) {
+          units.add(u);
+        }
+      }
+    }
+    return units;
   }
 }

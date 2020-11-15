@@ -14,11 +14,17 @@ public abstract class Engagement {
 
     private Skirmish skirmish;
 
+    private int humanInitialNumTroops;
+    private int enemyInitialNumTroops;
+
     public Engagement(Unit human, Unit enemy, Skirmish skirmish) {
         this.human = human;
         this.enemy = enemy;
 
         this.skirmish = skirmish;
+
+        humanInitialNumTroops = human.getNumTroops();
+        enemyInitialNumTroops = enemy.getNumTroops();
     }
 
     public abstract int calculateHumanCasualty(Unit human, Unit enemy);
@@ -30,8 +36,8 @@ public abstract class Engagement {
         enemyBreakChance = 1 - (enemy.getMorale() * 0.01);
 
         // The chance of breaking is increased by (a scalar addition):
-        humanBreakChance += (((humanCasualty / Double.valueOf(human.getNumTroops())) / (min((double)enemyCasualty, 1) / Double.valueOf(enemy.getNumTroops()))) * 0.1);
-        enemyBreakChance += (enemyCasualty / Double.valueOf(enemy.getNumTroops())) / (min((double)humanCasualty, 1) / Double.valueOf(human.getNumTroops()) * 0.1);
+        humanBreakChance += (((humanCasualty / Double.valueOf(humanInitialNumTroops)) / (min((double)enemyCasualty, 1) / Double.valueOf(enemyInitialNumTroops))) * 0.1);
+        enemyBreakChance += (((enemyCasualty / Double.valueOf(enemyInitialNumTroops)) / (min((double)humanCasualty, 1) / Double.valueOf(humanInitialNumTroops))) * 0.1);
 
         //the minimum chance of breaking is 5%, and the maximum chance of breaking is 100%
         humanBreakChance = min(humanBreakChance, 0.05);
@@ -122,5 +128,13 @@ public abstract class Engagement {
             return max;
         }
         return n;
+    }
+
+    public int getEnemyCasualty() {
+        return enemyCasualty;
+    }
+
+    public int getHumanCasualty() {
+        return humanCasualty;
     }
 }   

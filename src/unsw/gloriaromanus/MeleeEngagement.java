@@ -5,11 +5,16 @@ import java.util.Random;
 public class MeleeEngagement extends Engagement {
     public MeleeEngagement(Unit human, Unit enemy, Skirmish skirmish) {
         super(human, enemy, skirmish);
+        inflictCasualties(human, enemy);
+        super.breakAttempt();
+    }
+    
+    public void inflictCasualties(Unit human, Unit enemy) {
         super.setHumanCasualty(calculateHumanCasualty(human, enemy));
         super.setEnemyCasualty(calculateEnemyCasualty(human, enemy));
-        super.breakAttempt();
+
         super.inflictCasualties();
-    }
+    } 
 
     public int calculateHumanCasualty(Unit human, Unit enemy) {
         Random N = new Random();
