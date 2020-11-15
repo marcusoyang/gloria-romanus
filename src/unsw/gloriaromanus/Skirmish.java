@@ -37,6 +37,7 @@ public class Skirmish {
                 break;
             }
             engagementIndex++;
+            Ability.processShieldCharge(human, enemy, engagementIndex);
         }
         
         if (engagementIndex >= MAX_ENG) {

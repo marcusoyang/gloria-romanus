@@ -73,6 +73,10 @@ public abstract class Ability {
         if (invadingUnit.getRange().equals("melee") && invadingUnit.getType().equals("cavalry")) {
             restoreHeroicCharge(invadingUnit);
         }
+
+        if (invadingUnit.getRange().equals("melee") && invadingUnit.getType().endsWith("infantry")) {
+            restoreShieldCharge(invadingUnit);
+        }
     }
 
     private static void processLegionaryEagle(Unit u) {
@@ -132,16 +136,6 @@ public abstract class Ability {
         u.setMeleeAttack(u.getMeleeAttack() / 2);
         restoreArmour(u);
         restoreShieldDefense(u);
-    }
-
-    private static void restoreArmour(Unit u) {
-        UnitFactory uf = provinces.get(0).getFactories().get(0);
-        u.setArmour(uf.restoreArmour(u.getUnitType()));
-    }
-
-    private static void restoreShieldDefense(Unit u) {
-        UnitFactory uf = provinces.get(0).getFactories().get(0);
-        u.setArmour(uf.restoreArmour(u.getUnitType()));
     }
 
     private static boolean heroicChargeInitiated = false;
@@ -255,6 +249,50 @@ public abstract class Ability {
         return counter;
     }
 
+    private static int shieldChargeIndex = -1;
+
+    public static void processShieldCharge(Unit u1, Unit u2, int startingIndex) {
+        if (shieldChargeIndex == -1) {
+            shieldChargeIndex = startingIndex - 1;
+            System.out.println("Starting");
+            System.out.println(startingIndex);
+        } else if (((startingIndex - shieldChargeIndex) % 4) == 0) {
+            if (u1.getRange().equals("melee") && u1.getType().endsWith("infantry")) {
+                u1.setMeleeAttack(u1.getMeleeAttack() + u1.getShieldDefense());
+                u1.setRangedAttack(u1.getRangedAttack() + u1.getShieldDefense());
+                System.out.println(startingIndex);
+            }
+
+            if (u2.getRange().equals("melee") && u2.getType().endsWith("infantry")) {
+                u2.setMeleeAttack(u2.getMeleeAttack() + u2.getShieldDefense());
+                u2.setRangedAttack(u2.getRangedAttack() + u2.getShieldDefense());
+                System.out.println(startingIndex);
+            }
+        }
+    }
+
+    public static void restoreShieldCharge(Unit u) {
+        shieldChargeIndex = -1;
+        restoreAttack(u);
+        System.out.println("Skirmish ended.");
+    }
+
+    private static void restoreArmour(Unit u) {
+        UnitFactory uf = provinces.get(0).getFactories().get(0);
+        u.setArmour(uf.restoreArmour(u.getUnitType()));
+    }
+
+    private static void restoreShieldDefense(Unit u) {
+        UnitFactory uf = provinces.get(0).getFactories().get(0);
+        u.setArmour(uf.restoreArmour(u.getUnitType()));
+    }
+
+    private static void restoreAttack(Unit u) {
+        UnitFactory uf = provinces.get(0).getFactories().get(0);
+        u.setMeleeAttack(uf.restoreMeleeAttack(u.getUnitType()));
+        u.setRangedAttack(uf.restoreRangedAttack(u.getUnitType()));
+    }
+
     private static ArrayList<Unit> getUnits(Unit u) {
         if (invadingUnits.contains(u)) {
             return invadingUnits;
@@ -275,5 +313,7 @@ public abstract class Ability {
         } 
         return index++;
     }
+
+
 
 }

@@ -45,7 +45,6 @@ public abstract class Engagement {
         enemyBreakChance = min(enemyBreakChance, 0.05);
         enemyBreakChance = max(enemyBreakChance, 1);
         
-        
         Random r = new Random();
         if (r.nextDouble() <= humanBreakChance) {
             skirmish.setBrokenUnit(human);

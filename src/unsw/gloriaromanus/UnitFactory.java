@@ -96,11 +96,21 @@ public class UnitFactory {
 
     public int restoreArmour(String unitType) {
         JSONObject unitStats = generateUnitStats(unitType);
-        return unitStats.getInt("armour");
+        return unitStats.optInt("armour");
     }
 
     public int restoreShieldDefense(String unitType) {
         JSONObject unitStats = generateUnitStats(unitType);
-        return unitStats.getInt("shield");
+        return unitStats.optInt("shield");
+    }
+
+    public int restoreMeleeAttack(String unitType) {
+        JSONObject unitStats = generateUnitStats(unitType);
+        return unitStats.getInt("meleeAttack");
+    }
+
+    public int restoreRangedAttack(String unitType) {
+        JSONObject unitStats = generateUnitStats(unitType);
+        return unitStats.optInt("rangeAttack");
     }
 }
