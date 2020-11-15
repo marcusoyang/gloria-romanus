@@ -25,24 +25,20 @@ public abstract class Engagement {
     public abstract int calculateEnemyCasualty(Unit human, Unit enemy);
 
     public void breakAttempt() {
-        // The base-level probability of a unit "breaking" following an engagement is calculated as: 100% - (morale x 10%)
-        humanBreakChance = (100 - (human.getMorale() * 0.1)) / 100;
-        enemyBreakChance = (100 - (enemy.getMorale() * 0.1)) / 100;
+        // The base-level probability of a unit "breaking" following an engagement is calculated as: 100% - (morale x 1%). (Different from Spec, changed to fit our game).
+        humanBreakChance = 1 - (human.getMorale() * 0.01);
+        enemyBreakChance = 1 - (enemy.getMorale() * 0.01);
 
         // The chance of breaking is increased by (a scalar addition):
-        humanBreakChance += (humanCasualty / Double.valueOf(human.getNumTroops())) / (enemyCasualty / Double.valueOf(enemy.getNumTroops())) * 0.1;
-        enemyBreakChance += (enemyCasualty / Double.valueOf(enemy.getNumTroops())) / (humanCasualty / Double.valueOf(human.getNumTroops())) * 0.1;
+        humanBreakChance += (((humanCasualty / Double.valueOf(human.getNumTroops())) / (min((double)enemyCasualty, 1) / Double.valueOf(enemy.getNumTroops()))) * 0.1);
+        enemyBreakChance += (enemyCasualty / Double.valueOf(enemy.getNumTroops())) / (min((double)humanCasualty, 1) / Double.valueOf(human.getNumTroops()) * 0.1);
 
         //the minimum chance of breaking is 5%, and the maximum chance of breaking is 100%
-        if (humanBreakChance < 0.05) {
-            humanBreakChance = 0.05;
-        } else if (humanBreakChance > 1) {
-            humanBreakChance = 1;
-        } else if (enemyBreakChance < 0.05) {
-            enemyBreakChance = 0.05;
-        } else if (enemyBreakChance > 1) {
-            enemyBreakChance = 1;
-        }
+        humanBreakChance = min(humanBreakChance, 0.05);
+        humanBreakChance = max(humanBreakChance, 1);
+        enemyBreakChance = min(enemyBreakChance, 0.05);
+        enemyBreakChance = max(enemyBreakChance, 1);
+        
         
         Random r = new Random();
         if (r.nextDouble() <= humanBreakChance) {
@@ -64,11 +60,8 @@ public abstract class Engagement {
         double chance = 0.5 + (0.1 * (flee.getSpeed() - enemy.getSpeed()));
 
         // Minium chance is 10% and the maximum chance is 100%
-        if (chance < 0.1) {
-            chance = 0.1;
-        } else if (chance > 1) {
-            chance = 1;
-        }
+        chance = min(chance, 0.1);
+        chance = max(chance, 1);
 
         // A unit that successfully routes from the battle as a losing team will return to the province it attacked from
         Random r = new Random();
@@ -86,16 +79,48 @@ public abstract class Engagement {
     }
 
     public void inflictCasualties() {
+        // human attacking the enemy
         if (skirmish.isBroken(human)) {
             attemptRoute(human, enemy);
-        } else if (enemy.isDefeated(enemyCasualty)) {
-            skirmish.setNormalResult(human, enemy);
-        } 
-        
+        } else {
+            Unit directedUnit = Ability.processElephantAmok(human, enemy);
+            if (directedUnit.equals(enemy)) {
+                if(enemy.isDefeated(enemyCasualty)) {
+                    skirmish.setNormalResult(human, enemy);
+                }
+            } else {
+                if (directedUnit.isDefeated(enemyCasualty)) {
+                skirmish.removeUnit(directedUnit);}
+            }
+
+        }
+
+        // enemy attacking human
         if (skirmish.isBroken(enemy)) {
             attemptRoute(enemy, human);
-        } else if (human.isDefeated(humanCasualty)) {
-            skirmish.setNormalResult(enemy, human);
+        } else {
+            Unit directedUnit = Ability.processElephantAmok(enemy, human);
+            if (directedUnit.equals(human)) {
+                if (human.isDefeated(humanCasualty)) {
+                    skirmish.setNormalResult(enemy, human);
+                }
+            } else if (directedUnit.isDefeated(humanCasualty)) {
+                skirmish.setNormalResult(human, enemy);
+            }
         }
+    }
+
+    private double min(double n, double min) {
+        if (n < min) {
+            return min;
+        }
+        return n;
+    }
+
+    private double max(double n, double max) {
+        if (n > max) {
+            return max;
+        }
+        return n;
     }
 }   

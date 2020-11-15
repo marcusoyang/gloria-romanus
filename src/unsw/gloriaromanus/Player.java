@@ -77,7 +77,6 @@ public class Player {
     }
 
     public void mapRemoveProvince(Province p) {
-        moralePenalty -= legionaryEaglePenaltyMap.get(p.getName());
         this.legionaryEaglePenaltyMap.remove(p.getName());
     }
 }

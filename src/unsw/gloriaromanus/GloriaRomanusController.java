@@ -309,7 +309,6 @@ public class GloriaRomanusController{
       }*/
 
       Ability.setProvinces(provinces);
-      // Ability.processHeroicCharge(humanProvince, enemyProvince);
       
       // TODO: Some implementation of code to have different lists of Units go to certain provinces
       // For now it'll just be our whole troop 
@@ -346,35 +345,33 @@ public class GloriaRomanusController{
     // Starting the battle
     int engagementIndex = 0;
 
-    Ability.initiate(invadingList);
-    Ability.initiate(enemyProvince.getUnits());
-    
-    // We take away these troops from the humanProvince
-    humanProvince.getUnits().removeAll(invadingList);
+    initiateAbilities(invadingList, enemyProvince, humanProvince); 
 
     ArrayList<Unit> routedList = new ArrayList<Unit>();
 
-    Ability.initiate(invadingList);
-    Ability.initiate(enemyProvince.getUnits());
-
     while (battleResult.getResult().equals("")) {
+      // We take away these troops from the humanProvince as the battle has started
+      humanProvince.getUnits().removeAll(invadingList);
+
       // Random units from each side are chosen
       Unit human;
       Random r = new Random();
       if(invadingList.size() > 1) {
-        human = invadingList.get(r.nextInt(invadingList.size() - 1));
+        human = invadingList.get(r.nextInt(invadingList.size()));
       } else {
         human = invadingList.get(0);
       }
       
       Unit enemy;
       if (enemyProvince.getUnits().size() > 1) {
-        enemy = enemyProvince.getUnits().get(r.nextInt(enemyProvince.getUnits().size() - 1));
+        enemy = enemyProvince.getUnits().get(r.nextInt(enemyProvince.getUnits().size()));
       } else {
         enemy = enemyProvince.getUnits().get(0);
       }
+
+      initiateSkirmishAbilities(human, enemy);
       
-      Skirmish s = new Skirmish(human, enemy, engagementIndex);
+      Skirmish s = new Skirmish(human, enemy, engagementIndex, invadingList);
       
       // If both units are melee units, there is a 100% chance of a melee engagment.
       if (human.getRange().equals("melee") && enemy.getRange().equals("melee")) {
@@ -391,8 +388,7 @@ public class GloriaRomanusController{
         s.start(getEngagementType(human, enemy));
       }
 
-      // Ability.restore(humanProvince);
-      // Ability.restore(enemyProvince);
+      restoreSkirmishAbilities(human, enemy);
 
       // Skirmish should have finished. we check the result of the skirmish.
       battleResult = checkSkirmishResult(s, enemyProvince, enemy, invadingList, human, battleResult, routedList);
@@ -401,6 +397,8 @@ public class GloriaRomanusController{
     }
 
     // Battle has been finished.
+    restoreAbilities(invadingList, enemyProvince.getUnits());
+
     switch(battleResult.getResult()) {
       case "victory":
         printMessageToTerminal("victory");
@@ -473,6 +471,26 @@ public class GloriaRomanusController{
         }
     }
     return battleResult;
+  }
+
+  private void initiateAbilities(ArrayList<Unit> invadingList, Province enemyProvince, Province humanProvince) {
+    Ability.initiate(invadingList, enemyProvince.getUnits());
+  } 
+
+  private void restoreAbilities(ArrayList<Unit> invadingList, ArrayList<Unit> defendingList) {
+    Ability.restore(invadingList);
+    Ability.restore(defendingList);
+  }
+
+  private void initiateSkirmishAbilities(Unit human, Unit enemy) {
+    Ability.processSkirmishAbility(human, enemy);
+    Ability.processSkirmishAbility(enemy, human);
+  
+  }
+
+  private void restoreSkirmishAbilities(Unit human, Unit enemy) {
+    Ability.restoreSkirmishAbility(human, enemy);
+    Ability.restoreSkirmishAbility(enemy, human);
   }
 
   @FXML
@@ -945,7 +963,7 @@ public class GloriaRomanusController{
     Random r = new Random();
 
     for (int i = 0; i < players.size(); i++) {
-      int randNum = r.nextInt(ja.length() - 1);
+      int randNum = r.nextInt(ja.length());
       provinces.add(new Province(ja.getString(randNum), players.get(i), unitConfig));
       ja.remove(randNum);
     }
