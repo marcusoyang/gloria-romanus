@@ -1,24 +1,32 @@
 package unsw.gloriaromanus;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public abstract class Ability {
     private static ArrayList<Province> provinces;
-    private static ArrayList<Unit> units; 
+    private static ArrayList<Unit> invadingUnits;
+    private static ArrayList<Unit> defendingUnits; 
 
     public static void setProvinces(ArrayList<Province> provinces) {
         Ability.provinces = provinces;
     }
     
-    public static void initiate(ArrayList<Unit> units) {
-        Ability.units = units;
+    public static void initiateInvade(ArrayList<Unit> units) {
+        Ability.invadingUnits = units;
+        for (Unit u : units) {
+            processAbility(u);
+        }
+    }
+
+    public static void initiateDefend(ArrayList<Unit> units) {
+        Ability.defendingUnits = units;
         for (Unit u : units) {
             processAbility(u);
         }
     }
 
 	public static void restore(ArrayList<Unit> units) {
-        Ability.units = units;
         for (Unit u : units) {
             restoreAbility(u);
         }
@@ -26,10 +34,9 @@ public abstract class Ability {
 
     public static void processAbility(Unit u) {
         switch (u.getAbility()) {
-            case "Legionary Eagle": processLegionaryEagle(); break;
+            case "Legionary Eagle": processLegionaryEagle(u); break;
             case "Berserker Rage": processBerserkerRage(u); break;
             case "Phalanx": processPhalanx(u); break;
-            case "Elephant Amok": 
             case "Cantabrian Circle":
             case "Druidic Fervour":
         }
@@ -37,10 +44,9 @@ public abstract class Ability {
 
     public static void restoreAbility(Unit u) {
         switch (u.getAbility()) {
-            case "Legionary Eagle": restoreLegionaryEagle(); break;
+            case "Legionary Eagle": restoreLegionaryEagle(u); break;
             case "Berserker Rage": restoreBerserkerRage(u); break;
             case "Phalanx": restorePhalanx(u); break;
-            case "Elephant Amok": 
             case "Cantabrian Circle":
             case "Druidic Fervour":
         }
@@ -50,15 +56,15 @@ public abstract class Ability {
         }
     }
 
-    private static void processLegionaryEagle() {
-        for (Unit u : units) {
-            u.addMorale(1);
+    private static void processLegionaryEagle(Unit u) {
+        for (Unit u2 : getUnits(u)) {
+            u2.addMorale(1);
         }
     }
 
-    private static void restoreLegionaryEagle() {
-        for (Unit u : units) {
-            u.minusMorale(1);
+    private static void restoreLegionaryEagle(Unit u) {
+        for (Unit u2 : getUnits(u)) {
+            u2.minusMorale(1);
         }
     }
 
@@ -79,8 +85,8 @@ public abstract class Ability {
     public static void sufferMoralePenalty(Player player, double penalty) {
         for (Province p : provinces) {
             if (p.getPlayer().equals(player)) {
-                ArrayList<Unit> units = p.getUnits();
-                for (Unit u2 : units) {
+                ArrayList<Unit> provinceUnits = p.getUnits();
+                for (Unit u2 : provinceUnits) {
                     u2.minusMorale(penalty);
                 }
                 player.increaseMoralePenalty(penalty);
@@ -119,10 +125,9 @@ public abstract class Ability {
         u.setArmour(uf.restoreArmour(u.getUnitType()));
     }
 
-    public static void processHeroicCharge(Province humanProvince, Province enemyProvince) {
-        if (humanProvince.getArmySize() * 2 < (enemyProvince.getArmySize())) {
-            ArrayList<Unit> units = humanProvince.getUnits();
-            for (Unit u : units) {
+    public static void processHeroicCharge() {
+        if (invadingUnits.size() * 2 < defendingUnits.size()) {
+            for (Unit u : invadingUnits) {
                 if (u.getRange().equals("melee") && u.getType().equals("cavalry")) {
                     u.setMeleeAttack(u.getMeleeAttack() * 2);  // double melee attack
                     u.addMorale(u.getMorale() / 2);            // 50% higher morale
@@ -152,9 +157,44 @@ public abstract class Ability {
         }
     }
 
-   public static void restoreSkirmisherAntiArmour(Unit javelinSkirmisher, Unit other) {
-       if (javelinSkirmisher.getAbility().equals("Skirmisher Anti-Armour")) {
+    public static void restoreSkirmisherAntiArmour(Unit javelinSkirmisher, Unit other) {
+        if (javelinSkirmisher.getAbility().equals("Skirmisher Anti-Armour")) {
            other.setArmour(other.getArmour() * 2);
-       }
-   }
+        }
+    }
+
+    public static Unit processElephantAmok(Unit elephant, Unit other) {
+        if (!elephant.getAbility().equals("Elephant Amok")) {
+            return other;
+        }
+
+        ArrayList<Unit> units = getUnits(elephant);        
+        if (units.size() != 1) {
+            Random r = new Random();
+            if (/*r.nextDouble() <= 0.1*/true) {
+                int randNum = r.nextInt(units.size());
+                if (units.get(randNum).equals(elephant)) {
+                    randNum = findNextIndex(units, randNum);
+                }
+                Unit u = units.get(randNum);
+                return u;
+            }
+        }
+        return other;
+    }
+
+    private static ArrayList<Unit> getUnits(Unit u) {
+        if (invadingUnits.contains(u)) {
+            return invadingUnits;
+        }
+        return defendingUnits;
+    }
+
+    private static int findNextIndex(ArrayList<Unit> units, int index) {
+        if (index == units.size() - 1) {
+            return 0;
+        } 
+        return index++;
+    }
+
 }
