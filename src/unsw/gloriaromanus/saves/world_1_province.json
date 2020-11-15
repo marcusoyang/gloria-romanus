@@ -2,7 +2,7 @@
   {
     "wealth": 0,
     "taxRate": 0.15,
-    "name": "Asia",
+    "name": "XI",
     "factories": [
       {
         "isTraining": false,
@@ -15,29 +15,7 @@
         "training": null
       }
     ],
-    "units": [{
-      "shieldDefense": 10,
-      "range": "melee",
-      "rangedAttack": 0,
-      "type": "heavy infantry",
-      "numTroops": 311,
-      "speed": 10,
-      "armour": 10,
-      "turnsToProduce": 1,
-      "meleeAttack": 10,
-      "movementPoints": 4,
-      "id": 1,
-      "morale": 156,
-      "ability": "Legionary Eagle",
-      "defenseSkill": 10,
-      "player": {
-        "gold": 100000,
-        "legionaryEaglePenaltyMap": {},
-        "moralePenalty": 0,
-        "faction": "Romans",
-        "id": 1
-      }
-    }],
+    "units": [],
     "player": {
       "gold": 100000,
       "legionaryEaglePenaltyMap": {},
@@ -49,7 +27,7 @@
   {
     "wealth": 0,
     "taxRate": 0.15,
-    "name": "Noricum",
+    "name": "Sardinia et Corsica",
     "factories": [
       {
         "isTraining": false,
@@ -67,9 +45,10 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 129,
+      "numTroops": 185,
       "speed": 10,
       "armour": 10,
+      "unitType": "legionary",
       "turnsToProduce": 1,
       "meleeAttack": 10,
       "movementPoints": 4,
@@ -96,7 +75,7 @@
   {
     "wealth": 0,
     "taxRate": 0.15,
-    "name": "Numidia",
+    "name": "III",
     "factories": [
       {
         "isTraining": false,
@@ -114,9 +93,10 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 319,
+      "numTroops": 385,
       "speed": 10,
       "armour": 10,
+      "unitType": "legionary",
       "turnsToProduce": 1,
       "meleeAttack": 10,
       "movementPoints": 4,
@@ -143,7 +123,7 @@
   {
     "wealth": 0,
     "taxRate": 0.15,
-    "name": "V",
+    "name": "VI",
     "factories": [
       {
         "isTraining": false,
@@ -159,17 +139,18 @@
     "units": [{
       "shieldDefense": 10,
       "range": "melee",
-      "rangedAttack": 0,
-      "type": "heavy infantry",
-      "numTroops": 98,
+      "rangedAttack": 10,
+      "type": "infantry",
+      "numTroops": 251,
       "speed": 10,
       "armour": 10,
+      "unitType": "druid",
       "turnsToProduce": 1,
       "meleeAttack": 10,
       "movementPoints": 4,
       "id": 4,
-      "morale": 109,
-      "ability": "Legionary Eagle",
+      "morale": 100,
+      "ability": "Druidic Fervour",
       "defenseSkill": 10,
       "player": {
         "gold": 100000,
@@ -190,7 +171,7 @@
   {
     "wealth": 0,
     "taxRate": 0.15,
-    "name": "Baetica",
+    "name": "Germania Inferior",
     "factories": [
       {
         "isTraining": false,
@@ -208,9 +189,10 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 164,
+      "numTroops": 412,
       "speed": 10,
       "armour": 10,
+      "unitType": "legionary",
       "turnsToProduce": 1,
       "meleeAttack": 10,
       "movementPoints": 4,
@@ -237,7 +219,7 @@
   {
     "wealth": 0,
     "taxRate": 0.15,
-    "name": "Belgica",
+    "name": "Aegyptus",
     "factories": [
       {
         "isTraining": false,
@@ -255,14 +237,15 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 204,
+      "numTroops": 382,
       "speed": 10,
       "armour": 10,
+      "unitType": "legionary",
       "turnsToProduce": 1,
       "meleeAttack": 10,
       "movementPoints": 4,
       "id": 6,
-      "morale": 147,
+      "morale": 100,
       "ability": "Legionary Eagle",
       "defenseSkill": 10,
       "player": {
@@ -284,7 +267,7 @@
   {
     "wealth": 0,
     "taxRate": 0.15,
-    "name": "Raetia",
+    "name": "Thracia",
     "factories": [
       {
         "isTraining": false,
@@ -302,9 +285,10 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 434,
+      "numTroops": 98,
       "speed": 10,
       "armour": 10,
+      "unitType": "legionary",
       "turnsToProduce": 1,
       "meleeAttack": 10,
       "movementPoints": 4,
@@ -331,7 +315,7 @@
   {
     "wealth": 0,
     "taxRate": 0.15,
-    "name": "Moesia Inferior",
+    "name": "Syria",
     "factories": [
       {
         "isTraining": false,
@@ -349,9 +333,10 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 372,
+      "numTroops": 261,
       "speed": 10,
       "armour": 10,
+      "unitType": "legionary",
       "turnsToProduce": 1,
       "meleeAttack": 10,
       "movementPoints": 4,
@@ -378,7 +363,7 @@
   {
     "wealth": 0,
     "taxRate": 0.15,
-    "name": "VIII",
+    "name": "II",
     "factories": [
       {
         "isTraining": false,
@@ -396,9 +381,10 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 39,
+      "numTroops": 389,
       "speed": 10,
       "armour": 10,
+      "unitType": "legionary",
       "turnsToProduce": 1,
       "meleeAttack": 10,
       "movementPoints": 4,
@@ -425,7 +411,7 @@
   {
     "wealth": 0,
     "taxRate": 0.15,
-    "name": "Armenia Mesopotamia",
+    "name": "Moesia Inferior",
     "factories": [
       {
         "isTraining": false,
@@ -443,9 +429,10 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 155,
+      "numTroops": 249,
       "speed": 10,
       "armour": 10,
+      "unitType": "legionary",
       "turnsToProduce": 1,
       "meleeAttack": 10,
       "movementPoints": 4,
@@ -472,7 +459,7 @@
   {
     "wealth": 0,
     "taxRate": 0.15,
-    "name": "Dalmatia",
+    "name": "Cyprus",
     "factories": [
       {
         "isTraining": false,
@@ -490,9 +477,10 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 232,
+      "numTroops": 351,
       "speed": 10,
       "armour": 10,
+      "unitType": "legionary",
       "turnsToProduce": 1,
       "meleeAttack": 10,
       "movementPoints": 4,
@@ -519,7 +507,7 @@
   {
     "wealth": 0,
     "taxRate": 0.15,
-    "name": "Galatia et Cappadocia",
+    "name": "Mauretania Caesariensis",
     "factories": [
       {
         "isTraining": false,
@@ -537,9 +525,10 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 402,
+      "numTroops": 192,
       "speed": 10,
       "armour": 10,
+      "unitType": "legionary",
       "turnsToProduce": 1,
       "meleeAttack": 10,
       "movementPoints": 4,
@@ -566,7 +555,7 @@
   {
     "wealth": 0,
     "taxRate": 0.15,
-    "name": "Lugdunensis",
+    "name": "X",
     "factories": [
       {
         "isTraining": false,
@@ -579,29 +568,80 @@
         "training": null
       }
     ],
-    "units": [{
-      "shieldDefense": 10,
-      "range": "melee",
-      "rangedAttack": 0,
-      "type": "heavy infantry",
-      "numTroops": 333,
-      "speed": 10,
-      "armour": 10,
-      "turnsToProduce": 1,
-      "meleeAttack": 10,
-      "movementPoints": 4,
-      "id": 13,
-      "morale": 100,
-      "ability": "Legionary Eagle",
-      "defenseSkill": 10,
-      "player": {
-        "gold": 100000,
-        "legionaryEaglePenaltyMap": {},
-        "moralePenalty": 0,
-        "faction": "Greek City States",
-        "id": 13
+    "units": [
+      {
+        "shieldDefense": 10,
+        "range": "melee",
+        "rangedAttack": 0,
+        "type": "heavy infantry",
+        "numTroops": 480,
+        "speed": 10,
+        "armour": 10,
+        "unitType": "legionary",
+        "turnsToProduce": 1,
+        "meleeAttack": 10,
+        "movementPoints": 4,
+        "id": 13,
+        "morale": 100,
+        "ability": "Legionary Eagle",
+        "defenseSkill": 10,
+        "player": {
+          "gold": 100000,
+          "legionaryEaglePenaltyMap": {},
+          "moralePenalty": 0,
+          "faction": "Greek City States",
+          "id": 13
+        }
+      },
+      {
+        "shieldDefense": 10,
+        "range": "melee",
+        "rangedAttack": 0,
+        "type": "heavy infantry",
+        "numTroops": 480,
+        "speed": 10,
+        "armour": 10,
+        "unitType": "legionary",
+        "turnsToProduce": 1,
+        "meleeAttack": 10,
+        "movementPoints": 4,
+        "id": 13,
+        "morale": 100,
+        "ability": "Legionary Eagle",
+        "defenseSkill": 10,
+        "player": {
+          "gold": 100000,
+          "legionaryEaglePenaltyMap": {},
+          "moralePenalty": 0,
+          "faction": "Greek City States",
+          "id": 13
+        }
+      },
+      {
+        "shieldDefense": 10,
+        "range": "melee",
+        "rangedAttack": 0,
+        "type": "heavy infantry",
+        "numTroops": 480,
+        "speed": 10,
+        "armour": 10,
+        "unitType": "legionary",
+        "turnsToProduce": 1,
+        "meleeAttack": 10,
+        "movementPoints": 4,
+        "id": 13,
+        "morale": 100,
+        "ability": "Legionary Eagle",
+        "defenseSkill": 10,
+        "player": {
+          "gold": 100000,
+          "legionaryEaglePenaltyMap": {},
+          "moralePenalty": 0,
+          "faction": "Greek City States",
+          "id": 13
+        }
       }
-    }],
+    ],
     "player": {
       "gold": 100000,
       "legionaryEaglePenaltyMap": {},
@@ -613,7 +653,7 @@
   {
     "wealth": 0,
     "taxRate": 0.15,
-    "name": "VII",
+    "name": "Moesia Superior",
     "factories": [
       {
         "isTraining": false,
@@ -631,9 +671,10 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 113,
+      "numTroops": 132,
       "speed": 10,
       "armour": 10,
+      "unitType": "legionary",
       "turnsToProduce": 1,
       "meleeAttack": 10,
       "movementPoints": 4,
@@ -660,7 +701,7 @@
   {
     "wealth": 0,
     "taxRate": 0.15,
-    "name": "Creta et Cyrene",
+    "name": "Noricum",
     "factories": [
       {
         "isTraining": false,
@@ -678,9 +719,10 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 377,
+      "numTroops": 152,
       "speed": 10,
       "armour": 10,
+      "unitType": "legionary",
       "turnsToProduce": 1,
       "meleeAttack": 10,
       "movementPoints": 4,
@@ -707,7 +749,7 @@
   {
     "wealth": 0,
     "taxRate": 0.15,
-    "name": "Africa Proconsularis",
+    "name": "Macedonia",
     "factories": [
       {
         "isTraining": false,
@@ -725,9 +767,10 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 241,
+      "numTroops": 213,
       "speed": 10,
       "armour": 10,
+      "unitType": "legionary",
       "turnsToProduce": 1,
       "meleeAttack": 10,
       "movementPoints": 4,
@@ -754,6 +797,54 @@
   {
     "wealth": 0,
     "taxRate": 0.15,
+    "name": "Lugdunensis",
+    "factories": [
+      {
+        "isTraining": false,
+        "configString": "{\n    \"legionary\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Legionary Eagle\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 10\n    },\n    \"berserker\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Berserker Rage\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 10\n    },\n    \"pikemen\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"spearmen\",\n        \"ability\": \"Phalanx\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"hoplite\": {\n        \"meleeAttack\": 10,\n        \"rangedAttack\": 8,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 10,\n        \"speed\": 10,\n        \"range\": \"ranged\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Phalanx\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"javelin-skirmisher\": {\n        \"meleeAttack\": 8,\n        \"rangedAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"ranged\",\n        \"type\": \"missile infantry\",\n        \"ability\": \"Skirmisher Anti-Armour\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"elephant\": {\n        \"meleeAttack\": 10,\n        \"defense\": 12,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 12,\n        \"range\": \"melee\",\n        \"type\": \"cavalry\",\n        \"ability\": \"Elephant Amok\",\n        \"turnsToProduce\": 2,\n        \"cost\" : 50\n    },\n    \"horse_archer\": {\n        \"meleeAttack\": 4,\n        \"rangedAttack\": 14,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 14,\n        \"range\": \"ranged\",\n        \"type\": \"horse archer\",\n        \"ability\": \"Cantabrian Circle\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 25\n    },\n    \"druid\": {\n        \"meleeAttack\": 4,\n        \"defense\": 10,\n        \"armour\": 6,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"infantry\",\n        \"ability\": \"Druidic Fervour\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"catapult\": {\n        \"meleeAttack\": 0,\n        \"rangedAttack\": 24,\n        \"defense\": 19,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 4,\n        \"range\": \"ranged\",\n        \"type\": \"artillery\",\n        \"ability\": \"\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 40\n    }\n}",
+        "training": null
+      },
+      {
+        "isTraining": false,
+        "configString": "{\n    \"legionary\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Legionary Eagle\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 10\n    },\n    \"berserker\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Berserker Rage\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 10\n    },\n    \"pikemen\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"spearmen\",\n        \"ability\": \"Phalanx\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"hoplite\": {\n        \"meleeAttack\": 10,\n        \"rangedAttack\": 8,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 10,\n        \"speed\": 10,\n        \"range\": \"ranged\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Phalanx\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"javelin-skirmisher\": {\n        \"meleeAttack\": 8,\n        \"rangedAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"ranged\",\n        \"type\": \"missile infantry\",\n        \"ability\": \"Skirmisher Anti-Armour\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"elephant\": {\n        \"meleeAttack\": 10,\n        \"defense\": 12,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 12,\n        \"range\": \"melee\",\n        \"type\": \"cavalry\",\n        \"ability\": \"Elephant Amok\",\n        \"turnsToProduce\": 2,\n        \"cost\" : 50\n    },\n    \"horse_archer\": {\n        \"meleeAttack\": 4,\n        \"rangedAttack\": 14,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 14,\n        \"range\": \"ranged\",\n        \"type\": \"horse archer\",\n        \"ability\": \"Cantabrian Circle\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 25\n    },\n    \"druid\": {\n        \"meleeAttack\": 4,\n        \"defense\": 10,\n        \"armour\": 6,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"infantry\",\n        \"ability\": \"Druidic Fervour\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"catapult\": {\n        \"meleeAttack\": 0,\n        \"rangedAttack\": 24,\n        \"defense\": 19,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 4,\n        \"range\": \"ranged\",\n        \"type\": \"artillery\",\n        \"ability\": \"\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 40\n    }\n}",
+        "training": null
+      }
+    ],
+    "units": [{
+      "shieldDefense": 10,
+      "range": "melee",
+      "rangedAttack": 0,
+      "type": "heavy infantry",
+      "numTroops": 348,
+      "speed": 10,
+      "armour": 10,
+      "unitType": "legionary",
+      "turnsToProduce": 1,
+      "meleeAttack": 10,
+      "movementPoints": 4,
+      "id": 17,
+      "morale": 100,
+      "ability": "Legionary Eagle",
+      "defenseSkill": 10,
+      "player": {
+        "gold": 100000,
+        "legionaryEaglePenaltyMap": {},
+        "moralePenalty": 0,
+        "faction": "Parthians",
+        "id": 11
+      }
+    }],
+    "player": {
+      "gold": 100000,
+      "legionaryEaglePenaltyMap": {},
+      "moralePenalty": 0,
+      "faction": "Parthians",
+      "id": 11
+    }
+  },
+  {
+    "wealth": 0,
+    "taxRate": 0.15,
     "name": "Lusitania",
     "factories": [
       {
@@ -772,13 +863,14 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 460,
+      "numTroops": 118,
       "speed": 10,
       "armour": 10,
+      "unitType": "legionary",
       "turnsToProduce": 1,
       "meleeAttack": 10,
       "movementPoints": 4,
-      "id": 17,
+      "id": 18,
       "morale": 100,
       "ability": "Legionary Eagle",
       "defenseSkill": 10,
@@ -786,16 +878,16 @@
         "gold": 100000,
         "legionaryEaglePenaltyMap": {},
         "moralePenalty": 0,
-        "faction": "Carthaginians",
-        "id": 2
+        "faction": "Celtic Britons",
+        "id": 4
       }
     }],
     "player": {
       "gold": 100000,
       "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
-      "faction": "Carthaginians",
-      "id": 2
+      "faction": "Celtic Britons",
+      "id": 4
     }
   },
   {
@@ -819,56 +911,10 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 288,
+      "numTroops": 359,
       "speed": 10,
       "armour": 10,
-      "turnsToProduce": 1,
-      "meleeAttack": 10,
-      "movementPoints": 4,
-      "id": 18,
-      "morale": 100,
-      "ability": "Legionary Eagle",
-      "defenseSkill": 10,
-      "player": {
-        "gold": 100000,
-        "legionaryEaglePenaltyMap": {},
-        "moralePenalty": 0,
-        "faction": "Amenians",
-        "id": 10
-      }
-    }],
-    "player": {
-      "gold": 100000,
-      "legionaryEaglePenaltyMap": {},
-      "moralePenalty": 0,
-      "faction": "Amenians",
-      "id": 10
-    }
-  },
-  {
-    "wealth": 0,
-    "taxRate": 0.15,
-    "name": "Macedonia",
-    "factories": [
-      {
-        "isTraining": false,
-        "configString": "{\n    \"legionary\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Legionary Eagle\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 10\n    },\n    \"berserker\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Berserker Rage\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 10\n    },\n    \"pikemen\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"spearmen\",\n        \"ability\": \"Phalanx\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"hoplite\": {\n        \"meleeAttack\": 10,\n        \"rangedAttack\": 8,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 10,\n        \"speed\": 10,\n        \"range\": \"ranged\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Phalanx\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"javelin-skirmisher\": {\n        \"meleeAttack\": 8,\n        \"rangedAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"ranged\",\n        \"type\": \"missile infantry\",\n        \"ability\": \"Skirmisher Anti-Armour\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"elephant\": {\n        \"meleeAttack\": 10,\n        \"defense\": 12,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 12,\n        \"range\": \"melee\",\n        \"type\": \"cavalry\",\n        \"ability\": \"Elephant Amok\",\n        \"turnsToProduce\": 2,\n        \"cost\" : 50\n    },\n    \"horse_archer\": {\n        \"meleeAttack\": 4,\n        \"rangedAttack\": 14,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 14,\n        \"range\": \"ranged\",\n        \"type\": \"horse archer\",\n        \"ability\": \"Cantabrian Circle\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 25\n    },\n    \"druid\": {\n        \"meleeAttack\": 4,\n        \"defense\": 10,\n        \"armour\": 6,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"infantry\",\n        \"ability\": \"Druidic Fervour\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"catapult\": {\n        \"meleeAttack\": 0,\n        \"rangedAttack\": 24,\n        \"defense\": 19,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 4,\n        \"range\": \"ranged\",\n        \"type\": \"artillery\",\n        \"ability\": \"\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 40\n    }\n}",
-        "training": null
-      },
-      {
-        "isTraining": false,
-        "configString": "{\n    \"legionary\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Legionary Eagle\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 10\n    },\n    \"berserker\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Berserker Rage\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 10\n    },\n    \"pikemen\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"spearmen\",\n        \"ability\": \"Phalanx\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"hoplite\": {\n        \"meleeAttack\": 10,\n        \"rangedAttack\": 8,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 10,\n        \"speed\": 10,\n        \"range\": \"ranged\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Phalanx\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"javelin-skirmisher\": {\n        \"meleeAttack\": 8,\n        \"rangedAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"ranged\",\n        \"type\": \"missile infantry\",\n        \"ability\": \"Skirmisher Anti-Armour\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"elephant\": {\n        \"meleeAttack\": 10,\n        \"defense\": 12,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 12,\n        \"range\": \"melee\",\n        \"type\": \"cavalry\",\n        \"ability\": \"Elephant Amok\",\n        \"turnsToProduce\": 2,\n        \"cost\" : 50\n    },\n    \"horse_archer\": {\n        \"meleeAttack\": 4,\n        \"rangedAttack\": 14,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 14,\n        \"range\": \"ranged\",\n        \"type\": \"horse archer\",\n        \"ability\": \"Cantabrian Circle\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 25\n    },\n    \"druid\": {\n        \"meleeAttack\": 4,\n        \"defense\": 10,\n        \"armour\": 6,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"infantry\",\n        \"ability\": \"Druidic Fervour\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"catapult\": {\n        \"meleeAttack\": 0,\n        \"rangedAttack\": 24,\n        \"defense\": 19,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 4,\n        \"range\": \"ranged\",\n        \"type\": \"artillery\",\n        \"ability\": \"\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 40\n    }\n}",
-        "training": null
-      }
-    ],
-    "units": [{
-      "shieldDefense": 10,
-      "range": "melee",
-      "rangedAttack": 0,
-      "type": "heavy infantry",
-      "numTroops": 493,
-      "speed": 10,
-      "armour": 10,
+      "unitType": "legionary",
       "turnsToProduce": 1,
       "meleeAttack": 10,
       "movementPoints": 4,
@@ -880,63 +926,16 @@
         "gold": 100000,
         "legionaryEaglePenaltyMap": {},
         "moralePenalty": 0,
-        "faction": "Spanish",
-        "id": 5
+        "faction": "Celtic Britons",
+        "id": 4
       }
     }],
     "player": {
       "gold": 100000,
       "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
-      "faction": "Spanish",
-      "id": 5
-    }
-  },
-  {
-    "wealth": 0,
-    "taxRate": 0.15,
-    "name": "Mauretania Caesariensis",
-    "factories": [
-      {
-        "isTraining": false,
-        "configString": "{\n    \"legionary\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Legionary Eagle\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 10\n    },\n    \"berserker\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Berserker Rage\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 10\n    },\n    \"pikemen\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"spearmen\",\n        \"ability\": \"Phalanx\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"hoplite\": {\n        \"meleeAttack\": 10,\n        \"rangedAttack\": 8,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 10,\n        \"speed\": 10,\n        \"range\": \"ranged\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Phalanx\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"javelin-skirmisher\": {\n        \"meleeAttack\": 8,\n        \"rangedAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"ranged\",\n        \"type\": \"missile infantry\",\n        \"ability\": \"Skirmisher Anti-Armour\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"elephant\": {\n        \"meleeAttack\": 10,\n        \"defense\": 12,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 12,\n        \"range\": \"melee\",\n        \"type\": \"cavalry\",\n        \"ability\": \"Elephant Amok\",\n        \"turnsToProduce\": 2,\n        \"cost\" : 50\n    },\n    \"horse_archer\": {\n        \"meleeAttack\": 4,\n        \"rangedAttack\": 14,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 14,\n        \"range\": \"ranged\",\n        \"type\": \"horse archer\",\n        \"ability\": \"Cantabrian Circle\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 25\n    },\n    \"druid\": {\n        \"meleeAttack\": 4,\n        \"defense\": 10,\n        \"armour\": 6,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"infantry\",\n        \"ability\": \"Druidic Fervour\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"catapult\": {\n        \"meleeAttack\": 0,\n        \"rangedAttack\": 24,\n        \"defense\": 19,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 4,\n        \"range\": \"ranged\",\n        \"type\": \"artillery\",\n        \"ability\": \"\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 40\n    }\n}",
-        "training": null
-      },
-      {
-        "isTraining": false,
-        "configString": "{\n    \"legionary\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Legionary Eagle\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 10\n    },\n    \"berserker\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Berserker Rage\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 10\n    },\n    \"pikemen\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"spearmen\",\n        \"ability\": \"Phalanx\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"hoplite\": {\n        \"meleeAttack\": 10,\n        \"rangedAttack\": 8,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 10,\n        \"speed\": 10,\n        \"range\": \"ranged\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Phalanx\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"javelin-skirmisher\": {\n        \"meleeAttack\": 8,\n        \"rangedAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"ranged\",\n        \"type\": \"missile infantry\",\n        \"ability\": \"Skirmisher Anti-Armour\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"elephant\": {\n        \"meleeAttack\": 10,\n        \"defense\": 12,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 12,\n        \"range\": \"melee\",\n        \"type\": \"cavalry\",\n        \"ability\": \"Elephant Amok\",\n        \"turnsToProduce\": 2,\n        \"cost\" : 50\n    },\n    \"horse_archer\": {\n        \"meleeAttack\": 4,\n        \"rangedAttack\": 14,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 14,\n        \"range\": \"ranged\",\n        \"type\": \"horse archer\",\n        \"ability\": \"Cantabrian Circle\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 25\n    },\n    \"druid\": {\n        \"meleeAttack\": 4,\n        \"defense\": 10,\n        \"armour\": 6,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"infantry\",\n        \"ability\": \"Druidic Fervour\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"catapult\": {\n        \"meleeAttack\": 0,\n        \"rangedAttack\": 24,\n        \"defense\": 19,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 4,\n        \"range\": \"ranged\",\n        \"type\": \"artillery\",\n        \"ability\": \"\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 40\n    }\n}",
-        "training": null
-      }
-    ],
-    "units": [{
-      "shieldDefense": 10,
-      "range": "melee",
-      "rangedAttack": 0,
-      "type": "heavy infantry",
-      "numTroops": 180,
-      "speed": 10,
-      "armour": 10,
-      "turnsToProduce": 1,
-      "meleeAttack": 10,
-      "movementPoints": 4,
-      "id": 20,
-      "morale": 100,
-      "ability": "Legionary Eagle",
-      "defenseSkill": 10,
-      "player": {
-        "gold": 100000,
-        "legionaryEaglePenaltyMap": {},
-        "moralePenalty": 0,
-        "faction": "Macedonians",
-        "id": 14
-      }
-    }],
-    "player": {
-      "gold": 100000,
-      "legionaryEaglePenaltyMap": {},
-      "moralePenalty": 0,
-      "faction": "Macedonians",
-      "id": 14
+      "faction": "Celtic Britons",
+      "id": 4
     }
   },
   {
@@ -960,13 +959,14 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 318,
+      "numTroops": 162,
       "speed": 10,
       "armour": 10,
+      "unitType": "legionary",
       "turnsToProduce": 1,
       "meleeAttack": 10,
       "movementPoints": 4,
-      "id": 21,
+      "id": 20,
       "morale": 100,
       "ability": "Legionary Eagle",
       "defenseSkill": 10,
@@ -974,63 +974,16 @@
         "gold": 100000,
         "legionaryEaglePenaltyMap": {},
         "moralePenalty": 0,
-        "faction": "Carthaginians",
-        "id": 2
+        "faction": "Numidians",
+        "id": 6
       }
     }],
     "player": {
       "gold": 100000,
       "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
-      "faction": "Carthaginians",
-      "id": 2
-    }
-  },
-  {
-    "wealth": 0,
-    "taxRate": 0.15,
-    "name": "Moesia Superior",
-    "factories": [
-      {
-        "isTraining": false,
-        "configString": "{\n    \"legionary\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Legionary Eagle\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 10\n    },\n    \"berserker\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Berserker Rage\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 10\n    },\n    \"pikemen\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"spearmen\",\n        \"ability\": \"Phalanx\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"hoplite\": {\n        \"meleeAttack\": 10,\n        \"rangedAttack\": 8,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 10,\n        \"speed\": 10,\n        \"range\": \"ranged\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Phalanx\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"javelin-skirmisher\": {\n        \"meleeAttack\": 8,\n        \"rangedAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"ranged\",\n        \"type\": \"missile infantry\",\n        \"ability\": \"Skirmisher Anti-Armour\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"elephant\": {\n        \"meleeAttack\": 10,\n        \"defense\": 12,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 12,\n        \"range\": \"melee\",\n        \"type\": \"cavalry\",\n        \"ability\": \"Elephant Amok\",\n        \"turnsToProduce\": 2,\n        \"cost\" : 50\n    },\n    \"horse_archer\": {\n        \"meleeAttack\": 4,\n        \"rangedAttack\": 14,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 14,\n        \"range\": \"ranged\",\n        \"type\": \"horse archer\",\n        \"ability\": \"Cantabrian Circle\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 25\n    },\n    \"druid\": {\n        \"meleeAttack\": 4,\n        \"defense\": 10,\n        \"armour\": 6,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"infantry\",\n        \"ability\": \"Druidic Fervour\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"catapult\": {\n        \"meleeAttack\": 0,\n        \"rangedAttack\": 24,\n        \"defense\": 19,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 4,\n        \"range\": \"ranged\",\n        \"type\": \"artillery\",\n        \"ability\": \"\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 40\n    }\n}",
-        "training": null
-      },
-      {
-        "isTraining": false,
-        "configString": "{\n    \"legionary\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Legionary Eagle\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 10\n    },\n    \"berserker\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Berserker Rage\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 10\n    },\n    \"pikemen\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"spearmen\",\n        \"ability\": \"Phalanx\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"hoplite\": {\n        \"meleeAttack\": 10,\n        \"rangedAttack\": 8,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 10,\n        \"speed\": 10,\n        \"range\": \"ranged\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Phalanx\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"javelin-skirmisher\": {\n        \"meleeAttack\": 8,\n        \"rangedAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"ranged\",\n        \"type\": \"missile infantry\",\n        \"ability\": \"Skirmisher Anti-Armour\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"elephant\": {\n        \"meleeAttack\": 10,\n        \"defense\": 12,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 12,\n        \"range\": \"melee\",\n        \"type\": \"cavalry\",\n        \"ability\": \"Elephant Amok\",\n        \"turnsToProduce\": 2,\n        \"cost\" : 50\n    },\n    \"horse_archer\": {\n        \"meleeAttack\": 4,\n        \"rangedAttack\": 14,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 14,\n        \"range\": \"ranged\",\n        \"type\": \"horse archer\",\n        \"ability\": \"Cantabrian Circle\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 25\n    },\n    \"druid\": {\n        \"meleeAttack\": 4,\n        \"defense\": 10,\n        \"armour\": 6,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"infantry\",\n        \"ability\": \"Druidic Fervour\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"catapult\": {\n        \"meleeAttack\": 0,\n        \"rangedAttack\": 24,\n        \"defense\": 19,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 4,\n        \"range\": \"ranged\",\n        \"type\": \"artillery\",\n        \"ability\": \"\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 40\n    }\n}",
-        "training": null
-      }
-    ],
-    "units": [{
-      "shieldDefense": 10,
-      "range": "melee",
-      "rangedAttack": 0,
-      "type": "heavy infantry",
-      "numTroops": 315,
-      "speed": 10,
-      "armour": 10,
-      "turnsToProduce": 1,
-      "meleeAttack": 10,
-      "movementPoints": 4,
-      "id": 22,
-      "morale": 109,
-      "ability": "Legionary Eagle",
-      "defenseSkill": 10,
-      "player": {
-        "gold": 100000,
-        "legionaryEaglePenaltyMap": {},
-        "moralePenalty": 0,
-        "faction": "Celtic Britons",
-        "id": 4
-      }
-    }],
-    "player": {
-      "gold": 100000,
-      "legionaryEaglePenaltyMap": {},
-      "moralePenalty": 0,
-      "faction": "Celtic Britons",
-      "id": 4
+      "faction": "Numidians",
+      "id": 6
     }
   },
   {
@@ -1054,13 +1007,14 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 127,
+      "numTroops": 318,
       "speed": 10,
       "armour": 10,
+      "unitType": "legionary",
       "turnsToProduce": 1,
       "meleeAttack": 10,
       "movementPoints": 4,
-      "id": 23,
+      "id": 21,
       "morale": 100,
       "ability": "Legionary Eagle",
       "defenseSkill": 10,
@@ -1068,16 +1022,64 @@
         "gold": 100000,
         "legionaryEaglePenaltyMap": {},
         "moralePenalty": 0,
-        "faction": "Parthians",
-        "id": 11
+        "faction": "Seleucid Empire",
+        "id": 8
       }
     }],
     "player": {
       "gold": 100000,
       "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
-      "faction": "Parthians",
-      "id": 11
+      "faction": "Seleucid Empire",
+      "id": 8
+    }
+  },
+  {
+    "wealth": 0,
+    "taxRate": 0.15,
+    "name": "Numidia",
+    "factories": [
+      {
+        "isTraining": false,
+        "configString": "{\n    \"legionary\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Legionary Eagle\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 10\n    },\n    \"berserker\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Berserker Rage\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 10\n    },\n    \"pikemen\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"spearmen\",\n        \"ability\": \"Phalanx\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"hoplite\": {\n        \"meleeAttack\": 10,\n        \"rangedAttack\": 8,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 10,\n        \"speed\": 10,\n        \"range\": \"ranged\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Phalanx\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"javelin-skirmisher\": {\n        \"meleeAttack\": 8,\n        \"rangedAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"ranged\",\n        \"type\": \"missile infantry\",\n        \"ability\": \"Skirmisher Anti-Armour\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"elephant\": {\n        \"meleeAttack\": 10,\n        \"defense\": 12,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 12,\n        \"range\": \"melee\",\n        \"type\": \"cavalry\",\n        \"ability\": \"Elephant Amok\",\n        \"turnsToProduce\": 2,\n        \"cost\" : 50\n    },\n    \"horse_archer\": {\n        \"meleeAttack\": 4,\n        \"rangedAttack\": 14,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 14,\n        \"range\": \"ranged\",\n        \"type\": \"horse archer\",\n        \"ability\": \"Cantabrian Circle\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 25\n    },\n    \"druid\": {\n        \"meleeAttack\": 4,\n        \"defense\": 10,\n        \"armour\": 6,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"infantry\",\n        \"ability\": \"Druidic Fervour\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"catapult\": {\n        \"meleeAttack\": 0,\n        \"rangedAttack\": 24,\n        \"defense\": 19,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 4,\n        \"range\": \"ranged\",\n        \"type\": \"artillery\",\n        \"ability\": \"\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 40\n    }\n}",
+        "training": null
+      },
+      {
+        "isTraining": false,
+        "configString": "{\n    \"legionary\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Legionary Eagle\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 10\n    },\n    \"berserker\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Berserker Rage\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 10\n    },\n    \"pikemen\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"spearmen\",\n        \"ability\": \"Phalanx\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"hoplite\": {\n        \"meleeAttack\": 10,\n        \"rangedAttack\": 8,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 10,\n        \"speed\": 10,\n        \"range\": \"ranged\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Phalanx\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"javelin-skirmisher\": {\n        \"meleeAttack\": 8,\n        \"rangedAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"ranged\",\n        \"type\": \"missile infantry\",\n        \"ability\": \"Skirmisher Anti-Armour\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"elephant\": {\n        \"meleeAttack\": 10,\n        \"defense\": 12,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 12,\n        \"range\": \"melee\",\n        \"type\": \"cavalry\",\n        \"ability\": \"Elephant Amok\",\n        \"turnsToProduce\": 2,\n        \"cost\" : 50\n    },\n    \"horse_archer\": {\n        \"meleeAttack\": 4,\n        \"rangedAttack\": 14,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 14,\n        \"range\": \"ranged\",\n        \"type\": \"horse archer\",\n        \"ability\": \"Cantabrian Circle\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 25\n    },\n    \"druid\": {\n        \"meleeAttack\": 4,\n        \"defense\": 10,\n        \"armour\": 6,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"infantry\",\n        \"ability\": \"Druidic Fervour\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"catapult\": {\n        \"meleeAttack\": 0,\n        \"rangedAttack\": 24,\n        \"defense\": 19,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 4,\n        \"range\": \"ranged\",\n        \"type\": \"artillery\",\n        \"ability\": \"\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 40\n    }\n}",
+        "training": null
+      }
+    ],
+    "units": [{
+      "shieldDefense": 10,
+      "range": "melee",
+      "rangedAttack": 0,
+      "type": "heavy infantry",
+      "numTroops": 331,
+      "speed": 10,
+      "armour": 10,
+      "unitType": "legionary",
+      "turnsToProduce": 1,
+      "meleeAttack": 10,
+      "movementPoints": 4,
+      "id": 22,
+      "morale": 100,
+      "ability": "Legionary Eagle",
+      "defenseSkill": 10,
+      "player": {
+        "gold": 100000,
+        "legionaryEaglePenaltyMap": {},
+        "moralePenalty": 0,
+        "faction": "Seleucid Empire",
+        "id": 8
+      }
+    }],
+    "player": {
+      "gold": 100000,
+      "legionaryEaglePenaltyMap": {},
+      "moralePenalty": 0,
+      "faction": "Seleucid Empire",
+      "id": 8
     }
   },
   {
@@ -1101,30 +1103,31 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 192,
+      "numTroops": 43,
       "speed": 10,
       "armour": 10,
+      "unitType": "legionary",
       "turnsToProduce": 1,
       "meleeAttack": 10,
       "movementPoints": 4,
-      "id": 24,
-      "morale": 147,
+      "id": 23,
+      "morale": 100,
       "ability": "Legionary Eagle",
       "defenseSkill": 10,
       "player": {
         "gold": 100000,
         "legionaryEaglePenaltyMap": {},
         "moralePenalty": 0,
-        "faction": "Numidians",
-        "id": 6
+        "faction": "Greek City States",
+        "id": 13
       }
     }],
     "player": {
       "gold": 100000,
       "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
-      "faction": "Numidians",
-      "id": 6
+      "faction": "Greek City States",
+      "id": 13
     }
   },
   {
@@ -1148,13 +1151,14 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 81,
+      "numTroops": 74,
       "speed": 10,
       "armour": 10,
+      "unitType": "legionary",
       "turnsToProduce": 1,
       "meleeAttack": 10,
       "movementPoints": 4,
-      "id": 25,
+      "id": 24,
       "morale": 100,
       "ability": "Legionary Eagle",
       "defenseSkill": 10,
@@ -1162,22 +1166,22 @@
         "gold": 100000,
         "legionaryEaglePenaltyMap": {},
         "moralePenalty": 0,
-        "faction": "Seleucid Empire",
-        "id": 8
+        "faction": "Germanics",
+        "id": 12
       }
     }],
     "player": {
       "gold": 100000,
       "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
-      "faction": "Seleucid Empire",
-      "id": 8
+      "faction": "Germanics",
+      "id": 12
     }
   },
   {
     "wealth": 0,
     "taxRate": 0.15,
-    "name": "Sardinia et Corsica",
+    "name": "Raetia",
     "factories": [
       {
         "isTraining": false,
@@ -1195,13 +1199,14 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 212,
+      "numTroops": 445,
       "speed": 10,
       "armour": 10,
+      "unitType": "legionary",
       "turnsToProduce": 1,
       "meleeAttack": 10,
       "movementPoints": 4,
-      "id": 26,
+      "id": 25,
       "morale": 100,
       "ability": "Legionary Eagle",
       "defenseSkill": 10,
@@ -1209,16 +1214,16 @@
         "gold": 100000,
         "legionaryEaglePenaltyMap": {},
         "moralePenalty": 0,
-        "faction": "Seleucid Empire",
-        "id": 8
+        "faction": "Parthians",
+        "id": 11
       }
     }],
     "player": {
       "gold": 100000,
       "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
-      "faction": "Seleucid Empire",
-      "id": 8
+      "faction": "Parthians",
+      "id": 11
     }
   },
   {
@@ -1242,9 +1247,58 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 50,
+      "numTroops": 485,
       "speed": 10,
       "armour": 10,
+      "unitType": "legionary",
+      "turnsToProduce": 1,
+      "meleeAttack": 10,
+      "movementPoints": 4,
+      "id": 26,
+      "morale": 100,
+      "ability": "Legionary Eagle",
+      "defenseSkill": 10,
+      "player": {
+        "gold": 100000,
+        "legionaryEaglePenaltyMap": {},
+        "moralePenalty": 0,
+        "faction": "Macedonians",
+        "id": 14
+      }
+    }],
+    "player": {
+      "gold": 100000,
+      "legionaryEaglePenaltyMap": {},
+      "moralePenalty": 0,
+      "faction": "Macedonians",
+      "id": 14
+    }
+  },
+  {
+    "wealth": 0,
+    "taxRate": 0.15,
+    "name": "Tarraconensis",
+    "factories": [
+      {
+        "isTraining": false,
+        "configString": "{\n    \"legionary\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Legionary Eagle\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 10\n    },\n    \"berserker\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Berserker Rage\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 10\n    },\n    \"pikemen\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"spearmen\",\n        \"ability\": \"Phalanx\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"hoplite\": {\n        \"meleeAttack\": 10,\n        \"rangedAttack\": 8,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 10,\n        \"speed\": 10,\n        \"range\": \"ranged\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Phalanx\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"javelin-skirmisher\": {\n        \"meleeAttack\": 8,\n        \"rangedAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"ranged\",\n        \"type\": \"missile infantry\",\n        \"ability\": \"Skirmisher Anti-Armour\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"elephant\": {\n        \"meleeAttack\": 10,\n        \"defense\": 12,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 12,\n        \"range\": \"melee\",\n        \"type\": \"cavalry\",\n        \"ability\": \"Elephant Amok\",\n        \"turnsToProduce\": 2,\n        \"cost\" : 50\n    },\n    \"horse_archer\": {\n        \"meleeAttack\": 4,\n        \"rangedAttack\": 14,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 14,\n        \"range\": \"ranged\",\n        \"type\": \"horse archer\",\n        \"ability\": \"Cantabrian Circle\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 25\n    },\n    \"druid\": {\n        \"meleeAttack\": 4,\n        \"defense\": 10,\n        \"armour\": 6,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"infantry\",\n        \"ability\": \"Druidic Fervour\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"catapult\": {\n        \"meleeAttack\": 0,\n        \"rangedAttack\": 24,\n        \"defense\": 19,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 4,\n        \"range\": \"ranged\",\n        \"type\": \"artillery\",\n        \"ability\": \"\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 40\n    }\n}",
+        "training": null
+      },
+      {
+        "isTraining": false,
+        "configString": "{\n    \"legionary\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Legionary Eagle\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 10\n    },\n    \"berserker\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Berserker Rage\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 10\n    },\n    \"pikemen\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"spearmen\",\n        \"ability\": \"Phalanx\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"hoplite\": {\n        \"meleeAttack\": 10,\n        \"rangedAttack\": 8,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 10,\n        \"speed\": 10,\n        \"range\": \"ranged\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Phalanx\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"javelin-skirmisher\": {\n        \"meleeAttack\": 8,\n        \"rangedAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"ranged\",\n        \"type\": \"missile infantry\",\n        \"ability\": \"Skirmisher Anti-Armour\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"elephant\": {\n        \"meleeAttack\": 10,\n        \"defense\": 12,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 12,\n        \"range\": \"melee\",\n        \"type\": \"cavalry\",\n        \"ability\": \"Elephant Amok\",\n        \"turnsToProduce\": 2,\n        \"cost\" : 50\n    },\n    \"horse_archer\": {\n        \"meleeAttack\": 4,\n        \"rangedAttack\": 14,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 14,\n        \"range\": \"ranged\",\n        \"type\": \"horse archer\",\n        \"ability\": \"Cantabrian Circle\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 25\n    },\n    \"druid\": {\n        \"meleeAttack\": 4,\n        \"defense\": 10,\n        \"armour\": 6,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"infantry\",\n        \"ability\": \"Druidic Fervour\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"catapult\": {\n        \"meleeAttack\": 0,\n        \"rangedAttack\": 24,\n        \"defense\": 19,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 4,\n        \"range\": \"ranged\",\n        \"type\": \"artillery\",\n        \"ability\": \"\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 40\n    }\n}",
+        "training": null
+      }
+    ],
+    "units": [{
+      "shieldDefense": 10,
+      "range": "melee",
+      "rangedAttack": 0,
+      "type": "heavy infantry",
+      "numTroops": 38,
+      "speed": 10,
+      "armour": 10,
+      "unitType": "legionary",
       "turnsToProduce": 1,
       "meleeAttack": 10,
       "movementPoints": 4,
@@ -1271,7 +1325,7 @@
   {
     "wealth": 0,
     "taxRate": 0.15,
-    "name": "Syria",
+    "name": "V",
     "factories": [
       {
         "isTraining": false,
@@ -1289,36 +1343,37 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 7,
+      "numTroops": 489,
       "speed": 10,
       "armour": 10,
+      "unitType": "legionary",
       "turnsToProduce": 1,
       "meleeAttack": 10,
       "movementPoints": 4,
       "id": 28,
-      "morale": 156,
+      "morale": 100,
       "ability": "Legionary Eagle",
       "defenseSkill": 10,
       "player": {
         "gold": 100000,
         "legionaryEaglePenaltyMap": {},
         "moralePenalty": 0,
-        "faction": "Romans",
-        "id": 1
+        "faction": "Gauls",
+        "id": 3
       }
     }],
     "player": {
       "gold": 100000,
       "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
-      "faction": "Romans",
-      "id": 1
+      "faction": "Gauls",
+      "id": 3
     }
   },
   {
     "wealth": 0,
     "taxRate": 0.15,
-    "name": "Tarraconensis",
+    "name": "VII",
     "factories": [
       {
         "isTraining": false,
@@ -1333,65 +1388,19 @@
     ],
     "units": [{
       "shieldDefense": 10,
-      "range": "melee",
-      "rangedAttack": 0,
-      "type": "heavy infantry",
-      "numTroops": 13,
+      "range": "ranged",
+      "rangedAttack": 14,
+      "type": "horse archer",
+      "numTroops": 406,
       "speed": 10,
       "armour": 10,
+      "unitType": "horse_archer",
       "turnsToProduce": 1,
       "meleeAttack": 10,
       "movementPoints": 4,
       "id": 29,
       "morale": 100,
-      "ability": "Legionary Eagle",
-      "defenseSkill": 10,
-      "player": {
-        "gold": 100000,
-        "legionaryEaglePenaltyMap": {},
-        "moralePenalty": 0,
-        "faction": "Egyptians",
-        "id": 7
-      }
-    }],
-    "player": {
-      "gold": 100000,
-      "legionaryEaglePenaltyMap": {},
-      "moralePenalty": 0,
-      "faction": "Egyptians",
-      "id": 7
-    }
-  },
-  {
-    "wealth": 0,
-    "taxRate": 0.15,
-    "name": "Thracia",
-    "factories": [
-      {
-        "isTraining": false,
-        "configString": "{\n    \"legionary\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Legionary Eagle\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 10\n    },\n    \"berserker\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Berserker Rage\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 10\n    },\n    \"pikemen\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"spearmen\",\n        \"ability\": \"Phalanx\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"hoplite\": {\n        \"meleeAttack\": 10,\n        \"rangedAttack\": 8,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 10,\n        \"speed\": 10,\n        \"range\": \"ranged\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Phalanx\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"javelin-skirmisher\": {\n        \"meleeAttack\": 8,\n        \"rangedAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"ranged\",\n        \"type\": \"missile infantry\",\n        \"ability\": \"Skirmisher Anti-Armour\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"elephant\": {\n        \"meleeAttack\": 10,\n        \"defense\": 12,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 12,\n        \"range\": \"melee\",\n        \"type\": \"cavalry\",\n        \"ability\": \"Elephant Amok\",\n        \"turnsToProduce\": 2,\n        \"cost\" : 50\n    },\n    \"horse_archer\": {\n        \"meleeAttack\": 4,\n        \"rangedAttack\": 14,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 14,\n        \"range\": \"ranged\",\n        \"type\": \"horse archer\",\n        \"ability\": \"Cantabrian Circle\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 25\n    },\n    \"druid\": {\n        \"meleeAttack\": 4,\n        \"defense\": 10,\n        \"armour\": 6,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"infantry\",\n        \"ability\": \"Druidic Fervour\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"catapult\": {\n        \"meleeAttack\": 0,\n        \"rangedAttack\": 24,\n        \"defense\": 19,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 4,\n        \"range\": \"ranged\",\n        \"type\": \"artillery\",\n        \"ability\": \"\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 40\n    }\n}",
-        "training": null
-      },
-      {
-        "isTraining": false,
-        "configString": "{\n    \"legionary\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Legionary Eagle\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 10\n    },\n    \"berserker\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Berserker Rage\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 10\n    },\n    \"pikemen\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"spearmen\",\n        \"ability\": \"Phalanx\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"hoplite\": {\n        \"meleeAttack\": 10,\n        \"rangedAttack\": 8,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 10,\n        \"speed\": 10,\n        \"range\": \"ranged\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Phalanx\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"javelin-skirmisher\": {\n        \"meleeAttack\": 8,\n        \"rangedAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"ranged\",\n        \"type\": \"missile infantry\",\n        \"ability\": \"Skirmisher Anti-Armour\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"elephant\": {\n        \"meleeAttack\": 10,\n        \"defense\": 12,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 12,\n        \"range\": \"melee\",\n        \"type\": \"cavalry\",\n        \"ability\": \"Elephant Amok\",\n        \"turnsToProduce\": 2,\n        \"cost\" : 50\n    },\n    \"horse_archer\": {\n        \"meleeAttack\": 4,\n        \"rangedAttack\": 14,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 14,\n        \"range\": \"ranged\",\n        \"type\": \"horse archer\",\n        \"ability\": \"Cantabrian Circle\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 25\n    },\n    \"druid\": {\n        \"meleeAttack\": 4,\n        \"defense\": 10,\n        \"armour\": 6,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"infantry\",\n        \"ability\": \"Druidic Fervour\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"catapult\": {\n        \"meleeAttack\": 0,\n        \"rangedAttack\": 24,\n        \"defense\": 19,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 4,\n        \"range\": \"ranged\",\n        \"type\": \"artillery\",\n        \"ability\": \"\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 40\n    }\n}",
-        "training": null
-      }
-    ],
-    "units": [{
-      "shieldDefense": 10,
-      "range": "melee",
-      "rangedAttack": 0,
-      "type": "heavy infantry",
-      "numTroops": 216,
-      "speed": 10,
-      "armour": 10,
-      "turnsToProduce": 1,
-      "meleeAttack": 10,
-      "movementPoints": 4,
-      "id": 30,
-      "morale": 156,
-      "ability": "Legionary Eagle",
+      "ability": "Cantabrian Circle",
       "defenseSkill": 10,
       "player": {
         "gold": 100000,
@@ -1412,7 +1421,7 @@
   {
     "wealth": 0,
     "taxRate": 0.15,
-    "name": "VI",
+    "name": "VIII",
     "factories": [
       {
         "isTraining": false,
@@ -1425,107 +1434,62 @@
         "training": null
       }
     ],
-    "units": [],
+    "units": [
+      {
+        "shieldDefense": 10,
+        "range": "melee",
+        "rangedAttack": 0,
+        "type": "cavalry",
+        "numTroops": 197,
+        "speed": 10,
+        "armour": 10,
+        "unitType": "elephant",
+        "turnsToProduce": 1,
+        "meleeAttack": 2,
+        "movementPoints": 4,
+        "id": 1,
+        "morale": 1,
+        "ability": "Elephant Amok",
+        "defenseSkill": 10,
+        "player": {
+          "gold": 100000,
+          "legionaryEaglePenaltyMap": {},
+          "moralePenalty": 0,
+          "faction": "Romans",
+          "id": 1
+        }
+      },
+      {
+        "shieldDefense": 10,
+        "range": "melee",
+        "rangedAttack": 0,
+        "type": "cavalry",
+        "numTroops": 200,
+        "speed": 10,
+        "armour": 10,
+        "unitType": "elephant",
+        "turnsToProduce": 1,
+        "meleeAttack": 2,
+        "movementPoints": 4,
+        "id": -1,
+        "morale": 1,
+        "ability": "Elephant Amok",
+        "defenseSkill": 10,
+        "player": {
+          "gold": 100000,
+          "legionaryEaglePenaltyMap": {},
+          "moralePenalty": 0,
+          "faction": "Romans",
+          "id": 1
+        }
+      }
+    ],
     "player": {
       "gold": 100000,
       "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
       "faction": "Romans",
       "id": 1
-    }
-  },
-  {
-    "wealth": 0,
-    "taxRate": 0.15,
-    "name": "X",
-    "factories": [
-      {
-        "isTraining": false,
-        "configString": "{\n    \"legionary\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Legionary Eagle\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 10\n    },\n    \"berserker\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Berserker Rage\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 10\n    },\n    \"pikemen\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"spearmen\",\n        \"ability\": \"Phalanx\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"hoplite\": {\n        \"meleeAttack\": 10,\n        \"rangedAttack\": 8,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 10,\n        \"speed\": 10,\n        \"range\": \"ranged\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Phalanx\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"javelin-skirmisher\": {\n        \"meleeAttack\": 8,\n        \"rangedAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"ranged\",\n        \"type\": \"missile infantry\",\n        \"ability\": \"Skirmisher Anti-Armour\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"elephant\": {\n        \"meleeAttack\": 10,\n        \"defense\": 12,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 12,\n        \"range\": \"melee\",\n        \"type\": \"cavalry\",\n        \"ability\": \"Elephant Amok\",\n        \"turnsToProduce\": 2,\n        \"cost\" : 50\n    },\n    \"horse_archer\": {\n        \"meleeAttack\": 4,\n        \"rangedAttack\": 14,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 14,\n        \"range\": \"ranged\",\n        \"type\": \"horse archer\",\n        \"ability\": \"Cantabrian Circle\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 25\n    },\n    \"druid\": {\n        \"meleeAttack\": 4,\n        \"defense\": 10,\n        \"armour\": 6,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"infantry\",\n        \"ability\": \"Druidic Fervour\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"catapult\": {\n        \"meleeAttack\": 0,\n        \"rangedAttack\": 24,\n        \"defense\": 19,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 4,\n        \"range\": \"ranged\",\n        \"type\": \"artillery\",\n        \"ability\": \"\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 40\n    }\n}",
-        "training": null
-      },
-      {
-        "isTraining": false,
-        "configString": "{\n    \"legionary\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Legionary Eagle\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 10\n    },\n    \"berserker\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Berserker Rage\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 10\n    },\n    \"pikemen\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"spearmen\",\n        \"ability\": \"Phalanx\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"hoplite\": {\n        \"meleeAttack\": 10,\n        \"rangedAttack\": 8,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 10,\n        \"speed\": 10,\n        \"range\": \"ranged\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Phalanx\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"javelin-skirmisher\": {\n        \"meleeAttack\": 8,\n        \"rangedAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"ranged\",\n        \"type\": \"missile infantry\",\n        \"ability\": \"Skirmisher Anti-Armour\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"elephant\": {\n        \"meleeAttack\": 10,\n        \"defense\": 12,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 12,\n        \"range\": \"melee\",\n        \"type\": \"cavalry\",\n        \"ability\": \"Elephant Amok\",\n        \"turnsToProduce\": 2,\n        \"cost\" : 50\n    },\n    \"horse_archer\": {\n        \"meleeAttack\": 4,\n        \"rangedAttack\": 14,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 14,\n        \"range\": \"ranged\",\n        \"type\": \"horse archer\",\n        \"ability\": \"Cantabrian Circle\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 25\n    },\n    \"druid\": {\n        \"meleeAttack\": 4,\n        \"defense\": 10,\n        \"armour\": 6,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"infantry\",\n        \"ability\": \"Druidic Fervour\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"catapult\": {\n        \"meleeAttack\": 0,\n        \"rangedAttack\": 24,\n        \"defense\": 19,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 4,\n        \"range\": \"ranged\",\n        \"type\": \"artillery\",\n        \"ability\": \"\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 40\n    }\n}",
-        "training": null
-      }
-    ],
-    "units": [{
-      "shieldDefense": 10,
-      "range": "melee",
-      "rangedAttack": 0,
-      "type": "heavy infantry",
-      "numTroops": 419,
-      "speed": 10,
-      "armour": 10,
-      "turnsToProduce": 1,
-      "meleeAttack": 10,
-      "movementPoints": 4,
-      "id": 32,
-      "morale": 100,
-      "ability": "Legionary Eagle",
-      "defenseSkill": 10,
-      "player": {
-        "gold": 100000,
-        "legionaryEaglePenaltyMap": {},
-        "moralePenalty": 0,
-        "faction": "Gauls",
-        "id": 3
-      }
-    }],
-    "player": {
-      "gold": 100000,
-      "legionaryEaglePenaltyMap": {},
-      "moralePenalty": 0,
-      "faction": "Gauls",
-      "id": 3
-    }
-  },
-  {
-    "wealth": 0,
-    "taxRate": 0.15,
-    "name": "XI",
-    "factories": [
-      {
-        "isTraining": false,
-        "configString": "{\n    \"legionary\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Legionary Eagle\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 10\n    },\n    \"berserker\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Berserker Rage\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 10\n    },\n    \"pikemen\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"spearmen\",\n        \"ability\": \"Phalanx\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"hoplite\": {\n        \"meleeAttack\": 10,\n        \"rangedAttack\": 8,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 10,\n        \"speed\": 10,\n        \"range\": \"ranged\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Phalanx\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"javelin-skirmisher\": {\n        \"meleeAttack\": 8,\n        \"rangedAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"ranged\",\n        \"type\": \"missile infantry\",\n        \"ability\": \"Skirmisher Anti-Armour\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"elephant\": {\n        \"meleeAttack\": 10,\n        \"defense\": 12,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 12,\n        \"range\": \"melee\",\n        \"type\": \"cavalry\",\n        \"ability\": \"Elephant Amok\",\n        \"turnsToProduce\": 2,\n        \"cost\" : 50\n    },\n    \"horse_archer\": {\n        \"meleeAttack\": 4,\n        \"rangedAttack\": 14,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 14,\n        \"range\": \"ranged\",\n        \"type\": \"horse archer\",\n        \"ability\": \"Cantabrian Circle\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 25\n    },\n    \"druid\": {\n        \"meleeAttack\": 4,\n        \"defense\": 10,\n        \"armour\": 6,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"infantry\",\n        \"ability\": \"Druidic Fervour\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"catapult\": {\n        \"meleeAttack\": 0,\n        \"rangedAttack\": 24,\n        \"defense\": 19,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 4,\n        \"range\": \"ranged\",\n        \"type\": \"artillery\",\n        \"ability\": \"\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 40\n    }\n}",
-        "training": null
-      },
-      {
-        "isTraining": false,
-        "configString": "{\n    \"legionary\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Legionary Eagle\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 10\n    },\n    \"berserker\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Berserker Rage\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 10\n    },\n    \"pikemen\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"spearmen\",\n        \"ability\": \"Phalanx\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"hoplite\": {\n        \"meleeAttack\": 10,\n        \"rangedAttack\": 8,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 10,\n        \"speed\": 10,\n        \"range\": \"ranged\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Phalanx\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"javelin-skirmisher\": {\n        \"meleeAttack\": 8,\n        \"rangedAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"ranged\",\n        \"type\": \"missile infantry\",\n        \"ability\": \"Skirmisher Anti-Armour\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"elephant\": {\n        \"meleeAttack\": 10,\n        \"defense\": 12,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 12,\n        \"range\": \"melee\",\n        \"type\": \"cavalry\",\n        \"ability\": \"Elephant Amok\",\n        \"turnsToProduce\": 2,\n        \"cost\" : 50\n    },\n    \"horse_archer\": {\n        \"meleeAttack\": 4,\n        \"rangedAttack\": 14,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 14,\n        \"range\": \"ranged\",\n        \"type\": \"horse archer\",\n        \"ability\": \"Cantabrian Circle\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 25\n    },\n    \"druid\": {\n        \"meleeAttack\": 4,\n        \"defense\": 10,\n        \"armour\": 6,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"infantry\",\n        \"ability\": \"Druidic Fervour\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"catapult\": {\n        \"meleeAttack\": 0,\n        \"rangedAttack\": 24,\n        \"defense\": 19,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 4,\n        \"range\": \"ranged\",\n        \"type\": \"artillery\",\n        \"ability\": \"\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 40\n    }\n}",
-        "training": null
-      }
-    ],
-    "units": [{
-      "shieldDefense": 10,
-      "range": "melee",
-      "rangedAttack": 0,
-      "type": "heavy infantry",
-      "numTroops": 248,
-      "speed": 10,
-      "armour": 10,
-      "turnsToProduce": 1,
-      "meleeAttack": 10,
-      "movementPoints": 4,
-      "id": 33,
-      "morale": 100,
-      "ability": "Legionary Eagle",
-      "defenseSkill": 10,
-      "player": {
-        "gold": 100000,
-        "legionaryEaglePenaltyMap": {},
-        "moralePenalty": 0,
-        "faction": "Gauls",
-        "id": 3
-      }
-    }],
-    "player": {
-      "gold": 100000,
-      "legionaryEaglePenaltyMap": {},
-      "moralePenalty": 0,
-      "faction": "Gauls",
-      "id": 3
     }
   },
   {
@@ -1549,13 +1513,14 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 39,
+      "numTroops": 286,
       "speed": 10,
       "armour": 10,
+      "unitType": "legionary",
       "turnsToProduce": 1,
       "meleeAttack": 10,
       "movementPoints": 4,
-      "id": 34,
+      "id": 31,
       "morale": 100,
       "ability": "Legionary Eagle",
       "defenseSkill": 10,
@@ -1563,22 +1528,22 @@
         "gold": 100000,
         "legionaryEaglePenaltyMap": {},
         "moralePenalty": 0,
-        "faction": "Amenians",
-        "id": 10
+        "faction": "Carthaginians",
+        "id": 2
       }
     }],
     "player": {
       "gold": 100000,
       "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
-      "faction": "Amenians",
-      "id": 10
+      "faction": "Carthaginians",
+      "id": 2
     }
   },
   {
     "wealth": 0,
     "taxRate": 0.15,
-    "name": "Aegyptus",
+    "name": "Africa Proconsularis",
     "factories": [
       {
         "isTraining": false,
@@ -1596,30 +1561,31 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 470,
+      "numTroops": 68,
       "speed": 10,
       "armour": 10,
+      "unitType": "legionary",
       "turnsToProduce": 1,
       "meleeAttack": 10,
       "movementPoints": 4,
-      "id": 35,
-      "morale": 147,
+      "id": 32,
+      "morale": 100,
       "ability": "Legionary Eagle",
       "defenseSkill": 10,
       "player": {
         "gold": 100000,
         "legionaryEaglePenaltyMap": {},
         "moralePenalty": 0,
-        "faction": "Numidians",
-        "id": 6
+        "faction": "Parthians",
+        "id": 11
       }
     }],
     "player": {
       "gold": 100000,
       "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
-      "faction": "Numidians",
-      "id": 6
+      "faction": "Parthians",
+      "id": 11
     }
   },
   {
@@ -1643,13 +1609,14 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 304,
+      "numTroops": 351,
       "speed": 10,
       "armour": 10,
+      "unitType": "legionary",
       "turnsToProduce": 1,
       "meleeAttack": 10,
       "movementPoints": 4,
-      "id": 36,
+      "id": 33,
       "morale": 100,
       "ability": "Legionary Eagle",
       "defenseSkill": 10,
@@ -1657,16 +1624,16 @@
         "gold": 100000,
         "legionaryEaglePenaltyMap": {},
         "moralePenalty": 0,
-        "faction": "Spanish",
-        "id": 5
+        "faction": "Romans",
+        "id": 1
       }
     }],
     "player": {
       "gold": 100000,
       "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
-      "faction": "Spanish",
-      "id": 5
+      "faction": "Romans",
+      "id": 1
     }
   },
   {
@@ -1690,13 +1657,14 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 499,
+      "numTroops": 471,
       "speed": 10,
       "armour": 10,
+      "unitType": "legionary",
       "turnsToProduce": 1,
       "meleeAttack": 10,
       "movementPoints": 4,
-      "id": 37,
+      "id": 34,
       "morale": 100,
       "ability": "Legionary Eagle",
       "defenseSkill": 10,
@@ -1704,16 +1672,16 @@
         "gold": 100000,
         "legionaryEaglePenaltyMap": {},
         "moralePenalty": 0,
-        "faction": "Macedonians",
-        "id": 14
+        "faction": "Thracians",
+        "id": 15
       }
     }],
     "player": {
       "gold": 100000,
       "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
-      "faction": "Macedonians",
-      "id": 14
+      "faction": "Thracians",
+      "id": 15
     }
   },
   {
@@ -1737,13 +1705,14 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 409,
+      "numTroops": 420,
       "speed": 10,
       "armour": 10,
+      "unitType": "legionary",
       "turnsToProduce": 1,
       "meleeAttack": 10,
       "movementPoints": 4,
-      "id": 38,
+      "id": 35,
       "morale": 100,
       "ability": "Legionary Eagle",
       "defenseSkill": 10,
@@ -1751,16 +1720,16 @@
         "gold": 100000,
         "legionaryEaglePenaltyMap": {},
         "moralePenalty": 0,
-        "faction": "Seleucid Empire",
-        "id": 8
+        "faction": "Thracians",
+        "id": 15
       }
     }],
     "player": {
       "gold": 100000,
       "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
-      "faction": "Seleucid Empire",
-      "id": 8
+      "faction": "Thracians",
+      "id": 15
     }
   },
   {
@@ -1784,13 +1753,14 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 466,
+      "numTroops": 369,
       "speed": 10,
       "armour": 10,
+      "unitType": "legionary",
       "turnsToProduce": 1,
       "meleeAttack": 10,
       "movementPoints": 4,
-      "id": 39,
+      "id": 36,
       "morale": 100,
       "ability": "Legionary Eagle",
       "defenseSkill": 10,
@@ -1798,16 +1768,16 @@
         "gold": 100000,
         "legionaryEaglePenaltyMap": {},
         "moralePenalty": 0,
-        "faction": "Macedonians",
-        "id": 14
+        "faction": "Egyptians",
+        "id": 7
       }
     }],
     "player": {
       "gold": 100000,
       "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
-      "faction": "Macedonians",
-      "id": 14
+      "faction": "Egyptians",
+      "id": 7
     }
   },
   {
@@ -1831,13 +1801,110 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 280,
+      "numTroops": 55,
       "speed": 10,
       "armour": 10,
+      "unitType": "legionary",
       "turnsToProduce": 1,
       "meleeAttack": 10,
       "movementPoints": 4,
-      "id": 40,
+      "id": 37,
+      "morale": 100,
+      "ability": "Legionary Eagle",
+      "defenseSkill": 10,
+      "player": {
+        "gold": 100000,
+        "legionaryEaglePenaltyMap": {},
+        "moralePenalty": 0,
+        "faction": "Gauls",
+        "id": 3
+      }
+    }],
+    "player": {
+      "gold": 100000,
+      "legionaryEaglePenaltyMap": {},
+      "moralePenalty": 0,
+      "faction": "Gauls",
+      "id": 3
+    }
+  },
+  {
+    "wealth": 0,
+    "taxRate": 0.15,
+    "name": "Armenia Mesopotamia",
+    "factories": [
+      {
+        "isTraining": false,
+        "configString": "{\n    \"legionary\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Legionary Eagle\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 10\n    },\n    \"berserker\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Berserker Rage\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 10\n    },\n    \"pikemen\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"spearmen\",\n        \"ability\": \"Phalanx\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"hoplite\": {\n        \"meleeAttack\": 10,\n        \"rangedAttack\": 8,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 10,\n        \"speed\": 10,\n        \"range\": \"ranged\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Phalanx\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"javelin-skirmisher\": {\n        \"meleeAttack\": 8,\n        \"rangedAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"ranged\",\n        \"type\": \"missile infantry\",\n        \"ability\": \"Skirmisher Anti-Armour\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"elephant\": {\n        \"meleeAttack\": 10,\n        \"defense\": 12,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 12,\n        \"range\": \"melee\",\n        \"type\": \"cavalry\",\n        \"ability\": \"Elephant Amok\",\n        \"turnsToProduce\": 2,\n        \"cost\" : 50\n    },\n    \"horse_archer\": {\n        \"meleeAttack\": 4,\n        \"rangedAttack\": 14,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 14,\n        \"range\": \"ranged\",\n        \"type\": \"horse archer\",\n        \"ability\": \"Cantabrian Circle\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 25\n    },\n    \"druid\": {\n        \"meleeAttack\": 4,\n        \"defense\": 10,\n        \"armour\": 6,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"infantry\",\n        \"ability\": \"Druidic Fervour\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"catapult\": {\n        \"meleeAttack\": 0,\n        \"rangedAttack\": 24,\n        \"defense\": 19,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 4,\n        \"range\": \"ranged\",\n        \"type\": \"artillery\",\n        \"ability\": \"\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 40\n    }\n}",
+        "training": null
+      },
+      {
+        "isTraining": false,
+        "configString": "{\n    \"legionary\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Legionary Eagle\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 10\n    },\n    \"berserker\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Berserker Rage\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 10\n    },\n    \"pikemen\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"spearmen\",\n        \"ability\": \"Phalanx\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"hoplite\": {\n        \"meleeAttack\": 10,\n        \"rangedAttack\": 8,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 10,\n        \"speed\": 10,\n        \"range\": \"ranged\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Phalanx\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"javelin-skirmisher\": {\n        \"meleeAttack\": 8,\n        \"rangedAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"ranged\",\n        \"type\": \"missile infantry\",\n        \"ability\": \"Skirmisher Anti-Armour\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"elephant\": {\n        \"meleeAttack\": 10,\n        \"defense\": 12,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 12,\n        \"range\": \"melee\",\n        \"type\": \"cavalry\",\n        \"ability\": \"Elephant Amok\",\n        \"turnsToProduce\": 2,\n        \"cost\" : 50\n    },\n    \"horse_archer\": {\n        \"meleeAttack\": 4,\n        \"rangedAttack\": 14,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 14,\n        \"range\": \"ranged\",\n        \"type\": \"horse archer\",\n        \"ability\": \"Cantabrian Circle\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 25\n    },\n    \"druid\": {\n        \"meleeAttack\": 4,\n        \"defense\": 10,\n        \"armour\": 6,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"infantry\",\n        \"ability\": \"Druidic Fervour\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"catapult\": {\n        \"meleeAttack\": 0,\n        \"rangedAttack\": 24,\n        \"defense\": 19,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 4,\n        \"range\": \"ranged\",\n        \"type\": \"artillery\",\n        \"ability\": \"\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 40\n    }\n}",
+        "training": null
+      }
+    ],
+    "units": [{
+      "shieldDefense": 10,
+      "range": "melee",
+      "rangedAttack": 0,
+      "type": "heavy infantry",
+      "numTroops": 319,
+      "speed": 10,
+      "armour": 10,
+      "unitType": "legionary",
+      "turnsToProduce": 1,
+      "meleeAttack": 10,
+      "movementPoints": 4,
+      "id": 38,
+      "morale": 100,
+      "ability": "Legionary Eagle",
+      "defenseSkill": 10,
+      "player": {
+        "gold": 100000,
+        "legionaryEaglePenaltyMap": {},
+        "moralePenalty": 0,
+        "faction": "Celtic Britons",
+        "id": 4
+      }
+    }],
+    "player": {
+      "gold": 100000,
+      "legionaryEaglePenaltyMap": {},
+      "moralePenalty": 0,
+      "faction": "Celtic Britons",
+      "id": 4
+    }
+  },
+  {
+    "wealth": 0,
+    "taxRate": 0.15,
+    "name": "Asia",
+    "factories": [
+      {
+        "isTraining": false,
+        "configString": "{\n    \"legionary\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Legionary Eagle\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 10\n    },\n    \"berserker\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Berserker Rage\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 10\n    },\n    \"pikemen\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"spearmen\",\n        \"ability\": \"Phalanx\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"hoplite\": {\n        \"meleeAttack\": 10,\n        \"rangedAttack\": 8,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 10,\n        \"speed\": 10,\n        \"range\": \"ranged\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Phalanx\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"javelin-skirmisher\": {\n        \"meleeAttack\": 8,\n        \"rangedAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"ranged\",\n        \"type\": \"missile infantry\",\n        \"ability\": \"Skirmisher Anti-Armour\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"elephant\": {\n        \"meleeAttack\": 10,\n        \"defense\": 12,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 12,\n        \"range\": \"melee\",\n        \"type\": \"cavalry\",\n        \"ability\": \"Elephant Amok\",\n        \"turnsToProduce\": 2,\n        \"cost\" : 50\n    },\n    \"horse_archer\": {\n        \"meleeAttack\": 4,\n        \"rangedAttack\": 14,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 14,\n        \"range\": \"ranged\",\n        \"type\": \"horse archer\",\n        \"ability\": \"Cantabrian Circle\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 25\n    },\n    \"druid\": {\n        \"meleeAttack\": 4,\n        \"defense\": 10,\n        \"armour\": 6,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"infantry\",\n        \"ability\": \"Druidic Fervour\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"catapult\": {\n        \"meleeAttack\": 0,\n        \"rangedAttack\": 24,\n        \"defense\": 19,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 4,\n        \"range\": \"ranged\",\n        \"type\": \"artillery\",\n        \"ability\": \"\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 40\n    }\n}",
+        "training": null
+      },
+      {
+        "isTraining": false,
+        "configString": "{\n    \"legionary\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Legionary Eagle\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 10\n    },\n    \"berserker\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Berserker Rage\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 10\n    },\n    \"pikemen\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"spearmen\",\n        \"ability\": \"Phalanx\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"hoplite\": {\n        \"meleeAttack\": 10,\n        \"rangedAttack\": 8,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 10,\n        \"speed\": 10,\n        \"range\": \"ranged\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Phalanx\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"javelin-skirmisher\": {\n        \"meleeAttack\": 8,\n        \"rangedAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"ranged\",\n        \"type\": \"missile infantry\",\n        \"ability\": \"Skirmisher Anti-Armour\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"elephant\": {\n        \"meleeAttack\": 10,\n        \"defense\": 12,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 12,\n        \"range\": \"melee\",\n        \"type\": \"cavalry\",\n        \"ability\": \"Elephant Amok\",\n        \"turnsToProduce\": 2,\n        \"cost\" : 50\n    },\n    \"horse_archer\": {\n        \"meleeAttack\": 4,\n        \"rangedAttack\": 14,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 14,\n        \"range\": \"ranged\",\n        \"type\": \"horse archer\",\n        \"ability\": \"Cantabrian Circle\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 25\n    },\n    \"druid\": {\n        \"meleeAttack\": 4,\n        \"defense\": 10,\n        \"armour\": 6,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"infantry\",\n        \"ability\": \"Druidic Fervour\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"catapult\": {\n        \"meleeAttack\": 0,\n        \"rangedAttack\": 24,\n        \"defense\": 19,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 4,\n        \"range\": \"ranged\",\n        \"type\": \"artillery\",\n        \"ability\": \"\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 40\n    }\n}",
+        "training": null
+      }
+    ],
+    "units": [{
+      "shieldDefense": 10,
+      "range": "melee",
+      "rangedAttack": 0,
+      "type": "heavy infantry",
+      "numTroops": 435,
+      "speed": 10,
+      "armour": 10,
+      "unitType": "legionary",
+      "turnsToProduce": 1,
+      "meleeAttack": 10,
+      "movementPoints": 4,
+      "id": 39,
       "morale": 100,
       "ability": "Legionary Eagle",
       "defenseSkill": 10,
@@ -1855,6 +1922,102 @@
       "moralePenalty": 0,
       "faction": "Parthians",
       "id": 11
+    }
+  },
+  {
+    "wealth": 0,
+    "taxRate": 0.15,
+    "name": "Baetica",
+    "factories": [
+      {
+        "isTraining": false,
+        "configString": "{\n    \"legionary\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Legionary Eagle\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 10\n    },\n    \"berserker\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Berserker Rage\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 10\n    },\n    \"pikemen\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"spearmen\",\n        \"ability\": \"Phalanx\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"hoplite\": {\n        \"meleeAttack\": 10,\n        \"rangedAttack\": 8,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 10,\n        \"speed\": 10,\n        \"range\": \"ranged\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Phalanx\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"javelin-skirmisher\": {\n        \"meleeAttack\": 8,\n        \"rangedAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"ranged\",\n        \"type\": \"missile infantry\",\n        \"ability\": \"Skirmisher Anti-Armour\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"elephant\": {\n        \"meleeAttack\": 10,\n        \"defense\": 12,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 12,\n        \"range\": \"melee\",\n        \"type\": \"cavalry\",\n        \"ability\": \"Elephant Amok\",\n        \"turnsToProduce\": 2,\n        \"cost\" : 50\n    },\n    \"horse_archer\": {\n        \"meleeAttack\": 4,\n        \"rangedAttack\": 14,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 14,\n        \"range\": \"ranged\",\n        \"type\": \"horse archer\",\n        \"ability\": \"Cantabrian Circle\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 25\n    },\n    \"druid\": {\n        \"meleeAttack\": 4,\n        \"defense\": 10,\n        \"armour\": 6,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"infantry\",\n        \"ability\": \"Druidic Fervour\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"catapult\": {\n        \"meleeAttack\": 0,\n        \"rangedAttack\": 24,\n        \"defense\": 19,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 4,\n        \"range\": \"ranged\",\n        \"type\": \"artillery\",\n        \"ability\": \"\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 40\n    }\n}",
+        "training": null
+      },
+      {
+        "isTraining": false,
+        "configString": "{\n    \"legionary\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Legionary Eagle\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 10\n    },\n    \"berserker\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Berserker Rage\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 10\n    },\n    \"pikemen\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"spearmen\",\n        \"ability\": \"Phalanx\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"hoplite\": {\n        \"meleeAttack\": 10,\n        \"rangedAttack\": 8,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 10,\n        \"speed\": 10,\n        \"range\": \"ranged\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Phalanx\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"javelin-skirmisher\": {\n        \"meleeAttack\": 8,\n        \"rangedAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"ranged\",\n        \"type\": \"missile infantry\",\n        \"ability\": \"Skirmisher Anti-Armour\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"elephant\": {\n        \"meleeAttack\": 10,\n        \"defense\": 12,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 12,\n        \"range\": \"melee\",\n        \"type\": \"cavalry\",\n        \"ability\": \"Elephant Amok\",\n        \"turnsToProduce\": 2,\n        \"cost\" : 50\n    },\n    \"horse_archer\": {\n        \"meleeAttack\": 4,\n        \"rangedAttack\": 14,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 14,\n        \"range\": \"ranged\",\n        \"type\": \"horse archer\",\n        \"ability\": \"Cantabrian Circle\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 25\n    },\n    \"druid\": {\n        \"meleeAttack\": 4,\n        \"defense\": 10,\n        \"armour\": 6,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"infantry\",\n        \"ability\": \"Druidic Fervour\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"catapult\": {\n        \"meleeAttack\": 0,\n        \"rangedAttack\": 24,\n        \"defense\": 19,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 4,\n        \"range\": \"ranged\",\n        \"type\": \"artillery\",\n        \"ability\": \"\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 40\n    }\n}",
+        "training": null
+      }
+    ],
+    "units": [{
+      "shieldDefense": 10,
+      "range": "melee",
+      "rangedAttack": 0,
+      "type": "heavy infantry",
+      "numTroops": 2,
+      "speed": 10,
+      "armour": 10,
+      "unitType": "legionary",
+      "turnsToProduce": 1,
+      "meleeAttack": 10,
+      "movementPoints": 4,
+      "id": 40,
+      "morale": 100,
+      "ability": "Legionary Eagle",
+      "defenseSkill": 10,
+      "player": {
+        "gold": 100000,
+        "legionaryEaglePenaltyMap": {},
+        "moralePenalty": 0,
+        "faction": "Greek City States",
+        "id": 13
+      }
+    }],
+    "player": {
+      "gold": 100000,
+      "legionaryEaglePenaltyMap": {},
+      "moralePenalty": 0,
+      "faction": "Greek City States",
+      "id": 13
+    }
+  },
+  {
+    "wealth": 0,
+    "taxRate": 0.15,
+    "name": "Belgica",
+    "factories": [
+      {
+        "isTraining": false,
+        "configString": "{\n    \"legionary\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Legionary Eagle\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 10\n    },\n    \"berserker\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Berserker Rage\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 10\n    },\n    \"pikemen\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"spearmen\",\n        \"ability\": \"Phalanx\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"hoplite\": {\n        \"meleeAttack\": 10,\n        \"rangedAttack\": 8,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 10,\n        \"speed\": 10,\n        \"range\": \"ranged\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Phalanx\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"javelin-skirmisher\": {\n        \"meleeAttack\": 8,\n        \"rangedAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"ranged\",\n        \"type\": \"missile infantry\",\n        \"ability\": \"Skirmisher Anti-Armour\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"elephant\": {\n        \"meleeAttack\": 10,\n        \"defense\": 12,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 12,\n        \"range\": \"melee\",\n        \"type\": \"cavalry\",\n        \"ability\": \"Elephant Amok\",\n        \"turnsToProduce\": 2,\n        \"cost\" : 50\n    },\n    \"horse_archer\": {\n        \"meleeAttack\": 4,\n        \"rangedAttack\": 14,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 14,\n        \"range\": \"ranged\",\n        \"type\": \"horse archer\",\n        \"ability\": \"Cantabrian Circle\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 25\n    },\n    \"druid\": {\n        \"meleeAttack\": 4,\n        \"defense\": 10,\n        \"armour\": 6,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"infantry\",\n        \"ability\": \"Druidic Fervour\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"catapult\": {\n        \"meleeAttack\": 0,\n        \"rangedAttack\": 24,\n        \"defense\": 19,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 4,\n        \"range\": \"ranged\",\n        \"type\": \"artillery\",\n        \"ability\": \"\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 40\n    }\n}",
+        "training": null
+      },
+      {
+        "isTraining": false,
+        "configString": "{\n    \"legionary\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Legionary Eagle\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 10\n    },\n    \"berserker\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Berserker Rage\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 10\n    },\n    \"pikemen\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"spearmen\",\n        \"ability\": \"Phalanx\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"hoplite\": {\n        \"meleeAttack\": 10,\n        \"rangedAttack\": 8,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 10,\n        \"speed\": 10,\n        \"range\": \"ranged\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Phalanx\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"javelin-skirmisher\": {\n        \"meleeAttack\": 8,\n        \"rangedAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"ranged\",\n        \"type\": \"missile infantry\",\n        \"ability\": \"Skirmisher Anti-Armour\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"elephant\": {\n        \"meleeAttack\": 10,\n        \"defense\": 12,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 12,\n        \"range\": \"melee\",\n        \"type\": \"cavalry\",\n        \"ability\": \"Elephant Amok\",\n        \"turnsToProduce\": 2,\n        \"cost\" : 50\n    },\n    \"horse_archer\": {\n        \"meleeAttack\": 4,\n        \"rangedAttack\": 14,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 14,\n        \"range\": \"ranged\",\n        \"type\": \"horse archer\",\n        \"ability\": \"Cantabrian Circle\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 25\n    },\n    \"druid\": {\n        \"meleeAttack\": 4,\n        \"defense\": 10,\n        \"armour\": 6,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"infantry\",\n        \"ability\": \"Druidic Fervour\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"catapult\": {\n        \"meleeAttack\": 0,\n        \"rangedAttack\": 24,\n        \"defense\": 19,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 4,\n        \"range\": \"ranged\",\n        \"type\": \"artillery\",\n        \"ability\": \"\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 40\n    }\n}",
+        "training": null
+      }
+    ],
+    "units": [{
+      "shieldDefense": 10,
+      "range": "melee",
+      "rangedAttack": 0,
+      "type": "heavy infantry",
+      "numTroops": 317,
+      "speed": 10,
+      "armour": 10,
+      "unitType": "legionary",
+      "turnsToProduce": 1,
+      "meleeAttack": 10,
+      "movementPoints": 4,
+      "id": 41,
+      "morale": 100,
+      "ability": "Legionary Eagle",
+      "defenseSkill": 10,
+      "player": {
+        "gold": 100000,
+        "legionaryEaglePenaltyMap": {},
+        "moralePenalty": 0,
+        "faction": "Romans",
+        "id": 1
+      }
+    }],
+    "player": {
+      "gold": 100000,
+      "legionaryEaglePenaltyMap": {},
+      "moralePenalty": 0,
+      "faction": "Romans",
+      "id": 1
     }
   },
   {
@@ -1878,30 +2041,31 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 243,
+      "numTroops": 113,
       "speed": 10,
       "armour": 10,
+      "unitType": "legionary",
       "turnsToProduce": 1,
       "meleeAttack": 10,
       "movementPoints": 4,
-      "id": 41,
-      "morale": 147,
+      "id": 42,
+      "morale": 100,
       "ability": "Legionary Eagle",
       "defenseSkill": 10,
       "player": {
         "gold": 100000,
         "legionaryEaglePenaltyMap": {},
         "moralePenalty": 0,
-        "faction": "Numidians",
-        "id": 6
+        "faction": "Carthaginians",
+        "id": 2
       }
     }],
     "player": {
       "gold": 100000,
       "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
-      "faction": "Numidians",
-      "id": 6
+      "faction": "Carthaginians",
+      "id": 2
     }
   },
   {
@@ -1925,13 +2089,14 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 318,
+      "numTroops": 257,
       "speed": 10,
       "armour": 10,
+      "unitType": "legionary",
       "turnsToProduce": 1,
       "meleeAttack": 10,
       "movementPoints": 4,
-      "id": 42,
+      "id": 43,
       "morale": 100,
       "ability": "Legionary Eagle",
       "defenseSkill": 10,
@@ -1939,16 +2104,16 @@
         "gold": 100000,
         "legionaryEaglePenaltyMap": {},
         "moralePenalty": 0,
-        "faction": "Amenians",
-        "id": 10
+        "faction": "Spanish",
+        "id": 5
       }
     }],
     "player": {
       "gold": 100000,
       "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
-      "faction": "Amenians",
-      "id": 10
+      "faction": "Spanish",
+      "id": 5
     }
   },
   {
@@ -1972,13 +2137,14 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 16,
+      "numTroops": 106,
       "speed": 10,
       "armour": 10,
+      "unitType": "legionary",
       "turnsToProduce": 1,
       "meleeAttack": 10,
       "movementPoints": 4,
-      "id": 43,
+      "id": 44,
       "morale": 100,
       "ability": "Legionary Eagle",
       "defenseSkill": 10,
@@ -1986,22 +2152,22 @@
         "gold": 100000,
         "legionaryEaglePenaltyMap": {},
         "moralePenalty": 0,
-        "faction": "Carthaginians",
-        "id": 2
+        "faction": "Celtic Britons",
+        "id": 4
       }
     }],
     "player": {
       "gold": 100000,
       "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
-      "faction": "Carthaginians",
-      "id": 2
+      "faction": "Celtic Britons",
+      "id": 4
     }
   },
   {
     "wealth": 0,
     "taxRate": 0.15,
-    "name": "Cyprus",
+    "name": "Creta et Cyrene",
     "factories": [
       {
         "isTraining": false,
@@ -2019,30 +2185,31 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 46,
+      "numTroops": 406,
       "speed": 10,
       "armour": 10,
+      "unitType": "legionary",
       "turnsToProduce": 1,
       "meleeAttack": 10,
       "movementPoints": 4,
-      "id": 44,
-      "morale": 109,
+      "id": 45,
+      "morale": 100,
       "ability": "Legionary Eagle",
       "defenseSkill": 10,
       "player": {
         "gold": 100000,
         "legionaryEaglePenaltyMap": {},
         "moralePenalty": 0,
-        "faction": "Celtic Britons",
-        "id": 4
+        "faction": "Macedonians",
+        "id": 14
       }
     }],
     "player": {
       "gold": 100000,
       "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
-      "faction": "Celtic Britons",
-      "id": 4
+      "faction": "Macedonians",
+      "id": 14
     }
   },
   {
@@ -2066,13 +2233,14 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 139,
+      "numTroops": 267,
       "speed": 10,
       "armour": 10,
+      "unitType": "legionary",
       "turnsToProduce": 1,
       "meleeAttack": 10,
       "movementPoints": 4,
-      "id": 45,
+      "id": 46,
       "morale": 100,
       "ability": "Legionary Eagle",
       "defenseSkill": 10,
@@ -2080,22 +2248,22 @@
         "gold": 100000,
         "legionaryEaglePenaltyMap": {},
         "moralePenalty": 0,
-        "faction": "Spanish",
-        "id": 5
+        "faction": "Pontus",
+        "id": 9
       }
     }],
     "player": {
       "gold": 100000,
       "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
-      "faction": "Spanish",
-      "id": 5
+      "faction": "Pontus",
+      "id": 9
     }
   },
   {
     "wealth": 0,
     "taxRate": 0.15,
-    "name": "Germania Inferior",
+    "name": "Dalmatia",
     "factories": [
       {
         "isTraining": false,
@@ -2108,7 +2276,78 @@
         "training": null
       }
     ],
-    "units": [],
+    "units": [{
+      "shieldDefense": 10,
+      "range": "melee",
+      "rangedAttack": 0,
+      "type": "heavy infantry",
+      "numTroops": 125,
+      "speed": 10,
+      "armour": 10,
+      "unitType": "legionary",
+      "turnsToProduce": 1,
+      "meleeAttack": 10,
+      "movementPoints": 4,
+      "id": 47,
+      "morale": 100,
+      "ability": "Legionary Eagle",
+      "defenseSkill": 10,
+      "player": {
+        "gold": 100000,
+        "legionaryEaglePenaltyMap": {},
+        "moralePenalty": 0,
+        "faction": "Numidians",
+        "id": 6
+      }
+    }],
+    "player": {
+      "gold": 100000,
+      "legionaryEaglePenaltyMap": {},
+      "moralePenalty": 0,
+      "faction": "Numidians",
+      "id": 6
+    }
+  },
+  {
+    "wealth": 0,
+    "taxRate": 0.15,
+    "name": "Galatia et Cappadocia",
+    "factories": [
+      {
+        "isTraining": false,
+        "configString": "{\n    \"legionary\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Legionary Eagle\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 10\n    },\n    \"berserker\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Berserker Rage\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 10\n    },\n    \"pikemen\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"spearmen\",\n        \"ability\": \"Phalanx\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"hoplite\": {\n        \"meleeAttack\": 10,\n        \"rangedAttack\": 8,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 10,\n        \"speed\": 10,\n        \"range\": \"ranged\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Phalanx\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"javelin-skirmisher\": {\n        \"meleeAttack\": 8,\n        \"rangedAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"ranged\",\n        \"type\": \"missile infantry\",\n        \"ability\": \"Skirmisher Anti-Armour\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"elephant\": {\n        \"meleeAttack\": 10,\n        \"defense\": 12,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 12,\n        \"range\": \"melee\",\n        \"type\": \"cavalry\",\n        \"ability\": \"Elephant Amok\",\n        \"turnsToProduce\": 2,\n        \"cost\" : 50\n    },\n    \"horse_archer\": {\n        \"meleeAttack\": 4,\n        \"rangedAttack\": 14,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 14,\n        \"range\": \"ranged\",\n        \"type\": \"horse archer\",\n        \"ability\": \"Cantabrian Circle\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 25\n    },\n    \"druid\": {\n        \"meleeAttack\": 4,\n        \"defense\": 10,\n        \"armour\": 6,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"infantry\",\n        \"ability\": \"Druidic Fervour\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"catapult\": {\n        \"meleeAttack\": 0,\n        \"rangedAttack\": 24,\n        \"defense\": 19,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 4,\n        \"range\": \"ranged\",\n        \"type\": \"artillery\",\n        \"ability\": \"\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 40\n    }\n}",
+        "training": null
+      },
+      {
+        "isTraining": false,
+        "configString": "{\n    \"legionary\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Legionary Eagle\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 10\n    },\n    \"berserker\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Berserker Rage\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 10\n    },\n    \"pikemen\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"spearmen\",\n        \"ability\": \"Phalanx\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"hoplite\": {\n        \"meleeAttack\": 10,\n        \"rangedAttack\": 8,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 10,\n        \"speed\": 10,\n        \"range\": \"ranged\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Phalanx\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"javelin-skirmisher\": {\n        \"meleeAttack\": 8,\n        \"rangedAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"ranged\",\n        \"type\": \"missile infantry\",\n        \"ability\": \"Skirmisher Anti-Armour\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"elephant\": {\n        \"meleeAttack\": 10,\n        \"defense\": 12,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 12,\n        \"range\": \"melee\",\n        \"type\": \"cavalry\",\n        \"ability\": \"Elephant Amok\",\n        \"turnsToProduce\": 2,\n        \"cost\" : 50\n    },\n    \"horse_archer\": {\n        \"meleeAttack\": 4,\n        \"rangedAttack\": 14,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 14,\n        \"range\": \"ranged\",\n        \"type\": \"horse archer\",\n        \"ability\": \"Cantabrian Circle\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 25\n    },\n    \"druid\": {\n        \"meleeAttack\": 4,\n        \"defense\": 10,\n        \"armour\": 6,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"infantry\",\n        \"ability\": \"Druidic Fervour\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"catapult\": {\n        \"meleeAttack\": 0,\n        \"rangedAttack\": 24,\n        \"defense\": 19,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 4,\n        \"range\": \"ranged\",\n        \"type\": \"artillery\",\n        \"ability\": \"\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 40\n    }\n}",
+        "training": null
+      }
+    ],
+    "units": [{
+      "shieldDefense": 10,
+      "range": "melee",
+      "rangedAttack": 0,
+      "type": "heavy infantry",
+      "numTroops": 442,
+      "speed": 10,
+      "armour": 10,
+      "unitType": "legionary",
+      "turnsToProduce": 1,
+      "meleeAttack": 10,
+      "movementPoints": 4,
+      "id": 48,
+      "morale": 100,
+      "ability": "Legionary Eagle",
+      "defenseSkill": 10,
+      "player": {
+        "gold": 100000,
+        "legionaryEaglePenaltyMap": {},
+        "moralePenalty": 0,
+        "faction": "Romans",
+        "id": 1
+      }
+    }],
     "player": {
       "gold": 100000,
       "legionaryEaglePenaltyMap": {},
@@ -2138,13 +2377,14 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 88,
+      "numTroops": 166,
       "speed": 10,
       "armour": 10,
+      "unitType": "legionary",
       "turnsToProduce": 1,
       "meleeAttack": 10,
       "movementPoints": 4,
-      "id": 47,
+      "id": 49,
       "morale": 100,
       "ability": "Legionary Eagle",
       "defenseSkill": 10,
@@ -2152,16 +2392,16 @@
         "gold": 100000,
         "legionaryEaglePenaltyMap": {},
         "moralePenalty": 0,
-        "faction": "Greek City States",
-        "id": 13
+        "faction": "Thracians",
+        "id": 15
       }
     }],
     "player": {
       "gold": 100000,
       "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
-      "faction": "Greek City States",
-      "id": 13
+      "faction": "Thracians",
+      "id": 15
     }
   },
   {
@@ -2185,103 +2425,10 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 151,
+      "numTroops": 112,
       "speed": 10,
       "armour": 10,
-      "turnsToProduce": 1,
-      "meleeAttack": 10,
-      "movementPoints": 4,
-      "id": 48,
-      "morale": 100,
-      "ability": "Legionary Eagle",
-      "defenseSkill": 10,
-      "player": {
-        "gold": 100000,
-        "legionaryEaglePenaltyMap": {},
-        "moralePenalty": 0,
-        "faction": "Carthaginians",
-        "id": 2
-      }
-    }],
-    "player": {
-      "gold": 100000,
-      "legionaryEaglePenaltyMap": {},
-      "moralePenalty": 0,
-      "faction": "Carthaginians",
-      "id": 2
-    }
-  },
-  {
-    "wealth": 0,
-    "taxRate": 0.15,
-    "name": "II",
-    "factories": [
-      {
-        "isTraining": false,
-        "configString": "{\n    \"legionary\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Legionary Eagle\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 10\n    },\n    \"berserker\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Berserker Rage\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 10\n    },\n    \"pikemen\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"spearmen\",\n        \"ability\": \"Phalanx\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"hoplite\": {\n        \"meleeAttack\": 10,\n        \"rangedAttack\": 8,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 10,\n        \"speed\": 10,\n        \"range\": \"ranged\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Phalanx\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"javelin-skirmisher\": {\n        \"meleeAttack\": 8,\n        \"rangedAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"ranged\",\n        \"type\": \"missile infantry\",\n        \"ability\": \"Skirmisher Anti-Armour\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"elephant\": {\n        \"meleeAttack\": 10,\n        \"defense\": 12,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 12,\n        \"range\": \"melee\",\n        \"type\": \"cavalry\",\n        \"ability\": \"Elephant Amok\",\n        \"turnsToProduce\": 2,\n        \"cost\" : 50\n    },\n    \"horse_archer\": {\n        \"meleeAttack\": 4,\n        \"rangedAttack\": 14,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 14,\n        \"range\": \"ranged\",\n        \"type\": \"horse archer\",\n        \"ability\": \"Cantabrian Circle\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 25\n    },\n    \"druid\": {\n        \"meleeAttack\": 4,\n        \"defense\": 10,\n        \"armour\": 6,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"infantry\",\n        \"ability\": \"Druidic Fervour\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"catapult\": {\n        \"meleeAttack\": 0,\n        \"rangedAttack\": 24,\n        \"defense\": 19,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 4,\n        \"range\": \"ranged\",\n        \"type\": \"artillery\",\n        \"ability\": \"\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 40\n    }\n}",
-        "training": null
-      },
-      {
-        "isTraining": false,
-        "configString": "{\n    \"legionary\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Legionary Eagle\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 10\n    },\n    \"berserker\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Berserker Rage\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 10\n    },\n    \"pikemen\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"spearmen\",\n        \"ability\": \"Phalanx\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"hoplite\": {\n        \"meleeAttack\": 10,\n        \"rangedAttack\": 8,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 10,\n        \"speed\": 10,\n        \"range\": \"ranged\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Phalanx\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"javelin-skirmisher\": {\n        \"meleeAttack\": 8,\n        \"rangedAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"ranged\",\n        \"type\": \"missile infantry\",\n        \"ability\": \"Skirmisher Anti-Armour\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"elephant\": {\n        \"meleeAttack\": 10,\n        \"defense\": 12,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 12,\n        \"range\": \"melee\",\n        \"type\": \"cavalry\",\n        \"ability\": \"Elephant Amok\",\n        \"turnsToProduce\": 2,\n        \"cost\" : 50\n    },\n    \"horse_archer\": {\n        \"meleeAttack\": 4,\n        \"rangedAttack\": 14,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 14,\n        \"range\": \"ranged\",\n        \"type\": \"horse archer\",\n        \"ability\": \"Cantabrian Circle\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 25\n    },\n    \"druid\": {\n        \"meleeAttack\": 4,\n        \"defense\": 10,\n        \"armour\": 6,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"infantry\",\n        \"ability\": \"Druidic Fervour\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"catapult\": {\n        \"meleeAttack\": 0,\n        \"rangedAttack\": 24,\n        \"defense\": 19,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 4,\n        \"range\": \"ranged\",\n        \"type\": \"artillery\",\n        \"ability\": \"\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 40\n    }\n}",
-        "training": null
-      }
-    ],
-    "units": [{
-      "shieldDefense": 10,
-      "range": "melee",
-      "rangedAttack": 0,
-      "type": "heavy infantry",
-      "numTroops": 166,
-      "speed": 10,
-      "armour": 10,
-      "turnsToProduce": 1,
-      "meleeAttack": 10,
-      "movementPoints": 4,
-      "id": 49,
-      "morale": 100,
-      "ability": "Legionary Eagle",
-      "defenseSkill": 10,
-      "player": {
-        "gold": 100000,
-        "legionaryEaglePenaltyMap": {},
-        "moralePenalty": 0,
-        "faction": "Parthians",
-        "id": 11
-      }
-    }],
-    "player": {
-      "gold": 100000,
-      "legionaryEaglePenaltyMap": {},
-      "moralePenalty": 0,
-      "faction": "Parthians",
-      "id": 11
-    }
-  },
-  {
-    "wealth": 0,
-    "taxRate": 0.15,
-    "name": "III",
-    "factories": [
-      {
-        "isTraining": false,
-        "configString": "{\n    \"legionary\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Legionary Eagle\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 10\n    },\n    \"berserker\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Berserker Rage\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 10\n    },\n    \"pikemen\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"spearmen\",\n        \"ability\": \"Phalanx\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"hoplite\": {\n        \"meleeAttack\": 10,\n        \"rangedAttack\": 8,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 10,\n        \"speed\": 10,\n        \"range\": \"ranged\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Phalanx\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"javelin-skirmisher\": {\n        \"meleeAttack\": 8,\n        \"rangedAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"ranged\",\n        \"type\": \"missile infantry\",\n        \"ability\": \"Skirmisher Anti-Armour\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"elephant\": {\n        \"meleeAttack\": 10,\n        \"defense\": 12,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 12,\n        \"range\": \"melee\",\n        \"type\": \"cavalry\",\n        \"ability\": \"Elephant Amok\",\n        \"turnsToProduce\": 2,\n        \"cost\" : 50\n    },\n    \"horse_archer\": {\n        \"meleeAttack\": 4,\n        \"rangedAttack\": 14,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 14,\n        \"range\": \"ranged\",\n        \"type\": \"horse archer\",\n        \"ability\": \"Cantabrian Circle\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 25\n    },\n    \"druid\": {\n        \"meleeAttack\": 4,\n        \"defense\": 10,\n        \"armour\": 6,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"infantry\",\n        \"ability\": \"Druidic Fervour\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"catapult\": {\n        \"meleeAttack\": 0,\n        \"rangedAttack\": 24,\n        \"defense\": 19,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 4,\n        \"range\": \"ranged\",\n        \"type\": \"artillery\",\n        \"ability\": \"\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 40\n    }\n}",
-        "training": null
-      },
-      {
-        "isTraining": false,
-        "configString": "{\n    \"legionary\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Legionary Eagle\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 10\n    },\n    \"berserker\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Berserker Rage\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 10\n    },\n    \"pikemen\": {\n        \"meleeAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"spearmen\",\n        \"ability\": \"Phalanx\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"hoplite\": {\n        \"meleeAttack\": 10,\n        \"rangedAttack\": 8,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 10,\n        \"speed\": 10,\n        \"range\": \"ranged\",\n        \"type\": \"heavy infantry\",\n        \"ability\": \"Phalanx\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"javelin-skirmisher\": {\n        \"meleeAttack\": 8,\n        \"rangedAttack\": 10,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 10,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"ranged\",\n        \"type\": \"missile infantry\",\n        \"ability\": \"Skirmisher Anti-Armour\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"elephant\": {\n        \"meleeAttack\": 10,\n        \"defense\": 12,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 12,\n        \"range\": \"melee\",\n        \"type\": \"cavalry\",\n        \"ability\": \"Elephant Amok\",\n        \"turnsToProduce\": 2,\n        \"cost\" : 50\n    },\n    \"horse_archer\": {\n        \"meleeAttack\": 4,\n        \"rangedAttack\": 14,\n        \"defense\": 10,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 14,\n        \"range\": \"ranged\",\n        \"type\": \"horse archer\",\n        \"ability\": \"Cantabrian Circle\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 25\n    },\n    \"druid\": {\n        \"meleeAttack\": 4,\n        \"defense\": 10,\n        \"armour\": 6,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 10,\n        \"range\": \"melee\",\n        \"type\": \"infantry\",\n        \"ability\": \"Druidic Fervour\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 15\n    },\n    \"catapult\": {\n        \"meleeAttack\": 0,\n        \"rangedAttack\": 24,\n        \"defense\": 19,\n        \"armour\": 10,\n        \"shield\": 0,\n        \"morale\": 100,\n        \"speed\": 4,\n        \"range\": \"ranged\",\n        \"type\": \"artillery\",\n        \"ability\": \"\",\n        \"turnsToProduce\": 1,\n        \"cost\" : 40\n    }\n}",
-        "training": null
-      }
-    ],
-    "units": [{
-      "shieldDefense": 10,
-      "range": "melee",
-      "rangedAttack": 0,
-      "type": "heavy infantry",
-      "numTroops": 431,
-      "speed": 10,
-      "armour": 10,
+      "unitType": "legionary",
       "turnsToProduce": 1,
       "meleeAttack": 10,
       "movementPoints": 4,
@@ -2293,16 +2440,16 @@
         "gold": 100000,
         "legionaryEaglePenaltyMap": {},
         "moralePenalty": 0,
-        "faction": "Pontus",
-        "id": 9
+        "faction": "Egyptians",
+        "id": 7
       }
     }],
     "player": {
       "gold": 100000,
       "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
-      "faction": "Pontus",
-      "id": 9
+      "faction": "Egyptians",
+      "id": 7
     }
   },
   {
@@ -2326,9 +2473,10 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 54,
+      "numTroops": 476,
       "speed": 10,
       "armour": 10,
+      "unitType": "legionary",
       "turnsToProduce": 1,
       "meleeAttack": 10,
       "movementPoints": 4,
@@ -2368,35 +2516,13 @@
         "training": null
       }
     ],
-    "units": [{
-      "shieldDefense": 10,
-      "range": "melee",
-      "rangedAttack": 0,
-      "type": "heavy infantry",
-      "numTroops": 314,
-      "speed": 10,
-      "armour": 10,
-      "turnsToProduce": 1,
-      "meleeAttack": 10,
-      "movementPoints": 4,
-      "id": 52,
-      "morale": 100,
-      "ability": "Legionary Eagle",
-      "defenseSkill": 10,
-      "player": {
-        "gold": 100000,
-        "legionaryEaglePenaltyMap": {},
-        "moralePenalty": 0,
-        "faction": "Germanics",
-        "id": 12
-      }
-    }],
+    "units": [],
     "player": {
       "gold": 100000,
       "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
-      "faction": "Germanics",
-      "id": 12
+      "faction": "Romans",
+      "id": 1
     }
   },
   {
@@ -2420,9 +2546,10 @@
       "range": "melee",
       "rangedAttack": 0,
       "type": "heavy infantry",
-      "numTroops": 309,
+      "numTroops": 147,
       "speed": 10,
       "armour": 10,
+      "unitType": "legionary",
       "turnsToProduce": 1,
       "meleeAttack": 10,
       "movementPoints": 4,
@@ -2434,16 +2561,16 @@
         "gold": 100000,
         "legionaryEaglePenaltyMap": {},
         "moralePenalty": 0,
-        "faction": "Seleucid Empire",
-        "id": 8
+        "faction": "Egyptians",
+        "id": 7
       }
     }],
     "player": {
       "gold": 100000,
       "legionaryEaglePenaltyMap": {},
       "moralePenalty": 0,
-      "faction": "Seleucid Empire",
-      "id": 8
+      "faction": "Egyptians",
+      "id": 7
     }
   }
 ]
