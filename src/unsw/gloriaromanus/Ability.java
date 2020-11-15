@@ -42,11 +42,17 @@ public abstract class Ability {
             case "Legionary Eagle": processLegionaryEagle(u); break;
             case "Berserker Rage": processBerserkerRage(u); break;
             case "Phalanx": processPhalanx(u); break;
-            case "Druidic Fervour":
+        }
+    }
+
+    public static void processSkirmishAbility(Unit invadingUnit, Unit defendingUnit) {
+        switch (invadingUnit.getAbility()) {
+            case "Cantabrian Circle" : processCantabrianCircle(invadingUnit, defendingUnit); break;
+            case "Druidic Fervour" : processDruidicFervour(invadingUnit);
         }
 
-        if (u.getRange().equals("melee") && u.getType().equals("cavalry")) {
-            processHeroicCharge(u);
+        if (invadingUnit.getRange().equals("melee") && invadingUnit.getType().equals("cavalry")) {
+            processHeroicCharge(invadingUnit);
         }
     }
 
@@ -54,12 +60,18 @@ public abstract class Ability {
         switch (u.getAbility()) {
             case "Legionary Eagle": restoreLegionaryEagle(u); break;
             case "Berserker Rage": restoreBerserkerRage(u); break;
-            case "Phalanx": restorePhalanx(u); break;
-            case "Druidic Fervour":
+            case "Phalanx": restorePhalanx(u);
+        } 
+    }
+
+    public static void restoreSkirmishAbility(Unit invadingUnit, Unit defendingUnit) {
+        switch (invadingUnit.getAbility()) {
+            case "Cantabrian Circle" : restoreCantabrianCircle(invadingUnit, defendingUnit);
+            case "Druidic Fervour" : restoreDruidicFervour(invadingUnit);
         }
 
-        if (u.getRange().equals("melee") && u.getType().equals("cavalry")) {
-            restoreHeroicCharge(u);
+        if (invadingUnit.getRange().equals("melee") && invadingUnit.getType().equals("cavalry")) {
+            restoreHeroicCharge(invadingUnit);
         }
     }
 
@@ -193,15 +205,54 @@ public abstract class Ability {
     }
 
     public static void processCantabrianCircle(Unit horseArcher, Unit missileUnit) {
-        if (horseArcher.getAbility().equals("Cantabrian Circle") && missileUnit.getType().startsWith("missile")) {
+        if (missileUnit.getType().startsWith("missile")) {
             missileUnit.setRangedAttack(missileUnit.getRangedAttack() / 2);
         } 
     }
 
     public static void restoreCantabrianCircle(Unit horseArcher, Unit missileUnit) {
-        if (horseArcher.getAbility().equals("Cantabrian Circle") && missileUnit.getType().startsWith("missile")) {
+        if (missileUnit.getType().startsWith("missile")) {
             missileUnit.setRangedAttack(missileUnit.getRangedAttack() * 2);
         }
+    }
+
+    public static void processDruidicFervour(Unit druid) {
+        int numDruids = countDruidUnit(getUnits(druid));
+     
+        for (Unit u : getUnits(druid)) {
+            u.addMorale(u.getMorale() * (numDruids * 0.1));
+        }
+
+        for (Unit u : getOtherUnits(druid)) {
+            u.minusMorale(u.getMorale() * (numDruids * 0.05));
+        }
+    }
+
+    private static void restoreDruidicFervour(Unit druid) {
+        int numDruids = countDruidUnit(getUnits(druid));
+     
+        for (Unit u : getUnits(druid)) {
+            u.addMorale(u.getMorale() / (numDruids * 0.1));
+        }
+
+        for (Unit u : getOtherUnits(druid)) {
+            u.minusMorale(u.getMorale() / (numDruids * 0.05));
+        }
+    }
+
+    private static int countDruidUnit(ArrayList<Unit> units) {
+        int counter = 0;
+        for (Unit u : units) {
+            if (u.getAbility().equals("Druidic Fervour")) {
+                counter++;
+            }
+        }
+
+        if (counter > 5) {
+            return 5;
+        }
+
+        return counter;
     }
 
     private static ArrayList<Unit> getUnits(Unit u) {

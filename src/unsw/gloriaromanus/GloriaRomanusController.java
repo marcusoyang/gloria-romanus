@@ -295,8 +295,7 @@ public class GloriaRomanusController{
         enemy = enemyProvince.getUnits().get(0);
       }
 
-      Ability.processCantabrianCircle(human, enemy);
-      Ability.processCantabrianCircle(enemy, human);
+      initiateSkirmishAbilities(human, enemy);
       
       Skirmish s = new Skirmish(human, enemy, engagementIndex, invadingList);
       
@@ -315,8 +314,7 @@ public class GloriaRomanusController{
         s.start(getEngagementType(human, enemy));
       }
 
-      Ability.restoreCantabrianCircle(human, enemy);
-      Ability.restoreCantabrianCircle(enemy, human);
+      restoreSkirmishAbilities(human, enemy);
 
       // Skirmish should have finished. we check the result of the skirmish.
       battleResult = checkSkirmishResult(s, enemyProvince, enemy, invadingList, human, battleResult, routedList);
@@ -408,6 +406,17 @@ public class GloriaRomanusController{
   private void restoreAbilities(ArrayList<Unit> invadingList, ArrayList<Unit> defendingList) {
     Ability.restore(invadingList);
     Ability.restore(defendingList);
+  }
+
+  private void initiateSkirmishAbilities(Unit human, Unit enemy) {
+    Ability.processSkirmishAbility(human, enemy);
+    Ability.processSkirmishAbility(enemy, human);
+  
+  }
+
+  private void restoreSkirmishAbilities(Unit human, Unit enemy) {
+    Ability.restoreSkirmishAbility(human, enemy);
+    Ability.restoreSkirmishAbility(enemy, human);
   }
 
   @FXML
