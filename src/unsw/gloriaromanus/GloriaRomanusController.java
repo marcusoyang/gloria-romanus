@@ -94,6 +94,7 @@ public class GloriaRomanusController{
   private ArrayList<Player> players;
   private ArrayList<String> factions;
   private ArrayList<Province> provinces;
+  private ArrayList<Integer> victoryCondition;
   private int currentPlayerID;
   private int currentYear;
   private String filename;
@@ -112,12 +113,15 @@ public class GloriaRomanusController{
   private StartScreen startScreen;
   private RecruitScreen recruitScreen;
   private InvadeScreen invadeScreen;
+  private LostScreen lostScreen;
   private Audio audio;
 
   @FXML
   private void initialize() throws JsonParseException, JsonMappingException, IOException {
     
     filename = DEFAULT_FILENAME;  // Default prefix for save filename.
+
+    initializeVictoryCondition();
 
     initializeVolumeSlider();
     provinces = new ArrayList<Province>();
@@ -128,6 +132,15 @@ public class GloriaRomanusController{
 
     currentlySelectedHumanProvince = null;
     currentlySelectedEnemyProvince = null;  
+  }
+
+  private void initializeVictoryCondition() {
+    victoryCondition = new ArrayList<Integer>();
+    Random r = new Random();
+    int conjunction1 = r.nextInt(1);
+    int conjunction2 = r.nextInt(1);
+    int order = r.nextInt(5);
+
   }
 
   public void newGame(Integer numPlayers) throws IOException {
@@ -275,6 +288,10 @@ public class GloriaRomanusController{
 
   public void setInvadeScreen(InvadeScreen invadeScreen) {
     this.invadeScreen = invadeScreen;
+  }
+
+  public void setLostScreen(LostScreen lostScreen) {
+    this.lostScreen = lostScreen;
   }
 
   @FXML
@@ -643,6 +660,7 @@ public class GloriaRomanusController{
         }
       }
       if (hasLost) {
+        lostScreen.start(p);
         printMessageToTerminal(p.getFaction() + " has lost all their provinces. GG!");
       }
     }

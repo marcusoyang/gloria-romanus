@@ -16,18 +16,22 @@ public class GloriaRomanusApplication extends Application {
     MainScreen mainScreen = new MainScreen(stage);
     RecruitScreen recruitScreen = new RecruitScreen(stage);
     InvadeScreen invadeScreen = new InvadeScreen(stage);
+    LostScreen lostScreen = new LostScreen(stage);
 
     startScreen.getController().setMainScreen(mainScreen);
 
     mainScreen.getController().setStartScreen(startScreen);
     mainScreen.getController().setRecruitScreen(recruitScreen);
     mainScreen.getController().setInvadeScreen(invadeScreen);
+    mainScreen.getController().setLostScreen(lostScreen);
     mainScreen.getController().loadConfig(configPath);
     
     recruitScreen.getController().setMainScreen(mainScreen);
     recruitScreen.getController().loadPrices(configPath);
 
     invadeScreen.getController().setMainScreen(mainScreen);
+
+    lostScreen.getController().setMainScreen(mainScreen);
 
     Audio audio = new Audio();
     startScreen.getController().setAudio(audio);
@@ -37,20 +41,6 @@ public class GloriaRomanusApplication extends Application {
     stage.setHeight(900);
 
     startScreen.start();
-
-    // set up the scene
-    /*FXMLLoader loader = new FXMLLoader(getClass().getResource("main.fxml"));
-    Parent root = loader.load();
-    controller = loader.getController();
-    main = new Scene(root);*/
-
-    // set up the stage
-    /*stage.setTitle("Gloria Romanus");
-    stage.setWidth(1280);
-    stage.setHeight(720);
-    stage.setScene(start);
-    stage.show();*/
-
   }
 
   /**
