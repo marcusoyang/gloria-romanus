@@ -29,7 +29,7 @@ public class Province {
         this.player = player;
         this.units = new ArrayList<Unit>();
         this.wealth = 0;
-        this.taxRate = LOW_TR;
+        this.taxRate = NOR_TR;
     }
 
     public Unit findUnit(int id) {
@@ -59,7 +59,7 @@ public class Province {
 
     /**
      * 
-     * @return true if 
+     * @return true if there is new unit
      */
     public boolean nextTurn() {
         boolean hasNewUnit = false;
