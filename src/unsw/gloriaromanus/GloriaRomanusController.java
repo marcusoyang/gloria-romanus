@@ -560,12 +560,18 @@ public class GloriaRomanusController{
     checkLostFactions();
 
     currentPlayerID++;
+    
+    // All players had their turn, goes back to player 1.
     if (currentPlayerID > players.size()) {
       currentPlayerID = 1;
       currentYear++;
+      
+      for (Province p : provinces) {
+          p.collectTaxRevenue();
+      }
+      adjustProvincesTownWealth();
     }
     resetMovementPoints();
-    adjustProvincesTownWealth();
 
     // Collect taxes for the next player
     // Trained units are available at the beginning of the players' next turn
@@ -574,9 +580,6 @@ public class GloriaRomanusController{
         if (p.nextTurn()) {
           printMessageToTerminal(p.getName() + " has just recruited a new unit!");
         }
-      }
-      if (getPlayerFromID(currentPlayerID).equals(p.getPlayer())) {
-        p.collectTaxRevenue();
       }
     }
 
