@@ -15,12 +15,18 @@ public class Skirmish {
 
     private SkirmishResult result;
 
-    public Skirmish(Unit human, Unit enemy, int engagementIndex) {
+    private int enemyInitialNumTroops;
+
+    private ArrayList<Unit> humanUnits;
+
+    public Skirmish(Unit human, Unit enemy, int engagementIndex, ArrayList<Unit> humanUnits) {
         engagements = new ArrayList<Engagement>();
         this.human = human;
         this.enemy = enemy;
         this.engagementIndex = engagementIndex;
         result = new SkirmishResult(human, enemy);
+        enemyInitialNumTroops = enemy.getNumTroops();
+        this.humanUnits = humanUnits;
     }
     
     public void start(String range) {
@@ -75,5 +81,13 @@ public class Skirmish {
 
     public String getResult() {
         return result.getResult();
+    }
+
+    public int getEnemyInitialNumTroops() {
+        return enemyInitialNumTroops;
+    }
+
+    public void removeUnit(Unit u) {
+        humanUnits.remove(u);
     }
  }

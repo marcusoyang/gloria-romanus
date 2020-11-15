@@ -23,9 +23,9 @@ public class SkirmishResult extends Result {
 
     public void setOneRouted(Unit winner) {
         if (human.equals(winner)) {
-            super.setResult("human routed");
-        } else {
             super.setResult("enemy routed");
+        } else {
+            super.setResult("human routed");
         }
         this.winner = winner;
     }

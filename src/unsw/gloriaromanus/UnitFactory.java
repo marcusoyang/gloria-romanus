@@ -26,20 +26,21 @@ public class UnitFactory {
         training = newUnit(unitType, numTroops);
     }
 
-    public Unit newUnit(String unitType, int numTroops) throws IOException {
+    public Unit newUnit(String unitType, int numTroops) {
 
         JSONObject unitStats = generateUnitStats(unitType);
         
         Unit u = new Unit();
         u.setID();
+        u.setUnitType(unitType);
         u.setNumTroops(numTroops);
         u.setMeleeAttack(unitStats.getInt("meleeAttack"));
         u.setRangedAttack(unitStats.optInt("rangedAttack"));
         u.setDefenseSkill(unitStats.getInt("defense"));
         u.setArmour(unitStats.optInt("armour"));
         u.setShieldDefense(unitStats.optInt("shield"));
-        u.setMorale(unitStats.getInt("morale"));
-        u.setSpeed(unitStats.getInt("speed"));
+        u.setMorale(unitStats.getDouble("morale"));
+        u.setSpeed(unitStats.getDouble("speed"));
         u.setRange(unitStats.getString("range"));
         u.setType(unitStats.getString("type"));
         u.setAbility(unitStats.getString("ability"));
@@ -50,8 +51,7 @@ public class UnitFactory {
         return u;
     }
 
-    public JSONObject generateUnitStats(String unitType) throws IOException {
-        // String configString = Files.readString(Paths.get("src/unsw/gloriaromanus/unit_config.json"));
+    public JSONObject generateUnitStats(String unitType) {
         JSONObject config = new JSONObject(configString);
         return config.getJSONObject(unitType);
     }
@@ -92,5 +92,15 @@ public class UnitFactory {
 
     public void setConfigString(String configString) {
         this.configString = configString;
+    }
+
+    public int restoreArmour(String unitType) {
+        JSONObject unitStats = generateUnitStats(unitType);
+        return unitStats.getInt("armour");
+    }
+
+    public int restoreShieldDefense(String unitType) {
+        JSONObject unitStats = generateUnitStats(unitType);
+        return unitStats.getInt("shield");
     }
 }
