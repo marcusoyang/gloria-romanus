@@ -164,7 +164,8 @@ public class GloriaRomanusController{
   }
 
   private int getPlayerGold(int ID) {
-    return getPlayerFromID(ID).getGold();
+    Double gold = getPlayerFromID(ID).getGold();
+    return gold.intValue();
   }
 
   /**
@@ -566,10 +567,11 @@ public class GloriaRomanusController{
       currentPlayerID = 1;
       currentYear++;
       
-      for (Province p : provinces) {
-          p.collectTaxRevenue();
-      }
       adjustProvincesTownWealth();
+      for (Province p : provinces) {
+        p.collectTaxRevenue();
+      }
+      
     }
     resetMovementPoints();
 
