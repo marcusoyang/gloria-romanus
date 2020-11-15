@@ -197,6 +197,7 @@ public class Province {
                 u.minusMorale(1);
             }
         }
+        if (wealth < 0) { wealth = 0; }
     }
 
     public void changeTaxRate(String taxRate) {
