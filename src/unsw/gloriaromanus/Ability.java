@@ -12,9 +12,14 @@ public abstract class Ability {
         Ability.provinces = provinces;
     }
     
-    public static void initiateInvade(ArrayList<Unit> units) {
-        Ability.invadingUnits = units;
-        for (Unit u : units) {
+    public static void initiate(ArrayList<Unit> invadingUnits, ArrayList<Unit> defendingUnits) {
+        Ability.invadingUnits = invadingUnits;
+        Ability.defendingUnits = defendingUnits;
+        for (Unit u : invadingUnits) {
+            processAbility(u);
+        }
+
+        for (Unit u : defendingUnits) {
             processAbility(u);
         }
     }
@@ -37,8 +42,11 @@ public abstract class Ability {
             case "Legionary Eagle": processLegionaryEagle(u); break;
             case "Berserker Rage": processBerserkerRage(u); break;
             case "Phalanx": processPhalanx(u); break;
-            case "Cantabrian Circle":
             case "Druidic Fervour":
+        }
+
+        if (u.getRange().equals("melee") && u.getType().equals("cavalry")) {
+            processHeroicCharge(u);
         }
     }
 
@@ -47,7 +55,6 @@ public abstract class Ability {
             case "Legionary Eagle": restoreLegionaryEagle(u); break;
             case "Berserker Rage": restoreBerserkerRage(u); break;
             case "Phalanx": restorePhalanx(u); break;
-            case "Cantabrian Circle":
             case "Druidic Fervour":
         }
 
@@ -125,20 +132,22 @@ public abstract class Ability {
         u.setArmour(uf.restoreArmour(u.getUnitType()));
     }
 
-    public static void processHeroicCharge() {
-        if (invadingUnits.size() * 2 < defendingUnits.size()) {
-            for (Unit u : invadingUnits) {
-                if (u.getRange().equals("melee") && u.getType().equals("cavalry")) {
-                    u.setMeleeAttack(u.getMeleeAttack() * 2);  // double melee attack
-                    u.addMorale(u.getMorale() / 2);            // 50% higher morale
-                }
-            }
+    private static boolean heroicChargeInitiated = false;
+
+    public static void processHeroicCharge(Unit u) {
+        if (getUnits(u).size() * 2 < getOtherUnits(u).size()) {
+            u.setMeleeAttack(u.getMeleeAttack() * 2);  // double melee attack
+            u.addMorale(u.getMorale() / 2);            // 50% higher morale
+            Ability.heroicChargeInitiated = true;
         }
 	}
 
     public static void restoreHeroicCharge(Unit u) {
-        u.setMeleeAttack(u.getMeleeAttack() / 2);
-        u.setMorale(u.getMorale() * (2/3));
+        if (heroicChargeInitiated) {
+            u.setMeleeAttack(u.getMeleeAttack() / 2);
+            u.setMorale(u.getMorale() * (2/3));
+            Ability.heroicChargeInitiated = false;
+        }
     }
 
     private static void processPhalanx(Unit u) {
@@ -183,11 +192,30 @@ public abstract class Ability {
         return other;
     }
 
+    public static void processCantabrianCircle(Unit horseArcher, Unit missileUnit) {
+        if (horseArcher.getAbility().equals("Cantabrian Circle") && missileUnit.getType().startsWith("missile")) {
+            missileUnit.setRangedAttack(missileUnit.getRangedAttack() / 2);
+        } 
+    }
+
+    public static void restoreCantabrianCircle(Unit horseArcher, Unit missileUnit) {
+        if (horseArcher.getAbility().equals("Cantabrian Circle") && missileUnit.getType().startsWith("missile")) {
+            missileUnit.setRangedAttack(missileUnit.getRangedAttack() * 2);
+        }
+    }
+
     private static ArrayList<Unit> getUnits(Unit u) {
         if (invadingUnits.contains(u)) {
             return invadingUnits;
         }
         return defendingUnits;
+    }
+
+    private static ArrayList<Unit> getOtherUnits(Unit u) {
+        if (invadingUnits.contains(u)) {
+            return defendingUnits;
+        }
+        return invadingUnits;
     }
 
     private static int findNextIndex(ArrayList<Unit> units, int index) {
