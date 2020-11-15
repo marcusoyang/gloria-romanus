@@ -30,9 +30,9 @@ public abstract class Engagement {
         enemyBreakChance = 1 - (enemy.getMorale() * 0.01);
 
         // The chance of breaking is increased by (a scalar addition):
-        humanBreakChance += (humanCasualty / Double.valueOf(human.getNumTroops())) / (min((double)enemyCasualty, 1) / Double.valueOf(enemy.getNumTroops())) * 0.1;
-        enemyBreakChance += (enemyCasualty / Double.valueOf(enemy.getNumTroops())) / (min((double)humanCasualty, 1) / Double.valueOf(human.getNumTroops())) * 0.1;
-    
+        humanBreakChance += (((humanCasualty / Double.valueOf(human.getNumTroops())) / (min((double)enemyCasualty, 1) / Double.valueOf(enemy.getNumTroops()))) * 0.1);
+        enemyBreakChance += (enemyCasualty / Double.valueOf(enemy.getNumTroops())) / (min((double)humanCasualty, 1) / Double.valueOf(human.getNumTroops()) * 0.1);
+
         //the minimum chance of breaking is 5%, and the maximum chance of breaking is 100%
         humanBreakChance = min(humanBreakChance, 0.05);
         humanBreakChance = max(humanBreakChance, 1);
@@ -79,16 +79,34 @@ public abstract class Engagement {
     }
 
     public void inflictCasualties() {
+        // human attacking the enemy
         if (skirmish.isBroken(human)) {
             attemptRoute(human, enemy);
-        } else if (enemy.isDefeated(enemyCasualty)) {
-            skirmish.setNormalResult(human, enemy);
-        } 
-        
+        } else {
+            Unit directedUnit = Ability.processElephantAmok(human, enemy);
+            if (directedUnit.equals(enemy)) {
+                if(enemy.isDefeated(enemyCasualty)) {
+                    skirmish.setNormalResult(human, enemy);
+                }
+            } else {
+                if (directedUnit.isDefeated(enemyCasualty)) {
+                skirmish.removeUnit(directedUnit);}
+            }
+
+        }
+
+        // enemy attacking human
         if (skirmish.isBroken(enemy)) {
             attemptRoute(enemy, human);
-        } else if (human.isDefeated(humanCasualty)) {
-            skirmish.setNormalResult(enemy, human);
+        } else {
+            Unit directedUnit = Ability.processElephantAmok(enemy, human);
+            if (directedUnit.equals(human)) {
+                if (human.isDefeated(humanCasualty)) {
+                    skirmish.setNormalResult(enemy, human);
+                }
+            } else if (directedUnit.isDefeated(humanCasualty)) {
+                skirmish.setNormalResult(human, enemy);
+            }
         }
     }
 
