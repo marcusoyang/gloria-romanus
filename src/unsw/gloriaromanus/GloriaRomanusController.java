@@ -163,7 +163,7 @@ public class GloriaRomanusController{
     saveFilename.clear();
   }
 
-  private int getPlayerGold(int ID) {
+  private double getPlayerGold(int ID) {
     return getPlayerFromID(ID).getGold();
   }
 
@@ -508,6 +508,11 @@ public class GloriaRomanusController{
     if (currentPlayerID > players.size()) {
       currentPlayerID = 1;
       currentYear++;
+      for (Province p : provinces) {
+        if (getPlayerFromID(currentPlayerID).equals(p.getPlayer())) {
+          p.collectTaxRevenue();
+        }
+      }
     }
     resetMovementPoints();
     adjustProvincesTownWealth();
@@ -516,9 +521,6 @@ public class GloriaRomanusController{
     for (Province p : provinces) {
       if (p.nextTurn()) {
         printMessageToTerminal(p.getName() + " has just recruited a new unit!");
-      }
-      if (getPlayerFromID(currentPlayerID).equals(p.getPlayer())) {
-        p.collectTaxRevenue();
       }
     }
     updateFrontendText();

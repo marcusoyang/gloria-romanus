@@ -27,7 +27,7 @@ public class Province {
         this.name = name;
         this.player = player;
         this.units = new ArrayList<Unit>();
-        this.wealth = 0;
+        this.wealth = 100;
         this.taxRate = NOR_TR;
     }
 
@@ -74,10 +74,10 @@ public class Province {
 
     public boolean trainUnit(String unitType, int numTroops) throws IOException {
         for (UnitFactory fac : factories) {
-            int price = fac.getCost(unitType, numTroops);
-            if (!fac.getIsTraining() && player.getGold() >= price) {
+            int cost = fac.getCost(unitType, numTroops);
+            if (!fac.getIsTraining() && player.getGold() >= cost) {
                 fac.addToTraining(unitType, numTroops);
-                player.minusGold(price);
+                player.minusGold(cost);
                 return true;
             }
         }
@@ -181,8 +181,8 @@ public class Province {
     }
 
     public void collectTaxRevenue() {
-        Double taxRevenue = wealth * taxRate;
-        player.plusGold(taxRevenue.intValue());
+        double taxRevenue = wealth * taxRate;
+        player.plusGold(taxRevenue);
     }
 
     public void adjustTownWealth() {

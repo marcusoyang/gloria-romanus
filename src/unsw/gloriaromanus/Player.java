@@ -5,7 +5,7 @@ import java.util.HashMap;
 public class Player {
     private int id;
     private String faction;
-    private int gold;
+    private double gold;
     private double moralePenalty;
     private HashMap<String,Double> legionaryEaglePenaltyMap;
 
@@ -29,19 +29,19 @@ public class Player {
         this.faction = faction;
     }
 
-    public int getGold() {
+    public double getGold() {
         return gold;
     }
 
-    public void setGold(int gold) {
+    public void setGold(double gold) {
         this.gold = gold;
     }
 
-    public void minusGold(int cost) {
+    public void minusGold(double cost) {
         this.gold -= cost;
     }
 
-    public void plusGold(int cost) {
+    public void plusGold(double cost) {
         this.gold += cost;
     }
 
