@@ -108,6 +108,7 @@ public class GloriaRomanusController{
 
   private StartScreen startScreen;
   private RecruitScreen recruitScreen;
+  private InvadeScreen invadeScreen;
   private Audio audio;
 
   @FXML
@@ -266,6 +267,10 @@ public class GloriaRomanusController{
 
   public void setRecruitScreen(RecruitScreen recruitScreen) {
     this.recruitScreen = recruitScreen;
+  }
+
+  public void setInvadeScreen(InvadeScreen invadeScreen) {
+    this.invadeScreen = invadeScreen;
   }
 
   @FXML

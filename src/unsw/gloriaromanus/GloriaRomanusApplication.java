@@ -15,14 +15,19 @@ public class GloriaRomanusApplication extends Application {
     StartScreen startScreen = new StartScreen(stage);
     MainScreen mainScreen = new MainScreen(stage);
     RecruitScreen recruitScreen = new RecruitScreen(stage);
+    InvadeScreen invadeScreen = new InvadeScreen(stage);
 
     startScreen.getController().setMainScreen(mainScreen);
+
     mainScreen.getController().setStartScreen(startScreen);
     mainScreen.getController().setRecruitScreen(recruitScreen);
+    mainScreen.getController().setInvadeScreen(invadeScreen);
     mainScreen.getController().loadConfig(configPath);
     
     recruitScreen.getController().setMainScreen(mainScreen);
     recruitScreen.getController().loadPrices(configPath);
+
+    invadeScreen.getController().setMainScreen(mainScreen);
 
     Audio audio = new Audio();
     startScreen.getController().setAudio(audio);
