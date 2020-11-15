@@ -556,7 +556,10 @@ public class GloriaRomanusController{
       processVictories();
     }
 
+    // Reset hasInvaded variables.
     resetHasInvaded();
+
+    // Check for factions with no provinces.
     checkLostFactions();
 
     currentPlayerID++;
