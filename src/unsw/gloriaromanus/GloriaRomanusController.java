@@ -712,9 +712,9 @@ public class GloriaRomanusController{
     return ownsAllProvinces;
   }
 
-  private Player getPlayerFromID(int currentPlayerID) {
+  private Player getPlayerFromID(int id) {
     for (Player p : players) {
-      if (p.getID() == currentPlayerID) {
+      if (p.getID() == id) {
         return p;
       }
     }

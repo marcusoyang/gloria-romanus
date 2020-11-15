@@ -3,10 +3,13 @@ package unsw.gloriaromanus;
 import java.util.ArrayList;
 import java.util.Random;
 
-public abstract class Ability {
+public class Ability {
     private static ArrayList<Province> provinces;
     private static ArrayList<Unit> invadingUnits;
     private static ArrayList<Unit> defendingUnits; 
+
+
+    private static boolean heroicChargeInitiated = false;
 
     public static void setProvinces(ArrayList<Province> provinces) {
         Ability.provinces = provinces;
@@ -143,8 +146,6 @@ public abstract class Ability {
         UnitFactory uf = provinces.get(0).getFactories().get(0);
         u.setArmour(uf.restoreArmour(u.getUnitType()));
     }
-
-    private static boolean heroicChargeInitiated = false;
 
     public static void processHeroicCharge(Unit u) {
         if (getUnits(u).size() * 2 < getOtherUnits(u).size()) {
