@@ -90,9 +90,6 @@ public class Unit {
     }
 
     public void setArmour(int armour) {
-        if (armour < 1) {
-            armour = 1;
-        }
         this.armour = armour;
     }
 
@@ -101,9 +98,6 @@ public class Unit {
     }
 
     public void setShieldDefense(int shieldDefense) {
-        if (shieldDefense < 1) {
-            shieldDefense = 1;
-        }
         this.shieldDefense = shieldDefense;
     }
 
@@ -258,6 +252,25 @@ public class Unit {
 
     public int calculateTotalMeleeAttack() {
         return meleeAttack * numTroops;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) { 
+            return false; 
+        }
+        
+        // Checking the class of both objects
+        if (this.getClass() != obj.getClass()) {
+            return false;
+        }
+
+        Unit other = (Unit) obj;
+        if (other.getID() == this.id){
+            return true;
+        } else {
+            return false;
+        }
     }
 }
 
