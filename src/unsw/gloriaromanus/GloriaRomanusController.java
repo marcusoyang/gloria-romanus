@@ -194,12 +194,12 @@ public class GloriaRomanusController{
     }
   }
 
-  private JSONArray readFactionsList() throws IOException {
+  /*private JSONArray readFactionsList() throws IOException {
     String content = Files.readString(Paths.get("src/unsw/gloriaromanus/factions_list.json"));
     JSONObject ownership = new JSONObject(content);
     JSONArray ja = ownership.getJSONArray("factions_list");
     return ja;
-  }
+  }*/
 
   public void loadConfig(String path) throws IOException {
     unitConfig = Files.readString(Paths.get(path));
@@ -345,47 +345,51 @@ public class GloriaRomanusController{
 
   @FXML
   public void clickedInvadeButton(ActionEvent e) throws IOException {
-    if (currentlySelectedHumanProvince != null && currentlySelectedEnemyProvince != null) {
+    if (currentlySelectedHumanProvince != null) {
       Province humanProvince = deserializeProvince((String)currentlySelectedHumanProvince.getAttributes().get("name"));
-      Province enemyProvince = deserializeProvince((String)currentlySelectedEnemyProvince.getAttributes().get("name"));
-
       currentlySelectedHumanProvinceUnits = humanProvince.getUnits();
 
-      //somehow evoke invade(ids, humanProvince, enemyProvince)
+      invadeScreen.start(currentlySelectedHumanProvinceUnits);
     }
   }
 
-  public void invade(ArrayList<Integer> ids, Province humanProvince, Province enemyProvince) throws IOException {
-    if (hasAlreadyInvaded(humanProvince)) {
-      printMessageToTerminal("Soldiers have already invaded this turn!");
-      return;
-    }
+  public void invade(ArrayList<Integer> ids) throws IOException {
+    
+    if (currentlySelectedHumanProvince != null && currentlySelectedEnemyProvince != null) {
+      Province humanProvince = deserializeProvince((String)currentlySelectedHumanProvince.getAttributes().get("name"));
+      Province enemyProvince = deserializeProvince((String)currentlySelectedEnemyProvince.getAttributes().get("name"));
       
-    Ability.setProvinces(provinces);
-    
-    ArrayList<Unit> invadingList = getInvadingList(ids, humanProvince);
-    
-    Result battleResult = new Result();
+      if (hasAlreadyInvaded(humanProvince)) {
+        printMessageToTerminal("Soldiers have already invaded this turn!");
+        return;
+      }
+        
+      Ability.setProvinces(provinces);
+      
+      ArrayList<Unit> invadingList = getInvadingList(ids, humanProvince);
+      
+      Result battleResult = new Result();
 
-    // Some tests. We cannot have an empty army
-    if (invadingList.size() == 0) {
-      printMessageToTerminal("No soldiers, cannot invade!");
-      battleResult.setNotStarted();
-    }
-    // Provinces should be connected
-    if (!confirmIfProvincesConnected(humanProvince.getName(), enemyProvince.getName())) {
-      printMessageToTerminal("Provinces not adjacent, cannot invade!");
-      battleResult.setNotStarted();
-    }
-    // If the enemy province is empty, automatic victory
-    if (enemyProvince.getUnits().size() == 0) {
-      battleResult.setVictory();
-    }
+      // Some tests. We cannot have an empty army
+      if (invadingList.size() == 0) {
+        printMessageToTerminal("No soldiers, cannot invade!");
+        battleResult.setNotStarted();
+      }
+      // Provinces should be connected
+      if (!confirmIfProvincesConnected(humanProvince.getName(), enemyProvince.getName())) {
+        printMessageToTerminal("Provinces not adjacent, cannot invade!");
+        battleResult.setNotStarted();
+      }
+      // If the enemy province is empty, automatic victory
+      if (enemyProvince.getUnits().size() == 0) {
+        battleResult.setVictory();
+      }
 
-    battle(battleResult, invadingList, enemyProvince, humanProvince);
+      battle(battleResult, invadingList, enemyProvince, humanProvince);
 
-    resetSelections();  // reset selections in UI
-    addAllPointGraphics(); // reset graphics
+      resetSelections();  // reset selections in UI
+      addAllPointGraphics(); // reset graphics
+    }
   }
 
   private boolean hasAlreadyInvaded(Province humanProvince) {

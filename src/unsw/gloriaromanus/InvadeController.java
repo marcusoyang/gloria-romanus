@@ -28,8 +28,28 @@ public class InvadeController {
     @FXML
     private TextField n9;
 
+    @FXML
+    private TextField unit1;
+    @FXML
+    private TextField unit2;
+    @FXML
+    private TextField unit3;
+    @FXML
+    private TextField unit4;
+    @FXML
+    private TextField unit5;
+    @FXML
+    private TextField unit6;
+    @FXML
+    private TextField unit7;
+    @FXML
+    private TextField unit8;
+    @FXML
+    private TextField unit9;
+
     private MainScreen mainScreen;
-    private ArrayList<TextField> textfieldList;
+    private ArrayList<TextField> numTroopFieldList;
+    private ArrayList<TextField> troopNameFieldList;
     private ArrayList<Integer> allIDs;
     private ArrayList<Integer> invadingIDs;
 
@@ -100,19 +120,30 @@ public class InvadeController {
         int i = 0;
         for (Unit u : units) {
             String numTroops = String.valueOf(u.getNumTroops());
-            textfieldList.get(i).setText(numTroops);
+            numTroopFieldList.get(i).setText(numTroops);
+            troopNameFieldList.get(i).setText(u.getType());
         }
     }
     
-    public void textfieldList() {
-        textfieldList.add(n1);
-        textfieldList.add(n2);
-        textfieldList.add(n3);
-        textfieldList.add(n4);
-        textfieldList.add(n5);
-        textfieldList.add(n6);
-        textfieldList.add(n7);
-        textfieldList.add(n8);
-        textfieldList.add(n9);
+    public void numTroopFieldList() {
+        numTroopFieldList.add(n1);
+        numTroopFieldList.add(n2);
+        numTroopFieldList.add(n3);
+        numTroopFieldList.add(n4);
+        numTroopFieldList.add(n5);
+        numTroopFieldList.add(n6);
+        numTroopFieldList.add(n7);
+        numTroopFieldList.add(n8);
+        numTroopFieldList.add(n9);
+
+        troopNameFieldList.add(unit1);
+        troopNameFieldList.add(unit2);
+        troopNameFieldList.add(unit3);
+        troopNameFieldList.add(unit4);
+        troopNameFieldList.add(unit5);
+        troopNameFieldList.add(unit6);
+        troopNameFieldList.add(unit7);
+        troopNameFieldList.add(unit8);
+        troopNameFieldList.add(unit9);
     }
 }
