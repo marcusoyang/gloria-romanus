@@ -41,10 +41,13 @@ public class Province {
     }
 
     public void moveUnit(Province p, int id) {
+        // ArrayList<Unit> newUnits = new ArrayList<Unit>();
+        // newUnits = units;
         for (Unit u : units) {
             if (u.getID() == id) {
                 p.insertUnit(u);
                 units.remove(u);
+                return;
             }
         }
     }
@@ -53,13 +56,20 @@ public class Province {
         units.add(u);
     }
 
-    public void nextTurn() {
+    /**
+     * 
+     * @return true if 
+     */
+    public boolean nextTurn() {
+        boolean hasNewUnit = false;
         for (UnitFactory fac : factories) {
             Unit u = fac.nextTrainingTurn();
             if (u != null) {
                 insertUnit(u);
+                hasNewUnit = true;
             }
         }
+        return hasNewUnit;
     }
 
     public boolean trainUnit(String unitType, int numTroops) throws IOException {
