@@ -24,6 +24,7 @@ import java.util.stream.Collectors;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Point2D;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -78,6 +79,8 @@ public class GloriaRomanusController{
   private TextArea output_terminal;
   @FXML
   private TextField saveFilename;
+  @FXML
+  private CheckBox toggleBattleDetails;
   @FXML
   private Slider volumeSlider;
 
@@ -530,6 +533,7 @@ public class GloriaRomanusController{
   }
 
   private void printSkirmishResult(Skirmish s, String humanFaction, String enemyFaction) {
+    displayEngagement = toggleBattleDetails.isSelected();
     if (displayEngagement) {
       for (Engagement e: s.getEngagements()) {
         printMessageToTerminal(humanFaction + " " + s.getHumanType() + " has defeated " + e.getEnemyCasualty() + " " + enemyFaction + " " + s.getEnemyType());
