@@ -299,6 +299,10 @@ public class GloriaRomanusController{
 
   @FXML
   public void clickedInvadeButton(ActionEvent e) throws IOException {
+    //
+  }
+
+  public void invade() {
     if (currentlySelectedHumanProvince != null && currentlySelectedEnemyProvince != null) {
       Province humanProvince = deserializeProvince((String)currentlySelectedHumanProvince.getAttributes().get("name"));
       Province enemyProvince = deserializeProvince((String)currentlySelectedEnemyProvince.getAttributes().get("name"));
@@ -312,12 +316,7 @@ public class GloriaRomanusController{
 
       Ability.setProvinces(provinces);
       
-      // TODO: Some implementation of code to have different lists of Units go to certain provinces
-      // For now it'll just be our whole troop 
-      ArrayList<Unit> invadingList = new ArrayList<Unit>();
-      for (Unit u : humanProvince.getUnits()) {
-        invadingList.add(u);
-      }
+      ArrayList<Unit> invadingList = getInvadingList();
       
       Result battleResult = new Result();
 
@@ -1047,5 +1046,9 @@ public class GloriaRomanusController{
 
   public void setFactions(ArrayList<String> factions) {
     this.factions = factions;
+  }
+
+  private ArrayList<Unit> getInvadingList() {
+
   }
 }
