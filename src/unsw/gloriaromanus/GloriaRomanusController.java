@@ -593,10 +593,8 @@ public class GloriaRomanusController{
     // Collect taxes for the next player
     // Trained units are available at the beginning of the players' next turn
     for (Province p : provinces) {
-      if (p.getPlayer().getID() == currentPlayerID) {
-        if (p.nextTurn()) {
-          printMessageToTerminal(p.getName() + " has just recruited a new unit!");
-        }
+      if (p.nextTurn()) {
+        printMessageToTerminal(p.getName() + " has just recruited a new unit!");
       }
     }
 
