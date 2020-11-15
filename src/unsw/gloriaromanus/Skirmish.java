@@ -44,6 +44,10 @@ public class Skirmish {
         }
     }
 
+    public ArrayList<Engagement> getEngagements() {
+        return engagements;
+    }
+
     public void addEngagement(String range) {
         Engagement e;
         if (range.equals("melee")) {

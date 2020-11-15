@@ -438,6 +438,8 @@ public class GloriaRomanusController{
 
       restoreSkirmishAbilities(human, enemy);
 
+      printSkirmishResult(s);
+
       // Skirmish should have finished. we check the result of the skirmish.
       battleResult = checkSkirmishResult(s, enemyProvince, enemy, invadingList, human, battleResult, routedList);
 
@@ -487,6 +489,12 @@ public class GloriaRomanusController{
           
         // Moving the routed armies back to the human province
         humanProvince.getUnits().addAll(routedList);
+    }
+  }
+
+  private void printSkirmishResult(Skirmish s) {
+    for (Engagement e: s.getEngagements()) {
+      
     }
   }
 
