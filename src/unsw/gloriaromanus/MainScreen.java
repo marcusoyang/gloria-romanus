@@ -65,5 +65,13 @@ public class MainScreen {
     public void setControllerFactions(ArrayList<String> factions) {
         controller.setFactions(factions);
     }
+
+    public void invade(ArrayList<Integer> ids) throws IOException {
+        controller.invade(ids);
+    }
+
+	public void processMove(ArrayList<Integer> invadingIDs) throws IOException {
+        controller.processMove(invadingIDs);
+	}
 }
 

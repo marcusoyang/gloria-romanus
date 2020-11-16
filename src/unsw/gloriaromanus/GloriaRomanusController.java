@@ -10,7 +10,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.lang.reflect.Array;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -24,6 +23,7 @@ import java.util.stream.Collectors;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Point2D;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -47,6 +47,7 @@ import com.esri.arcgisruntime.symbology.PictureMarkerSymbol;
 import com.esri.arcgisruntime.symbology.TextSymbol;
 import com.esri.arcgisruntime.symbology.TextSymbol.HorizontalAlignment;
 import com.esri.arcgisruntime.symbology.TextSymbol.VerticalAlignment;
+import com.esri.arcgisruntime.tasks.networkanalysis.Facility;
 import com.esri.arcgisruntime.data.Feature;
 
 import com.fasterxml.jackson.core.JsonParseException;
@@ -79,6 +80,8 @@ public class GloriaRomanusController{
   @FXML
   private TextField saveFilename;
   @FXML
+  private CheckBox toggleBattleDetails;
+  @FXML
   private Slider volumeSlider;
 
   private ArcGISMap map;
@@ -101,6 +104,7 @@ public class GloriaRomanusController{
   private boolean hasWon;
   private boolean displayEngagement;
   private Province waitingForDestination;
+  private Province destination;
 
   private Feature currentlySelectedHumanProvince;
   private Feature currentlySelectedEnemyProvince;
@@ -110,6 +114,8 @@ public class GloriaRomanusController{
 
   private StartScreen startScreen;
   private RecruitScreen recruitScreen;
+  private InvadeScreen invadeScreen;
+  private LostScreen lostScreen;
   private Audio audio;
 
   @FXML
@@ -193,12 +199,12 @@ public class GloriaRomanusController{
     }
   }
 
-  private JSONArray readFactionsList() throws IOException {
+  /*private JSONArray readFactionsList() throws IOException {
     String content = Files.readString(Paths.get("src/unsw/gloriaromanus/factions_list.json"));
     JSONObject ownership = new JSONObject(content);
     JSONArray ja = ownership.getJSONArray("factions_list");
     return ja;
-  }
+  }*/
 
   public void loadConfig(String path) throws IOException {
     unitConfig = Files.readString(Paths.get(path));
@@ -271,6 +277,14 @@ public class GloriaRomanusController{
     this.recruitScreen = recruitScreen;
   }
 
+  public void setInvadeScreen(InvadeScreen invadeScreen) {
+    this.invadeScreen = invadeScreen;
+  }
+
+  public void setLostScreen(LostScreen lostScreen) {
+    this.lostScreen = lostScreen;
+  }
+
   @FXML
   public void clickedStartMenu(ActionEvent e) {
     startScreen.start();
@@ -285,6 +299,7 @@ public class GloriaRomanusController{
     }    
     String provinceName = (String)currentlySelectedHumanProvince.getAttributes().get("name");
     Province province = deserializeProvince(provinceName);
+    currentlySelectedHumanProvinceUnits = province.getUnits();
 
     if (checkProvinceInvaded(province)) { 
       printMessageToTerminal("Units can not move after invading.");
@@ -340,53 +355,62 @@ public class GloriaRomanusController{
 
   @FXML
   public void clickedInvadeButton(ActionEvent e) throws IOException {
+    if (currentlySelectedHumanProvince != null) {
+      Province humanProvince = deserializeProvince((String)currentlySelectedHumanProvince.getAttributes().get("name"));
+      currentlySelectedHumanProvinceUnits = humanProvince.getUnits();
+
+      // Some tests. We cannot have an empty army
+      if (currentlySelectedHumanProvinceUnits.size() == 0) {
+        printMessageToTerminal("No soldiers, cannot invade!");
+        return;
+      }
+
+      invadeScreen.showInvadeButton();
+      invadeScreen.hideMoveButton();
+      invadeScreen.start(currentlySelectedHumanProvinceUnits);
+    }
+  }
+
+  public void invade(ArrayList<Integer> ids) throws IOException {
+    
     if (currentlySelectedHumanProvince != null && currentlySelectedEnemyProvince != null) {
       Province humanProvince = deserializeProvince((String)currentlySelectedHumanProvince.getAttributes().get("name"));
       Province enemyProvince = deserializeProvince((String)currentlySelectedEnemyProvince.getAttributes().get("name"));
-
-      currentlySelectedHumanProvinceUnits = humanProvince.getUnits();
-
-      //somehow evoke invade(ids, humanProvince, enemyProvince)
-    }
-  }
-
-  public void invade(ArrayList<Integer> ids, Province humanProvince, Province enemyProvince) throws IOException {
-    if (hasAlreadyInvaded(humanProvince)) {
-      printMessageToTerminal("Soldiers have already invaded this turn!");
-      return;
-    }
       
-    Ability.setProvinces(provinces);
-    
-    ArrayList<Unit> invadingList = getInvadingList(ids, humanProvince);
-    
-    Result battleResult = new Result();
+      if (hasAlreadyInvaded(ids, humanProvince)) {
+        printMessageToTerminal("Soldiers have already invaded this turn!");
+        return;
+      }
+        
+      Ability.setProvinces(provinces);
+      
+      ArrayList<Unit> invadingList = getInvadingList(ids, humanProvince);
+      
+      Result battleResult = new Result();
 
-    // Some tests. We cannot have an empty army
-    if (invadingList.size() == 0) {
-      printMessageToTerminal("No soldiers, cannot invade!");
-      battleResult.setNotStarted();
-    }
-    // Provinces should be connected
-    if (!confirmIfProvincesConnected(humanProvince.getName(), enemyProvince.getName())) {
-      printMessageToTerminal("Provinces not adjacent, cannot invade!");
-      battleResult.setNotStarted();
-    }
-    // If the enemy province is empty, automatic victory
-    if (enemyProvince.getUnits().size() == 0) {
-      battleResult.setVictory();
-    }
+      // Provinces should be connected
+      if (!confirmIfProvincesConnected(humanProvince.getName(), enemyProvince.getName())) {
+        printMessageToTerminal("Provinces not adjacent, cannot invade!");
+        battleResult.setNotStarted();
+      }
+      // If the enemy province is empty, automatic victory
+      if (enemyProvince.getUnits().size() == 0) {
+        battleResult.setVictory();
+      }
 
-    battle(battleResult, invadingList, enemyProvince, humanProvince);
+      battle(battleResult, invadingList, enemyProvince, humanProvince);
 
-    resetSelections();  // reset selections in UI
-    addAllPointGraphics(); // reset graphics
+      resetSelections();  // reset selections in UI
+      addAllPointGraphics(); // reset graphics
+    }
   }
 
-  private boolean hasAlreadyInvaded(Province humanProvince) {
+  private boolean hasAlreadyInvaded(ArrayList<Integer> ids, Province humanProvince) {
     for (Unit u : humanProvince.getUnits()) {
-      if (u.hasInvaded()) {
-        return true;
+      for (int id : ids) {
+        if (u.getID() == id && u.hasInvaded()) {
+          return true;
+        }
       }
     }
     return false;
@@ -497,6 +521,7 @@ public class GloriaRomanusController{
   }
 
   private void printSkirmishResult(Skirmish s, String humanFaction, String enemyFaction) {
+    displayEngagement = toggleBattleDetails.isSelected();
     if (displayEngagement) {
       for (Engagement e: s.getEngagements()) {
         printMessageToTerminal(humanFaction + " " + s.getHumanType() + " has defeated " + e.getEnemyCasualty() + " " + enemyFaction + " " + s.getEnemyType());
@@ -572,7 +597,10 @@ public class GloriaRomanusController{
       processVictories();
     }
 
+    // Reset hasInvaded variables.
     resetHasInvaded();
+
+    // Check for factions with no provinces.
     checkLostFactions();
 
     currentPlayerID++;
@@ -589,6 +617,10 @@ public class GloriaRomanusController{
       
     }
     resetMovementPoints();
+
+    // Clear text fields.
+    invading_province.clear();
+    opponent_province.clear();
 
     // Collect taxes for the next player
     // Trained units are available at the beginning of the players' next turn
@@ -622,6 +654,7 @@ public class GloriaRomanusController{
         }
       }
       if (hasLost) {
+        lostScreen.start(p);
         printMessageToTerminal(p.getFaction() + " has lost all their provinces. GG!");
       }
     }
@@ -896,25 +929,17 @@ public class GloriaRomanusController{
         TextSymbol t = new TextSymbol(10,
             faction + "\n" + provinceName + "\nArmy size: " + province.getArmySize() + "\nWealth: " + province.getWealth(), 0xFFFF0000,
             HorizontalAlignment.CENTER, VerticalAlignment.BOTTOM);
-
-        s = new PictureMarkerSymbol("images/legionary.png"); // TODO: Import other images
         
-        switch (faction) {
-          case "Gaul":
-            // note can instantiate a PictureMarkerSymbol using the JavaFX Image class - so could
-            // construct it with custom-produced BufferedImages stored in Ram
-            // http://jens-na.github.io/2013/11/06/java-how-to-concat-buffered-images/
-            // then you could convert it to JavaFX image https://stackoverflow.com/a/30970114
+        // note can instantiate a PictureMarkerSymbol using the JavaFX Image class - so could
+        // construct it with custom-produced BufferedImages stored in Ram
+        // http://jens-na.github.io/2013/11/06/java-how-to-concat-buffered-images/
+        // then you could convert it to JavaFX image https://stackoverflow.com/a/30970114
 
-            // you can pass in a filename to create a PictureMarkerSymbol...
-            s = new PictureMarkerSymbol(new Image((new File("images/Celtic_Druid.png")).toURI().toString()));
-            break;
-          case "Rome":
-            // you can also pass in a javafx Image to create a PictureMarkerSymbol (different to BufferedImage)
-            s = new PictureMarkerSymbol("images/legionary.png");
-            break;
-          // TODO = handle all faction names, and find a better structure...
-        }
+        // you can pass in a filename to create a PictureMarkerSymbol...
+        // you can also pass in a javafx Image to create a PictureMarkerSymbol (different to BufferedImage)
+
+        s = getPictureMarker(faction, s);          
+          
         t.setHaloColor(0xFFFFFFFF);
         t.setHaloWidth(2);
         Graphic gPic = new Graphic(curPoint, s);
@@ -929,6 +954,60 @@ public class GloriaRomanusController{
 
     inputStream.close();
     mapView.getGraphicsOverlays().add(graphicsOverlay);
+  }
+
+  private PictureMarkerSymbol getPictureMarker(String faction, PictureMarkerSymbol s) {
+    switch (faction) {
+      case "Romans":
+        s = new PictureMarkerSymbol("images/legionary.png");
+        break;
+      case "Carthaginians":
+        s = new PictureMarkerSymbol("images/sorcerer.png");
+        break;
+      case "Gauls":
+        s = new PictureMarkerSymbol("images/gaul.png");
+        break;
+      case "Celtic Britons":
+        s = new PictureMarkerSymbol("images/Celtic_Druid.png");
+        break;
+      case "Spanish":
+        s = new PictureMarkerSymbol("images/spanish.png");
+        break;
+      case "Numidians":
+        s = new PictureMarkerSymbol("images/numidians.png");
+        break;
+      case "Egyptians":
+        s = new PictureMarkerSymbol("images/egypt.png");
+        break;
+      case "Seleucid Empire":
+        s = new PictureMarkerSymbol("images/seleucid.png");
+        break;
+      case "Pontus":
+        s = new PictureMarkerSymbol("images/pontus.png");
+        break;
+      case "Amenians":
+        s = new PictureMarkerSymbol("images/amenians.png");
+        break;
+      case "Parthians":
+        s = new PictureMarkerSymbol("images/parthians.png");
+        break;
+      case "Germanics":
+        s = new PictureMarkerSymbol("images/germanics.png");
+        break;
+      case "Greek City States":
+        s = new PictureMarkerSymbol("images/greek.png");
+        break;
+      case "Macedonians":
+        s = new PictureMarkerSymbol("images/macedonians.png");
+        break;
+      case "Thracians":
+        s = new PictureMarkerSymbol("images/thracians.png");
+        break;
+      case "Dacians":
+        s = new PictureMarkerSymbol("images/dacians.png");
+        break;
+    }
+    return s;
   }
 
   private FeatureLayer createFeatureLayer(GeoPackage gpkg_provinces) {
@@ -989,8 +1068,10 @@ public class GloriaRomanusController{
                   currentlySelectedHumanProvince = f;
                   invading_province.setText(provinceName);
                   if (waitingForDestination != null) {
-                    processMove(province);
-                    waitingForDestination = null;
+                    invadeScreen.hideInvadeButton();
+                    invadeScreen.showMoveButton();
+                    invadeScreen.start(currentlySelectedHumanProvinceUnits);
+                    destination = province;
                   }
                 }
                 else{
@@ -1004,7 +1085,7 @@ public class GloriaRomanusController{
                 featureLayer.selectFeature(f);
               }             
             }
-          } catch (InterruptedException | ExecutionException | IOException ex) {
+          } catch (InterruptedException | ExecutionException ex) {
             // ... must deal with checked exceptions thrown from the async identify
             // operation
             System.out.println("InterruptedException occurred");
@@ -1016,34 +1097,27 @@ public class GloriaRomanusController{
   }
 
   /**
-   * Moves all units from one province for now
    * 
-   * @param province
    * @throws IOException
    */
-  private void processMove(Province province) throws IOException {
+  public void processMove(ArrayList<Integer> moveUnitIDs) throws IOException {
     Province origin = waitingForDestination;
 
-    if (checkProvinceInvaded(province)) {
+    if (checkProvinceInvaded(destination)) {
       printMessageToTerminal("Units can not move to a recently invaded province!");
       return;
     }
 
-    if (origin.getName().equals(province.getName())) {
+    if (origin.getName().equals(destination.getName())) {
       printMessageToTerminal("Can not move to the same province.");
       return;
     }
 
-    ArrayList<Unit> originUnits = origin.getUnits();
-    List<Integer> originIDs = new ArrayList<Integer>();
-
-    for (Unit u : originUnits) {
-      originIDs.add(u.getID());
-    }
-    if (moveUnits(originIDs, origin, province)) {
+    if (moveUnits(moveUnitIDs, origin, destination)) {
       printMessageToTerminal("Units successfully moved!");
     }
 
+    waitingForDestination = null;
     addAllPointGraphics(); // reset graphics
   }
 
