@@ -1103,8 +1103,8 @@ public class GloriaRomanusController{
   public void processMove(ArrayList<Integer> moveUnitIDs) throws IOException {
     Province origin = waitingForDestination;
 
-    if (checkProvinceInvaded(destination)) {
-      printMessageToTerminal("Units can not move to a recently invaded province!");
+    if (checkProvinceInvaded(origin)) {
+      printMessageToTerminal("Units can not move from a recently invaded province!");
       return;
     }
 
