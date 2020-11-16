@@ -202,10 +202,10 @@ public class Province {
 
     public void changeTaxRate(String taxRate) {
         switch (taxRate) {
-            case "low": this.taxRate = LOW_TR;
-            case "normal": this.taxRate = NOR_TR;
-            case "high": this.taxRate = HI_TR;
-            case "vhigh": this.taxRate = VH_TR;
+            case "low": this.taxRate = LOW_TR; break;
+            case "normal": this.taxRate = NOR_TR; break;
+            case "high": this.taxRate = HI_TR; break;
+            case "vhigh": this.taxRate = VH_TR; break;
         }
     }
 
