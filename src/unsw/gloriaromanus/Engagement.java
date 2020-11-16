@@ -27,6 +27,7 @@ public abstract class Engagement {
         enemyInitialNumTroops = enemy.getNumTroops();
     }
 
+    // These abstract methods are implemented in the subclasses of Engagement. The use of factory pattern is here.
     public abstract int calculateHumanCasualty(Unit human, Unit enemy);
     public abstract int calculateEnemyCasualty(Unit human, Unit enemy);
 

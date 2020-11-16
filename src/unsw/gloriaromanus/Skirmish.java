@@ -48,6 +48,7 @@ public class Skirmish {
     public void addEngagement(String range) {
         Engagement e;
         if (range.equals("melee")) {
+            // Factory Pattern used to distinguish two different types of engagement
             e = new MeleeEngagement(human, enemy, this);
         } else {
             e = new RangedEngagement(human, enemy, this);
