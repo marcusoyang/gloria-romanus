@@ -10,7 +10,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.lang.reflect.Array;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -48,6 +47,7 @@ import com.esri.arcgisruntime.symbology.PictureMarkerSymbol;
 import com.esri.arcgisruntime.symbology.TextSymbol;
 import com.esri.arcgisruntime.symbology.TextSymbol.HorizontalAlignment;
 import com.esri.arcgisruntime.symbology.TextSymbol.VerticalAlignment;
+import com.esri.arcgisruntime.tasks.networkanalysis.Facility;
 import com.esri.arcgisruntime.data.Feature;
 
 import com.fasterxml.jackson.core.JsonParseException;
@@ -97,7 +97,6 @@ public class GloriaRomanusController{
   private ArrayList<Player> players;
   private ArrayList<String> factions;
   private ArrayList<Province> provinces;
-  private ArrayList<Integer> victoryCondition;
   private int currentPlayerID;
   private int currentYear;
   private String filename;
@@ -124,8 +123,6 @@ public class GloriaRomanusController{
     
     filename = DEFAULT_FILENAME;  // Default prefix for save filename.
 
-    initializeVictoryCondition();
-
     initializeVolumeSlider();
     provinces = new ArrayList<Province>();
     players = new ArrayList<Player>();
@@ -135,15 +132,6 @@ public class GloriaRomanusController{
 
     currentlySelectedHumanProvince = null;
     currentlySelectedEnemyProvince = null;  
-  }
-
-  private void initializeVictoryCondition() {
-    victoryCondition = new ArrayList<Integer>();
-    Random r = new Random();
-    int conjunction1 = r.nextInt(1);
-    int conjunction2 = r.nextInt(1);
-    int order = r.nextInt(5);
-
   }
 
   public void newGame(Integer numPlayers) throws IOException {
@@ -630,6 +618,10 @@ public class GloriaRomanusController{
     }
     resetMovementPoints();
 
+    // Clear text fields.
+    invading_province.clear();
+    opponent_province.clear();
+
     // Collect taxes for the next player
     // Trained units are available at the beginning of the players' next turn
     for (Province p : provinces) {
@@ -937,25 +929,17 @@ public class GloriaRomanusController{
         TextSymbol t = new TextSymbol(10,
             faction + "\n" + provinceName + "\nArmy size: " + province.getArmySize() + "\nWealth: " + province.getWealth(), 0xFFFF0000,
             HorizontalAlignment.CENTER, VerticalAlignment.BOTTOM);
-
-        s = new PictureMarkerSymbol("images/legionary.png"); // TODO: Import other images
         
-        switch (faction) {
-          case "Gaul":
-            // note can instantiate a PictureMarkerSymbol using the JavaFX Image class - so could
-            // construct it with custom-produced BufferedImages stored in Ram
-            // http://jens-na.github.io/2013/11/06/java-how-to-concat-buffered-images/
-            // then you could convert it to JavaFX image https://stackoverflow.com/a/30970114
+        // note can instantiate a PictureMarkerSymbol using the JavaFX Image class - so could
+        // construct it with custom-produced BufferedImages stored in Ram
+        // http://jens-na.github.io/2013/11/06/java-how-to-concat-buffered-images/
+        // then you could convert it to JavaFX image https://stackoverflow.com/a/30970114
 
-            // you can pass in a filename to create a PictureMarkerSymbol...
-            s = new PictureMarkerSymbol(new Image((new File("images/Celtic_Druid.png")).toURI().toString()));
-            break;
-          case "Rome":
-            // you can also pass in a javafx Image to create a PictureMarkerSymbol (different to BufferedImage)
-            s = new PictureMarkerSymbol("images/legionary.png");
-            break;
-          // TODO = handle all faction names, and find a better structure...
-        }
+        // you can pass in a filename to create a PictureMarkerSymbol...
+        // you can also pass in a javafx Image to create a PictureMarkerSymbol (different to BufferedImage)
+
+        s = getPictureMarker(faction, s);          
+          
         t.setHaloColor(0xFFFFFFFF);
         t.setHaloWidth(2);
         Graphic gPic = new Graphic(curPoint, s);
@@ -970,6 +954,60 @@ public class GloriaRomanusController{
 
     inputStream.close();
     mapView.getGraphicsOverlays().add(graphicsOverlay);
+  }
+
+  private PictureMarkerSymbol getPictureMarker(String faction, PictureMarkerSymbol s) {
+    switch (faction) {
+      case "Romans":
+        s = new PictureMarkerSymbol("images/legionary.png");
+        break;
+      case "Carthaginians":
+        s = new PictureMarkerSymbol("images/sorcerer.png");
+        break;
+      case "Gauls":
+        s = new PictureMarkerSymbol("images/gaul.png");
+        break;
+      case "Celtic Britons":
+        s = new PictureMarkerSymbol("images/Celtic_Druid.png");
+        break;
+      case "Spanish":
+        s = new PictureMarkerSymbol("images/spanish.png");
+        break;
+      case "Numidians":
+        s = new PictureMarkerSymbol("images/numidians.png");
+        break;
+      case "Egyptians":
+        s = new PictureMarkerSymbol("images/egypt.png");
+        break;
+      case "Seleucid Empire":
+        s = new PictureMarkerSymbol("images/seleucid.png");
+        break;
+      case "Pontus":
+        s = new PictureMarkerSymbol("images/pontus.png");
+        break;
+      case "Amenians":
+        s = new PictureMarkerSymbol("images/amenians.png");
+        break;
+      case "Parthians":
+        s = new PictureMarkerSymbol("images/parthians.png");
+        break;
+      case "Germanics":
+        s = new PictureMarkerSymbol("images/germanics.png");
+        break;
+      case "Greek City States":
+        s = new PictureMarkerSymbol("images/greek.png");
+        break;
+      case "Macedonians":
+        s = new PictureMarkerSymbol("images/macedonians.png");
+        break;
+      case "Thracians":
+        s = new PictureMarkerSymbol("images/thracians.png");
+        break;
+      case "Dacians":
+        s = new PictureMarkerSymbol("images/dacians.png");
+        break;
+    }
+    return s;
   }
 
   private FeatureLayer createFeatureLayer(GeoPackage gpkg_provinces) {
