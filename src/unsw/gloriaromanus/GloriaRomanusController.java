@@ -1117,6 +1117,7 @@ public class GloriaRomanusController{
       printMessageToTerminal("Units successfully moved!");
     }
 
+    destination = null;
     waitingForDestination = null;
     addAllPointGraphics(); // reset graphics
   }
