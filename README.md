@@ -22,6 +22,8 @@ You can setup the project yourself on your computer, however support from teachi
 * JUnit 5
 * Gradle 5.4.1
 
+Repository folder may need to be named "w11b-mcbaguette".
+
 ## Preliminary client requirements
 
 The client desires a grand-strategy game, set in the time of Ancient Rome (around 200 BC), where the player can play as a faction of the time (such as the Romans, Carthaginians, Gauls, Celtic Britons, Spanish, Numidians, Egyptians, Seleucid Empire, Pontus, Amenians, Parthians, Germanics, Greek City States, Macedonians, Thracians, Dacians), with the overall goal of conquering all provinces in the game map (or succeeding at another grand victory objective).
