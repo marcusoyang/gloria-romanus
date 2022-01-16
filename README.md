@@ -3,13 +3,13 @@
 ## In-Game Screenshots
 
 ### Main Menu
-![main menu](./images/screenshots/mainmenu.png)
+![main menu](./images/screenshots/mainmenu.PNG)
 
 ### In-Game
-![main menu](./images/screenshots/ingame_1.png)
+![in-game](./images/screenshots/ingame_1.PNG)
 
 ### Recruit Page
-![main menu](./images/screenshots/recruit.png)
+![recruit](./images/screenshots/recruit.PNG)
 
 Background images for Main Menu and Recruit Menu were sourced from [Genshin Impact](https://genshin.mihoyo.com/en/home).
 
