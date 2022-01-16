@@ -1,5 +1,19 @@
 # Project - Gloria Romanus
 
+## In-Game Screenshots
+
+### Main Menu
+![main menu](./images/screenshots/mainmenu.png)
+
+### In-Game
+![main menu](./images/screenshots/ingame_1.png)
+
+### Recruit Page
+![main menu](./images/screenshots/recruit.png)
+
+Background images for Main Menu and Recruit Menu were sourced from [Genshin Impact](https://genshin.mihoyo.com/en/home).
+
+
 ## Aims
 
 * Appreciate issues in user interface design
