@@ -467,9 +467,7 @@ Possible extensions include but are not limited to:
 * Implement visual battles (replacing the TextArea output representation of engagements). This feature should include units with fighting animations such as sword-swings, drawing and firing arrows, etc. (1-2.5 marks depending on how extensive).
 * Implement UI double-arrowhead widget dynamically indicating the valid sea crossings between provinces in the game (for example, Britannia connects to Lugdunensis, so the ability to cross the English channel should be visually apparent to the user). This should be produced programmatically, so that if more sea connections are added later, it will update automatically (1-1.5 marks depending on quality)
 
-This final milestone will be a culmination of all the work done in the previous milestones. You have the opportunity to improve on your design based on feedback from your tutor. Marking of the design will be harsher for the final milestone as you have already had the opportunity to receive feedback.
-
-In the week 10 lab, your tutor will ask you questions, and assign marks based on your answers to these questions (and also through offline marking when appropriate).
+This final milestone will be a culmination of all the work done in the previous milestones.
 
 ### Milestone 1
 
