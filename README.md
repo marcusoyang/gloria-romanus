@@ -26,7 +26,7 @@ Background images for Main Menu and Recruit Menu were sourced from [Genshin Impa
 
 ### Setting up Libraries on your Machine (not using Virtual Machine)
 
-You can setup the project yourself on your computer, however support from teaching staff for this may be more limited by a lack of familiarity with your computer's setup. To install this on your own machine, you will need to perform additional setup steps to install the following components (you should already have `VSCode`, `Java`, and the `Java Extension Pack` VSCode extension fully installed):
+To install this on your own machine, you will need to perform additional setup steps to install the following components (you should already have `VSCode`, `Java`, and the `Java Extension Pack` VSCode extension fully installed):
 
 * VSCode
 * `Java Extension Pack`, `Coderunner`, `VSCode Map Preview` and `Draw.io Integration` VSCode extensions
@@ -408,8 +408,6 @@ GeoJSON files have the advantage of being JSON data and therefore easy to read u
 Whilst GeoPackage files are hard to read using a text editor, it is easy to load GeoPackage files directly into ArcGIS using the `GeoPackage` class. This has been done in the starter code. The documentation for the `GeoPackage` class is at:
 
 https://developers.arcgis.com/java/latest/api-reference/reference/com/esri/arcgisruntime/data/GeoPackage.html
-
-You may apply different map data if you find a more complete digital map of the ancient layout of provinces, but we recommend to first focus on completing all required features.
 
 ### Province Adjacency Matrix
 
